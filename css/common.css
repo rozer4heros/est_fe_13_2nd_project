@@ -1,0 +1,5 @@
+:root {
+  --base-unit: 24px;
+  --base-unit-x2: calc(var(--base-unit) * 2);
+  --base-unit-x3: calc(var(--base-unit) * 3);
+}
