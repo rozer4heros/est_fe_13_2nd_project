@@ -1,7 +1,7 @@
 @import url("utils/normalize.css");
 @import url("utils/reset.css");
 @import url("utils/font.css");
-@import url("utils/flex_utility.css");
+@import url("utils/flex-utility.css");
 
 :root {
   --base-unit: 24px;
