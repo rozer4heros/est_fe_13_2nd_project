@@ -92,51 +92,51 @@
     --body---caption-lh: var(--base-unit);
   }
 }
-.display-h0 {
+.display_h0 {
   font-size: var(--display);
   line-height: var(--display-lh);
   font-weight: 700;
   text-transform: uppercase;
 }
-.display-h1 {
+.display_h1 {
   font-size: var(--display---h1);
   line-height: var(--display---h1-lh);
   font-weight: 700;
   text-transform: uppercase;
 }
-.display-h2 {
+.display_h2 {
   font-size: var(--display---h2);
   line-height: var(--display---h2-lh);
   font-weight: 700;
   text-transform: uppercase;
 }
-.display-h3 {
+.display_h3 {
   font-size: var(--display---h3);
   line-height: var(--display---h3-lh);
   font-weight: 600;
   text-transform: uppercase;
 }
-.display-h4 {
+.display_h4 {
   font-size: var(--display---h4);
   line-height: var(--display---h4-lh);
   font-weight: 600;
   text-transform: uppercase;
 }
-.body-xl {
+.body_xl {
   font-size: var(--body---x-large);
   line-height: var(--body---x-large-lh);
   font-weight: 700;
 }
-.body-l {
+.body_l {
   font-size: var(--body---large);
   line-height: var(--body---large-lh);
   font-weight: 500;
 }
-.body-m {
+.body_m {
   font-size: var(--body---medium);
   line-height: var(--body---medium-lh);
 }
-.body-cap {
+.body_cap {
   font-size: var(--body---caption);
   line-height: var(--body---caption-lh);
 }
