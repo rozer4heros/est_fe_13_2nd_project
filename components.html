@@ -4,55 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
+    <title>ROUNZ</title>
   </head>
   <body>
     <!-- Header -->
     <header>
-      <button></button>
+      <button class="mobile_only tablet_only"></button>
       <h1 class="logo"></h1>
-      <nav>
-        <li><a href="">쇼핑</a></li>
-        <li><a href="">브랜드</a></li>
-        <li><a href="">AI 피팅</a></li>
-        <li><a href="">스토어</a></li>
-        <li><a href="">이벤트</a></li>
-        <li><a href="">고객지원</a></li>
+      <nav class="pc_only">
+        <li>쇼핑</li>
+        <li>브랜드</li>
+        <li><a href="#">AI 피팅</a></li>
+        <li><a href="#">스토어</a></li>
+        <li><a href="#">이벤트</a></li>
+        <li><a href="#">고객지원</a></li>
       </nav>
       <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+        <li class="pc_only">
+          <a href="product_list.html"><span class="material-icons-round">favorite_border</span></a>
+        </li>
+        <li class="pc_only">
+          <button><span class="material-icons-round">search</span></button>
+        </li>
+        <li>
+          <a href="cart.html"><span class="material-icons-outlined">shopping_cart</span></a>
+        </li>
+        <li>
+          <a href="login.html"><span class="material-icons-outlined">person</span></a>
+        </li>
       </ul>
     </header>
-    <div>
-      <input type="text" id="search" />
-      <label for="#search"></label>
+    <!-- Drawer Side Menu -->
+    <div class="mobile_only tablet_only">
+      <div>
+        <input type="text" id="search" />
+        <label for="#search"></label>
+      </div>
       <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-      <div></div>
+      <dialog></dialog>
       <ul>
         <li>
+          <div>쇼핑</div>
           <ul>
-            쇼핑
-            <li>안경테</li>
-            <li>선글라스</li>
-            <li>베스트</li>
-            <li>신상품</li>
+            <li><a href="product_list.html">안경테</a></li>
+            <li><a href="product_list.html">선글라스</a></li>
+            <li><a href="product_list.html">베스트</a></li>
+            <li><a href="product_list.html">신상품</a></li>
           </ul>
         </li>
         <li>브랜드</li>
-        <li>AI피팅</li>
-        <li>스토어</li>
-        <li>이벤트</li>
-        <li>고객지원</li>
+        <li><a href="#">AI피팅</a></li>
+        <li><a href="#">스토어</a></li>
+        <li><a href="#">이벤트</a></li>
+        <li><a href="#">고객지원</a></li>
       </ul>
       <ul>
-        <li><span>찜한 상품</span></li>
-        <li><span>장바구니</span></li>
+        <li><a href="product_list.html">찜한 상품</a></li>
+        <li><a href="cart.html">장바구니</a></li>
       </ul>
-      <div class="">
+      <div>
         <a href="login.html">log in</a>
         <a href="signup.html">sign up</a>
       </div>
