@@ -92,6 +92,14 @@
     --body---caption-lh: var(--base-unit);
   }
 }
+
+/* Typography */
+body {
+  font-family: "Pretendard", sans-serif;
+  letter-spacing: -5%;
+  color: var(--font--color);
+}
+
 .display_h0 {
   font-size: var(--display);
   line-height: var(--display-lh);
@@ -122,6 +130,7 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
 .body_xl {
   font-size: var(--body---x-large);
   line-height: var(--body---x-large-lh);
@@ -139,4 +148,105 @@
 .body_cap {
   font-size: var(--body---caption);
   line-height: var(--body---caption-lh);
+}
+
+/* Basic responsive display */
+/* 사용되는 클래스명: .mo_only, .pc_only, .above_mo, .below_pc */
+.above_mo,
+.pc_only {
+  display: none;
+}
+@media (min-width: 481px) {
+  .mo_only {
+    display: none;
+  }
+  .above_mo {
+    display: block;
+  }
+}
+@media (min-width: 769px) {
+  .below_pc {
+    display: none;
+  }
+  .pc_only {
+    display: block;
+  }
+}
+
+/* .wrap */
+.wrap {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+@media (min-width: 481px) {
+  .wrap {
+    padding: 0 32px;
+  }
+}
+@media (min-width: 769px) {
+  .wrap {
+    max-width: 1272px;
+    padding: 0 0px;
+    margin: 0 auto;
+  }
+  .page_main .wrap {
+    width: 75%;
+    max-width: none;
+    margin: none;
+  }
+}
+
+/* .sr_only */
+.sr_only {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  inset: 50%;
+  text-indent: -32768px;
+  position: absolute;
+}
+
+/* Components */
+
+/* Header */
+/* 작업자: 유태구; */
+header {
+  padding: var(--base-unit) 0px;
+  position: sticky;
+  top: 0;
+  z-index: 32767;
+
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+@media (min-width: 481px) {
+}
+@media (min-width: 769px) {
+}
+
+/* Side Drawer Menu */
+/* 작업자: 유택구; */
+
+/* Footer */
+/* 작업자: 유태구; */
+footer {
+  padding: var(--base-unit);
+
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+footer .wrap {
+  display: flex;
+}
+
+@media (min-width: 481px) {
+  footer .wrap {
+    display: grid;
+  }
+}
+@media (min-width: 769px) {
+  footer .wrap {
+    display: grid;
+  }
 }
