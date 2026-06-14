@@ -12,7 +12,7 @@
     <!-- Header -->
     <!-- 작업자="유태구" -->
     <header>
-      <button class="mobile_only tablet_only"></button>
+      <button class="pc_except"></button>
       <h1 class="logo"></h1>
       <nav class="pc_only">
         <li>쇼핑</li>
@@ -38,9 +38,9 @@
       </ul>
     </header>
 
-    <!-- Drawer Side Menu -->
+    <!-- Side Drawer Menu -->
     <!-- 작업자="유태구" -->
-    <div class="drawer mobile_only tablet_only">
+    <div class="drawer mo_only">
       <div>
         <input type="text" id="search" />
         <label for="#search"></label>
@@ -103,45 +103,94 @@
     <button></button>
 
     <!-- Filter dropdown menu for product_list.html -->
-    <select name="" id=""></select>
-    <datalist>
-      <option value=""></option>
-      <option value=""></option>
-    </datalist>
+    <div></div>
+    <div>
+      <div>
+        <input type="checkbox" name="" id="filter_1" value="" />
+        <label for="filter_1"></label>
+      </div>
+      <div>
+        <input type="checkbox" name="" id="filter_2" value="" />
+        <label for="filter_2"></label>
+      </div>
+    </div>
 
     <!-- Product info card for details.html -->
     <aside></aside>
 
+    <!-- Social buttons -->
+    <ul class="social_button_list">
+      <li>
+        <a href="#" class="social_kakao"><span class="sr_only">카카오</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_naver"><span class="sr_only">네이버</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_google"><span class="sr_only">구글</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_apple"><span class="sr_only">애플</span></a>
+      </li>
+    </ul>
+
     <!-- Footer -->
     <!-- 작업자="유태구" -->
     <footer>
-      <h2 class="logo">rounz</h2>
-      <h3>optical clarity</h3>
-      <ul>
-        <li>
-          services
+      <div class="wrap footer-container">
+        <!-- Top Section -->
+        <div>
+          <h2 class="logo">rounz</h2>
+          <p>optical clarity</p>
+        </div>
+        <ul>
+          <li>
+            services
+            <ul>
+              <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
+              <li><a href="#">라운즈 해외 (ROUNZ Global)</a></li>
+              <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
+            </ul>
+          </li>
+          <li>
+            legal
+            <ul>
+              <li><a href="#">고객센터 (Customer Center)</a></li>
+              <li><a href="#">개인정보처리방침 (Privacy Policy)</a></li>
+              <li><a href="#">이용약관 (Terms of Use)</a></li>
+            </ul>
+          </li>
+          <li>
+            business
+            <ul>
+              <li><a href="#">글라스박스 (Glassbox)</a></li>
+              <li><a href="#">가맹문의 (Franchise Inquiry)</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div>
+          <div>
+            customer center
+            <p>1600-0000</p>
+            <span class="mo_only">|</span>
+            <a href="#">support@rounz.com</a>
+          </div>
+        </div>
+        <!-- Bottom Section -->
+        <div>
           <ul>
-            <li>라운즈앱 (ROUNZ App)</li>
-            <li>라운즈 해외 (ROUNZ Global)</li>
-            <li>라운즈 파트너스 (ROUNZ Partners)</li>
+            (주)라운즈 ROUNZ 사업자정보
+            <li><a href="#">사업자정보확인</a></li>
+            <li><a href="#">라운즈 플래그십 스토어</a></li>
+            <li><a href="#">라운즈 파트너 안경원</a></li>
           </ul>
-        </li>
-        <li>
-          legal
-          <ul>
-            <li>고객센터 (Customer Center)</li>
-            <li>개인정보처리방침 (Privacy Policy)</li>
-            <li>이용약관 (Terms of Use)</li>
-          </ul>
-        </li>
-        <li>
-          business
-          <ul>
-            <li>글라스박스 (Glassbox)</li>
-            <li>가맹문의 (Franchise Inquiry)</li>
-          </ul>
-        </li>
-      </ul>
+          <p class="pc_only">
+            주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
+            통신판매업신고: 제2023-서울서초-0000호 | 개인정보관리책임자: 박안경
+          </p>
+          <p class="pc_only">COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
