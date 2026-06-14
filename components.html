@@ -123,7 +123,7 @@
     <aside></aside>
 
     <!-- Social buttons -->
-    <ul class="social_button_list">
+    <ul class="social_button_list d-flex">
       <li>
         <a href="#" class="social_kakao"><span class="sr_only">카카오</span></a>
       </li>
@@ -141,47 +141,50 @@
     <!-- Footer -->
     <!-- 작업자="유태구" -->
     <footer>
-      <div class="wrap footer-container">
-        <!-- Top Section -->
-        <div>
+      <div class="wrap">
+        <div class="footer_heading">
           <h2 class="logo">rounz</h2>
           <p>optical clarity</p>
         </div>
-        <ul>
-          <li>
-            services
-            <ul>
-              <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
-              <li><a href="#">라운즈 해외 (ROUNZ Global)</a></li>
-              <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
-            </ul>
-          </li>
-          <li>
-            legal
-            <ul>
-              <li><a href="#">고객센터 (Customer Center)</a></li>
-              <li><a href="#">개인정보처리방침 (Privacy Policy)</a></li>
-              <li><a href="#">이용약관 (Terms of Use)</a></li>
-            </ul>
-          </li>
-          <li>
-            business
-            <ul>
-              <li><a href="#">글라스박스 (Glassbox)</a></li>
-              <li><a href="#">가맹문의 (Franchise Inquiry)</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div>
+
+        <nav class="footer_nav">
+          <ul class="d-flex justify-content-between">
+            <li>
+              services
+              <ul>
+                <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
+                <li><a href="#">라운즈 해외 (ROUNZ Global)</a></li>
+                <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
+              </ul>
+            </li>
+            <li>
+              legal
+              <ul>
+                <li><a href="#">고객센터 (Customer Center)</a></li>
+                <li><a href="#">개인정보처리방침 (Privacy Policy)</a></li>
+                <li><a href="#">이용약관 (Terms of Use)</a></li>
+              </ul>
+            </li>
+            <li>
+              business
+              <ul>
+                <li><a href="#">글라스박스 (Glassbox)</a></li>
+                <li><a href="#">가맹문의 (Franchise Inquiry)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="footer_contact">
           <div>
-            customer center
+            <h3>customer center</h3>
             <p>1600-0000</p>
             <span class="mo_only">|</span>
-            <a href="#">support@rounz.com</a>
+            <p><a href="#">support@rounz.com</a></p>
           </div>
         </div>
-        <!-- Bottom Section -->
-        <div>
+
+        <div class="footer_info">
           <ul>
             (주)라운즈 ROUNZ 사업자정보
             <li><a href="#">사업자정보확인</a></li>
@@ -196,6 +199,16 @@
             <p>COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
+
+        <div class="footer_locale above_mo"><span class="material-icons-round"> language </span>korea (krw)</div>
+
+        <ul class="footer_social social_button_list">
+          <li>카카오</li>
+          <li>네이버</li>
+          <li>구글</li>
+          <li>애플</li>
+        </ul>
+        <!-- class="wrap" -->
       </div>
     </footer>
   </body>

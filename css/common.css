@@ -226,7 +226,13 @@ header {
 }
 
 /* Side Drawer Menu */
-/* 작업자: 유택구; */
+/* 작업자: 유태구; */
+
+/* Social button list */
+.social_button_list {
+  display: flex;
+  gap: var(--base-unit);
+}
 
 /* Footer */
 /* 작업자: 유태구; */
@@ -238,15 +244,54 @@ footer {
 }
 footer .wrap {
   display: flex;
+  flex-direction: column;
+  gap: var(--base-unit);
+}
+.footer_heading {
+  grid-area: h;
+}
+.footer_nav {
+  grid-area: n;
+}
+.footer_nav ul {
+  flex-direction: column;
+}
+.footer_contact {
+  grid-area: c;
+}
+.footer_social {
+  grid-area: s;
+}
+.footer_info {
+  grid-area: i;
+}
+.footer_locale {
+  grid-area: l;
 }
 
 @media (min-width: 481px) {
   footer .wrap {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 4fr 2fr 1fr;
+    grid-template-areas:
+      "h s s"
+      "n n n"
+      "i i c"
+      "i i l";
+  }
+  .footer_nav ul {
+    flex-direction: row;
   }
 }
 @media (min-width: 769px) {
   footer .wrap {
     display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-areas:
+      "h n c"
+      "h n s"
+      "i i l";
   }
 }
