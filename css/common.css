@@ -150,6 +150,20 @@ body {
   line-height: var(--body---caption-lh);
 }
 
+.logo {
+  font-size: 32px;
+  line-height: var(--base-unit-x1-5);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--main--color);
+}
+.tagline {
+  font-size: 12px;
+  line-height: calc(var(--base-unit) * 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+}
 /* Basic responsive display */
 /* 사용되는 클래스명: .mo_only, .pc_only, .above_mo, .below_pc */
 .above_mo,
