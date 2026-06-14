@@ -135,6 +135,7 @@ body {
   font-size: var(--body---x-large);
   line-height: var(--body---x-large-lh);
   font-weight: 700;
+  text-transform: capitalize;
 }
 .body_l {
   font-size: var(--body---large);
@@ -266,9 +267,9 @@ footer .wrap {
 }
 .footer_nav {
   grid-area: n;
-}
-.footer_nav ul {
-  flex-direction: column;
+  ul {
+    flex-direction: column;
+  }
 }
 .footer_contact {
   grid-area: c;
@@ -278,6 +279,9 @@ footer .wrap {
 }
 .footer_info {
   grid-area: i;
+  h3 {
+    font-weight: 700;
+  }
 }
 .footer_locale {
   grid-area: l;
