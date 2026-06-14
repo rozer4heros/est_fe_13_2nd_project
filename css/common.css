@@ -151,11 +151,21 @@ body {
 }
 
 /* Basic responsive display */
+/* 사용되는 클래스명: .mo_only, .pc_only, .above_mo, .below_pc */
+.above_mo,
 .pc_only {
   display: none;
 }
-@media (min-width: 769px) {
+@media (min-width: 481px) {
   .mo_only {
+    display: none;
+  }
+  .above_mo {
+    display: block;
+  }
+}
+@media (min-width: 769px) {
+  .below_pc {
     display: none;
   }
   .pc_only {
@@ -166,17 +176,19 @@ body {
 /* .wrap */
 .wrap {
   width: 100%;
-  margin: 0px 20px;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 @media (min-width: 481px) {
   .wrap {
-    margin: 0px 32px;
+    padding: 0 32px;
   }
 }
 @media (min-width: 769px) {
   .wrap {
     max-width: 1272px;
-    margin: 0px auto;
+    padding: 0 0px;
+    margin: 0 auto;
   }
   .page_main .wrap {
     width: 75%;
@@ -185,10 +197,33 @@ body {
   }
 }
 
+/* .sr_only */
+.sr_only {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  inset: 50%;
+  text-indent: -32768px;
+  position: absolute;
+}
+
 /* Components */
 
 /* Header */
 /* 작업자: 유태구; */
+header {
+  padding: var(--base-unit) 0px;
+  position: sticky;
+  top: 0;
+  z-index: 32767;
+
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+@media (min-width: 481px) {
+}
+@media (min-width: 769px) {
+}
 
 /* Side Drawer Menu */
 /* 작업자: 유택구; */
@@ -196,8 +231,10 @@ body {
 /* Footer */
 /* 작업자: 유태구; */
 footer {
-  box-shadow: var(--shadow);
   padding: var(--base-unit);
+
+  background: var(--white);
+  box-shadow: var(--shadow);
 }
 footer .wrap {
   display: flex;
