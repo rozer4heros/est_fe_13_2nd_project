@@ -9,6 +9,60 @@
     <title>회원가입 | ROUNZ</title>
   </head>
   <body>
-    <main></main>
+    <main>
+      <section class="wrap signup-container">
+
+        <div>
+            <p>세상에 없던 안경 쇼핑</p>
+            <h1 class="logo">rounz</h1>
+         </div>
+
+         <div class="input-field">
+
+          <form action="" class="email-field">
+            <label for="useremail"></label>
+            <input type="email" id="useremail" required placeholder="Email address*">
+          </form>
+
+          <form action="" class="password-field">
+            <label for="userpw">
+              <span>visibility</span>
+            </label>
+            <input type="password" id="userpw" required placeholder="Password*" minlength="8" maxlength="16">
+          </form>
+
+          <form>
+            <label for="agree-all">전체 동의</label>
+            <input type="radio" id="agree-all">
+          </form>
+
+          <hr>
+
+          <form>
+            <label for="first-terms">[필수] 이용약관 동의</label>
+            <input type="radio" id="first-terms" name="terms-rquired">
+
+            <label for="second-terms">[필수] 개인정보 수집 및 이용 동의</label>
+            <input type="radio" id="second-terms" name="terms-rquired">
+
+            <label for="third-terms">[선택] 마케팅 정보 수신 동의</label>
+            <input type="radio" id="third-terms" name="terms-optional">
+          </form>
+          <button>create account</button> <!-- 컴포넌트로 대체 예정-->
+      
+         </div>
+
+         <div class="go-back-button">
+          <ul>
+            <li>
+              <a href="#">로그인 화면으로 돌아가기</a>
+            </li>
+            <li>
+              <a href="#">홈으로 돌아가기</a>
+            </li>
+         </div>
+
+      </section>
+    </main>
   </body>
 </html>
