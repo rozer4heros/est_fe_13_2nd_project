@@ -1,10 +1,161 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>ROUNZ - 장바구니</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
   </head>
-  <body></body>
+  <body>
+      <header>
+       <p>header</p>
+      </header>
+
+      <main class="main_content">
+        <section class="page_title_section">
+          <h1 class="page_title">장바구니</h1>
+          <span class="product_count">2개의 상품이 담겨 있습니다.</span>
+        </section>
+
+        <div class="cart_layout">
+          <section class="cart_items_section">
+            <div class="control_bar">
+              <label class="checkbox_container">
+                <input type="checkbox" checked />
+                <span>전체 선택 (2/2)</span>
+              </label>
+              <div class="control_buttons">
+                <button type="button">선택 삭제</button>
+                <span class="divider">|</span>
+                <button type="button">장바구니 비우기</button>
+              </div>
+            </div>
+
+            <div class="product_list">
+              <article class="product_card">
+                <div class="card_main">
+                  <input type="checkbox" checked class="item_checkbox" />
+                  <div class="product_thumb">
+                    <img src="./img/card.png" alt="레이벤 선글라스 상품 이미지" />
+                  </div>
+                  <div class="product_info">
+                    <div class="brand_row">
+                      <span class="brand_name">RAY-BAN</span>
+                      <label class="checkbox_container">
+                <input type="checkbox" checked />
+                    </div>
+                    <h2 class="product_name">RB3774D 003/87 55mm 레이벤 선글라스</h2>
+                    <div class="quantity_price_row">
+                      <div class="quantity_picker">
+                        <button type="button">-</button>
+                        <span class="qty">1</span>
+                        <button type="button">+</button>
+                      </div>
+                      <strong class="price">239,000원</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="product_card">
+                <div class="card_main">
+                  <input type="checkbox" class="item_checkbox" />
+                  <div class="product_thumb">
+                    <img src="./img/image.png" alt="레이벤 선글라스 상품 이미지" />
+                  </div>
+                  <div class="product_info">
+                    <div class="brand_row">
+                      <span class="brand_name">RAY-BAN</span>
+                      <label class="checkbox_container">
+                    <input type="checkbox" checked />
+                    </div>
+                    <h2 class="product_name">RB3774D 003/87 55mm 레이벤 선글라스</h2>
+                    <div class="quantity_price_row">
+                      <div class="quantity_picker">
+                        <button type="button">-</button>
+                        <span class="qty">1</span>
+                        <button type="button">+</button>
+                      </div>
+                      <strong class="price">239,000원</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="price_summary_bar">
+              <div class="summary_item"><span>판매 금액</span><strong>478,000원</strong></div>
+              <span class="operator">-</span>
+              <div class="summary_item"><span>할인 금액</span><strong class="discount">0원</strong></div>
+              <span class="operator">+</span>
+              <div class="summary_item"><span>배송비</span><strong>무료</strong></div>
+              <span class="operator">=</span>
+              <div class="summary_item total"><span>최종 금액</span><strong>478,000원</strong></div>
+            </div>
+          </section>
+
+          <aside class="sticky_sidebar">
+            <div class="order_summary_card">
+                <span class="material-icons-outlined">shopping_cart구매하기</span>
+              <div class="sidebar_block">
+                <h3 class="block_title"><span class="material-icons-outlined">local_shipping</span> 배송정보</h3>
+                <button type="button" class="btn_select_address">
+                  <span>배송지를 선택해주세요</span>
+                  <span class="material-icons-outlined">chevron_right</span>
+                </button>
+              </div>
+
+              <div class="sidebar_block">
+                <h3 class="block_title"><span class="material-icons-outlined">assignment</span> 주문 요약</h3>
+                <ul class="summary_details">
+                  <li><span>상품</span><strong>478,000원</strong></li>
+                  <li><span>수량</span><strong>2개</strong></li>
+                  <li><span>배송비</span><strong>무료</strong></li>
+                </ul>
+              </div>
+
+              <div class="sidebar_block row_layout">
+                <span class="block_title"><span class="material-icons-outlined">monetization_on</span> 적립 예정 포인트</span>
+                <strong class="point_text">4,780P</strong>
+              </div>
+
+              <div class="sidebar_total_block">
+                <div class="total_text_row">
+                  <span>최종 결제 금액</span>
+                  <strong>478,000원</strong>
+                </div>
+                <button type="button" class="btn_checkout">478,000원 결제하기</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <section class="recommend-section">
+          <div class="tab-header">
+            <button type="button" class="tab-item active">추천 상품</button>
+            <button type="button" class="tab-item">함께 보면 좋은 상품</button>
+          </div>
+
+          <div class="recommend-grid">
+            <div class="recommend-card">
+              <div class="thumb-box">
+                <button type="button" class="btn-wish">heart_plus</button>
+              </div>
+              <div class="card-desc">
+                <span class="brand">RAY-BAN</span>
+                <h4 class="name">[파우치증정] 레이밴 선글라스 <br />RB4258F 601/71 RB4258-F</h4>
+                <div class="price-row">
+                  <div class="original"><span>239,000원</span><span class="percent">20%</span></div>
+                  <strong class="current">191,200원</strong>
+                </div>
+              </div>
+            </div>
+            </div>
+        </section>
+      </main>
+
+      <footer><p>footer</p></footer>
+  </body>
 </html>

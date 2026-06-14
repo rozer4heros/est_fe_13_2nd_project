@@ -1,0 +1,372 @@
+:root {
+  --white: #ffffff;
+  --main_color: #000000;
+  --point_color: #007be5;
+  --font_color: #1e293b;
+  --gray: #64748b;
+  --light_gray: #e2e8f0;
+  --main_light: #f8fafc;
+}
+
+/* Material Icons 기본 세팅 추가 */
+.material_icons,
+.material_icons_outlined {
+  font-size: 24px;
+  color: var(--gray);
+  vertical-align: middle;
+}
+
+/* 메인 콘텐츠 구조 스타일링 */
+.main_content {
+  width: 1276px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page_title_section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.page_title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--font_color);
+}
+
+.product_count {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+/* 장바구니 메인 2단 레이아웃 */
+.cart_layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 96px;
+}
+
+.cart_items_section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 상단 컨트롤 바 */
+.control_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  background-color: var(--white);
+  border: 1px solid var(--light_gray);
+  border-radius: 10px;
+}
+
+.control_buttons {
+  display: inline-flex;
+  gap: 16px;
+  color: var(--gray);
+}
+
+.control_buttons button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 상품 카드 디자인 */
+.product_list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--light_gray);
+  border-radius: 20px;
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+.product_card {
+  padding: 24px;
+  border-bottom: 1px solid var(--light_gray);
+}
+.product_card:last-child {
+  border-bottom: none;
+}
+
+.card_main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.product_thumb img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+  background-color: var(--main_light);
+}
+
+.product_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--font_color);
+}
+
+.product_name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--font_color);
+}
+
+.quantity_price_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.quantity_picker {
+  display: inline-flex;
+  border: 1px solid var(--light_gray);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.quantity_picker button {
+  padding: 4px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity_picker .qty {
+  padding: 4px 16px;
+  border-left: 1px solid var(--light_gray);
+  border-right: 1px solid var(--light_gray);
+}
+
+.quantity_price_row .price {
+  font-size: 20px;
+  color: var(--font_color);
+}
+
+/* 금액 요약 섹션 */
+.price_summary_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background-color: rgba(241, 245, 249, 0.5);
+  border-radius: 20px;
+}
+
+.summary_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary_item span {
+  color: var(--gray);
+  font-size: 14px;
+}
+.summary_item strong {
+  font-size: 20px;
+}
+.summary_item strong.discount {
+  color: #e53935;
+}
+.summary_item.total strong {
+  color: var(--point_color);
+}
+.price_summary_bar .operator {
+  font-size: 20px;
+  color: var(--font-color);
+}
+
+/* 우측 스티키 사이드바 */
+.sticky_sidebar {
+  width: 304px;
+  position: sticky;
+  top: 24px;
+}
+
+.order_summary_card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--white);
+  border: 1px solid rgba(0, 123, 229, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn_primary_action,
+.btn_checkout {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--point_color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar_block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--light_gray);
+  padding-top: 16px;
+}
+.sidebar_block.row_layout {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.total_text_row {
+  padding-bottom: 16px;
+}
+.block_title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.btn_select_address {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: var(--main_light);
+  border: none;
+  border-radius: 5px;
+  color: var(--gray);
+}
+
+.summary_details {
+  list-style: none;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary_details li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.summary_details li span {
+  color: var(--gray);
+}
+
+/* 하단 추천 리스트 그리드 */
+.recommend_section {
+  margin-top: 48px;
+}
+
+.tab_header {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid var(--light_gray);
+  margin-bottom: 24px;
+}
+
+.tab_item {
+  padding: 12px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.tab_item.active {
+  color: var(--font-color);
+  font-weight: bold;
+  border-bottom: 2px solid var(--font-color);
+}
+
+.recommend_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.recommend_card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thumb_box {
+  position: relative;
+  height: 200px;
+  background-color: var(--main_light);
+  border-radius: 10px;
+}
+
+.btn_wish {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.card_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.card_desc .brand {
+  font-size: 12px;
+  color: var(--gray);
+}
+.card_desc .name {
+  font-size: 14px;
+  color: var(--font-color);
+  font-weight: normal;
+}
+.price_row {
+  margin-top: 4px;
+}
+.price_row .original {
+  font-size: 12px;
+  color: var(--gray);
+  text-decoration: line-through;
+  display: flex;
+  gap: 4px;
+}
+.price_row .original .percent {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: bold;
+}
+.price_row .current {
+  font-size: 16px;
+  color: var(--font-color);
+}
