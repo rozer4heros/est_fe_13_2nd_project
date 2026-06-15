@@ -165,12 +165,17 @@ body {
   text-transform: uppercase;
   letter-spacing: 2.5px;
 }
+
 /* Basic responsive display */
 /* 사용되는 클래스명: .mo_only, .pc_only, .above_mo, .below_pc */
 .above_mo,
 .pc_only {
   display: none;
 }
+.below_pc.d-flex {
+  display: flex;
+}
+
 @media (min-width: 481px) {
   .mo_only {
     display: none;
@@ -178,13 +183,22 @@ body {
   .above_mo {
     display: block;
   }
+  .above_mo.d-flex {
+    display: flex;
+  }
 }
 @media (min-width: 769px) {
   .below_pc {
     display: none;
   }
+  .below_pc.d-flex {
+    display: none;
+  }
   .pc_only {
     display: block;
+  }
+  .pc_only.d-flex {
+    display: flex;
   }
 }
 
@@ -267,24 +281,56 @@ footer .wrap {
 }
 .footer_nav {
   grid-area: n;
-  ul {
-    flex-direction: column;
+  ul li ul {
+    gap: calc(var(--base-unit) * 0.5);
   }
 }
 .footer_contact {
   grid-area: c;
+  text-align: end;
+  h3 {
+    font-size: 14px;
+    line-height: var(--base-unit);
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .d-flex {
+    justify-content: end;
+  }
 }
 .footer_social {
   grid-area: s;
+  justify-self: end;
 }
 .footer_info {
   grid-area: i;
+  justify-content: end;
   h3 {
     font-weight: 700;
+  }
+  .address {
+    opacity: 0.6;
   }
 }
 .footer_locale {
   grid-area: l;
+
+  font-weight: 700;
+  text-transform: uppercase;
+
+  gap: calc(var(--base-unit) / 3);
+  justify-self: end;
+  align-self: end;
+}
+.footer_locale * {
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+}
+.footer_locale .material-icons-round {
+  font-size: calc(var(--base-unit) * 0.75);
+  line-height: var(--base-unit);
 }
 
 @media (min-width: 481px) {
@@ -298,18 +344,28 @@ footer .wrap {
       "i i c"
       "i i l";
   }
-  .footer_nav ul {
+  .footer_nav > ul {
     flex-direction: row;
+  }
+  .footer_phone_no {
+    font-size: var(--display---h3);
+    line-height: var(--display---h3-lh);
+    font-weight: 600;
   }
 }
 @media (min-width: 769px) {
   footer .wrap {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 2fr 1fr 2fr;
     grid-template-areas:
       "h n c"
       "h n s"
       "i i l";
+  }
+  .footer_phone_no {
+    font-size: var(--base-unit);
+    line-height: var(--base-unit-x2);
+    letter-spacing: 0;
   }
 }
