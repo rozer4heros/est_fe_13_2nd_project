@@ -415,7 +415,7 @@ header .wrap > ul:last-child button {
   color: var(--main--color);
 }
 
-.input-field label {
+.floating_label {
   position: absolute;
   left: 20px;
   top: 50%;
@@ -435,9 +435,9 @@ header .wrap > ul:last-child button {
     color 0.25s ease;
 }
 
-.input-field input:focus + label,
-.input-field input:not(:placeholder-shown) + label {
-  top: -7px;
+.input-field input:focus + .floating_label,
+.input-field input:not(:placeholder-shown) + .floating_label {
+  top: -8px;
   transform: translateY(-60%);
   font-size: var(--body---caption);
   color: var(--gray);
@@ -485,7 +485,7 @@ input:focus {
 
 /* login.html 및 signup.html에서 사용되는 카드 컨테이너 */
 /* 작업자: 김해나; */
-.login-cantainer {
+.login-container {
   width: 630px;
   height: auto;
   padding: 54px 48px;
