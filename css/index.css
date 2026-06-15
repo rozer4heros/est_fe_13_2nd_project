@@ -23,8 +23,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: space-between;
   gap: 32px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -41,39 +39,22 @@
   flex-shrink: 0;
   color: var(--white);
   gap: 24px;
-  font-size: 14px;
 }
 
 .widget_menu li img {
   width: 50px;
-  height: auto;
+  height: 50px;
+  object-fit: contain;
 }
 
 .widget_coupon {
-  background: var(--white);
-  padding: 24px 16px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
+  width: 100%;
 }
 
-.widget_coupon p {
-  margin: 0;
-}
-
-.coupon_title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--font--color);
-}
-
-.coupon_desc {
-  font-size: 12px;
-  color: var(--gray);
+.widget_coupon img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
 }
 
 /* 태블릿 */
@@ -95,25 +76,12 @@
   }
 
   .widget_menu li {
-    font-size: 16px;
     gap: 20px;
   }
 
   .widget_menu li img {
     width: 70px;
-  }
-
-  .widget_coupon {
-    height: 100px;
-    padding: 0;
-  }
-
-  .coupon_title {
-    font-size: 28px;
-  }
-
-  .coupon_desc {
-    font-size: 16px;
+    height: 70px;
   }
 }
 
@@ -125,7 +93,7 @@
   }
 
   .widget_container {
-    max-width: 1440px;
+    max-width: 1200px;
     gap: 72px;
   }
 
