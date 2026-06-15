@@ -156,6 +156,85 @@
 }
 
 /* AI Face Analysis - 문송연 */
+.ai_face_analysis {
+  width: 100%;
+  height: auto;
+  padding: 96px 0;
+  position: relative;
+}
+.ai_face_analysis::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(/image/ai_face_analysis_BG\ -\ M.png) center / cover no-repeat var(--white);
+  opacity: 0.5;
+  z-index: -1;
+}
+.ai_face_analysis_wrapper {
+  padding: 0 20px;
+}
+.ai_text_container {
+  gap: 8px;
+}
+.ai_text_container .ai_title {
+  h2 {
+    color: var(--point--color);
+    font-size: var(--body---medium);
+    line-height: var(--body---medium-lh);
+    font-weight: 600;
+  }
+  p {
+    font-size: var(--display---h3);
+    line-height: var(--display---h3-lh);
+    font-weight: 700;
+  }
+}
+.hashtag {
+  flex-wrap: nowrap;
+  gap: 8px;
+
+  p {
+    background: var(--main--light);
+    color: var(--point--color);
+    font-size: var(--body---caption);
+    line-height: var(--body---caption-lh);
+    border-radius: 5px;
+    padding: 0 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+.ai_face_analysis_wrapper video {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 188px;
+  object-fit: cover;
+  border-radius: 24px;
+  object-position: center;
+  aspect-ratio: 188/384;
+}
+.ai_description {
+}
+.ai_description_item {
+  h3 {
+    color: var(--point--color);
+    font-size: var(--body---x-large);
+    line-height: var(--body---x-large-lh);
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 481px) {
+  .ai_face_analysis {
+  }
+}
+
+/* pc버전 */
+@media (min-width: 769px) {
+  .ai_face_analysis {
+  }
+}
 
 /* best picks - 오예은 */
 
