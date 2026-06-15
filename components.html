@@ -16,10 +16,10 @@
       <div class="wrap d-flex justify-content-between align-items-center">
         <button class="below_pc"><span class="material-icons-round"> menu </span></button>
         <h1 class="logo"><a href="index.html">rounz</a></h1>
-        <nav class="pc_only">
+        <nav class="display_h4 pc_only">
           <ul class="d-flex justify-content-between">
-            <li><a href="#">쇼핑</a></li>
-            <li><a href="#">브랜드</a></li>
+            <li><a href="product_list.html">쇼핑</a></li>
+            <li><a href="product_list.html">브랜드</a></li>
             <li><a href="#">AI 피팅</a></li>
             <li><a href="#">스토어</a></li>
             <li><a href="#">이벤트</a></li>
@@ -45,36 +45,96 @@
 
     <!-- Side Drawer Menu -->
     <!-- 작업자="유태구" -->
-    <div class="drawer below_pc">
-      <div>
-        <input type="text" id="search" />
-        <label for="search"></label>
-      </div>
-      <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-      <dialog></dialog>
-      <ul>
-        <li>
-          쇼핑
-          <ul>
-            <li><a href="product_list.html">안경테</a></li>
-            <li><a href="product_list.html">선글라스</a></li>
-            <li><a href="product_list.html">베스트</a></li>
-            <li><a href="product_list.html">신상품</a></li>
-          </ul>
-        </li>
-        <li>브랜드</li>
-        <li><a href="#">AI피팅</a></li>
-        <li><a href="#">스토어</a></li>
-        <li><a href="#">이벤트</a></li>
-        <li><a href="#">고객지원</a></li>
-      </ul>
-      <ul>
-        <li><a href="product_list.html">찜한 상품</a></li>
-        <li><a href="cart.html">장바구니</a></li>
-      </ul>
-      <div>
-        <a href="login.html">log in</a>
-        <a href="signup.html">sign up</a>
+    <div class="drawer_wrap below_pc active">
+      <div class="drawer">
+        <div>
+          <input type="text" id="search" />
+          <label for="search"></label>
+        </div>
+        <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
+        <dialog></dialog>
+        <ul class="display_h3">
+          <li>
+            <div>
+              <span>쇼핑</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="product_list.html">안경테</a></li>
+              <li><a href="product_list.html">선글라스</a></li>
+              <li><a href="product_list.html">베스트</a></li>
+              <li><a href="product_list.html">신상품</a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <span>브랜드</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="product_list.html"></a></li>
+              <li><a href="product_list.html"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <span>AI피팅</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <span>스토어</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <span>이벤트</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <span>고객지원</span>
+              <span class="material-icons"> chevron_right </span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="body_l">
+          <li>
+            <a href="product_list.html">
+              <span>찜한 상품</span>
+              <span class="material-icons"> arrow_outward </span>
+            </a>
+          </li>
+          <li>
+            <a href="cart.html">
+              <span>장바구니</span>
+              <span class="material-icons"> arrow_outward </span>
+            </a>
+          </li>
+        </ul>
+        <div class="display_h3">
+          <a href="login.html" class="drawer_login">log in</a>
+          <a href="signup.html" class="drawer_signup">sign up</a>
+        </div>
       </div>
     </div>
 
