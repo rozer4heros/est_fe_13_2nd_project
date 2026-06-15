@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <title>ROUNZ</title>
   </head>
@@ -15,10 +16,10 @@
       <div class="wrap d-flex justify-content-between align-items-center">
         <button class="below_pc"><span class="material-icons-round"> menu </span></button>
         <h1 class="logo"><a href="index.html">rounz</a></h1>
-        <nav class="pc_only">
+        <nav class="display_h4 pc_only">
           <ul class="d-flex justify-content-between">
-            <li><a href="#">쇼핑</a></li>
-            <li><a href="#">브랜드</a></li>
+            <li><a href="product_list.html">쇼핑</a></li>
+            <li><a href="product_list.html">브랜드</a></li>
             <li><a href="#">AI 피팅</a></li>
             <li><a href="#">스토어</a></li>
             <li><a href="#">이벤트</a></li>
@@ -44,42 +45,112 @@
 
     <!-- Side Drawer Menu -->
     <!-- 작업자="유태구" -->
-    <div class="drawer below_pc">
-      <div>
-        <input type="text" id="search" />
-        <label for="search"></label>
-      </div>
-      <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-      <dialog></dialog>
-      <ul>
-        <li>
-          쇼핑
-          <ul>
-            <li><a href="product_list.html">안경테</a></li>
-            <li><a href="product_list.html">선글라스</a></li>
-            <li><a href="product_list.html">베스트</a></li>
-            <li><a href="product_list.html">신상품</a></li>
-          </ul>
-        </li>
-        <li>브랜드</li>
-        <li><a href="#">AI피팅</a></li>
-        <li><a href="#">스토어</a></li>
-        <li><a href="#">이벤트</a></li>
-        <li><a href="#">고객지원</a></li>
-      </ul>
-      <ul>
-        <li><a href="product_list.html">찜한 상품</a></li>
-        <li><a href="cart.html">장바구니</a></li>
-      </ul>
-      <div>
-        <a href="login.html">log in</a>
-        <a href="signup.html">sign up</a>
+    <div class="drawer_wrap below_pc">
+      <div class="drawer">
+        <div>
+          <span class="material-icons">arrow_back</span>
+          <div>
+            <input type="text" id="search" />
+            <label for="search"></label>
+          </div>
+        </div>
+        <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
+        <dialog></dialog>
+        <ul class="display_h3 drawer_accordion_list d-flex flex-column g-1">
+          <li class="active">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>쇼핑</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="product_list.html">안경테</a></li>
+              <li><a href="product_list.html">선글라스</a></li>
+              <li><a href="product_list.html">베스트</a></li>
+              <li><a href="product_list.html">신상품</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>브랜드</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="product_list.html"></a></li>
+              <li><a href="product_list.html"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>AI피팅</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>스토어</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>이벤트</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>고객지원</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="body_l d-flex flex-column g-1">
+          <li>
+            <a href="product_list.html" class="d-flex align-items-center">
+              <span>찜한 상품</span>
+              <span class="material-icons-round">arrow_outward</span>
+            </a>
+          </li>
+          <li>
+            <a href="cart.html" class="d-flex align-items-center">
+              <span>장바구니</span>
+              <span class="material-icons-round">arrow_outward</span>
+            </a>
+          </li>
+        </ul>
+        <div></div>
+        <div class="display_h3">
+          <a href="login.html" class="drawer_login">log in</a>
+          <a href="signup.html" class="drawer_signup">sign up</a>
+        </div>
       </div>
     </div>
 
     <!-- To Top 버튼 -->
-    <aside>
-      <button></button>
+    <!-- 작업자="김해나" 위로 올라가는 기능은 JS로 구현-->
+    <aside class="back-to-top">
+      <button class="js-btn-top">
+        <img src="image/back_to_top.png" alt="맨 위로 올라가기" />
+      </button>
+      <button>
+        <a href="#"><img src="image/fnq.png" alt="고객센터" /></a>
+      </button>
     </aside>
 
     <!-- Product card for best_picks -->
@@ -89,8 +160,32 @@
     <div></div>
 
     <!-- Product card for new_collection -->
-    <div></div>
+    <li class="new_collection_item">
+      <a href="details.html" class="new_collection_card d-flex">
+        <div class="new_collection_img_box d-flex justify-content-center align-items-center">
+          <img src="" alt="" class="new_card_img" loading="lazy" />
 
+          <button
+            type="button"
+            class="new_card_wish_btn d-flex justify-content-center align-items-center"
+            aria-label="찜목록에 추가"
+          >
+            <span class="material-symbols-rounded">heart_plus</span>
+          </button>
+        </div>
+
+        <div class="new_collection_info d-flex flex-column">
+          <strong class="new_card_brand display_h2"></strong>
+          <p class="new_card_name body_l"></p>
+          <span class="new_card_price display_h3"></span>
+
+          <p class="new_card_shipping d-flex align-items-center body_cap">
+            <span class="material-icons-outlined" aria-hidden="true">shopping_cart</span>
+            <span>무료배송</span>
+          </p>
+        </div>
+      </a>
+    </li>
     <!-- Article for brand_showcase -->
     <article></article>
 
@@ -98,13 +193,25 @@
     <div></div>
 
     <!-- Input field for login/signup -->
-    <div>
-      <input type="text" id="input_field" />
-      <label for="input_field"></label>
+    <!-- 작업자="김해나" -->
+    <div class="input-field">
+      <form class="form-group">
+        <div class="input-group">
+          <input type="email" id="useremail" required placeholder=" " />
+          <label for="useremail" class="body_m">Email address*</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="userpw" required placeholder=" " minlength="8" maxlength="16" />
+          <label for="userpw" class="body_m">Password*</label>
+          <span class="material-icons visibility-icon">visibility</span>
+        </div>
+      </form>
     </div>
 
     <!-- Submit button -->
-    <button></button>
+    <!-- 작업자="김해나" -->
+    <button class="submit-button body_m">continue</button>
 
     <!-- Filter dropdown menu for product_list.html -->
     <div></div>
@@ -123,51 +230,69 @@
     <aside></aside>
 
     <!-- Social buttons -->
+    <!-- 작업자="김해나" -->
     <ul class="social_button_list d-flex">
       <li>
-        <a href="#" class="social_kakao"><span class="sr_only">카카오</span></a>
+        <a href="#" class="social_kakao">
+          <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
+        </a>
       </li>
       <li>
-        <a href="#" class="social_naver"><span class="sr_only">네이버</span></a>
+        <a href="#" class="social_naver">
+          <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
+        </a>
       </li>
       <li>
-        <a href="#" class="social_google"><span class="sr_only">구글</span></a>
+        <a href="#" class="social_google">
+          <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
+        </a>
       </li>
       <li>
-        <a href="#" class="social_apple"><span class="sr_only">애플</span></a>
+        <a href="#" class="social_apple">
+          <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
+        </a>
       </li>
     </ul>
 
     <!-- Footer -->
     <!-- 작업자="유태구" -->
     <footer>
-      <div class="wrap">
+      <div class="wrap d-flex flex-column">
         <div class="footer_heading">
           <h2 class="logo">rounz</h2>
           <p class="tagline">optical clarity</p>
         </div>
 
         <nav class="footer_nav">
-          <ul class="body_m d-flex justify-content-between">
-            <li>
-              <h3 class="body_xl">services</h3>
-              <ul class="body_cap">
+          <ul class="body_m d-flex flex-column justify-content-between">
+            <li class="footer_accordion d-flex flex-column g-1">
+              <div class="d-flex justify-content-between">
+                <h3 class="body_xl">services</h3>
+                <span class="mo_only material-icons-round"> expand_more </span>
+              </div>
+              <ul class="body_cap d-flex flex-column">
                 <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
                 <li><a href="#">라운즈 해외 (ROUNZ Global)</a></li>
                 <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
               </ul>
             </li>
-            <li>
-              <h3 class="body_xl">legal</h3>
-              <ul>
+            <li class="footer_accordion d-flex flex-column g-1">
+              <div class="d-flex justify-content-between">
+                <h3 class="body_xl">legal</h3>
+                <span class="mo_only material-icons-round"> expand_more </span>
+              </div>
+              <ul class="body_cap d-flex flex-column">
                 <li><a href="#">고객센터 (Customer Center)</a></li>
                 <li><a href="#">개인정보처리방침 (Privacy Policy)</a></li>
                 <li><a href="#">이용약관 (Terms of Use)</a></li>
               </ul>
             </li>
-            <li>
-              <h3 class="body_xl">business</h3>
-              <ul>
+            <li class="footer_accordion d-flex flex-column g-1">
+              <div class="d-flex justify-content-between">
+                <h3 class="body_xl">business</h3>
+                <span class="mo_only material-icons-round"> expand_more </span>
+              </div>
+              <ul class="body_cap d-flex flex-column">
                 <li><a href="#">글라스박스 (Glassbox)</a></li>
                 <li><a href="#">가맹문의 (Franchise Inquiry)</a></li>
               </ul>
@@ -175,27 +300,24 @@
           </ul>
         </nav>
 
-        <div class="footer_contact">
-          <div>
-            <h3>customer center</h3>
-            <p>1600-0000</p>
-            <span class="mo_only">|</span>
-            <p><a href="#">support@rounz.com</a></p>
-          </div>
-        </div>
-
-        <div class="footer_info">
-          <div class="d-flex g-1">
-            <h3 class="body_m">(주)라운즈 ROUNZ 사업자정보</h3>
-            <div class="body_cap d-flex g-1">
+        <div class="footer_info d-flex flex-column g-1">
+          <div class="business_info footer_accordion d-flex flex-column g-1">
+            <div class="d-flex justify-content-between">
+              <h3 class="body_m">
+                <span class="above_mo">(주)라운즈 ROUNZ 사업자정보</span>
+                <span class="mo_only">사업자정보확인</span>
+              </h3>
+              <span class="mo_only material-icons-round"> expand_more </span>
+            </div>
+            <div class="body_cap d-flex flex-column">
               <a href="#">사업자정보확인</a>
-              |
+              <span class="above_mo">|</span>
               <a href="#">라운즈 플래그십 스토어</a>
-              |
+              <span class="above_mo">|</span>
               <a href="#">라운즈 파트너 안경원</a>
             </div>
           </div>
-          <div class="body_cap pc_only">
+          <div class="address body_cap pc_only">
             <p>
               주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
               통신판매업신고: 제2023-서울서초-0000호 | 개인정보관리책임자: 박안경
@@ -204,14 +326,43 @@
           </div>
         </div>
 
-        <div class="footer_locale above_mo"><span class="material-icons-round"> language </span>korea (krw)</div>
-
         <ul class="footer_social social_button_list">
-          <li>카카오</li>
-          <li>네이버</li>
-          <li>구글</li>
-          <li>애플</li>
+          <li>
+            <a href="#" class="social_kakao">
+              <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_naver">
+              <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_google">
+              <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_apple">
+              <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
+            </a>
+          </li>
         </ul>
+
+        <div class="footer_contact d-flex flex-column">
+          <h3>customer center</h3>
+          <div class="body_cap d-flex g-1">
+            <p class="footer_phone_no">1600-0000</p>
+            <span class="mo_only">|</span>
+            <p><a href="#">support@rounz.com</a></p>
+          </div>
+        </div>
+
+        <div class="footer_locale above_mo">
+          <span class="material-icons-round">language</span>
+          <span class="body_cap">korea (krw)</span>
+        </div>
+
         <!-- class="wrap" -->
       </div>
     </footer>
