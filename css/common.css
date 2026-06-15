@@ -266,25 +266,47 @@ header {
 /* Footer */
 /* 작업자: 유태구; */
 footer {
-  padding: var(--base-unit);
-
+  padding: var(--base-unit) 0 var(--base-unit-x2);
   background: var(--white);
   box-shadow: var(--shadow);
 }
 footer .wrap {
-  display: flex;
-  flex-direction: column;
-  gap: var(--base-unit);
+  gap: calc(var(--base-unit) * 0.5);
 }
+
 .footer_heading {
   grid-area: h;
 }
+
 .footer_nav {
   grid-area: n;
-  ul li ul {
+}
+.footer_nav > ul > li {
+  border-bottom: 1px solid var(--light--gray);
+  padding: calc((var(--base-unit) * 0.5)) 0;
+  ul {
     gap: calc(var(--base-unit) * 0.5);
   }
 }
+
+.footer_info {
+  grid-area: i;
+  justify-content: end;
+  h3 {
+    font-weight: 700;
+  }
+  .address {
+    opacity: 0.6;
+  }
+  .business_info div {
+    gap: calc(var(--base-unit) * 0.5);
+  }
+}
+
+.footer_mo_accordion > div {
+  width: 40%;
+}
+
 .footer_contact {
   grid-area: c;
   text-align: end;
@@ -299,20 +321,12 @@ footer .wrap {
     justify-content: end;
   }
 }
+
 .footer_social {
   grid-area: s;
-  justify-self: end;
-}
-.footer_info {
-  grid-area: i;
   justify-content: end;
-  h3 {
-    font-weight: 700;
-  }
-  .address {
-    opacity: 0.6;
-  }
 }
+
 .footer_locale {
   grid-area: l;
 
