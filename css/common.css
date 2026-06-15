@@ -306,6 +306,12 @@ footer .wrap {
 .footer_mo_accordion > div {
   width: 40%;
 }
+.footer_mo_accordion > :last-child {
+  display: none;
+}
+.footer_mo_accordion.active > :last-child {
+  display: flex;
+}
 
 .footer_contact {
   grid-area: c;
@@ -333,14 +339,10 @@ footer .wrap {
   font-weight: 700;
   text-transform: uppercase;
 
-  gap: calc(var(--base-unit) / 3);
+  gap: calc(var(--base-unit) * 0.25);
   justify-self: end;
-  align-self: end;
-}
-.footer_locale * {
-  vertical-align: middle;
-  display: inline-flex;
-  align-items: center;
+  align-self: flex-end;
+  align-items: flex-end;
 }
 .footer_locale .material-icons-round {
   font-size: calc(var(--base-unit) * 0.75);
