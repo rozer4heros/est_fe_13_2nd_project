@@ -1,0 +1,62 @@
+/* 작업자: 김해나; */
+
+body {
+  background: url("../image/login_background.png") no-repeat fixed center / cover;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.login-cantainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.login-signup-header {
+  margin-bottom: calc(var(--base-unit) * 3);
+}
+
+.logo-sub {
+  margin-bottom: 16px;
+}
+
+.input-field form .submit-button {
+  margin-top: calc(var(--base-unit) * 2);
+}
+
+.divider-text {
+  margin-top: calc(var(--base-unit) * 2);
+  margin-bottom: calc(var(--base-unit) * 3);
+}
+
+/* 아이디 찾기ㅣ비밀번호 찾기 */
+.find-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(var(--base-unit) * 3);
+}
+
+.find-account a:hover {
+  color: var(--main--color);
+}
+
+.find-account a + a::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background-color: var(--light--gray);
+  margin: 0 calc(var(--base-unit) * 2);
+  vertical-align: middle;
+}
