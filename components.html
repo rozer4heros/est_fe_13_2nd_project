@@ -16,10 +16,10 @@
       <div class="wrap d-flex justify-content-between align-items-center">
         <button class="below_pc"><span class="material-icons-round"> menu </span></button>
         <h1 class="logo"><a href="index.html">rounz</a></h1>
-        <nav class="pc_only">
+        <nav class="display_h4 pc_only">
           <ul class="d-flex justify-content-between">
-            <li><a href="#">쇼핑</a></li>
-            <li><a href="#">브랜드</a></li>
+            <li><a href="product_list.html">쇼핑</a></li>
+            <li><a href="product_list.html">브랜드</a></li>
             <li><a href="#">AI 피팅</a></li>
             <li><a href="#">스토어</a></li>
             <li><a href="#">이벤트</a></li>
@@ -45,36 +45,100 @@
 
     <!-- Side Drawer Menu -->
     <!-- 작업자="유태구" -->
-    <div class="drawer below_pc">
-      <div>
-        <input type="text" id="search" />
-        <label for="search"></label>
-      </div>
-      <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-      <dialog></dialog>
-      <ul>
-        <li>
-          쇼핑
-          <ul>
-            <li><a href="product_list.html">안경테</a></li>
-            <li><a href="product_list.html">선글라스</a></li>
-            <li><a href="product_list.html">베스트</a></li>
-            <li><a href="product_list.html">신상품</a></li>
-          </ul>
-        </li>
-        <li>브랜드</li>
-        <li><a href="#">AI피팅</a></li>
-        <li><a href="#">스토어</a></li>
-        <li><a href="#">이벤트</a></li>
-        <li><a href="#">고객지원</a></li>
-      </ul>
-      <ul>
-        <li><a href="product_list.html">찜한 상품</a></li>
-        <li><a href="cart.html">장바구니</a></li>
-      </ul>
-      <div>
-        <a href="login.html">log in</a>
-        <a href="signup.html">sign up</a>
+    <div class="drawer_wrap below_pc">
+      <div class="drawer">
+        <div>
+          <span class="material-icons">arrow_back</span>
+          <div>
+            <input type="text" id="search" />
+            <label for="search"></label>
+          </div>
+        </div>
+        <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
+        <dialog></dialog>
+        <ul class="display_h3 drawer_accordion_list d-flex flex-column g-1">
+          <li class="active">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>쇼핑</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="product_list.html">안경테</a></li>
+              <li><a href="product_list.html">선글라스</a></li>
+              <li><a href="product_list.html">베스트</a></li>
+              <li><a href="product_list.html">신상품</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>브랜드</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="product_list.html"></a></li>
+              <li><a href="product_list.html"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>AI피팅</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>스토어</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>이벤트</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>고객지원</span>
+              <span class="material-icons-round">chevron_right</span>
+            </div>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="body_l d-flex flex-column g-1">
+          <li>
+            <a href="product_list.html" class="d-flex align-items-center">
+              <span>찜한 상품</span>
+              <span class="material-icons-round">arrow_outward</span>
+            </a>
+          </li>
+          <li>
+            <a href="cart.html" class="d-flex align-items-center">
+              <span>장바구니</span>
+              <span class="material-icons-round">arrow_outward</span>
+            </a>
+          </li>
+        </ul>
+        <div></div>
+        <div class="display_h3">
+          <a href="login.html" class="drawer_login">log in</a>
+          <a href="signup.html" class="drawer_signup">sign up</a>
+        </div>
       </div>
     </div>
 
@@ -106,7 +170,7 @@
             class="new_card_wish_btn d-flex justify-content-center align-items-center"
             aria-label="찜목록에 추가"
           >
-            <span class="material-icons">heart_plus</span>
+            <span class="material-symbols-rounded">heart_plus</span>
           </button>
         </div>
 
@@ -116,7 +180,7 @@
           <span class="new_card_price display_h3"></span>
 
           <p class="new_card_shipping d-flex align-items-center body_cap">
-            <span class="material-icons" aria-hidden="true">shopping_cart</span>
+            <span class="material-icons-outlined" aria-hidden="true">shopping_cart</span>
             <span>무료배송</span>
           </p>
         </div>
@@ -171,26 +235,22 @@
       <li>
         <a href="#" class="social_kakao">
           <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
-          <span class="sr_only">카카오</span></a
-        >
+        </a>
       </li>
       <li>
         <a href="#" class="social_naver">
           <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
-          <span class="sr_only">네이버</span></a
-        >
+        </a>
       </li>
       <li>
         <a href="#" class="social_google">
           <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
-          <span class="sr_only">구글</span></a
-        >
+        </a>
       </li>
       <li>
         <a href="#" class="social_apple">
           <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
-          <span class="sr_only">애플</span></a
-        >
+        </a>
       </li>
     </ul>
 
@@ -205,7 +265,7 @@
 
         <nav class="footer_nav">
           <ul class="body_m d-flex flex-column justify-content-between">
-            <li class="footer_mo_accordion d-flex flex-column g-1">
+            <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">services</h3>
                 <span class="mo_only material-icons-round"> expand_more </span>
@@ -216,7 +276,7 @@
                 <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
               </ul>
             </li>
-            <li class="footer_mo_accordion d-flex flex-column g-1">
+            <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">legal</h3>
                 <span class="mo_only material-icons-round"> expand_more </span>
@@ -227,7 +287,7 @@
                 <li><a href="#">이용약관 (Terms of Use)</a></li>
               </ul>
             </li>
-            <li class="footer_mo_accordion d-flex flex-column g-1">
+            <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">business</h3>
                 <span class="mo_only material-icons-round"> expand_more </span>
@@ -241,7 +301,7 @@
         </nav>
 
         <div class="footer_info d-flex flex-column g-1">
-          <div class="business_info footer_mo_accordion d-flex flex-column g-1">
+          <div class="business_info footer_accordion d-flex flex-column g-1">
             <div class="d-flex justify-content-between">
               <h3 class="body_m">
                 <span class="above_mo">(주)라운즈 ROUNZ 사업자정보</span>
@@ -267,10 +327,26 @@
         </div>
 
         <ul class="footer_social social_button_list">
-          <li>카카오</li>
-          <li>네이버</li>
-          <li>구글</li>
-          <li>애플</li>
+          <li>
+            <a href="#" class="social_kakao">
+              <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_naver">
+              <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_google">
+              <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_apple">
+              <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
+            </a>
+          </li>
         </ul>
 
         <div class="footer_contact d-flex flex-column">
@@ -282,7 +358,7 @@
           </div>
         </div>
 
-        <div class="footer_locale above_mo d-flex">
+        <div class="footer_locale above_mo">
           <span class="material-icons-round">language</span>
           <span class="body_cap">korea (krw)</span>
         </div>
