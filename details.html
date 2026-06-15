@@ -3,8 +3,510 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
+    <title>ROUNZ - 오클리 레이다 락 패스 선글라스</title>
+    <link rel="stylesheet" href="css/details.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round|Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container-header">
+        <div class="logo">ROUNZ</div>
+        <div class="header-icons">
+          <div class="icon">
+            <span class="material-icons-round">favorite_border</span>
+          </div>
+          <div class="icon-svg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M20.6667 18.6667H19.6133L19.24 18.3067C20.5919 16.7388 21.3349 14.7369 21.3333 12.6667C21.3333 10.9526 20.825 9.27695 19.8727 7.85172C18.9204 6.4265 17.5669 5.31567 15.9833 4.65971C14.3996 4.00375 12.6571 3.83212 10.9759 4.16653C9.29471 4.50093 7.75046 5.32635 6.53841 6.53841C5.32635 7.75046 4.50093 9.29471 4.16653 10.9759C3.83212 12.6571 4.00375 14.3996 4.65971 15.9833C5.31567 17.5669 6.4265 18.9204 7.85172 19.8727C9.27695 20.825 10.9526 21.3333 12.6667 21.3333C14.8133 21.3333 16.7867 20.5467 18.3067 19.24L18.6667 19.6133V20.6667L25.3333 27.32L27.32 25.3333L20.6667 18.6667ZM12.6667 18.6667C9.34667 18.6667 6.66667 15.9867 6.66667 12.6667C6.66667 9.34667 9.34667 6.66667 12.6667 6.66667C15.9867 6.66667 18.6667 9.34667 18.6667 12.6667C18.6667 15.9867 15.9867 18.6667 12.6667 18.6667Z"
+                fill="#222831"
+              />
+            </svg>
+          </div>
+          <div class="icon-svg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M22.6667 24C23.3739 24 24.0522 24.2809 24.5523 24.781C25.0524 25.2811 25.3333 25.9594 25.3333 26.6667C25.3333 27.3739 25.0524 28.0522 24.5523 28.5523C24.0522 29.0524 23.3739 29.3333 22.6667 29.3333C21.9594 29.3333 21.2811 29.0524 20.781 28.5523C20.2809 28.0522 20 27.3739 20 26.6667C20 25.1867 21.1867 24 22.6667 24ZM1.33333 2.66667H5.69333L6.94667 5.33333H26.6667C27.0203 5.33333 27.3594 5.47381 27.6095 5.72386C27.8595 5.97391 28 6.31304 28 6.66667C28 6.89333 27.9333 7.12 27.84 7.33333L23.0667 15.96C22.6133 16.7733 21.7333 17.3333 20.7333 17.3333H10.8L9.6 19.5067L9.56 19.6667C9.56 19.7551 9.59512 19.8399 9.65763 19.9024C9.72014 19.9649 9.80493 20 9.89333 20H25.3333V22.6667H9.33333C8.62609 22.6667 7.94781 22.3857 7.44771 21.8856C6.94762 21.3855 6.66667 20.7072 6.66667 20C6.66667 19.5333 6.78667 19.0933 6.98667 18.72L8.8 15.4533L4 5.33333H1.33333V2.66667ZM9.33333 24C10.0406 24 10.7189 24.2809 11.2189 24.781C11.719 25.2811 12 25.9594 12 26.6667C12 27.3739 11.719 28.0522 11.2189 28.5523C10.7189 29.0524 10.0406 29.3333 9.33333 29.3333C8.62609 29.3333 7.94781 29.0524 7.44771 28.5523C6.94762 28.0522 6.66667 27.3739 6.66667 26.6667C6.66667 25.1867 7.85333 24 9.33333 24ZM21.3333 14.6667L25.04 8H8.18667L11.3333 14.6667H21.3333Z"
+                fill="#222831"
+              />
+            </svg>
+          </div>
+          <div class="icon-svg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M12.2333 14.4333C11.1889 13.3889 10.6667 12.1333 10.6667 10.6667C10.6667 9.2 11.1889 7.94444 12.2333 6.9C13.2778 5.85556 14.5333 5.33333 16 5.33333C17.4667 5.33333 18.7222 5.85556 19.7667 6.9C20.8111 7.94444 21.3333 9.2 21.3333 10.6667C21.3333 12.1333 20.8111 13.3889 19.7667 14.4333C18.7222 15.4778 17.4667 16 16 16C14.5333 16 13.2778 15.4778 12.2333 14.4333ZM5.33333 24V22.9333C5.33333 22.1778 5.528 21.4836 5.91733 20.8507C6.30667 20.2178 6.82311 19.7342 7.46667 19.4C8.84444 18.7111 10.2444 18.1947 11.6667 17.8507C13.0889 17.5067 14.5333 17.3342 16 17.3333C17.4667 17.3324 18.9111 17.5049 20.3333 17.8507C21.7556 18.1964 23.1556 18.7129 24.5333 19.4C25.1778 19.7333 25.6947 20.2169 26.084 20.8507C26.4733 21.4844 26.6676 22.1787 26.6667 22.9333V24C26.6667 24.7333 26.4058 25.3613 25.884 25.884C25.3622 26.4067 24.7342 26.6676 24 26.6667H8C7.26667 26.6667 6.63911 26.4058 6.11733 25.884C5.59555 25.3622 5.33422 24.7342 5.33333 24ZM8 24H24V22.9333C24 22.6889 23.9391 22.4667 23.8173 22.2667C23.6956 22.0667 23.5342 21.9111 23.3333 21.8C22.1333 21.2 20.9222 20.7502 19.7 20.4507C18.4778 20.1511 17.2444 20.0009 16 20C14.7556 19.9991 13.5222 20.1493 12.3 20.4507C11.0778 20.752 9.86667 21.2018 8.66667 21.8C8.46667 21.9111 8.30533 22.0667 8.18267 22.2667C8.06 22.4667 7.99911 22.6889 8 22.9333V24ZM17.884 12.5507C18.4058 12.028 18.6667 11.4 18.6667 10.6667C18.6667 9.93333 18.4058 9.30578 17.884 8.784C17.3622 8.26222 16.7342 8.00089 16 8C15.2658 7.99911 14.6382 8.26044 14.1173 8.784C13.5964 9.30756 13.3351 9.93511 13.3333 10.6667C13.3316 11.3982 13.5929 12.0262 14.1173 12.5507C14.6418 13.0751 15.2693 13.336 16 13.3333C16.7307 13.3307 17.3587 13.0698 17.884 12.5507Z"
+                fill="#222831"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+      <!-- 상품 메인 정보 섹션 -->
+      <section class="product-main-section">
+        <div class="product-container">
+          <!-- 상품 이미지 -->
+          <div class="product-images">
+            <div class="main-image">
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&h=600&fit=crop"
+                alt="오클리 선글라스"
+              />
+            </div>
+
+            <!-- 탭 네비게이션 -->
+            <div class="tab-list">
+              <div class="tab-item active">상품 정보</div>
+              <div class="tab-item">구매 후기</div>
+              <div class="tab-item">배송 정보</div>
+            </div>
+            <div class="tab-line">
+              <div class="line-active"></div>
+              <div class="line-inactive"></div>
+              <div class="line-inactive"></div>
+            </div>
+
+            <!-- 추가 이미지 -->
+            <div class="additional-images">
+              <div class="additional-image">
+                <img
+                  src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&h=600&fit=crop"
+                  alt="측면"
+                />
+              </div>
+              <div class="additional-image">
+                <img
+                  src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&h=600&fit=crop"
+                  alt="디테일"
+                />
+              </div>
+            </div>
+
+            <div class="small-images">
+              <div class="small-image">
+                <img
+                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=400&h=350&fit=crop"
+                  alt="각도1"
+                />
+              </div>
+              <div class="small-image">
+                <img
+                  src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=350&fit=crop"
+                  alt="각도2"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- 상품 정보 카드 -->
+          <div class="product-info-card">
+            <!-- 타이틀 -->
+            <div class="product-title">
+              <div class="brand">OAKLEY</div>
+              <h1 class="product-name">오클리 레이다 락 패스 선글라스<br />아시안핏 프리즘 OO9206-41</h1>
+              <div class="rating">
+                <div class="stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-text">5/5 <span class="reviews">(33개 리뷰)</span></span>
+              </div>
+            </div>
+
+            <!-- 가격 -->
+            <div class="product-price">
+              <div class="price-info">
+                <div class="current-price">355,200원</div>
+                <div class="discount-info">
+                  <span class="original-price">548,999원</span>
+                  <span class="discount-rate">20% 할인</span>
+                </div>
+              </div>
+              <div class="favorite-icon">
+                <span class="material-symbols-rounded">heart_plus</span>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 색상 및 사이즈 선택 -->
+            <div class="options-section">
+              <div class="color-select">
+                <div class="option-label">COLOR</div>
+                <div class="color-buttons">
+                  <div class="color-circle selected" style="background: #222831"></div>
+                  <div class="color-circle" style="background: linear-gradient(180deg, #a9feff 0%, #e8a5d4 100%)"></div>
+                  <div
+                    class="color-circle"
+                    style="background: linear-gradient(90deg, #8a628e 0%, #ae4951 29.33%, #eb4522 64.66%, #f1af25 100%)"
+                  ></div>
+                  <div class="color-circle" style="background: #77ebff"></div>
+                </div>
+              </div>
+              <div class="size-select">
+                <div class="option-label">SIZE</div>
+                <div class="size-buttons">
+                  <span class="size-option">XS</span>
+                  <span class="size-option">S</span>
+                  <span class="size-option">M</span>
+                  <span class="size-option active">L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 버튼 -->
+            <div class="action-buttons">
+              <button class="btn-cart">장바구니</button>
+              <button class="btn-buy">바로 구매하기</button>
+            </div>
+
+            <!-- 추가 가격 정보 -->
+            <div class="price-extra">
+              <div class="new-member-price">
+                <div class="new-member-label">
+                  <span>신규 회원님 최대 할인 가격</span>
+                  <span class="material-icons-round">keyboard_arrow_down</span>
+                </div>
+                <div class="new-member-value">334,070원</div>
+              </div>
+              <div class="divider-light"></div>
+              <div class="info-row">
+                <span>배송비</span>
+                <span>무료배송</span>
+              </div>
+              <div class="info-row">
+                <span>적립금</span>
+                <span>16,700원</span>
+              </div>
+              <div class="info-row">
+                <span><span class="cj-one">CJ ONE</span> 포인트 적립</span>
+                <span>최대 10,656P</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 렌즈 기술 섹션 -->
+      <section class="lens-tech-section">
+        <div class="lens-tech-container">
+          <div class="section-header">
+            <h2 class="section-title">프리미엄 렌즈 기술</h2>
+            <p class="section-description">선명한 시야를 위한 설계. 당신을 위한 기술.</p>
+          </div>
+          <div class="tech-features">
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <span class="material-symbols-rounded">light_mode</span>
+              </div>
+              <h3 class="tech-title">블루라이트 차단</h3>
+              <p class="tech-desc">유해한 블루라이트를 차단하여<br />눈의 피로를 덜어줍니다.</p>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <span class="material-symbols-rounded">wb_sunny</span>
+              </div>
+              <h3 class="tech-title">UV400 자외선 차단</h3>
+              <p class="tech-desc">UVA 및 UVB 자외선을 99%<br />이상 완벽하게 차단합니다.</p>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <span class="material-symbols-rounded">brightness_high</span>
+              </div>
+              <h3 class="tech-title">반사 방지 코팅</h3>
+              <p class="tech-desc">빛 반사를 최소화하여 더욱<br />맑고 깨끗한 시야를 제공합니다.</p>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <span class="material-symbols-rounded">shield</span>
+              </div>
+              <h3 class="tech-title">강화 하드 코팅</h3>
+              <p class="tech-desc">스크래치에 강한 코팅으로<br />렌즈의 내구성을 높였습니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 쿠폰 섹션 -->
+      <section class="coupon-section">
+        <div class="coupon-container">
+          <p class="coupon-title">2만원 즉시 할인 쿠폰</p>
+          <p class="coupon-subtitle">6월 한정, 결제 시 바로 할인받기</p>
+          <div class="coupon-download">
+            <div class="coupon-info">
+              <p class="coupon-label">균일가 2만원 할인</p>
+              <p class="coupon-price">20,000원</p>
+              <p class="coupon-apply">즉시 할인 적용</p>
+            </div>
+            <div class="coupon-divider"></div>
+            <div class="coupon-icon">
+              <span class="material-icons-round">save_alt</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 치수 섹션 -->
+      <section class="dimensions-section">
+        <div class="dimensions-container">
+          <div class="dimensions-image">
+            <img
+              src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=700&h=650&fit=crop"
+              alt="치수 안내"
+            />
+          </div>
+          <div class="dimensions-specs">
+            <div class="spec-item">
+              <div class="spec-icon">
+                <img
+                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
+                  alt="렌즈 너비"
+                />
+              </div>
+              <div class="spec-info">
+                <p class="spec-number">01 <span>렌즈 가로 너비</span></p>
+                <p class="spec-value">52 mm</p>
+              </div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-icon">
+                <img
+                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
+                  alt="브릿지"
+                />
+              </div>
+              <div class="spec-info">
+                <p class="spec-number">02 <span>브릿지 너비</span></p>
+                <p class="spec-value">18mm</p>
+              </div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-icon">
+                <img
+                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
+                  alt="다리"
+                />
+              </div>
+              <div class="spec-info">
+                <p class="spec-number">03 다리 길이</p>
+                <p class="spec-value">145mm</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 추가 옵션 카드 1 -->
+      <section class="detail-card detail-card-1">
+        <div class="detail-card-overlay"></div>
+        <div class="detail-card-content">
+          <div class="detail-badge">추가 구성</div>
+          <h2 class="detail-title">도수 클립 렌즈</h2>
+          <p class="detail-subtitle">전용 클립 렌즈 추가 구매 가능합니다.</p>
+          <div class="detail-features">
+            <div class="detail-feature">
+              <div class="feature-icon">●</div>
+              <p>안경점에서 간편하게<br />도수를 넣어 사용</p>
+            </div>
+            <div class="detail-feature">
+              <div class="feature-icon">●</div>
+              <p>히어로/비전/브리즈에<br />호환 가능</p>
+            </div>
+            <div class="detail-feature">
+              <div class="feature-icon">●</div>
+              <p>휴대와 보관이 용이한<br />전용 케이스 포함</p>
+            </div>
+          </div>
+          <div class="detail-pricing">
+            <div class="pricing-row">
+              <span class="quantity">1EA</span>
+              <span class="original-price">5,000원</span>
+              <span class="sale-price">4,500원</span>
+              <span class="discount">10% 할인</span>
+            </div>
+            <div class="pricing-row">
+              <span class="quantity">3EA</span>
+              <span class="original-price">15,000원</span>
+              <span class="sale-price">12,500원</span>
+              <span class="discount">16% 할인</span>
+            </div>
+          </div>
+          <p class="detail-note">* 일부 상품은 코받침 타입에 따라 사용이 어려울 수 있습니다.</p>
+        </div>
+      </section>
+
+      <!-- 추가 옵션 카드 2 -->
+      <section class="detail-card detail-card-2">
+        <div class="detail-card-content">
+          <div class="detail-badge yellow">추가 옵션</div>
+          <h2 class="detail-title">렌즈 클리너 스프레이 <span class="highlight">(50ml)</span></h2>
+          <p class="detail-subtitle white">한 손에 쏙 들어오는 휴대하기 간편한 렌즈 클리너</p>
+          <p class="free-gift">고급 극세사 천 무료증정</p>
+          <div class="detail-features-row">
+            <div class="feature-item">
+              <p>한손에 쏙<br />컴팩트한 사이즈</p>
+            </div>
+            <div class="feature-item">
+              <p>오염 제거 &<br />깨끗한 시야 유지</p>
+            </div>
+            <div class="feature-item">
+              <p>고급 극세사 천<br />포함 구성</p>
+            </div>
+          </div>
+          <div class="divider-white"></div>
+          <button class="btn-yellow">도수 클립 구매하러 가기 →</button>
+        </div>
+      </section>
+
+      <!-- 제품 비교 섹션 -->
+      <section class="compare-section">
+        <div class="compare-container">
+          <h2 class="compare-title">비교하기</h2>
+          <div class="compare-table">
+            <div class="compare-header">
+              <div class="compare-cell">제품명</div>
+              <div class="compare-cell">가격</div>
+              <div class="compare-cell">렌즈 기술</div>
+              <div class="compare-cell">UV 차단</div>
+            </div>
+            <div class="compare-row">
+              <div class="compare-cell">오클리 레이다 락 패스</div>
+              <div class="compare-cell">355,200원</div>
+              <div class="compare-cell">프리즘</div>
+              <div class="compare-cell">UV400</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 추천 상품 섹션 -->
+      <section class="recommendations-section">
+        <div class="recommendations-container">
+          <h2 class="recommendations-title">YOU MAY ALSO LIKE</h2>
+          <div class="product-grid">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=300&h=300&fit=crop"
+                alt="추천 상품"
+              />
+              <p class="product-card-title">선글라스 A</p>
+              <p class="product-card-price">299,000원</p>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop"
+                alt="추천 상품"
+              />
+              <p class="product-card-title">선글라스 B</p>
+              <p class="product-card-price">349,000원</p>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=300&h=300&fit=crop"
+                alt="추천 상품"
+              />
+              <p class="product-card-title">선글라스 C</p>
+              <p class="product-card-price">389,000원</p>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=300&h=300&fit=crop"
+                alt="추천 상품"
+              />
+              <p class="product-card-title">선글라스 D</p>
+              <p class="product-card-price">425,000원</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-left">
+            <div class="footer-logo">ROUNZ</div>
+            <p class="footer-slogan">당신의 시야를 밝게</p>
+          </div>
+          <div class="footer-menu">
+            <div class="footer-column">
+              <h4>쇼핑 정보</h4>
+              <ul>
+                <li>신상품</li>
+                <li>베스트</li>
+                <li>세일</li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>고객 지원</h4>
+              <ul>
+                <li>FAQ</li>
+                <li>배송 안내</li>
+                <li>교환/반품</li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>회사 정보</h4>
+              <ul>
+                <li>회사 소개</li>
+                <li>채용</li>
+                <li>이용약관</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <p class="contact-phone">02-1234-5678</p>
+            <p class="contact-hours">평일 09:00 - 18:00</p>
+            <div class="social-icons">
+              <div class="social-icon">K</div>
+              <div class="social-icon">N</div>
+              <div class="social-icon">G</div>
+              <div class="social-icon">A</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-info">
+            <p class="company-name">(주)라운즈 ROUNZ 사업자정보</p>
+            <div class="company-links">
+              <span>사업자정보확인</span>
+              <span class="divider-vertical">|</span>
+              <span>라운즈 플래그십 스토어</span>
+              <span class="divider-vertical">|</span>
+              <span>라운즈 파트너 안경원</span>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <p>
+              주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
+              통신판매업신고: 제2023-서울서초-0000호 | 개인정보관리책임자: 박안경
+            </p>
+            <p>COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
+          </div>
+          <div class="footer-language">
+            <span>🌐 KOREA (KRW)</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

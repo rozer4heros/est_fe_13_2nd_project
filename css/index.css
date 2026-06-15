@@ -1,5 +1,6 @@
-/* widget section */
+/* hero - 문송연 */
 
+/* QuickMenu Widget - 최호찬 */
 /* 모바일 우선 */
 
 .widget {
@@ -100,216 +101,117 @@
     justify-content: space-evenly;
   }
 
+  .widget_menu li {
+    font-size: 16px;
+    gap: 40px;
+  }
+
   .widget_menu li img {
-    width: 100px;
-    height: 100px;
+    width: auto;
+  }
+
+  .widget_coupon {
+    height: 144px;
+  }
+
+  .coupon_title {
+    font-size: 32px;
+  }
+
+  .coupon_desc {
+    font-size: 24px;
   }
 }
 
-/* new collection section */
-
-.new_collection {
-  padding: 72px 0;
-  background: var(--font--color);
-}
-
-.new_collection_inner {
-  position: relative;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.new_collection_header {
-  gap: 24px;
-  margin-bottom: 48px;
-}
-
-.new_collection_eyebrow {
-  color: var(--white);
-  font-size: var(--display---h1-lh);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.new_collection_desc {
-  color: var(--white);
-}
-
-.new_collection_more {
-  position: absolute;
-  right: 0;
-  padding: 10px 18px;
-  color: var(--light--gray);
-  font-size: var(--body---caption);
-  font-weight: 600;
-  line-height: var(--body---caption-lh);
-  text-decoration: none;
-}
-
-/* 모바일 */
-.new_collection_list {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-
-.new_collection_item {
-  width: 100%;
-}
-
-/* new card components*/
-.new_collection_card {
-  text-decoration: none;
-  gap: 20px;
-  padding: 12px 0;
-}
-
-.new_collection_img_box {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  background-color: var(--white);
-  border-radius: 10px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.new_card_img {
+/* AI Face Analysis - 문송연 */
+.ai_face_analysis {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  padding: 96px 0;
+  position: relative;
 }
-
-.new_card_wish_btn {
+.ai_face_analysis::before {
+  content: "";
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  color: var(--font--color);
-  cursor: pointer;
-  padding: 0;
+  inset: 0;
+  background: url(/image/ai_face_analysis_BG\ -\ M.png) center / cover no-repeat var(--white);
+  opacity: 0.5;
+  z-index: -1;
 }
-
-.new_card_wish_btn .material-icons {
-  font-size: 12px;
-  transition: transform 0.1s ease;
+.ai_face_analysis_wrapper {
+  padding: 0 20px;
 }
-
-/* 클래스명 active 추가, 스케일 변경 */
-.new_card_wish_btn:active .material-icons {
-  transform: scale(1.2);
+.ai_text_container {
+  gap: 8px;
 }
-
-.new_collection_info {
-  color: var(--white);
-  flex-grow: 1;
-}
-
-.new_card_brand {
-  color: var(--main--color);
-}
-
-.new_card_name {
-  color: var(--white);
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.new_card_price {
-  color: var(--white);
-  font-weight: 700;
-}
-
-.new_card_shipping {
-  color: var(--white);
-}
-/* page */
-.new_collection_indicator {
-  width: 33%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 24px 33% 0;
-  border-radius: 1px;
-}
-
-.indicator_bar {
-  width: 25%;
-  height: 100%;
-  background: var(--white);
-  border-radius: 1px;
-}
-/* 태블릿 */
-@media (min-width: 768px) and (max-width: 1439px) {
-  .new_collection {
-    padding: 96px 32px;
+.ai_text_container .ai_title {
+  h2 {
+    color: var(--point--color);
+    font-size: var(--body---medium);
+    line-height: var(--body---medium-lh);
+    font-weight: 600;
   }
-
-  .new_collection_header {
-    margin-bottom: 24px;
-  }
-
-  .new_collection_list {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    grid-template-rows: repeat(3, minmax(130px, auto));
-    gap: 20px;
-  }
-
-  .new_collection_item:nth-child(1) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 4;
-  }
-
-  .new_collection_item:nth-child(1) .new_collection_card {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0;
-  }
-
-  .new_collection_item:nth-child(1) .new_collection_img_box {
-    width: 100%;
-    height: 280px;
+  p {
+    font-size: var(--display---h3);
+    line-height: var(--display---h3-lh);
+    font-weight: 700;
   }
 }
+.hashtag {
+  flex-wrap: nowrap;
+  gap: 8px;
 
-/* 데스크탑 */
-@media (min-width: 1440px) {
-  .new_collection {
-    padding: 72px 0;
-  }
-
-  .new_collection_list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, minmax(160px, auto));
-    gap: 24px;
-  }
-
-  .new_collection_item:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-  }
-
-  .new_collection_item:nth-child(4) {
-    display: none;
-  }
-
-  .new_collection_item:nth-child(1) .new_collection_card {
-    flex-direction: row;
-  }
-  .new_collection_item:nth-child(1) .new_collection_img_box {
-    width: 350px;
-    height: 350px;
+  p {
+    background: var(--main--light);
+    color: var(--point--color);
+    font-size: var(--body---caption);
+    line-height: var(--body---caption-lh);
+    border-radius: 5px;
+    padding: 0 8px;
+    white-space: nowrap;
     flex-shrink: 0;
-    align-self: stretch;
-  }
-  .new_collection_item:nth-child(1) .new_card_img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }
+.ai_face_analysis_wrapper video {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 188px;
+  object-fit: cover;
+  border-radius: 24px;
+  object-position: center;
+  aspect-ratio: 188/384;
+}
+.ai_description {
+}
+.ai_description_item {
+  h3 {
+    color: var(--point--color);
+    font-size: var(--body---x-large);
+    line-height: var(--body---x-large-lh);
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 481px) {
+  .ai_face_analysis {
+  }
+}
+
+/* pc버전 */
+@media (min-width: 769px) {
+  .ai_face_analysis {
+  }
+}
+
+/* best picks - 오예은 */
+
+/* Limited Time Offer - 김해나 */
+
+/* new collection - 최호찬 */
+
+/* brand section - 김해나 */
+
+/* celebs pick - 문송연 */
+
+/* store section - 유태구 */
