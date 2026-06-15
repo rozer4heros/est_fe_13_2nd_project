@@ -1,0 +1,153 @@
+/* 모바일 우선 */
+
+.widget {
+  width: 100%;
+  padding: 32px 20px;
+  background: var(--font--color);
+  box-sizing: border-box;
+}
+
+.widget_container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.widget_menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.widget_menu::-webkit-scrollbar {
+  display: none;
+}
+
+.widget_menu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--white);
+  gap: 24px;
+  font-size: 14px;
+}
+
+.widget_menu li img {
+  width: 50px;
+  height: auto;
+}
+
+.widget_coupon {
+  background: var(--white);
+  padding: 24px 16px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.widget_coupon p {
+  margin: 0;
+}
+
+.coupon_title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--font--color);
+}
+
+.coupon_desc {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* 태블릿 */
+
+@media (min-width: 768px) {
+  .widget {
+    padding: 48px 20px;
+  }
+
+  .widget_container {
+    max-width: 768px;
+    gap: 48px;
+  }
+
+  .widget_menu {
+    overflow-x: visible;
+    justify-content: space-around;
+    gap: 64px;
+  }
+
+  .widget_menu li {
+    font-size: 16px;
+    gap: 20px;
+  }
+
+  .widget_menu li img {
+    width: 70px;
+  }
+
+  .widget_coupon {
+    height: 100px;
+    padding: 0;
+  }
+
+  .coupon_title {
+    font-size: 28px;
+  }
+
+  .coupon_desc {
+    font-size: 16px;
+  }
+}
+
+/*데스크탑*/
+
+@media (min-width: 1440px) {
+  .widget {
+    padding: 96px 0;
+  }
+
+  .widget_container {
+    max-width: 1440px;
+    gap: 72px;
+  }
+
+  .widget_menu {
+    justify-content: space-evenly;
+  }
+
+  .widget_menu li {
+    font-size: 16px;
+    gap: 40px;
+  }
+
+  .widget_menu li img {
+    width: auto;
+  }
+
+  .widget_coupon {
+    height: 144px;
+  }
+
+  .coupon_title {
+    font-size: 32px;
+  }
+
+  .coupon_desc {
+    font-size: 24px;
+  }
+}
