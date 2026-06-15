@@ -5,6 +5,7 @@
 
 :root {
   --base-unit: 24px;
+  --base-unit-x0-5: calc(var(--base-unit) * 0.5);
   --base-unit-x1-5: calc(var(--base-unit) * 1.5);
   --base-unit-x2: calc(var(--base-unit) * 2);
   --base-unit-x3: calc(var(--base-unit) * 3);
@@ -161,7 +162,7 @@ body {
 }
 .tagline {
   font-size: 12px;
-  line-height: calc(var(--base-unit) * 0.5);
+  line-height: var(--base-unit-x0-5);
   text-transform: uppercase;
   letter-spacing: 2.5px;
 }
@@ -271,7 +272,7 @@ footer {
   box-shadow: var(--shadow);
 }
 footer .wrap {
-  gap: calc(var(--base-unit) * 0.5);
+  gap: var(--base-unit-x0-5);
 }
 
 .footer_heading {
@@ -285,12 +286,6 @@ footer .wrap {
 .footer_info {
   grid-area: i;
   justify-content: end;
-  .footer_mo_accordion {
-    padding: 0 0 calc(var(--base-unit) * 0.5);
-    > div {
-      gap: calc(var(--base-unit) * 0.5);
-    }
-  }
   h3 {
     font-weight: 700;
   }
@@ -300,14 +295,19 @@ footer .wrap {
 }
 
 .footer_mo_accordion {
-  padding: calc((var(--base-unit) * 0.5)) 0;
+  padding: var(--base-unit-x0-5) 0;
   border-bottom: 1px solid var(--light--gray);
   ul {
-    gap: calc(var(--base-unit) * 0.5);
+    gap: var(--base-unit-x0-5);
   }
-  div {
-    width: 40%;
+  > div {
+    gap: var(--base-unit-x0-5);
+    width: auto;
+    min-width: 0;
   }
+}
+.footer_mo_accordion.business_info {
+  padding: 0 0 var(--base-unit-x0-5);
 }
 .footer_mo_accordion > :last-child {
   /* display: none; */
@@ -368,23 +368,27 @@ footer .wrap {
   .footer_nav > ul {
     flex-direction: row;
   }
-  .footer_info > .footer_mo_accordion {
-    padding: 0;
-  }
   .footer_mo_accordion {
     padding: 0;
     border: none;
+  }
+  .footer_mo_accordion.business_info {
+    padding: 0;
   }
   .footer_mo_accordion > div {
     width: 100%;
     flex-direction: row;
   }
+  .footer_mo_accordion.business_info > div {
+    width: auto;
+    min-width: 0;
+  }
 
   .footer_contact {
-    gap: calc(var(--base-unit) * 0.5);
+    gap: var(--base-unit-x0-5);
     > div {
       flex-direction: column;
-      gap: calc(var(--base-unit) * 0.5);
+      gap: var(--base-unit-x0-5);
     }
   }
   .footer_phone_no {
@@ -402,6 +406,18 @@ footer .wrap {
       "h n c"
       "h n s"
       "i i l";
+  }
+  .footer_mo_accordion.business_info {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--base-unit);
+    .above_mo {
+      display: inline;
+    }
+    > div {
+      flex: 0 1 auto;
+      min-width: 0;
+    }
   }
   .footer_phone_no {
     font-size: var(--base-unit);
