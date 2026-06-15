@@ -3,98 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
+    <title>ROUNZ</title>
   </head>
   <body>
     <!-- Header -->
+    <!-- 작업자="유태구" -->
     <header>
-      <h1 class="logo"></h1>
-      <nav>
+      <div class="wrap d-flex justify-content-between align-items-center">
+        <button class="below_pc"><span class="material-icons-round"> menu </span></button>
+        <h1 class="logo">rounz</h1>
+        <nav class="pc_only">
+          <ul class="d-flex justify-content-between">
+            <li><a href="#">쇼핑</a></li>
+            <li><a href="#">브랜드</a></li>
+            <li><a href="#">AI 피팅</a></li>
+            <li><a href="#">스토어</a></li>
+            <li><a href="#">이벤트</a></li>
+            <li><a href="#">고객지원</a></li>
+          </ul>
+        </nav>
+        <ul class="d-flex">
+          <li class="pc_only">
+            <a href="product_list.html"><span class="material-icons-round">favorite_border</span></a>
+          </li>
+          <li class="pc_only">
+            <button><span class="material-icons-round">search</span></button>
+          </li>
+          <li>
+            <a href="cart.html"><span class="material-icons-outlined">shopping_cart</span></a>
+          </li>
+          <li>
+            <a href="login.html"><span class="material-icons-outlined">person</span></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Side Drawer Menu -->
+    <!-- 작업자="유태구" -->
+    <div class="drawer below_pc">
+      <div>
         <input type="text" id="search" />
         <label for="#search"></label>
-        <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-        <div></div>
-        <ul>
-          <li>
-            <ul>
-              쇼핑
-              <li>안경테</li>
-              <li>선글라스</li>
-              <li>베스트</li>
-              <li>신상품</li>
-            </ul>
-          </li>
-          <li>브랜드</li>
-          <li>AI피팅</li>
-          <li>스토어</li>
-          <li>이벤트</li>
-          <li>고객지원</li>
-        </ul>
-        <ul>
-          <li><span>찜한 상품</span></li>
-          <li><span>장바구니</span></li>
-        </ul>
-        <div class="">
-          <a href="login.html">log in</a>
-          <a href="signup.html">sign up</a>
-        </div>
-      </nav>
+      </div>
+      <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
+      <dialog></dialog>
       <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+        <li>
+          쇼핑
+          <ul>
+            <li><a href="product_list.html">안경테</a></li>
+            <li><a href="product_list.html">선글라스</a></li>
+            <li><a href="product_list.html">베스트</a></li>
+            <li><a href="product_list.html">신상품</a></li>
+          </ul>
+        </li>
+        <li>브랜드</li>
+        <li><a href="#">AI피팅</a></li>
+        <li><a href="#">스토어</a></li>
+        <li><a href="#">이벤트</a></li>
+        <li><a href="#">고객지원</a></li>
       </ul>
-    </header>
+      <ul>
+        <li><a href="product_list.html">찜한 상품</a></li>
+        <li><a href="cart.html">장바구니</a></li>
+      </ul>
+      <div>
+        <a href="login.html">log in</a>
+        <a href="signup.html">sign up</a>
+      </div>
+    </div>
+
+    <!-- To Top 버튼 -->
+    <aside>
+      <button></button>
+    </aside>
+
     <!-- Product card for best_picks -->
+    <div></div>
+
     <!-- Product card for timed_offer -->
+    <div></div>
+
     <!-- Product card for new_collection -->
+    <div></div>
+
     <!-- Article for brand_showcase -->
     <article></article>
+
     <!-- Product card for celebs_pick -->
+    <div></div>
+
     <!-- Input field for login/signup -->
+    <div>
+      <input type="text" id="input_field" />
+      <label for="#input_field"></label>
+    </div>
+
     <!-- Submit button -->
     <button></button>
-    <!-- Filter dropdown menu -->
-    <select name="" id=""></select>
-    <datalist>
-      <option value=""></option>
-      <option value=""></option>
-    </datalist>
-    <!-- Filter button -->
-    <button></button>
-    <!-- Product info card -->
+
+    <!-- Filter dropdown menu for product_list.html -->
+    <div></div>
+    <div>
+      <div>
+        <input type="checkbox" name="" id="filter_1" value="" />
+        <label for="#filter_1"></label>
+      </div>
+      <div>
+        <input type="checkbox" name="" id="filter_2" value="" />
+        <label for="#filter_2"></label>
+      </div>
+    </div>
+
+    <!-- Product info card for details.html -->
     <aside></aside>
+
+    <!-- Social buttons -->
+    <ul class="social_button_list">
+      <li>
+        <a href="#" class="social_kakao"><span class="sr_only">카카오</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_naver"><span class="sr_only">네이버</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_google"><span class="sr_only">구글</span></a>
+      </li>
+      <li>
+        <a href="#" class="social_apple"><span class="sr_only">애플</span></a>
+      </li>
+    </ul>
+
     <!-- Footer -->
+    <!-- 작업자="유태구" -->
     <footer>
-      <h2 class="logo">rounz</h2>
-      <h3>optical clarity</h3>
-      <ul>
-        <li>
-          services
+      <div class="wrap footer-container">
+        <!-- Top Section -->
+        <div>
+          <h2 class="logo">rounz</h2>
+          <p>optical clarity</p>
+        </div>
+        <ul>
+          <li>
+            services
+            <ul>
+              <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
+              <li><a href="#">라운즈 해외 (ROUNZ Global)</a></li>
+              <li><a href="#">라운즈 파트너스 (ROUNZ Partners)</a></li>
+            </ul>
+          </li>
+          <li>
+            legal
+            <ul>
+              <li><a href="#">고객센터 (Customer Center)</a></li>
+              <li><a href="#">개인정보처리방침 (Privacy Policy)</a></li>
+              <li><a href="#">이용약관 (Terms of Use)</a></li>
+            </ul>
+          </li>
+          <li>
+            business
+            <ul>
+              <li><a href="#">글라스박스 (Glassbox)</a></li>
+              <li><a href="#">가맹문의 (Franchise Inquiry)</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div>
+          <div>
+            customer center
+            <p>1600-0000</p>
+            <span class="mo_only">|</span>
+            <a href="#">support@rounz.com</a>
+          </div>
+        </div>
+        <!-- Bottom Section -->
+        <div>
           <ul>
-            <li>라운즈앱 (ROUNZ App)</li>
-            <li>라운즈 해외 (ROUNZ Global)</li>
-            <li>라운즈 파트너스 (ROUNZ Partners)</li>
+            (주)라운즈 ROUNZ 사업자정보
+            <li><a href="#">사업자정보확인</a></li>
+            <li><a href="#">라운즈 플래그십 스토어</a></li>
+            <li><a href="#">라운즈 파트너 안경원</a></li>
           </ul>
-        </li>
-        <li>
-          legal
-          <ul>
-            <li>고객센터 (Customer Center)</li>
-            <li>개인정보처리방침 (Privacy Policy)</li>
-            <li>이용약관 (Terms of Use)</li>
-          </ul>
-        </li>
-        <li>
-          business
-          <ul>
-            <li>글라스박스 (Glassbox)</li>
-            <li>가맹문의 (Franchise Inquiry)</li>
-          </ul>
-        </li>
-      </ul>
+          <div class="pc_only">
+            <p>
+              주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
+              통신판매업신고: 제2023-서울서초-0000호 | 개인정보관리책임자: 박안경
+            </p>
+            <p>COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
