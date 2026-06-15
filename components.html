@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <title>ROUNZ</title>
   </head>
@@ -78,8 +79,14 @@
     </div>
 
     <!-- To Top 버튼 -->
-    <aside>
-      <button></button>
+    <!-- 작업자="김해나" 위로 올라가는 기능은 JS로 구현-->
+    <aside class="back-to-top">
+      <button class="js-btn-top">
+        <img src="image/back_to_top.png" alt="맨 위로 올라가기" />
+      </button>
+      <button>
+        <a href="#"><img src="image/fnq.png" alt="고객센터" /></a>
+      </button>
     </aside>
 
     <!-- Product card for best_picks -->
@@ -98,13 +105,25 @@
     <div></div>
 
     <!-- Input field for login/signup -->
-    <div>
-      <input type="text" id="input_field" />
-      <label for="input_field"></label>
+    <!-- 작업자="김해나" -->
+    <div class="input-field">
+      <form class="form-group">
+        <div class="input-group">
+          <input type="email" id="useremail" required placeholder=" " />
+          <label for="useremail" class="body_m">Email address*</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="userpw" required placeholder=" " minlength="8" maxlength="16" />
+          <label for="userpw" class="body_m">Password*</label>
+          <span class="material-icons visibility-icon">visibility</span>
+        </div>
+      </form>
     </div>
 
     <!-- Submit button -->
-    <button></button>
+    <!-- 작업자="김해나" -->
+    <button class="submit-button body_m">continue</button>
 
     <!-- Filter dropdown menu for product_list.html -->
     <div></div>
@@ -123,18 +142,31 @@
     <aside></aside>
 
     <!-- Social buttons -->
+    <!-- 작업자="김해나" -->
     <ul class="social_button_list d-flex">
       <li>
-        <a href="#" class="social_kakao"><span class="sr_only">카카오</span></a>
+        <a href="#" class="social_kakao">
+          <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
+          <span class="sr_only">카카오</span></a
+        >
       </li>
       <li>
-        <a href="#" class="social_naver"><span class="sr_only">네이버</span></a>
+        <a href="#" class="social_naver">
+          <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
+          <span class="sr_only">네이버</span></a
+        >
       </li>
       <li>
-        <a href="#" class="social_google"><span class="sr_only">구글</span></a>
+        <a href="#" class="social_google">
+          <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
+          <span class="sr_only">구글</span></a
+        >
       </li>
       <li>
-        <a href="#" class="social_apple"><span class="sr_only">애플</span></a>
+        <a href="#" class="social_apple">
+          <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
+          <span class="sr_only">애플</span></a
+        >
       </li>
     </ul>
 

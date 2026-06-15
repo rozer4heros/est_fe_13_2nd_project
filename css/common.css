@@ -313,3 +313,132 @@ footer .wrap {
       "i i l";
   }
 }
+
+/* To Top 버튼 */
+/* 작업자: 김해나; */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.back-to-top button {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-to-top button:hover {
+  transform: scale(1.1);
+}
+
+.back-to-top img {
+  display: block;
+  width: 80px;
+  height: auto;
+}
+
+/* Input field for login/signup */
+/* 작업자: 김해나; */
+.input-field {
+  width: 520px;
+  overflow: visible;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.input-group {
+  position: relative;
+  width: 100%;
+  background-color: var(--white);
+}
+.input-field input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--light--gray);
+  border-radius: 8px;
+  padding: 12px 20px;
+}
+
+.visibility-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--main--color);
+}
+
+.input-field label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  background-color: var(--white);
+  transform: translateY(-50%);
+
+  background: transparent;
+  padding: 0 4px;
+
+  color: var(--gray);
+  pointer-events: none;
+
+  transition:
+    top 0.25s ease,
+    transform 0.25s ease,
+    font-size 0.25s ease,
+    color 0.25s ease;
+}
+
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+  top: -7px;
+  transform: translateY(-60%);
+  font-size: var(--body---caption);
+  color: var(--gray);
+  background: transparent;
+}
+
+input:focus {
+  outline: 2px solid var(--gray);
+}
+
+/* Submit button */
+/* 작업자: 김해나; */
+.submit-button {
+  border: none;
+  box-sizing: border-box;
+
+  width: 520px;
+  height: 48px;
+  padding: 12px 0;
+  background: var(--point--color);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.submit-button:hover {
+  filter: brightness(0.95);
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+.submit-button:disabled {
+  background: var(--light--gray);
+  color: var(--gray);
+  cursor: not-allowed;
+}
