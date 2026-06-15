@@ -247,6 +247,7 @@ header {
 .social_button_list {
   display: flex;
   gap: var(--base-unit);
+  justify-content: center;
 }
 
 /* Footer */
@@ -345,7 +346,7 @@ footer .wrap {
 /* Input field for login/signup */
 /* 작업자: 김해나; */
 .input-field {
-  width: 520px;
+  width: 100%;
   overflow: visible;
 }
 .form-group {
@@ -414,7 +415,7 @@ input:focus {
   border: none;
   box-sizing: border-box;
 
-  width: 520px;
+  width: 100%;
   height: 48px;
   padding: 12px 0;
   background: var(--point--color);
@@ -441,4 +442,63 @@ input:focus {
   background: var(--light--gray);
   color: var(--gray);
   cursor: not-allowed;
+}
+
+/* login.html 및 signup.html에서 사용되는 카드 컨테이너 */
+/* 작업자: 김해나; */
+.login-cantainer {
+  width: 630px;
+  height: auto;
+  padding: 54px 48px;
+  background: #fff;
+  border: 1px solid var(--main--light);
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
+}
+
+/* - OR - 구분선 */
+.divider-text {
+  align-items: center;
+  text-align: center;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+.divider-text::before {
+  content: "";
+  flex-grow: 1;
+  background: var(--light--gray);
+  height: 1px;
+  margin-right: 20px;
+}
+
+.divider-text::after {
+  content: "";
+  flex-grow: 1;
+  background: var(--light--gray);
+  height: 1px;
+  margin-left: 20px;
+}
+
+/* notice-line */
+.notice-line {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--base-unit) 0;
+}
+
+.notice-line-text {
+  color: var(--gray);
+}
+
+.notice-line-link {
+  color: var(--main--color);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.notice-line-link:hover {
+  opacity: 0.8;
 }
