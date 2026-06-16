@@ -291,10 +291,6 @@ p {
   }
 }
 
-.ai_btn_outline,
-.ai_btn_filled {
-  font-size: var(--body---large);
-}
 .ai_btn .material-icons-round {
   font-size: 40px;
 }
