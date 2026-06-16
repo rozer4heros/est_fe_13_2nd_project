@@ -323,11 +323,11 @@ header .wrap > ul:last-child button {
   padding: var(--base-unit-x3) 32px;
 
   background: var(--white);
-  transform: translate(-100%);
+  transform: translateX(-100%);
   transition: 0.3s ease-in;
 }
 .drawer_wrap.active .drawer {
-  transform: translate(0%);
+  transform: translateX(0%);
   transition: 0.3s ease-out;
 }
 
@@ -519,6 +519,99 @@ input:focus {
   height: 1px;
   margin-left: 20px;
 }
+
+/* Components for product_list.html */
+/* 작업자: 유태구; */
+
+/* Filter dropdown */
+.filter_dropdown .filter_dropdown_btn {
+  padding: var(--base-unit-x0-5);
+  border: 1px solid #2238314c;
+
+  border-radius: 5px;
+  background: var(--white);
+  color: var(--gray);
+
+  cursor: pointer;
+}
+.filter_dropdown.active .filter_dropdown_btn {
+  border: 1px solid var(--font--color);
+  color: var(--font--color);
+}
+.filter_dropdown_menu {
+  display: none;
+}
+.filter_dropdown.active .filter_dropdown_menu {
+  display: block;
+}
+
+/* Filter drawer button */
+.filter_drawer_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: var(--base-unit) 0;
+  border: 1px solid var(--light--gray);
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  cursor: pointer;
+}
+.filter_drawer_btn:hover {
+  box-shadow: var(--shadow);
+}
+
+/* Product Card */
+.product_card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-unit);
+}
+.product_card_imgbox {
+  position: relative;
+  width: 100%;
+  height: calc(var(--base-unit) * 7);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--white);
+}
+.product_card_imgbox img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.product_card_imgbox .try_on_btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  padding: var(--base-unit-x0-5) var(--base-unit);
+  border-radius: 40px;
+  color: var(--white);
+  background: var(--font--color);
+}
+.product_card .product_name {
+  order: 2;
+  font-weight: 400;
+}
+.product_card .product_card_price {
+  order: 3;
+}
+.product_card .discount_rate {
+  color: var(--red);
+}
+@media (min-width: 481px) {
+  .product_card_imgbox {
+    height: calc(var(--base-unit) * 12);
+  }
+}
+
+/* // Components for product_list.html */
 
 /* notice-line */
 .notice-line {
