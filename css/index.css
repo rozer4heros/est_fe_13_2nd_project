@@ -261,7 +261,7 @@ p {
 }
 
 /* 태블릿 */
-@media (min-width: 481px) {
+@media (min-width: 768px) {
   .ai_container {
     gap: 64px;
   }
@@ -296,7 +296,7 @@ p {
 }
 
 /* pc버전 */
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .ai_face_analysis {
     width: 100%;
     height: auto;
