@@ -323,11 +323,11 @@ header .wrap > ul:last-child button {
   padding: var(--base-unit-x3) 32px;
 
   background: var(--white);
-  transform: translate(-100%);
+  transform: translateX(-100%);
   transition: 0.3s ease-in;
 }
 .drawer_wrap.active .drawer {
-  transform: translate(0%);
+  transform: translateX(0%);
   transition: 0.3s ease-out;
 }
 
@@ -520,8 +520,75 @@ input:focus {
   margin-left: 20px;
 }
 
-/* Product card for product_list.html */
+/* Components for product_list.html */
 /* 작업자: 유태구; */
+
+/* Filter dropdown */
+.filter_dropdown .filter_dropdown_btn {
+  padding: var(--base-unit-x0-5);
+  border: 1px solid #2238314c;
+
+  border-radius: 5px;
+  background: var(--white);
+  color: var(--gray);
+}
+.filter_dropdown.active .filter_dropdown_btn {
+  border: 1px solid var(--font--color);
+  color: var(--font--color);
+}
+.filter_dropdown_menu {
+  display: none;
+}
+.filter_dropdown.active .filter_dropdown_menu {
+  display: block;
+}
+
+/* Filter drawer */
+.filter_drawer {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 90%;
+
+  background: var(--white);
+  transform: translateY(100%);
+  transition: 0.3s ease-in;
+}
+.drawer_wrap.active .filter_drawer {
+  transform: translateY(0%);
+  transition: 0.3s ease-out;
+}
+
+.filter_drawer_accordion_list .material-icons-round {
+  width: var(--base-unit-x2);
+  height: var(--base-unit-x2);
+  text-align: center;
+  font-size: var(--base-unit-x2);
+  line-height: 100%;
+  box-shadow: var(--shadow);
+  border-radius: 100%;
+}
+.filter_drawer_accordion_list li ul {
+  display: none;
+}
+.filter_drawer_accordion_list li.active {
+  .filter_drawer_category {
+  }
+  .filter_drawer_brand {
+  }
+  .filter_drawer_shape {
+  }
+  .filter_drawer_gender {
+  }
+  .filter_drawer_frame_size {
+  }
+  .filter_drawer_price {
+  }
+}
+
+/* Product Card */
 .product_card {
   display: flex;
   flex-direction: column;
@@ -568,6 +635,8 @@ input:focus {
     height: calc(var(--base-unit) * 12);
   }
 }
+
+/* // Components for product_list.html */
 
 /* notice-line */
 .notice-line {
