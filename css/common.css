@@ -531,6 +531,8 @@ input:focus {
   border-radius: 5px;
   background: var(--white);
   color: var(--gray);
+
+  cursor: pointer;
 }
 .filter_dropdown.active .filter_dropdown_btn {
   border: 1px solid var(--font--color);
@@ -544,13 +546,18 @@ input:focus {
 }
 
 /* Filter drawer */
+/* 사이트 전역에서 사용될 요소가 아니므로 product_list.css로 이동 */
 .filter_drawer {
   display: block;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+
+  padding: var(--base-unit) 20px;
   max-height: 90%;
+  overflow: scroll;
+  scrollbar-width: none;
 
   background: var(--white);
   transform: translateY(100%);
@@ -560,31 +567,70 @@ input:focus {
   transform: translateY(0%);
   transition: 0.3s ease-out;
 }
+.filter_drawer h3 {
+  border-bottom: 1px solid var(--font--color);
+}
 
+.filter_drawer_accordion_list {
+  padding: var(--base-unit-x3) 0;
+}
 .filter_drawer_accordion_list .material-icons-round {
-  width: var(--base-unit-x2);
-  height: var(--base-unit-x2);
-  text-align: center;
   font-size: var(--base-unit-x2);
-  line-height: 100%;
-  box-shadow: var(--shadow);
-  border-radius: 100%;
+  line-height: var(--base-unit-x2);
+
+  color: var(--white);
+  text-shadow: var(--shadow);
+}
+.filter_drawer_accordion_list li {
+  cursor: pointer;
 }
 .filter_drawer_accordion_list li ul {
   display: none;
 }
 .filter_drawer_accordion_list li.active {
   .filter_drawer_category {
+    display: flex;
+    gap: 20px;
   }
   .filter_drawer_brand {
+    display: grid;
+    gap: 20px;
   }
   .filter_drawer_shape {
+    display: grid;
+    gap: 20px;
+  }
+  .filter_drawer_face_shape {
+    display: grid;
+    gap: 20px;
   }
   .filter_drawer_gender {
+    display: flex;
+    gap: 20px;
   }
   .filter_drawer_frame_size {
+    display: grid;
+    gap: 20px;
   }
   .filter_drawer_price {
+    display: block;
+  }
+}
+
+.filter_drawer .reset_btn {
+  height: calc(var(--base-unit) * 4);
+  background: var(--white);
+  color: var(--font--color);
+  border: 1px solid var(--light--gray);
+  box-sizing: border-box;
+}
+.filter_drawer .apply_btn {
+  height: calc(var(--base-unit) * 4);
+}
+
+@media (min-width: 481px) {
+  .filter_drawer {
+    padding: var(--base-unit) 32px;
   }
 }
 
