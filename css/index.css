@@ -553,29 +553,70 @@ p {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%) scale(0.9);
+
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 85%;
+  justify-content: flex-end;
+
+  width: 46px;
   height: 46px;
+  padding: 0 4px;
   background-color: var(--main--color);
   color: var(--white);
-  border-radius: 23px;
+  border-radius: 50px;
+
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s,
+    width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.detail_text {
   font-weight: 700;
   font-size: 18px; /* 원본이 너무 크길래 임의로 넣었습니다 */
   opacity: 0;
-  pointer-events: none;
+  transform: translateX(-10px);
   transition:
-    opacity 0.3s,
-    transform 0.3s;
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  margin-right: auto;
+  padding-left: 16px;
 }
+
+.arrow_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: var(--white);
+  color: var(--main--color);
+  border-radius: 50%;
+  font-size: 18px;
+  flex-shrink: 0;
+
+  transition: transform 0.3s ease;
+}
+
 /* 가운데 활성화된 카드에 마우스를 올릴 때만 표출 */
 .limited_slide_item.swiper-slide-active:hover .detail_view_btn {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) scale(1);
+  width: 75%;
+}
+
+.limited_slide_item.swiper-slide-active:hover .detail_text {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.1s;
+}
+
+.limited_slide_item.swiper-slide-active:hover .arrow_circle {
+  transform: translateX(2px);
 }
 
 /* 위시리스트 하트 버튼 */
