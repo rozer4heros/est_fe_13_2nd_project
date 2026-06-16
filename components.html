@@ -46,10 +46,10 @@
 
     <!-- Side Drawer Menu -->
     <!-- 작업자="유태구" -->
-    <div class="drawer_wrap below_pc">
+    <div class="nav_drawer_wrap drawer_wrap below_pc">
       <div class="drawer">
         <div>
-          <span class="material-icons">arrow_back</span>
+          <span class="material-icons-round">arrow_back</span>
           <div>
             <input type="text" id="search" />
             <label for="search"></label>
@@ -70,7 +70,7 @@
               <li><a href="product_list.html">신상품</a></li>
             </ul>
           </li>
-          <li>
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>브랜드</span>
               <span class="material-icons-round">chevron_right</span>
@@ -80,7 +80,7 @@
               <li><a href="product_list.html"></a></li>
             </ul>
           </li>
-          <li>
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>AI피팅</span>
               <span class="material-icons-round">chevron_right</span>
@@ -90,7 +90,7 @@
               <li><a href="#"></a></li>
             </ul>
           </li>
-          <li>
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>스토어</span>
               <span class="material-icons-round">chevron_right</span>
@@ -100,7 +100,7 @@
               <li><a href="#"></a></li>
             </ul>
           </li>
-          <li>
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>이벤트</span>
               <span class="material-icons-round">chevron_right</span>
@@ -110,7 +110,7 @@
               <li><a href="#"></a></li>
             </ul>
           </li>
-          <li>
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>고객지원</span>
               <span class="material-icons-round">chevron_right</span>
@@ -175,9 +175,9 @@
           </button>
         </div>
 
-        <div class="new_collection_info d-flex flex-column">
-          <strong class="new_card_brand display_h2"></strong>
-          <p class="new_card_name body_l"></p>
+        <div class="new_collection_info d-flex flex-column justify-content-center">
+          <strong class="new_card_brand display_h3"></strong>
+          <p class="new_card_name body_m"></p>
           <span class="new_card_price display_h3"></span>
 
           <p class="new_card_shipping d-flex align-items-center body_cap">
@@ -227,6 +227,51 @@
       </div>
     </div>
 
+    <hr />
+    <!-- Components for product_list.html -->
+    <!-- 작업자="유태구" -->
+
+    <!-- Filter dropdown menu -->
+    <div class="filter_dropdown">
+      <div class="filter_dropdown_btn body_m d-flex justify-content-between">
+        <span>브랜드</span>
+        <span class="material-icons-round">expand_more</span>
+      </div>
+      <div class="filter_dropdown_menu">
+        <div></div>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Filter drawer button -->
+    <label for="" class="filter_drawer_btn body_l">선글라스</label>
+
+    <!-- Product card -->
+    <article class="product_card">
+      <div class="product_card_imgbox">
+        <img src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg" alt="" />
+        <button class="try_on_btn body_xl text-center">TRY ON</button>
+      </div>
+      <div class="d-flex flex-column g-0-5">
+        <h3 class="product_name body_xl">
+          <a href="details.html">레이밴 라운드 메탈 선글라스 RB3447001 50mm</a>
+        </h3>
+        <div class="product_card_header d-flex justify-content-between align-items-center">
+          <span class="brand display_h3">RAY-BAN</span>
+          <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
+        </div>
+        <div class="product_card_price d-flex align-items-center g-0-5">
+          <span class="price display_h3">204,800원</span>
+          <span class="discount_rate body_xl">20%</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- // Components for product_list.html -->
+    <hr />
+
     <!-- Product info card for details.html -->
     <aside></aside>
 
@@ -269,7 +314,7 @@
             <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">services</h3>
-                <span class="mo_only material-icons-round"> expand_more </span>
+                <span class="mo_only material-icons-round">expand_more</span>
               </div>
               <ul class="body_cap d-flex flex-column">
                 <li><a href="#">라운즈앱 (ROUNZ App)</a></li>
@@ -280,7 +325,7 @@
             <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">legal</h3>
-                <span class="mo_only material-icons-round"> expand_more </span>
+                <span class="mo_only material-icons-round">expand_more</span>
               </div>
               <ul class="body_cap d-flex flex-column">
                 <li><a href="#">고객센터 (Customer Center)</a></li>
@@ -291,7 +336,7 @@
             <li class="footer_accordion d-flex flex-column g-1">
               <div class="d-flex justify-content-between">
                 <h3 class="body_xl">business</h3>
-                <span class="mo_only material-icons-round"> expand_more </span>
+                <span class="mo_only material-icons-round">expand_more</span>
               </div>
               <ul class="body_cap d-flex flex-column">
                 <li><a href="#">글라스박스 (Glassbox)</a></li>
@@ -308,7 +353,7 @@
                 <span class="above_mo">(주)라운즈 ROUNZ 사업자정보</span>
                 <span class="mo_only">사업자정보확인</span>
               </h3>
-              <span class="mo_only material-icons-round"> expand_more </span>
+              <span class="mo_only material-icons-round">expand_more</span>
             </div>
             <div class="body_cap d-flex flex-column">
               <a href="#">사업자정보확인</a>
@@ -363,8 +408,6 @@
           <span class="material-icons-round">language</span>
           <span class="body_cap">korea (krw)</span>
         </div>
-
-        <!-- class="wrap" -->
       </div>
     </footer>
   </body>
