@@ -269,7 +269,7 @@
 }
 .ai_text_container .ai_title {
   h2 {
-    font-size: var(--display---h3);
+    font-size: var(--display---h4);
     line-height: var(--display---h4-lh);
     font-weight: 600;
   }
