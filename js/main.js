@@ -2,6 +2,24 @@ import { renderHeader } from "./modules/header.js";
 import { renderNavDrawer } from "./modules/nav_drawer.js";
 import { renderFooter } from "./modules/footer.js";
 
+// hero - 문송연
+// slide 추가
+new Swiper(".hero_swiper", {
+  loop: true,
+  slidesPerView: 1,
+  scrollbar: {
+    el: ".swiper-scrollbar",
+    draggable: true,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
 /* new collection */
 import { initNewCollection } from "./newCollection.js";
 
