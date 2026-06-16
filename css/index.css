@@ -412,6 +412,14 @@ p {
 }
 .timer_colon {
   transform: translateY(-4px);
+  display: flex;
+  align-items: center;
+}
+
+.timer_colon img {
+  width: 4px;
+  height: auto;
+  object-fit: contain;
 }
 
 .swiper {
@@ -548,34 +556,78 @@ p {
   text-align: center;
 }
 
+.delivery_badge > span {
+  font-size: 12px;
+  line-height: 1;
+  margin-right: 2px;
+}
+
 /* DETAIL VIEW 버튼 스타일 */
 .detail_view_btn {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%) scale(0.9);
+
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 46px;
+  height: 46px;
+  padding-left: 24px;
+  padding-right: 12px;
+  background-color: var(--main--color);
+  color: var(--white);
+  border-radius: 50px;
+
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s,
+    width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.detail_text {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.arrow_circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  width: 85%;
-  height: 46px;
-  background-color: var(--main--color);
-  color: var(--white);
-  border-radius: 23px;
-  font-weight: 700;
-  font-size: 18px; /* 원본이 너무 크길래 임의로 넣었습니다 */
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.3s,
-    transform 0.3s;
+  width: 36px;
+  height: 36px;
+  background-color: var(--white);
+  color: var(--main--color);
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  transition: transform 0.3s ease;
 }
+
 /* 가운데 활성화된 카드에 마우스를 올릴 때만 표출 */
 .limited_slide_item.swiper-slide-active:hover .detail_view_btn {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) scale(1);
+  width: 70%;
+}
+
+.limited_slide_item.swiper-slide-active:hover .detail_text {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.1s;
+}
+
+.limited_slide_item.swiper-slide-active:hover .arrow_circle {
+  transform: translateX(2px);
 }
 
 /* 위시리스트 하트 버튼 */
@@ -604,6 +656,7 @@ p {
   width: 40px;
   height: 40px;
   background-color: var(--white);
+  color: var(--gray);
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0px 10px rgba(34, 40, 49, 0.3);
@@ -614,6 +667,7 @@ p {
   align-items: center;
   justify-content: center;
   line-height: 1;
+  font-size: 1.8em;
   width: 100%;
   height: 100%;
 }
@@ -874,6 +928,62 @@ p {
 }
 
 /* brand section - 김해나 */
+
+.brand_slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 60px 0;
+
+  flex-direction: column;
+  gap: var(--base-unit);
+}
+
+.brand_slider_roller {
+  width: max-content;
+}
+
+.brand_rolling_list {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.brand_rolling_item img {
+  height: 43px;
+  width: auto;
+  object-fit: contain;
+}
+
+.row_top .brand_rolling_list {
+  animation: rolling_left 25s linear infinite;
+}
+
+.row_bottom .brand_rolling_list {
+  animation: rolling_right 25s linear infinite;
+}
+
+.brand_slider_roller:hover .brand_rolling_list {
+  animation-play-state: paused;
+}
+
+@keyframes rolling_left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes rolling_right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 /* celebs pick - 문송연 */
 
