@@ -6,7 +6,8 @@
   bottom: 0;
 
   padding: var(--base-unit) 20px;
-  max-height: 90%;
+  border-radius: 20px 20px 0 0;
+  max-height: 80%;
   overflow: scroll;
   scrollbar-width: none;
 
@@ -18,7 +19,8 @@
   transform: translateY(0%);
   transition: 0.3s ease-out;
 }
-.filter_drawer h3 {
+.filter_drawer div:has(h3) {
+  padding: var(--base-unit-x0-5);
   border-bottom: 1px solid var(--font--color);
 }
 
@@ -32,40 +34,30 @@
   color: var(--white);
   text-shadow: var(--shadow);
 }
-.filter_drawer_accordion_list li {
+.filter_drawer_accordion_list li > div {
   cursor: pointer;
+}
+.filter_drawer_accordion_list li .material-icons-round {
+  transition: 0.3s;
+  transform: rotate(0);
+}
+.filter_drawer_accordion_list li.active .material-icons-round {
+  transform: rotate(180deg);
 }
 .filter_drawer_accordion_list li ul {
   display: none;
 }
-.filter_drawer_accordion_list li.active {
-  .filter_drawer_category {
-    display: flex;
-    gap: 20px;
+.filter_drawer_accordion_list li.active ul {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  .select_all_sizes {
+    grid-column: 1 / -1;
   }
-  .filter_drawer_brand {
-    display: grid;
-    gap: 20px;
-  }
-  .filter_drawer_shape {
-    display: grid;
-    gap: 20px;
-  }
-  .filter_drawer_face_shape {
-    display: grid;
-    gap: 20px;
-  }
-  .filter_drawer_gender {
-    display: flex;
-    gap: 20px;
-  }
-  .filter_drawer_frame_size {
-    display: grid;
-    gap: 20px;
-  }
-  .filter_drawer_price {
-    display: block;
-  }
+}
+.filter_drawer_accordion_list li.active ul.filter_drawer_price {
+  display: block;
 }
 
 .filter_drawer .reset_btn {

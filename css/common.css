@@ -546,6 +546,20 @@ input:focus {
 }
 
 /* Filter drawer button */
+.filter_drawer_btn {
+  display: block;
+  width: 100%;
+  padding: var(--base-unit) 0;
+  border: 1px solid var(--light--gray);
+  box-sizing: border-box;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+.filter_drawer_btn:hover {
+  box-shadow: var(--shadow);
+}
 
 /* Product Card */
 .product_card {
