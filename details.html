@@ -3,527 +3,708 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 저희 프로젝트에는 Pretendard 폰트를 사용합니다 -->
-    <!-- common.css 참고 -->
+    <title>오클리 레이다 락 패스 선글라스 - ROUNZ</title>
+    <!-- 외부 폰트 및 아이콘 스타일시트 로드 -->
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
     />
-    <link rel="stylesheet" href="css/common.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Icons+Round&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    />
+    <!-- 상세 페이지 전용 스타일시트 -->
     <link rel="stylesheet" href="css/details.css" />
-    <title>오클리 레이다 락 패스 선글라스 | ROUNZ</title>
   </head>
   <body>
-    <!-- 헤더 -->
-
-    <!--
-      안타깝지만 이 작업본은 사용되지 않을 수도 있습니다.
-      components.html에 제가 헤더를 이미 작업해뒀습니다.
-      아니면 두 헤더의 html 구조와 css를 비교해 더 좋은 쪽으로 통일해주시겠습니까?
-      
-      * 네이밍 컨벤션을 지켜주세요. 프로젝트 내부의 클래스는 스네이크 케이스(언더바"_" 사용)입니다.
-      
-      - 유태구
-    -->
-    <header class="header">
-      <div class="container-header">
-        <div class="logo">ROUNZ</div>
-        <div class="header-icons">
-          <div class="icon">
+    <div class="detail-page-root">
+      <!-- ==========================================================
+           상단 헤더 영역 (로고 및 내비게이션 아이콘)
+           ========================================================== -->
+      <header class="detail-header">
+        <div class="detail-container detail-header-inner">
+          <!-- 브랜드 로고 -->
+          <div class="detail-brand-logo">ROUNZ</div>
+          <!-- 우측 유틸리티 아이콘 (좋아요, 검색, 장바구니, 마이페이지) -->
+          <div class="detail-header-icons">
             <span class="material-icons-round">favorite_border</span>
-          </div>
-          <div class="icon-svg">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M20.6667 18.6667H19.6133L19.24 18.3067C20.5919 16.7388 21.3349 14.7369 21.3333 12.6667C21.3333 10.9526 20.825 9.27695 19.8727 7.85172C18.9204 6.4265 17.5669 5.31567 15.9833 4.65971C14.3996 4.00375 12.6571 3.83212 10.9759 4.16653C9.29471 4.50093 7.75046 5.32635 6.53841 6.53841C5.32635 7.75046 4.50093 9.29471 4.16653 10.9759C3.83212 12.6571 4.00375 14.3996 4.65971 15.9833C5.31567 17.5669 6.4265 18.9204 7.85172 19.8727C9.27695 20.825 10.9526 21.3333 12.6667 21.3333C14.8133 21.3333 16.7867 20.5467 18.3067 19.24L18.6667 19.6133V20.6667L25.3333 27.32L27.32 25.3333L20.6667 18.6667ZM12.6667 18.6667C9.34667 18.6667 6.66667 15.9867 6.66667 12.6667C6.66667 9.34667 9.34667 6.66667 12.6667 6.66667C15.9867 6.66667 18.6667 9.34667 18.6667 12.6667C18.6667 15.9867 15.9867 18.6667 12.6667 18.6667Z"
-                fill="#222831"
-              />
-            </svg>
-          </div>
-          <div class="icon-svg">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M22.6667 24C23.3739 24 24.0522 24.2809 24.5523 24.781C25.0524 25.2811 25.3333 25.9594 25.3333 26.6667C25.3333 27.3739 25.0524 28.0522 24.5523 28.5523C24.0522 29.0524 23.3739 29.3333 22.6667 29.3333C21.9594 29.3333 21.2811 29.0524 20.781 28.5523C20.2809 28.0522 20 27.3739 20 26.6667C20 25.1867 21.1867 24 22.6667 24ZM1.33333 2.66667H5.69333L6.94667 5.33333H26.6667C27.0203 5.33333 27.3594 5.47381 27.6095 5.72386C27.8595 5.97391 28 6.31304 28 6.66667C28 6.89333 27.9333 7.12 27.84 7.33333L23.0667 15.96C22.6133 16.7733 21.7333 17.3333 20.7333 17.3333H10.8L9.6 19.5067L9.56 19.6667C9.56 19.7551 9.59512 19.8399 9.65763 19.9024C9.72014 19.9649 9.80493 20 9.89333 20H25.3333V22.6667H9.33333C8.62609 22.6667 7.94781 22.3857 7.44771 21.8856C6.94762 21.3855 6.66667 20.7072 6.66667 20C6.66667 19.5333 6.78667 19.0933 6.98667 18.72L8.8 15.4533L4 5.33333H1.33333V2.66667ZM9.33333 24C10.0406 24 10.7189 24.2809 11.2189 24.781C11.719 25.2811 12 25.9594 12 26.6667C12 27.3739 11.719 28.0522 11.2189 28.5523C10.7189 29.0524 10.0406 29.3333 9.33333 29.3333C8.62609 29.3333 7.94781 29.0524 7.44771 28.5523C6.94762 28.0522 6.66667 27.3739 6.66667 26.6667C6.66667 25.1867 7.85333 24 9.33333 24ZM21.3333 14.6667L25.04 8H8.18667L11.3333 14.6667H21.3333Z"
-                fill="#222831"
-              />
-            </svg>
-          </div>
-          <div class="icon-svg">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M12.2333 14.4333C11.1889 13.3889 10.6667 12.1333 10.6667 10.6667C10.6667 9.2 11.1889 7.94444 12.2333 6.9C13.2778 5.85556 14.5333 5.33333 16 5.33333C17.4667 5.33333 18.7222 5.85556 19.7667 6.9C20.8111 7.94444 21.3333 9.2 21.3333 10.6667C21.3333 12.1333 20.8111 13.3889 19.7667 14.4333C18.7222 15.4778 17.4667 16 16 16C14.5333 16 13.2778 15.4778 12.2333 14.4333ZM5.33333 24V22.9333C5.33333 22.1778 5.528 21.4836 5.91733 20.8507C6.30667 20.2178 6.82311 19.7342 7.46667 19.4C8.84444 18.7111 10.2444 18.1947 11.6667 17.8507C13.0889 17.5067 14.5333 17.3342 16 17.3333C17.4667 17.3324 18.9111 17.5049 20.3333 17.8507C21.7556 18.1964 23.1556 18.7129 24.5333 19.4C25.1778 19.7333 25.6947 20.2169 26.084 20.8507C26.4733 21.4844 26.6676 22.1787 26.6667 22.9333V24C26.6667 24.7333 26.4058 25.3613 25.884 25.884C25.3622 26.4067 24.7342 26.6676 24 26.6667H8C7.26667 26.6667 6.63911 26.4058 6.11733 25.884C5.59555 25.3622 5.33422 24.7342 5.33333 24ZM8 24H24V22.9333C24 22.6889 23.9391 22.4667 23.8173 22.2667C23.6956 22.0667 23.5342 21.9111 23.3333 21.8C22.1333 21.2 20.9222 20.7502 19.7 20.4507C18.4778 20.1511 17.2444 20.0009 16 20C14.7556 19.9991 13.5222 20.1493 12.3 20.4507C11.0778 20.752 9.86667 21.2018 8.66667 21.8C8.46667 21.9111 8.30533 22.0667 8.18267 22.2667C8.06 22.4667 7.99911 22.6889 8 22.9333V24ZM17.884 12.5507C18.4058 12.028 18.6667 11.4 18.6667 10.6667C18.6667 9.93333 18.4058 9.30578 17.884 8.784C17.3622 8.26222 16.7342 8.00089 16 8C15.2658 7.99911 14.6382 8.26044 14.1173 8.784C13.5964 9.30756 13.3351 9.93511 13.3333 10.6667C13.3316 11.3982 13.5929 12.0262 14.1173 12.5507C14.6418 13.0751 15.2693 13.336 16 13.3333C16.7307 13.3307 17.3587 13.0698 17.884 12.5507Z"
-                fill="#222831"
-              />
-            </svg>
+            <div class="detail-icon-svg">
+              <!-- 검색 아이콘 SVG -->
+              <svg fill="none" viewBox="0 0 32 32">
+                <path
+                  d="M20.6667 18.6667H19.6133L19.24 18.3067C20.5919 16.7388 21.3349 14.7369 21.3333 12.6667C21.3333 10.9526 20.825 9.27695 19.8727 7.85172C18.9204 6.4265 17.5669 5.31567 15.9833 4.65971C14.3996 4.00375 12.6571 3.83212 10.9759 4.16653C9.29471 4.50093 7.75046 5.32635 6.53841 6.53841C5.32635 7.75046 4.50093 9.29471 4.16653 10.9759C3.83212 12.6571 4.00375 14.3996 4.65971 15.9833C5.31567 17.5669 6.4265 18.9204 7.85172 19.8727C9.27695 20.825 10.9526 21.3333 12.6667 21.3333C14.8133 21.3333 16.7867 20.5467 18.3067 19.24L18.6667 19.6133V20.6667L25.3333 27.32L27.32 25.3333L20.6667 18.6667ZM12.6667 18.6667C9.34667 18.6667 6.66667 15.9867 6.66667 12.6667C6.66667 9.34667 9.34667 6.66667 12.6667 6.66667C15.9867 6.66667 18.6667 9.34667 18.6667 12.6667C18.6667 15.9867 15.9867 18.6667 12.6667 18.6667Z"
+                  fill="#222831"
+                />
+              </svg>
+            </div>
+            <div class="detail-icon-svg">
+              <!-- 장바구니 아이콘 SVG -->
+              <svg fill="none" viewBox="0 0 32 32">
+                <path
+                  d="M22.6667 24C23.3739 24 24.0522 24.2809 24.5523 24.781C25.0524 25.2811 25.3333 25.9594 25.3333 26.6667C25.3333 27.3739 25.0524 28.0522 24.5523 28.5523C24.0522 29.0524 23.3739 29.3333 22.6667 29.3333C21.9594 29.3333 21.2811 29.0524 20.781 28.5523C20.2809 28.0522 20 27.3739 20 26.6667C20 25.1867 21.1867 24 22.6667 24ZM1.33333 2.66667H5.69333L6.94667 5.33333H26.6667C27.0203 5.33333 27.3594 5.47381 27.6095 5.72386C27.8595 5.97391 28 6.31304 28 6.66667C28 6.89333 27.9333 7.12 27.84 7.33333L23.0667 15.96C22.6133 16.7733 21.7333 17.3333 20.7333 17.3333H10.8L9.6 19.5067L9.56 19.6667C9.56 19.7551 9.59512 19.8399 9.65763 19.9024C9.72014 19.9649 9.80493 20 9.89333 20H25.3333V22.6667H9.33333C8.62609 22.6667 7.94781 22.3857 7.44771 21.8856C6.94762 21.3855 6.66667 20.7072 6.66667 20C6.66667 19.5333 6.78667 19.0933 6.98667 18.72L8.8 15.4533L4 5.33333H1.33333V2.66667ZM9.33333 24C10.0406 24 10.7189 24.2809 11.2189 24.781C11.719 25.2811 12 25.9594 12 26.6667C12 27.3739 11.719 28.0522 11.2189 28.5523C10.7189 29.0524 10.0406 29.3333 9.33333 29.3333C8.62609 29.3333 7.94781 29.0524 7.44771 28.5523C6.94762 28.0522 6.66667 27.3739 6.66667 26.6667C6.66667 25.1867 7.85333 24 9.33333 24ZM21.3333 14.6667L25.04 8H8.18667L11.3333 14.6667H21.3333Z"
+                  fill="#222831"
+                />
+              </svg>
+            </div>
+            <div class="detail-icon-svg">
+              <!-- 마이페이지 아이콘 SVG -->
+              <svg fill="none" viewBox="0 0 32 32">
+                <path
+                  d="M12.2333 14.4333C11.1889 13.3889 10.6667 12.1333 10.6667 10.6667C10.6667 9.2 11.1889 7.94444 12.2333 6.9C13.2778 5.85556 14.5333 5.33333 16 5.33333C17.4667 5.33333 18.7222 5.85556 19.7667 6.9C20.8111 7.94444 21.3333 9.2 21.3333 10.6667C21.3333 12.1333 20.8111 13.3889 19.7667 14.4333C18.7222 15.4778 17.4667 16 16 16C14.5333 16 13.2778 15.4778 12.2333 14.4333ZM5.33333 24V22.9333C5.33333 22.1778 5.528 21.4836 5.91733 20.8507C6.30667 20.2178 6.82311 19.7342 7.46667 19.4C8.84444 18.7111 10.2444 18.1947 11.6667 17.8507C13.0889 17.5067 14.5333 17.3342 16 17.3333C17.4667 17.3324 18.9111 17.5049 20.3333 17.8507C21.7556 18.1964 23.1556 18.7129 24.5333 19.4C25.1778 19.7333 25.6947 20.2169 26.084 20.8507C26.4733 21.4844 26.6676 22.1787 26.6667 22.9333V24C26.6667 24.7333 26.4058 25.3613 25.884 25.884C25.3622 26.4067 24.7342 26.6676 24 26.6667H8C7.26667 26.6667 6.63911 26.4058 6.11733 25.884C5.59555 25.3622 5.33422 24.7342 5.33333 24ZM8 24H24V22.9333C24 22.6889 23.9391 22.4667 23.8173 22.2667C23.6956 22.0667 23.5342 21.9111 23.3333 21.8C22.1333 21.2 20.9222 20.7502 19.7 20.4507C18.4778 20.1511 17.2444 20.0009 16 20C14.7556 19.9991 13.5222 20.1493 12.3 20.4507C11.0778 20.752 9.86667 21.2018 8.66667 21.8C8.46667 21.9111 8.30533 22.0667 8.18267 22.2667C8.06 22.4667 7.99911 22.6889 8 22.9333V24ZM17.884 12.5507C18.4058 12.028 18.6667 11.4 18.6667 10.6667C18.6667 9.93333 18.4058 9.30578 17.884 8.784C17.3622 8.26222 16.7342 8.00089 16 8C15.2658 7.99911 14.6382 8.26044 14.1173 8.784C13.5964 9.30756 13.3351 9.93511 13.3333 10.6667C13.3316 11.3982 13.5929 12.0262 14.1173 12.5507C14.6418 13.0751 15.2693 13.336 16 13.3333C16.7307 13.3307 17.3587 13.0698 17.884 12.5507Z"
+                  fill="#222831"
+                />
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- 메인 컨텐츠 -->
-    <main class="main-content">
-      <!-- 상품 메인 정보 섹션 -->
-      <section class="product-main-section">
-        <div class="product-container">
-          <!-- 상품 이미지 -->
-          <div class="product-images">
-            <div class="main-image">
-              <img
-                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&h=600&fit=crop"
-                alt="오클리 선글라스"
-              />
+      <!-- ==========================================================
+           메인 상품 정보 섹션 (좌측 이미지 / 우측 가격 및 옵션)
+           ========================================================== -->
+      <section class="detail-product-main">
+        <div class="detail-container detail-product-inner">
+          <!-- 좌측: 상품 이미지 및 상세 탭 영역 -->
+          <div class="detail-product-images">
+            <!-- 대표 히어로 이미지 -->
+            <div class="detail-hero-img">
+              <img src="image/detail_img1.png" alt="오클리 레이다 락 패스 선글라스" />
             </div>
 
-            <!-- 탭 네비게이션 -->
-            <div class="tab-list">
-              <div class="tab-item active">상품 정보</div>
-              <div class="tab-item">구매 후기</div>
-              <div class="tab-item">배송 정보</div>
-            </div>
-            <div class="tab-line">
-              <div class="line-active"></div>
-              <div class="line-inactive"></div>
-              <div class="line-inactive"></div>
+            <!-- 상품 정보 / 후기 / 배송 전환 탭 메뉴 -->
+            <div class="detail-tab-container">
+              <button class="detail-tab-item active">상품 정보</button>
+              <button class="detail-tab-item">구매 후기</button>
+              <button class="detail-tab-item">배송 정보</button>
             </div>
 
-            <!-- 추가 이미지 -->
-            <div class="additional-images">
-              <div class="additional-image">
-                <img
-                  src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&h=600&fit=crop"
-                  alt="측면"
-                />
+            <!-- 추가 상세 이미지 (본문 삽입 이미지들) -->
+            <div class="detail-extra-images">
+              <div class="detail-img-full">
+                <img src="image/detail_img1.png" alt="" />
+                <span class="material-symbols-rounded detail-scroll-indicator">stat_minus_2</span>
               </div>
-              <div class="additional-image">
-                <img
-                  src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&h=600&fit=crop"
-                  alt="디테일"
-                />
+              <div class="detail-img-full">
+                <img src="image/detail_img2.png" alt="" />
               </div>
-            </div>
-
-            <div class="small-images">
-              <div class="small-image">
-                <img
-                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=400&h=350&fit=crop"
-                  alt="각도1"
-                />
-              </div>
-              <div class="small-image">
-                <img
-                  src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=350&fit=crop"
-                  alt="각도2"
-                />
+              <!-- 2열 배치 이미지 그룹 -->
+              <div class="detail-img-row">
+                <div class="detail-img-half">
+                  <img src="image/detail_img3.png" alt="" />
+                </div>
+                <div class="detail-img-half">
+                  <img src="image/detail_img4.png" alt="" />
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 상품 정보 카드 -->
-          <div class="product-info-card">
-            <!-- 타이틀 -->
-            <div class="product-title">
-              <div class="brand">OAKLEY</div>
-              <h1 class="product-name">오클리 레이다 락 패스 선글라스<br />아시안핏 프리즘 OO9206-41</h1>
-              <div class="rating">
-                <div class="stars">
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
+          <!-- 우측: 구매 유도 카드 (타이틀, 가격, 옵션 선택 등) -->
+          <div class="detail-info-card">
+            <div class="detail-info-main">
+              <!-- 상품 타이틀 및 별점 -->
+              <div class="detail-title-block">
+                <p class="detail-brand-name">oaklay</p>
+                <h1 class="detail-product-name">오클리 레이다 락 패스 선글라스<br />아시안핏 프리즘 OO9206-41</h1>
+                <div class="detail-rating">
+                  <div class="detail-rating-stars">
+                    <!-- 별점 5개 표현용 SVG -->
+                    <svg fill="none" viewBox="0 0 100 24">
+                      <path
+                        d="M10 2L12.2451 8.90983H19.5106L13.6327 13.1803L15.8779 20.0902L10 15.8197L4.12215 20.0902L6.36729 13.1803L0.489435 8.90983H7.75486L10 2Z"
+                        fill="#4AA8FF"
+                      />
+                      <path
+                        d="M30 2L32.2451 8.90983H39.5106L33.6327 13.1803L35.8779 20.0902L30 15.8197L24.1221 20.0902L26.3673 13.1803L20.4894 8.90983H27.7549L30 2Z"
+                        fill="#4AA8FF"
+                      />
+                      <path
+                        d="M50 2L52.2451 8.90983H59.5106L53.6327 13.1803L55.8779 20.0902L50 15.8197L44.1221 20.0902L46.3673 13.1803L40.4894 8.90983H47.7549L50 2Z"
+                        fill="#4AA8FF"
+                      />
+                      <path
+                        d="M70 2L72.2451 8.90983H79.5106L73.6327 13.1803L75.8779 20.0902L70 15.8197L64.1221 20.0902L66.3673 13.1803L60.4894 8.90983H67.7549L70 2Z"
+                        fill="#4AA8FF"
+                      />
+                      <path
+                        d="M90 2L92.2451 8.90983H99.5106L93.6327 13.1803L95.8779 20.0902L90 15.8197L84.1221 20.0902L86.3673 13.1803L80.4894 8.90983H87.7549L90 2Z"
+                        fill="#4AA8FF"
+                      />
+                    </svg>
+                  </div>
+                  <span class="detail-rating-text">5/5 <span class="detail-rating-count">(33개 리뷰)</span></span>
                 </div>
-                <span class="rating-text">5/5 <span class="reviews">(33개 리뷰)</span></span>
+              </div>
+
+              <!-- 가격 정보 (정가, 할인가, 할인율) -->
+              <div class="detail-price-row">
+                <div class="detail-price-left">
+                  <span class="detail-price-current">355,200원</span>
+                  <div class="detail-price-discount">
+                    <span class="detail-price-original">548,999원</span>
+                    <span class="detail-price-pct">20% 할인</span>
+                  </div>
+                </div>
+                <span class="material-symbols-rounded detail-heart-icon">heart_plus</span>
+              </div>
+
+              <hr class="detail-divider" />
+
+              <!-- 상품 옵션 선택 (컬러 및 사이즈) -->
+              <div class="detail-options-row">
+                <!-- 컬러 선택 칩 -->
+                <div class="detail-color-select">
+                  <p class="detail-option-label">color</p>
+                  <div class="detail-color-buttons">
+                    <div class="detail-color-dot selected" style="background-color: #222831"></div>
+                    <div
+                      class="detail-color-dot"
+                      style="background: linear-gradient(180deg, #a9feff 0%, #e8a5d4 100%)"
+                    ></div>
+                    <div
+                      class="detail-color-dot"
+                      style="background: linear-gradient(90deg, #8a628e 0%, #ae4951 29%, #eb4522 64%, #f1af25 100%)"
+                    ></div>
+                    <div class="detail-color-dot" style="background-color: #77ebff"></div>
+                  </div>
+                </div>
+                <!-- 사이즈 선택 버튼 -->
+                <div class="detail-size-select">
+                  <p class="detail-option-label">size</p>
+                  <div class="detail-size-buttons">
+                    <span class="detail-size-item">XS</span>
+                    <span class="detail-size-item">S</span>
+                    <span class="detail-size-item">M</span>
+                    <span class="detail-size-item active">L</span>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="detail-divider" />
+
+              <!-- 구매/장바구니 주요 액션 버튼 -->
+              <div class="detail-action-buttons">
+                <button class="detail-btn-cart">장바구니</button>
+                <button class="detail-btn-buy">바로 구매하기</button>
               </div>
             </div>
 
-            <!-- 가격 -->
-            <div class="product-price">
-              <div class="price-info">
-                <div class="current-price">355,200원</div>
-                <div class="discount-info">
-                  <span class="original-price">548,999원</span>
-                  <span class="discount-rate">20% 할인</span>
-                </div>
+            <!-- 추가 혜택 정보 (신규회원가, 배송비, 적립금 등) -->
+            <div class="detail-price-extra">
+              <div class="detail-discount-max">
+                <span class="detail-discount-text"
+                  >신규 회원님 최대 할인 가격 <span class="material-icons-round">keyboard_arrow_down</span></span
+                >
+                <span class="detail-discount-amount">334,070원</span>
               </div>
-              <div class="favorite-icon">
-                <span class="material-symbols-rounded">heart_plus</span>
+              <hr class="detail-divider dark" />
+              <ul class="detail-extra-info-list">
+                <li><span>배송비</span><span>무료배송</span></li>
+                <li><span>적립금</span><span>16,700원</span></li>
+                <li>
+                  <span><span class="cj-one">CJ ONE</span> 포인트 적립</span><span>최대 10,656P</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           렌즈 기능 및 기술 소개 섹션 (그리드 형태 배치)
+           ========================================================== -->
+      <section class="detail-tech-section">
+        <div class="detail-container detail-tech-inner">
+          <div class="detail-tech-heading">
+            <h2>프리미엄 렌즈 기술</h2>
+            <p>선명한 시야를 위한 설계. 당신을 위한 기술.</p>
+          </div>
+          <div class="detail-tech-grid">
+            <!-- 기술 항목 1: 블루라이트 -->
+            <div class="detail-tech-item">
+              <div class="detail-tech-icon">
+                <svg viewBox="0 0 28 19" fill="none">
+                  <path
+                    d="M13.9517 14.7691C15.4625 14.7691 16.7457 14.2404 17.8012 13.1828C18.8567 12.1252 19.3845 10.8411 19.3845 9.33027C19.3845 7.81947 18.8557 6.5363 17.7982 5.48075C16.7406 4.4252 15.4564 3.89743 13.9456 3.89743C12.4349 3.89743 11.1517 4.42621 10.0961 5.48377C9.04058 6.54133 8.51281 7.8255 8.51281 9.3363C8.51281 10.8471 9.04159 12.1303 10.0991 13.1858C11.1567 14.2414 12.4409 14.7691 13.9517 14.7691V14.7691M13.9487 12.9333C12.9487 12.9333 12.0987 12.5833 11.3987 11.8833C10.6987 11.1833 10.3487 10.3333 10.3487 9.33328C10.3487 8.33328 10.6987 7.48328 11.3987 6.78328C12.0987 6.08328 12.9487 5.73328 13.9487 5.73328C14.9487 5.73328 15.7987 6.08328 16.4987 6.78328C17.1987 7.48328 17.5487 8.33328 17.5487 9.33328C17.5487 10.3333 17.1987 11.1833 16.4987 11.8833C15.7987 12.5833 14.9487 12.9333 13.9487 12.9333V12.9333M13.9505 18.6666C10.8843 18.6666 8.09057 17.8208 5.56921 16.1294C3.04786 14.438 1.19145 12.1726 0 9.33328C1.19145 6.49398 3.04725 4.22861 5.56738 2.53717C8.08752 0.845722 10.8807 0 13.9468 0C17.013 0 19.8068 0.845722 22.3281 2.53717C24.8495 4.22861 26.7059 6.49398 27.8973 9.33328C26.7059 12.1726 24.8501 14.438 22.3299 16.1294C19.8098 17.8208 17.0167 18.6666 13.9505 18.6666V18.6666M13.9487 16.6666C16.4598 16.6666 18.7653 16.0055 20.8653 14.6833C22.9653 13.3611 24.5709 11.5777 25.682 9.33328C24.5709 7.08884 22.9653 5.30551 20.8653 3.98328C18.7653 2.66106 16.4598 1.99995 13.9487 1.99995C11.4376 1.99995 9.132 2.66106 7.032 3.98328C4.932 5.30551 3.32644 7.08884 2.21533 9.33328C3.32644 11.5777 4.932 13.3611 7.032 14.6833C9.132 16.0055 11.4376 16.6666 13.9487 16.6666V16.6666"
+                    fill="#F9FCFF"
+                  />
+                </svg>
+              </div>
+              <h3>블루라이트 차단</h3>
+              <p>유해한 블루라이트를 차단하여<br />눈의 피로를 덜어줍니다.</p>
+            </div>
+            <!-- 기술 항목 2: 자외선 차단 -->
+            <div class="detail-tech-item">
+              <div class="detail-tech-icon">
+                <svg viewBox="0 0 29 29" fill="none">
+                  <path
+                    d="M13.3333 3.58971V0H15.3333V3.58971H13.3333V3.58971M13.3333 28.6666V25.0769H15.3333V28.6666H13.3333V28.6666M25.0769 15.3333V13.3333H28.6666V15.3333H25.0769V15.3333M0 15.3333V13.3333H3.58971V15.3333H0V15.3333M23.0102 7.0615L21.6051 5.6564L23.7333 3.48719L25.1794 4.93331L23.0102 7.0615V7.0615M4.93331 25.1794L3.48719 23.7333L5.6564 21.6051L7.0615 23.0102L4.93331 25.1794V25.1794M23.7333 25.1794L21.6051 23.0102L23.0102 21.6051L25.1794 23.7333L23.7333 25.1794V25.1794M5.6564 7.0615L3.48719 4.93331L4.93331 3.48719L7.0615 5.6564L5.6564 7.0615V7.0615M14.3333 21.6666C12.2991 21.6666 10.5684 20.9529 9.14104 19.5256C7.7137 18.0982 7.00002 16.3675 7.00002 14.3333C7.00002 12.2991 7.7137 10.5684 9.14104 9.14104C10.5684 7.7137 12.2991 7.00002 14.3333 7.00002C16.3675 7.00002 18.0982 7.7137 19.5256 9.14104C20.9529 10.5684 21.6666 12.2991 21.6666 14.3333C21.6666 16.3675 20.9529 18.0982 19.5256 19.5256C18.0982 20.9529 16.3675 21.6666 14.3333 21.6666V21.6666M14.3333 19.6666C15.8222 19.6666 17.0833 19.15 18.1166 18.1166C19.15 17.0833 19.6666 15.8222 19.6666 14.3333C19.6666 12.8444 19.15 11.5833 18.1166 10.55C17.0833 9.51664 15.8222 8.99998 14.3333 8.99998C12.8444 8.99998 11.5833 9.51664 10.55 10.55C9.51664 11.5833 8.99998 12.8444 8.99998 14.3333C8.99998 15.8222 9.51664 17.0833 10.55 18.1166C11.5833 19.15 12.8444 19.6666 14.3333 19.6666V19.6666"
+                    fill="#F9FCFF"
+                  />
+                </svg>
+              </div>
+              <h3>UV400 자외선 차단</h3>
+              <p>UVA 및 UVB 자외선을 99%<br />이상 완벽하게 차단합니다.</p>
+            </div>
+            <!-- 기술 항목 3: 반사 방지 코팅 -->
+            <div class="detail-tech-item">
+              <div class="detail-tech-icon">
+                <svg viewBox="0 0 28 28" fill="none">
+                  <path
+                    d="M0 14.8461V12.8461H7.33328V14.8461H0V14.8461M8.51278 9.91788L5.91793 7.32302L7.32302 5.91793L9.91788 8.51278L8.51278 9.91788V9.91788M12.8461 7.33328V0H14.8461V7.33328H12.8461V7.33328M19.1794 9.91788L17.7743 8.51278L20.3692 5.91793L21.7743 7.32302L19.1794 9.91788V9.91788M20.3589 14.8461V12.8461H27.6922V14.8461H20.3589V14.8461M13.8461 17.1794C12.9145 17.1794 12.126 16.8567 11.4807 16.2114C10.8355 15.5662 10.5128 14.7777 10.5128 13.8461C10.5128 12.9145 10.8355 12.126 11.4807 11.4807C12.126 10.8355 12.9145 10.5128 13.8461 10.5128C14.7777 10.5128 15.5662 10.8355 16.2114 11.4807C16.8567 12.126 17.1794 12.9145 17.1794 13.8461C17.1794 14.7777 16.8567 15.5662 16.2114 16.2114C15.5662 16.8567 14.7777 17.1794 13.8461 17.1794V17.1794M20.3692 21.7743L17.7743 19.1794L19.1794 17.7743L21.7743 20.3692L20.3692 21.7743V21.7743M7.32302 21.7743L5.91793 20.3692L8.51278 17.7743L9.91788 19.1794L7.32302 21.7743V21.7743M12.8461 27.6922V20.3589H14.8461V27.6922H12.8461V27.6922"
+                    fill="#F9FCFF"
+                  />
+                </svg>
+              </div>
+              <h3>반사 방지 코팅</h3>
+              <p>빛 반사를 최소화하여 더욱<br />맑고 깨끗한 시야를 제공합니다.</p>
+            </div>
+            <!-- 기술 항목 4: 강화 하드 코팅 -->
+            <div class="detail-tech-item">
+              <div class="detail-tech-icon">
+                <svg viewBox="0 0 20 26" fill="none">
+                  <path
+                    d="M9.99995 25.2563C7.11621 24.47 4.72861 22.7726 2.83717 20.164C0.945722 17.5555 0 14.6393 0 11.4153V3.74357L9.99995 0L19.9999 3.74357V11.4153C19.9999 14.6393 19.0542 17.5555 17.1627 20.164C15.2713 22.7726 12.8837 24.47 9.99995 25.2563V25.2563M9.99995 23.1487C12.3111 22.4153 14.2222 20.9487 15.7333 18.7487C17.2444 16.5487 18 14.1042 18 11.4153V5.11533L9.99995 2.12815L1.99995 5.11533V11.4153C1.99995 14.1042 2.75551 16.5487 4.26662 18.7487C5.77773 20.9487 7.68884 22.4153 9.99995 23.1487V23.1487"
+                    fill="#F9FCFF"
+                  />
+                </svg>
+              </div>
+              <h3>강화 하드 코팅</h3>
+              <p>스크래치에 강한 코팅으로<br />렌즈의 내구성을 높였습니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           이벤트 쿠폰 다운로드 섹션
+           ========================================================== -->
+      <section class="detail-container detail-coupon-section">
+        <img src="image/coupon_img.png" alt="배경" class="detail-coupon-bg" />
+        <div class="detail-coupon-content">
+          <h2 class="detail-coupon-title">2만원 즉시 할인 쿠폰</h2>
+          <p class="detail-coupon-desc">6월 한정, 결제 시 바로 할인받기</p>
+          <div class="detail-coupon-btn">
+            <div class="detail-coupon-text">
+              <span class="detail-tag">균일가 2만원 할인</span>
+              <span class="detail-amount">20,000원</span>
+              <span class="detail-apply">즉시 할인 적용</span>
+            </div>
+            <div class="detail-coupon-divider"></div>
+            <!-- 다운로드 아이콘 -->
+            <span class="material-icons-round detail-download-icon">save_alt</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           제품 상세 치수(사이즈) 스펙 정보 섹션
+           ========================================================== -->
+      <section class="detail-dimensions-section">
+        <div class="detail-container detail-dim-inner">
+          <!-- 제품 규격 가이드 이미지 -->
+          <div class="detail-dim-image">
+            <img src="image/dim-img.png" alt="제품 치수" />
+          </div>
+          <!-- 수치 설명 스펙 목록 -->
+          <div class="detail-dim-specs">
+            <!-- 01 렌즈 가로 너비 -->
+            <div class="detail-dim-item">
+              <div class="detail-dim-icon">
+                <img src="image/dim-icon.png" alt="" />
+              </div>
+              <div class="detail-dim-text">
+                <p class="detail-dim-label">
+                  <span class="detail-num">01</span> <span class="detail-blue">렌즈 가로 너비</span>
+                </p>
+                <p class="detail-dim-value">52 mm</p>
               </div>
             </div>
-
-            <div class="divider"></div>
-
-            <!-- 색상 및 사이즈 선택 -->
-            <div class="options-section">
-              <div class="color-select">
-                <div class="option-label">COLOR</div>
-                <div class="color-buttons">
-                  <div class="color-circle selected" style="background: #222831"></div>
-                  <div class="color-circle" style="background: linear-gradient(180deg, #a9feff 0%, #e8a5d4 100%)"></div>
-                  <div
-                    class="color-circle"
-                    style="background: linear-gradient(90deg, #8a628e 0%, #ae4951 29.33%, #eb4522 64.66%, #f1af25 100%)"
-                  ></div>
-                  <div class="color-circle" style="background: #77ebff"></div>
-                </div>
+            <!-- 02 브릿지 너비 -->
+            <div class="detail-dim-item">
+              <div class="detail-dim-icon">
+                <img src="image/dim-icon.png" alt="" style="object-position: 100% 0%" />
               </div>
-              <div class="size-select">
-                <div class="option-label">SIZE</div>
-                <div class="size-buttons">
-                  <span class="size-option">XS</span>
-                  <span class="size-option">S</span>
-                  <span class="size-option">M</span>
-                  <span class="size-option active">L</span>
-                </div>
+              <div class="detail-dim-text">
+                <p class="detail-dim-label">
+                  <span class="detail-num">02</span> <span class="detail-blue">브릿지 너비</span>
+                </p>
+                <p class="detail-dim-value">18 mm</p>
               </div>
             </div>
-
-            <div class="divider"></div>
-
-            <!-- 버튼 -->
-            <div class="action-buttons">
-              <button class="btn-cart">장바구니</button>
-              <button class="btn-buy">바로 구매하기</button>
-            </div>
-
-            <!-- 추가 가격 정보 -->
-            <div class="price-extra">
-              <div class="new-member-price">
-                <div class="new-member-label">
-                  <span>신규 회원님 최대 할인 가격</span>
-                  <span class="material-icons-round">keyboard_arrow_down</span>
-                </div>
-                <div class="new-member-value">334,070원</div>
+            <!-- 03 다리 길이 -->
+            <div class="detail-dim-item">
+              <div class="detail-dim-icon">
+                <img src="image/dim-icon.png" alt="" style="object-position: 0% 100%" />
               </div>
-              <div class="divider-light"></div>
-              <div class="info-row">
-                <span>배송비</span>
-                <span>무료배송</span>
-              </div>
-              <div class="info-row">
-                <span>적립금</span>
-                <span>16,700원</span>
-              </div>
-              <div class="info-row">
-                <span><span class="cj-one">CJ ONE</span> 포인트 적립</span>
-                <span>최대 10,656P</span>
+              <div class="detail-dim-text">
+                <p class="detail-dim-label"><span class="detail-num">03</span> <span>다리 길이</span></p>
+                <p class="detail-dim-value">145 mm</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 렌즈 기술 섹션 -->
-      <section class="lens-tech-section">
-        <div class="lens-tech-container">
-          <div class="section-header">
-            <h2 class="section-title">프리미엄 렌즈 기술</h2>
-            <p class="section-description">선명한 시야를 위한 설계. 당신을 위한 기술.</p>
-          </div>
-          <div class="tech-features">
-            <div class="tech-feature">
-              <div class="tech-icon">
-                <span class="material-symbols-rounded">light_mode</span>
-              </div>
-              <h3 class="tech-title">블루라이트 차단</h3>
-              <p class="tech-desc">유해한 블루라이트를 차단하여<br />눈의 피로를 덜어줍니다.</p>
-            </div>
-            <div class="tech-feature">
-              <div class="tech-icon">
-                <span class="material-symbols-rounded">wb_sunny</span>
-              </div>
-              <h3 class="tech-title">UV400 자외선 차단</h3>
-              <p class="tech-desc">UVA 및 UVB 자외선을 99%<br />이상 완벽하게 차단합니다.</p>
-            </div>
-            <div class="tech-feature">
-              <div class="tech-icon">
-                <span class="material-symbols-rounded">brightness_high</span>
-              </div>
-              <h3 class="tech-title">반사 방지 코팅</h3>
-              <p class="tech-desc">빛 반사를 최소화하여 더욱<br />맑고 깨끗한 시야를 제공합니다.</p>
-            </div>
-            <div class="tech-feature">
-              <div class="tech-icon">
-                <span class="material-symbols-rounded">shield</span>
-              </div>
-              <h3 class="tech-title">강화 하드 코팅</h3>
-              <p class="tech-desc">스크래치에 강한 코팅으로<br />렌즈의 내구성을 높였습니다.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- ==========================================================
+           추가 구성 및 옵션 상품 카드 리스트 (연관 상품 유도)
+           ========================================================== -->
 
-      <!-- 쿠폰 섹션 -->
-      <section class="coupon-section">
-        <div class="coupon-container">
-          <p class="coupon-title">2만원 즉시 할인 쿠폰</p>
-          <p class="coupon-subtitle">6월 한정, 결제 시 바로 할인받기</p>
-          <div class="coupon-download">
-            <div class="coupon-info">
-              <p class="coupon-label">균일가 2만원 할인</p>
-              <p class="coupon-price">20,000원</p>
-              <p class="coupon-apply">즉시 할인 적용</p>
-            </div>
-            <div class="coupon-divider"></div>
-            <div class="coupon-icon">
-              <span class="material-icons-round">save_alt</span>
-            </div>
-          </div>
+      <!-- 연관 상품 카드 1: 도수 클립 렌즈 -->
+      <section class="detail-feature-card">
+        <div class="detail-card-bg">
+          <img src="image/option_img1.png" alt="" />
+          <!-- 배경 오버레이 레이어 2개 -->
+          <div class="detail-overlay" style="background-color: rgba(59, 62, 71, 0.3); mix-blend-mode: overlay"></div>
+          <div class="detail-overlay" style="background-color: rgba(57, 87, 111, 0.46); mix-blend-mode: darken"></div>
         </div>
-      </section>
-
-      <!-- 상품 치수 섹션 -->
-      <section class="dimensions-section">
-        <div class="dimensions-container">
-          <div class="dimensions-image">
-            <img
-              src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=700&h=650&fit=crop"
-              alt="치수 안내"
-            />
+        <div class="detail-container detail-card-content">
+          <span class="detail-badge detail-badge-white">추가 구성</span>
+          <div class="detail-card-title">
+            <h2>도수 클립 렌즈</h2>
+            <p>전용 클립 렌즈 추가 구매 가능합니다.</p>
           </div>
-          <div class="dimensions-specs">
-            <div class="spec-item">
-              <div class="spec-icon">
-                <img
-                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
-                  alt="렌즈 너비"
-                />
-              </div>
-              <div class="spec-info">
-                <p class="spec-number">01 <span>렌즈 가로 너비</span></p>
-                <p class="spec-value">52 mm</p>
-              </div>
-            </div>
-            <div class="spec-item">
-              <div class="spec-icon">
-                <img
-                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
-                  alt="브릿지"
-                />
-              </div>
-              <div class="spec-info">
-                <p class="spec-number">02 <span>브릿지 너비</span></p>
-                <p class="spec-value">18mm</p>
-              </div>
-            </div>
-            <div class="spec-item">
-              <div class="spec-icon">
-                <img
-                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=150&h=100&fit=crop"
-                  alt="다리"
-                />
-              </div>
-              <div class="spec-info">
-                <p class="spec-number">03 다리 길이</p>
-                <p class="spec-value">145mm</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 추가 옵션 카드 1 -->
-      <section class="detail-card detail-card-1">
-        <div class="detail-card-overlay"></div>
-        <div class="detail-card-content">
-          <div class="detail-badge">추가 구성</div>
-          <h2 class="detail-title">도수 클립 렌즈</h2>
-          <p class="detail-subtitle">전용 클립 렌즈 추가 구매 가능합니다.</p>
-          <div class="detail-features">
-            <div class="detail-feature">
-              <div class="feature-icon">●</div>
+          <!-- 특징 리스트 -->
+          <ul class="detail-feature-list">
+            <li>
+              <img src="image/feature_icon1.png" alt="" />
               <p>안경점에서 간편하게<br />도수를 넣어 사용</p>
-            </div>
-            <div class="detail-feature">
-              <div class="feature-icon">●</div>
+            </li>
+            <li>
+              <img src="image/feature_icon2.png" alt="" />
               <p>히어로/비전/브리즈에<br />호환 가능</p>
-            </div>
-            <div class="detail-feature">
-              <div class="feature-icon">●</div>
+            </li>
+            <li>
+              <img src="image/feature_icon3.png" alt="" />
               <p>휴대와 보관이 용이한<br />전용 케이스 포함</p>
+            </li>
+          </ul>
+          <!-- 할인 가격 안내 정보 박스 -->
+          <div class="detail-sale-box">
+            <div class="detail-sale-row">
+              <span class="detail-sale-qty">1EA</span>
+              <span class="detail-sale-orig">5,000원</span>
+              <span class="detail-sale-price">4,500원</span>
+              <span class="detail-sale-disc">10% 할인</span>
             </div>
+            <div class="detail-sale-row">
+              <span class="detail-sale-qty">3EA</span>
+              <span class="detail-sale-orig">15,000원</span>
+              <span class="detail-sale-price">12,500원</span>
+              <span class="detail-sale-disc">16% 할인</span>
+            </div>
+            <p class="detail-sale-note">* 일부 상품은 코받침 타입에 따라 사용이 어려울 수 있습니다.</p>
           </div>
-          <div class="detail-pricing">
-            <div class="pricing-row">
-              <span class="quantity">1EA</span>
-              <span class="original-price">5,000원</span>
-              <span class="sale-price">4,500원</span>
-              <span class="discount">10% 할인</span>
-            </div>
-            <div class="pricing-row">
-              <span class="quantity">3EA</span>
-              <span class="original-price">15,000원</span>
-              <span class="sale-price">12,500원</span>
-              <span class="discount">16% 할인</span>
-            </div>
-          </div>
-          <p class="detail-note">* 일부 상품은 코받침 타입에 따라 사용이 어려울 수 있습니다.</p>
         </div>
       </section>
 
-      <!-- 추가 옵션 카드 2 -->
-      <section class="detail-card detail-card-2">
-        <div class="detail-card-content">
-          <div class="detail-badge yellow">추가 옵션</div>
-          <h2 class="detail-title">렌즈 클리너 스프레이 <span class="highlight">(50ml)</span></h2>
-          <p class="detail-subtitle white">한 손에 쏙 들어오는 휴대하기 간편한 렌즈 클리너</p>
-          <p class="free-gift">고급 극세사 천 무료증정</p>
-          <div class="detail-features-row">
-            <div class="feature-item">
+      <!-- 연관 상품 카드 2: 렌즈 클리너 스프레이 -->
+      <section class="detail-feature-card">
+        <div class="detail-card-bg">
+          <img src="image/option_img2.png" alt="" />
+        </div>
+        <div class="detail-container detail-card-content center-align">
+          <span class="detail-badge detail-badge-yellow">추가 옵션</span>
+          <div class="detail-card-title align-center">
+            <h2>렌즈 클리너 스프레이 <span class="text-yellow">(50ml)</span></h2>
+            <p>한 손에 쏙 들어오는 휴대하기 간편한 렌즈 클리너</p>
+          </div>
+          <p class="detail-free-gift text-yellow">고급 극세사 천 무료증정</p>
+          <ul class="detail-feature-text-list">
+            <li>
               <p>한손에 쏙<br />컴팩트한 사이즈</p>
-            </div>
-            <div class="feature-item">
-              <p>오염 제거 &<br />깨끗한 시야 유지</p>
-            </div>
-            <div class="feature-item">
+            </li>
+            <li>
+              <p>오염 제거 &amp;<br />깨끗한 시야 유지</p>
+            </li>
+            <li>
               <p>고급 극세사 천<br />포함 구성</p>
-            </div>
-          </div>
-          <div class="divider-white"></div>
-          <button class="btn-yellow">도수 클립 구매하러 가기 →</button>
+            </li>
+          </ul>
+          <hr class="detail-divider white center" />
+          <button class="detail-btn-yellow">도수 클립 구매하러 가기 →</button>
         </div>
       </section>
 
-      <!-- 제품 비교 섹션 -->
-      <section class="compare-section">
-        <div class="compare-container">
-          <h2 class="compare-title">비교하기</h2>
-          <div class="compare-table">
-            <div class="compare-header">
-              <div class="compare-cell">제품명</div>
-              <div class="compare-cell">가격</div>
-              <div class="compare-cell">렌즈 기술</div>
-              <div class="compare-cell">UV 차단</div>
+      <!-- 연관 상품 카드 3: 라운즈 안경클리너 천 -->
+      <section class="detail-feature-card">
+        <div class="detail-card-bg">
+          <img src="image/option_img3.png" alt="" />
+          <div class="detail-overlay" style="background-color: #4a515b; mix-blend-mode: hard-light"></div>
+        </div>
+        <div class="detail-container detail-card-content">
+          <div class="detail-card-headline">
+            <p>당신의 <span class="text-light-blue">맑은 시야</span>를</p>
+            <p>더 오래 지킬 수 있도록</p>
+          </div>
+          <hr class="detail-divider blue left" />
+          <div class="detail-subtitle-box">
+            <p class="en">round glasses cleaner</p>
+            <p class="ko">라운즈 안경클리너</p>
+          </div>
+          <!-- 아이콘 3열 레이아웃 -->
+          <ul class="detail-icon-grid">
+            <li>
+              <img src="image/feature_icon4.png" alt="" />
+              <p>부드러운 극세사</p>
+            </li>
+            <li>
+              <img src="image/feature_icon5.png" alt="" />
+              <p>지문 &amp; 유분 제거</p>
+            </li>
+            <li>
+              <img src="image/feature_icon6.png" alt="" />
+              <p>모든 렌즈 사용 가능</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 연관 상품 카드 4: 렌즈 클리닝 티슈 -->
+      <section class="detail-feature-card">
+        <div class="detail-card-bg">
+          <img src="image/option_img4.png" alt="" />
+        </div>
+        <div class="detail-container detail-card-content">
+          <div class="detail-title-col">
+            <span class="detail-badge detail-badge-yellow">추가 옵션</span>
+            <h2>렌즈 클리닝 티슈(10매)</h2>
+            <p>99% 항균 작용과 김서림, 정전기<br />방지 효과가 탁월한 일회용 클리닝 티슈</p>
+          </div>
+          <hr class="detail-divider white full" />
+          <div class="detail-feature-flex">
+            <div class="detail-flex-item">
+              <img src="image/feature_icon7.png" alt="" />
+              <p><span class="text-yellow">99% 항균</span> 작용<br />김서림 예방</p>
             </div>
-            <div class="compare-row">
-              <div class="compare-cell">오클리 레이다 락 패스</div>
-              <div class="compare-cell">355,200원</div>
-              <div class="compare-cell">프리즘</div>
-              <div class="compare-cell">UV400</div>
+            <div class="detail-flex-item">
+              <img src="image/feature_icon8.png" alt="" />
+              <p><span class="text-yellow">정전기 방지</span><br />먼지 흡착 감소</p>
+            </div>
+          </div>
+          <button class="detail-btn-yellow mt-auto">도수 클립 구매하러 가기 →</button>
+        </div>
+      </section>
+
+      <!-- 연관 상품 카드 5: 셀프 A/S 키트 -->
+      <section class="detail-feature-card">
+        <div class="detail-card-bg">
+          <img src="image/option_img5.png" alt="" />
+        </div>
+        <div class="detail-container detail-card-content">
+          <span class="detail-badge detail-badge-outline">추가 옵션</span>
+          <div class="detail-card-title">
+            <h2>라운즈 셀프 A/S 키트</h2>
+            <p class="text-yellow">내 손 안의 작은 수리점</p>
+          </div>
+          <ul class="detail-feature-list no-bg">
+            <li>
+              <img src="image/feature_icon9.png" alt="" />
+              <p>스스로 간편하게<br />수리 &amp; 조절</p>
+            </li>
+            <li>
+              <img src="image/feature_icon10.png" alt="" />
+              <p>작고 가벼운 사이즈로<br />휴대와 보관이 용이</p>
+            </li>
+          </ul>
+          <!-- 할인 가격 박스 -->
+          <div class="detail-sale-box mt-auto">
+            <div class="detail-sale-row">
+              <span class="detail-sale-qty">1EA</span>
+              <span class="detail-sale-orig">5,000원</span>
+              <span class="detail-sale-price">4,500원</span>
+              <span class="detail-sale-disc text-yellow">[ 10% 할인 ]</span>
+            </div>
+            <div class="detail-sale-row">
+              <span class="detail-sale-qty">3EA</span>
+              <span class="detail-sale-orig">15,000원</span>
+              <span class="detail-sale-price">12,500원</span>
+              <span class="detail-sale-disc text-yellow">[ 16% 할인 ]</span>
+            </div>
+            <p class="detail-sale-note text-light-blue">* 일부 상품은 코받침 타입에 따라 사용이 어려울 수 있습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           도수 렌즈 가격 비교 분석 표 테이블 섹션
+           ========================================================== -->
+      <section class="detail-compare-section">
+        <div class="detail-container detail-compare-inner">
+          <div class="detail-compare-title">
+            <h2><span class="text-gray">#</span><span class="text-blue">도수렌즈</span> 가격 걱정되시나요?</h2>
+            <p>렌즈 맞춤 비용을 비교해 보세요!</p>
+          </div>
+
+          <!-- 비교 데이터 테이블 -->
+          <div class="detail-table-wrapper">
+            <div class="detail-compare-table">
+              <!-- 테이블 헤더 행 -->
+              <div class="detail-table-header">
+                <span class="col-1">굴절율</span>
+                <span class="col-2">두께</span>
+                <span class="col-3">가격</span>
+                <span class="col-4">고도난시</span>
+              </div>
+              <!-- 테이블 데이터 행 1 -->
+              <div class="detail-table-row">
+                <div class="col-1 detail-lens-cell">
+                  <div class="detail-color-swatch" style="background: #fcd34d"></div>
+                  <div class="detail-lens-info">
+                    <p>1.56</p>
+                    <p>비구면(ASP)</p>
+                  </div>
+                </div>
+                <span class="col-2">-10%</span>
+                <span class="col-3 bold">40,000원</span>
+                <span class="col-4">+20,000원</span>
+              </div>
+              <!-- 테이블 데이터 행 2 -->
+              <div class="detail-table-row">
+                <div class="col-1 detail-lens-cell">
+                  <div class="detail-color-swatch" style="background: #ec4899"></div>
+                  <div class="detail-lens-info">
+                    <p>1.56</p>
+                    <p>비구면(ASP)</p>
+                  </div>
+                </div>
+                <span class="col-2">-10%</span>
+                <span class="col-3 bold">40,000원</span>
+                <span class="col-4">+20,000원</span>
+              </div>
+              <!-- 테이블 데이터 행 3 -->
+              <div class="detail-table-row">
+                <div class="col-1 detail-lens-cell">
+                  <div class="detail-color-swatch" style="background: #3b82f6"></div>
+                  <div class="detail-lens-info">
+                    <p>1.56</p>
+                    <p>비구면(ASP)</p>
+                  </div>
+                </div>
+                <span class="col-2">-10%</span>
+                <span class="col-3 bold">40,000원</span>
+                <span class="col-4">+20,000원</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 테이블 하단 기본 기능 요약 및 각주 -->
+          <div class="detail-info-box">
+            <p class="title">프리미엄 렌즈 기능 기본 탑재</p>
+            <ul>
+              <li>자외선&amp;블루라이트 차단(더블코팅)</li>
+              <li>비구면 설계</li>
+              <li>전기파 정전기 차단(EMI 코팅)</li>
+            </ul>
+            <p class="note">*두께 : A사 정광차단렌즈 1.56구면 S-4.00D C-2.00D 데이터 비교 측정.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           추천 상품 슬라이더 섹션 ("You May Also Like")
+           ========================================================== -->
+      <section class="detail-recommend-section">
+        <div class="detail-container">
+          <h2 class="detail-recommend-title">You May Also <span class="text-blue">Like</span></h2>
+
+          <div class="detail-slider-wrapper">
+            <!-- 슬라이드 아이템 리스트 -->
+            <div class="detail-slider">
+              <div class="detail-slide-item">
+                <img src="image/slide_item1.png" alt="" />
+              </div>
+              <div class="detail-slide-item">
+                <img src="image/slide_item1.png" alt="" />
+              </div>
+              <div class="detail-slide-item">
+                <img src="image/slide_item2.png" alt="" />
+              </div>
+              <div class="detail-slide-item">
+                <img src="image/slide_item3.png" alt="" />
+              </div>
+            </div>
+
+            <!-- 하단 인디케이터/프로그레스 바 -->
+            <div class="detail-slider-progress">
+              <div class="detail-progress-bar" style="width: 25%"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 추천 상품 섹션 -->
-      <section class="recommendations-section">
-        <div class="recommendations-container">
-          <h2 class="recommendations-title">YOU MAY ALSO LIKE</h2>
-          <div class="product-grid">
-            <div class="product-card">
-              <img
-                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=300&h=300&fit=crop"
-                alt="추천 상품"
-              />
-              <p class="product-card-title">선글라스 A</p>
-              <p class="product-card-price">299,000원</p>
+      <!-- ==========================================================
+           하단 푸터 영역 (사이트 정보, 링크 메뉴, 회사 정보 및 SNS)
+           ========================================================== -->
+      <footer class="detail-footer">
+        <div class="detail-container detail-footer-inner">
+          <!-- 푸터 상단: 슬로건, 링크그룹, 고객센터 정보 -->
+          <div class="detail-footer-top">
+            <!-- 브랜드 소개 -->
+            <div class="detail-footer-brand">
+              <p class="logo">ROUNZ</p>
+              <p class="slogan">Optical Clarity</p>
             </div>
-            <div class="product-card">
-              <img
-                src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop"
-                alt="추천 상품"
-              />
-              <p class="product-card-title">선글라스 B</p>
-              <p class="product-card-price">349,000원</p>
+            <!-- 내부 서비스 바로가기 링크 그룹 -->
+            <div class="detail-footer-links">
+              <div class="col">
+                <h4>Services</h4>
+                <ul>
+                  <li>라운즈앱 (ROUNZ App)</li>
+                  <li>라운즈 해외 (ROUNZ Global)</li>
+                  <li>라운즈 파트너스 (ROUNZ Partners)</li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4>Legal</h4>
+                <ul>
+                  <li>고객센터 (Customer Center)</li>
+                  <li>개인정보처리방침 (Privacy Policy)</li>
+                  <li>이용약관 (Terms of Use)</li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4>Business</h4>
+                <ul>
+                  <li>글라스박스 (Glassbox)</li>
+                  <li>가맹문의 (Franchise Inquiry)</li>
+                </ul>
+              </div>
             </div>
-            <div class="product-card">
-              <img
-                src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=300&h=300&fit=crop"
-                alt="추천 상품"
-              />
-              <p class="product-card-title">선글라스 C</p>
-              <p class="product-card-price">389,000원</p>
-            </div>
-            <div class="product-card">
-              <img
-                src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=300&h=300&fit=crop"
-                alt="추천 상품"
-              />
-              <p class="product-card-title">선글라스 D</p>
-              <p class="product-card-price">425,000원</p>
+            <!-- 고객센터 문의 정보 및 SNS 아이콘 연동 -->
+            <div class="detail-footer-contact">
+              <div class="info">
+                <p class="label">Customer Center</p>
+                <p class="phone">1600-0000</p>
+                <p class="email">support@rounz.com</p>
+              </div>
+              <div class="socials">
+                <img src="src/imports/상품상세페이지W/112d9f19739e8d8b3f5398db7d468d5fea03c073.png" alt="Kakao" />
+                <div class="icon-circle">N</div>
+                <div class="icon-circle google">G</div>
+                <img src="src/imports/상품상세페이지W/cb9413c1888b360d45a1cd160d25a15179f3a9c9.png" alt="Apple" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
 
-    <!-- 푸터 -->
-
-    <!--
-      안타깝지만 이 작업본은 사용되지 않을 수도 있습니다.
-      components.html에 제가 푸터를 이미 작업해뒀습니다.
-      아니면 두 푸터의 html 구조와 css를 비교해 더 좋은 쪽으로 통일해주시겠습니까?
-      
-      * 네이밍 컨벤션을 지켜주세요. 프로젝트 내부의 클래스는 스네이크 케이스(언더바"_" 사용)입니다.
-      
-      - 유태구
-    -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-left">
-            <div class="footer-logo">ROUNZ</div>
-            <p class="footer-slogan">당신의 시야를 밝게</p>
-          </div>
-          <div class="footer-menu">
-            <div class="footer-column">
-              <h4>쇼핑 정보</h4>
-              <ul>
-                <li>신상품</li>
-                <li>베스트</li>
-                <li>세일</li>
-              </ul>
+          <!-- 푸터 하단: 기업 등록 정보 및 저작권 명시 -->
+          <div class="detail-footer-bottom">
+            <div class="company-info">
+              <div class="links">
+                <strong>(주)라운즈 ROUNZ 사업자정보</strong>
+                <span>사업자정보확인</span> | <span>라운즈 플래그십 스토어</span> | <span>라운즈 파트너 안경원</span>
+              </div>
+              <p>
+                주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
+                통신판매업신고: 제2023-서울서초-0000호
+              </p>
+              <p>COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
             </div>
-            <div class="footer-column">
-              <h4>고객 지원</h4>
-              <ul>
-                <li>FAQ</li>
-                <li>배송 안내</li>
-                <li>교환/반품</li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4>회사 정보</h4>
-              <ul>
-                <li>회사 소개</li>
-                <li>채용</li>
-                <li>이용약관</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-contact">
-            <p class="contact-phone">02-1234-5678</p>
-            <p class="contact-hours">평일 09:00 - 18:00</p>
-            <div class="social-icons">
-              <div class="social-icon">K</div>
-              <div class="social-icon">N</div>
-              <div class="social-icon">G</div>
-              <div class="social-icon">A</div>
-            </div>
+            <!-- 국가/언어 변경 버튼 -->
+            <div class="country"><span class="material-icons-round">language</span> KOREA (KRW)</div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="footer-info">
-            <p class="company-name">(주)라운즈 ROUNZ 사업자정보</p>
-            <div class="company-links">
-              <span>사업자정보확인</span>
-              <span class="divider-vertical">|</span>
-              <span>라운즈 플래그십 스토어</span>
-              <span class="divider-vertical">|</span>
-              <span>라운즈 파트너 안경원</span>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <p>
-              주소: 서울특별시 서초구 강남대로 123, 4층 | 대표이사: 김라운 | 사업자등록번호: 000-00-00000 |
-              통신판매업신고: 제2023-서울서초-0000호 | 개인정보관리책임자: 박안경
-            </p>
-            <p>COPYRIGHT © ROUNZ CO., LTD. ALL RIGHTS RESERVED.</p>
-          </div>
-          <div class="footer-language">
-            <span>🌐 KOREA (KRW)</span>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>홈 | ROUNZ</title>
@@ -16,9 +22,74 @@
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </header>
-    <div class="drawer"></div>
+    <div class="nav_drawer_wrap drawer_wrap below_pc">
+      <!-- JS로 넣을 예정 -->
+      <!-- components.html 참고 -->
+    </div>
     <main>
-      <section class="hero"></section>
+      <!-- hero - 문송연 -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="swiper hero_swiper">
+            <!-- slide 1 -->
+            <div class="swiper-slide ai_container">
+              <div class="hero_ai_text_container">
+                <div class="hero_ai_title">
+                  <p>find your perfect fit</p>
+                  <h2>내 얼굴에 어울리는 안경을<br />ai로 더 쉽게 찾아보세요.</h2>
+                </div>
+                <a href="#" class="hero_ai_btn">ai서비스 알아보기</a>
+              </div>
+            </div>
+            <!-- slide 2 -->
+            <div class="swiper-slide coupon_container">
+              <div class="coupon_text_container">
+                <div class="coupon_title">
+                  <p>member benefit</p>
+                  <h2>라운즈 회원만을 위한 특별 혜택</h2>
+                </div>
+                <p>신구 회원 쿠폰부터 기간 한정 이벤트까지,<br />더 좋은 조건으로 아이웨어를 만나보세요.</p>
+              </div>
+              <a href="#" class="coupon_btn">혜택 보러가기<span class="material-icons-round"> arrow_forward </span></a>
+            </div>
+            <!-- slide 3 -->
+            <div class="swiper-slide stylework_container">
+              <div class="stylework_text_container">
+                <div class="style_title_container">
+                  <p>stlye:work june edit</p>
+                  <div class="stylework_title">
+                    <h2>your style, your story</h2>
+                    <p>style:work 전 제품을 특별한 가격으로 만나보세요</p>
+                  </div>
+                </div>
+                <div class="promotion_title">
+                  <h3>6월 한정 특별 혜택</h3>
+                  <span
+                    >전 제품
+                    <p>69,000원</p>
+                    <span class="material-icons-round"> arrow_forward </span>
+                    <p>49,000원</p></span
+                  >
+                </div>
+                <a href="#" class="style_btn">
+                  컬렉션 보러가기 <span class="material-icons-round"> arrow_forward </span></a
+                >
+              </div>
+            </div>
+            <!-- slide 4 -->
+            <div class="swiper-slide 4_container"></div>
+
+            <!-- pagination -->
+            <div class="swiper_controls">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 퀵메뉴 - 최호찬 -->
       <section class="widget">
         <div class="wrap d-flex flex-column">
           <ul class="widget_menu d-flex justify-content-between align-items-center">
@@ -43,26 +114,30 @@
       </section>
       <!-- ai_face_analysis - 문송연 -->
       <section class="ai_face_analysis">
-        <div class="ai_face_analysis_wrapper">
+        <div class="wrap">
           <div class="ai_container d-flex flex-column g-2">
-            <div class="ai_top">
+            <div class="ai_top d-flex flex-column">
               <div class="ai_text_container d-flex flex-column">
-                <div class="ai_title body">
-                  <h2>핏을 확인하고, 선택은 더 정확하게</h2>
-                  <p>AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
+                <div class="ai_title body d-flex flex-column">
+                  <h2 class="display_h4">핏을 확인하고, 선택은 더 정확하게</h2>
+                  <p class="display_h2">AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
                 </div>
                 <div class="hashtag body d-flex">
-                  <p># 67개 얼굴 좌표 분석</p>
-                  <p># 실시간 AR 가상피팅</p>
-                  <p># 8가지 얼굴형 분석</p>
+                  <p class="body_m"># 67개 얼굴 좌표 분석</p>
+                  <p class="body_m"># 실시간 AR 가상피팅</p>
+                  <p class="body_m"># 8가지 얼굴형 분석</p>
                 </div>
-                <div class="ai_btn pc_only">
-                  <a href="#" class="ai_btn_outline body">AI 분석 바로가기</a>
-                  <a href="#" class="ai_btn_filled body">가상피팅 하러가기</a>
+                <div class="ai_btn pc_only d-flex flex-column g-1">
+                  <a href="#" class="ai_btn_outline body display_h3">AI 분석 바로가기 <span class="material-icons-round"> arrow_circle_right </span></a
+              ></a>
+                  <a href="#" class="ai_btn_filled body display_h3">가상피팅 하러가기 <span class="material-icons-round"> arrow_circle_right </span></a
+              ></a>
                 </div>
               </div>
 
-              <video src="video/ai_face.mp4" muted autoplay playsinline loop></video>
+              <video muted autoplay playsinline loop>
+                <source src="video/ai_face.mp4" type="video/mp4" />
+              </video>
             </div>
 
             <ul class="ai_description d-flex flex-column align-items-center">
@@ -70,35 +145,35 @@
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/얼굴형분석img.png" alt="얼굴형 분석 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">01 <br />얼굴형 분석</h3>
-                  <p class="body_xl">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
+                  <h3 class="display_h4">01 <br />얼굴형 분석</h3>
+                  <p class=".body_l">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
                 </div>
+                <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               </li>
-              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               <!-- 02 -->
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/AI추천img.png" alt="AI 추천 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">02 <br />AI 추천</h3>
-                  <p class="body_xl">분석 결과로 어울리는 프레임을 추천해요.</p>
+                  <h3 class="display_h4">02 <br />AI 추천</h3>
+                  <p class="body_l">분석 결과로 어울리는 프레임을 추천해요.</p>
                 </div>
+                <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               </li>
-              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               <!-- 03 -->
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/가상피팅img.png" alt="가상피팅 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">03 <br />가상피팅</h3>
-                  <p class="body_xl">추천 안경을 화면에서 바로 착용해보세요.</p>
+                  <h3 class="display_h4">03 <br />가상피팅</h3>
+                  <p class="body_l">추천 안경을 화면에서 바로 착용해보세요.</p>
                 </div>
               </li>
             </ul>
 
             <div class="ai_btn below_pc d-flex flex-column align-items-center g-1">
-              <a href="#" class="ai_btn_outline body">
+              <a href="#" class="ai_btn_outline body display_h4">
                 AI 분석 바로가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
-              <a href="#" class="ai_btn_filled body"
+              <a href="#" class="ai_btn_filled body display_h4"
                 >가상피팅 하러가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
             </div>
@@ -110,11 +185,59 @@
         <!-- 슬라이더 -->
         <div></div>
       </section>
-      <section class="timed_offer">
-        <h2>6월 한정 특별 혜택</h2>
+
+      <!-- Limited Time Offer 섹션 -->
+      <!-- 작업자="김해나" -->
+      <section class="timed_offer d-flex">
+        <h2 class="timed_offer_title display_h1">6월 한정 특별 혜택</h2>
+        <p class="body_l">⏳ 특가 종료까지</p>
+        <!-- 타이머 -->
+        <div class="limited_timer_container d-flex">
+          <div class="timer_block">
+            <span class="timer_num timer_days display_h1">00</span>
+            <span class="timer_label body_cap">days</span>
+          </div>
+          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+
+          <div class="timer_block">
+            <span class="timer_num timer_hours display_h1">00</span>
+            <span class="timer_label body_cap">hours</span>
+          </div>
+          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+
+          <div class="timer_block">
+            <span class="timer_num timer_min display_h1">00</span>
+            <span class="timer_label body_cap">min</span>
+          </div>
+          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+
+          <div class="timer_block">
+            <span class="timer_num timer_sec display_h1">00</span>
+            <span class="timer_label body_cap">sec</span>
+          </div>
+        </div>
+
         <!-- 슬라이더 -->
-        <div></div>
+        <section class="limited_product_slider">
+          <div class="limited_slider_header">
+            <a href="#">더보기 &rarr;</a>
+          </div>
+
+          <div class="swiper mySwiper">
+            <button type="button" class="limited_slide_btn limited_btn_prev d-flex" aria-label="이전 슬라이드">
+              <span class="material-icons-round d-flex">keyboard_arrow_left</span>
+            </button>
+            <button type="button" class="limited_slide_btn limited_btn_next d-flex" aria-label="다음 슬라이드">
+              <span class="material-icons-round d-flex">keyboard_arrow_right</span>
+            </button>
+
+            <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
+          </div>
+        </section>
       </section>
+
+      <!-- Limited Time Offer 섹션 끝 -->
+
       <section class="new_collection">
         <div class="wrap">
           <div class="new_collection_header d-flex flex-column align-items-center text-center">
@@ -132,9 +255,125 @@
           </div>
         </div>
       </section>
+
+      <!-- Brand 섹션 -->
+      <!-- 작업자="김해나" -->
       <section class="brand_showcase">
-        <h2>brand</h2>
+        <h2 class="display_h1">brand</h2>
+
+        <section class="brand_slider">
+          <div class="brand_slider_roller row_top d-flex">
+            <ul class="brand_rolling_list">
+              <li class="brand_rolling_item" aria-hidden="true">
+                <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
+              </li>
+            </ul>
+            <ul class="brand_rolling_list" aria-hidden="true">
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="brand_slider_roller row_bottom d-flex">
+            <ul class="brand_rolling_list">
+              <li class="brand_rolling_item" aria-hidden="true">
+                <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
+              </li>
+            </ul>
+            <ul class="brand_rolling_list" aria-hidden="true">
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
+              </li>
+              <li class="brand_rolling_item">
+                <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
+              </li>
+            </ul>
+          </div>
+        </section>
       </section>
+
       <!-- celeb pick 문송연 -->
       <section class="celebs_pick">
         <h2>celeb&apos;s pick</h2>
