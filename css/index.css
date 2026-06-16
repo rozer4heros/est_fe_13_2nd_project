@@ -251,7 +251,7 @@ p {
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(48, 134, 255, 0.5);
+    box-shadow: 0 0 20px rgba(48, 134, 255, 0.8);
     transform: scale(1.01);
   }
 }
@@ -295,7 +295,7 @@ p {
 .ai_btn_filled {
   font-size: var(--body---large);
 }
-.material-icons-round {
+.ai_btn .material-icons-round {
   font-size: 40px;
 }
 
