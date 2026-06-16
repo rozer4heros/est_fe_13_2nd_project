@@ -189,7 +189,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin: 24px 0 40px 0;
+  margin: var(--base-unit) 0 var(--base-unit) 0;
 }
 
 .timer_block {
@@ -238,7 +238,7 @@
 }
 
 .limited_slide_item.swiper-slide-active {
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: 10;
   opacity: 1;
 }
@@ -259,8 +259,7 @@
   position: relative;
   width: 100%;
   padding-top: 100%;
-  background-color: #f8f9fa;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .limited_card_image_wrap img {

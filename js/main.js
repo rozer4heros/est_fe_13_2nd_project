@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const minEl = document.querySelector(".timer_min");
   const secEl = document.querySelector(".timer_sec");
 
-  const targetDate = new Date("July 11, 2026 10:00:00").getTime();
+  const targetDate = new Date("July 17, 2026 10:00:00").getTime();
   let timerInterval = null;
 
   function updateTimer() {
