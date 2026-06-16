@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button type="button" class="wish_btn" aria-label="위시리스트 추가">
                   <span class="material-symbols-outlined">heart_plus</span>
                 </button>
-                <a href="#detail.html" class="detail_view_btn display_h3">
+                <a href="#detail.html" class="detail_view_btn display_h4">
                   <span class="detail_text">detail view</span>
                   <span class="arrow_circle">&rarr;</span>
                 </a>
