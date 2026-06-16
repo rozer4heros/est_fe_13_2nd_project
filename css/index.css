@@ -45,12 +45,25 @@
 
 .widget_coupon {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+.widget_coupon_track {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease-in-out;
+}
+.widget_coupon_slide {
+  width: 50%;
+  flex-shrink: 0;
 }
 
 .widget_coupon img {
   width: 100%;
   max-width: 100%;
   display: block;
+  object-fit: cover;
 }
 
 /* 태블릿 */
@@ -107,13 +120,8 @@
   .widget_coupon {
     height: 144px;
   }
-
-  .coupon_title {
-    font-size: 32px;
-  }
-
-  .coupon_desc {
-    font-size: 24px;
+  .widget_coupon_track .widget_coupon_slide {
+    height: 100%;
   }
 }
 
@@ -361,6 +369,250 @@
 /* Limited Time Offer - 김해나 */
 
 /* new collection - 최호찬 */
+.new_collection {
+  width: 100%;
+  padding: 72px 0px;
+  background-color: var(--font--color);
+  color: var(--white);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.new_collection_header {
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.new_collection_eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.new_collection_desc {
+  color: var(--white);
+}
+
+.new_collection_more {
+  align-self: flex-end;
+  color: var(--gray);
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+/* 모바일 */
+.new_collection_track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.new_collection_track::-webkit-scrollbar {
+  display: none;
+}
+
+.new_collection_page {
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.new_collection_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.new_collection_item {
+  width: 100%;
+}
+
+.new_collection_card {
+  text-decoration: none;
+  color: inherit;
+  gap: 20px;
+  width: 100%;
+}
+
+.new_collection_img_box {
+  width: 120px;
+  height: 120px;
+  background-color: var(--white);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.new_card_img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.new_card_wish_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--font--color);
+  padding: 0;
+}
+
+.new_collection_info {
+  gap: 8px;
+}
+
+.new_card_brand {
+  color: var(--main--color);
+}
+
+.new_card_name {
+  color: var(--white);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.new_card_price {
+  margin-top: 2px;
+}
+
+.new_card_shipping {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  margin-top: 4px;
+  gap: 5px;
+}
+
+/* 하단 바 */
+.new_collection_indicator {
+  width: 64px;
+  height: 2px;
+  background-color: var(--gray);
+  margin: 48px auto 0 auto;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.indicator_bar {
+  width: 50%;
+  height: 100%;
+  background-color: var(--white);
+  transform: translateX(0%);
+}
+
+/* 태블릿 */
+@media (min-width: 768px) {
+  .new_collection_track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+  .new_collection_track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .new_collection_page {
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0 32px;
+  }
+
+  .new_collection_list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    align-content: start;
+  }
+
+  .new_collection_item {
+    width: 100%;
+  }
+  .new_collection_item:first-child {
+    grid-column: 1;
+    grid-row: span 3;
+  }
+
+  .new_collection_item:not(:first-child) {
+    grid-column: 2;
+  }
+
+  .new_collection_item + .new_collection_item {
+    margin-top: 24px;
+  }
+
+  .new_collection_item:first-child .new_collection_card {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .new_collection_item:first-child .new_collection_img_box {
+    width: 288px;
+    height: 288px;
+    border-radius: 10px;
+  }
+
+  .new_collection_item:not(:first-child) .new_collection_img_box {
+    width: 144px;
+    height: 144px;
+    border-radius: 10px;
+  }
+
+  .new_collection_indicator {
+    display: block;
+    margin-top: 48px;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 1440px) {
+  .new_collection_list {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 132px;
+  }
+
+  .new_collection_item + .new_collection_item {
+    margin-top: 24px;
+  }
+  .new_collection_item:first-child .new_collection_card {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1;
+    grid-row: span 2;
+    margin-top: 128px;
+    gap: 24px;
+  }
+
+  .new_collection_item:first-child .new_collection_img_box {
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+  }
+
+  .new_collection_item:not(:first-child) .new_collection_img_box {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+  }
+  .new_collection_item:nth-child(4) {
+    display: none;
+  }
+}
 
 /* brand section - 김해나 */
 
