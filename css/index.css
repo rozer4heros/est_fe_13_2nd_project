@@ -10,12 +10,8 @@
   box-sizing: border-box;
 }
 
-.widget_container {
-  width: 100%;
-  max-width: 480px;
+.widget .wrap {
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   gap: 48px;
 }
 
@@ -23,8 +19,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: space-between;
   gap: 32px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -41,39 +35,35 @@
   flex-shrink: 0;
   color: var(--white);
   gap: 24px;
-  font-size: 14px;
 }
 
 .widget_menu li img {
   width: 50px;
-  height: auto;
+  height: 50px;
+  object-fit: contain;
 }
 
 .widget_coupon {
-  background: var(--white);
-  padding: 24px 16px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
   border-radius: 10px;
+}
+.widget_coupon_track {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
+  width: 200%;
+  transition: transform 0.5s ease-in-out;
+}
+.widget_coupon_slide {
+  width: 50%;
+  flex-shrink: 0;
 }
 
-.widget_coupon p {
-  margin: 0;
-}
-
-.coupon_title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--font--color);
-}
-
-.coupon_desc {
-  font-size: 12px;
-  color: var(--gray);
+.widget_coupon img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* 태블릿 */
@@ -83,8 +73,7 @@
     padding: 48px 20px;
   }
 
-  .widget_container {
-    max-width: 768px;
+  .widget .wrap {
     gap: 48px;
   }
 
@@ -95,25 +84,12 @@
   }
 
   .widget_menu li {
-    font-size: 16px;
     gap: 20px;
   }
 
   .widget_menu li img {
     width: 70px;
-  }
-
-  .widget_coupon {
-    height: 100px;
-    padding: 0;
-  }
-
-  .coupon_title {
-    font-size: 28px;
-  }
-
-  .coupon_desc {
-    font-size: 16px;
+    height: 70px;
   }
 }
 
@@ -124,8 +100,7 @@
     padding: 96px 0;
   }
 
-  .widget_container {
-    max-width: 1440px;
+  .widget .wrap {
     gap: 72px;
   }
 
@@ -145,17 +120,243 @@
   .widget_coupon {
     height: 144px;
   }
-
-  .coupon_title {
-    font-size: 32px;
-  }
-
-  .coupon_desc {
-    font-size: 24px;
+  .widget_coupon_track .widget_coupon_slide {
+    height: 100%;
   }
 }
 
 /* AI Face Analysis - 문송연 */
+.ai_face_analysis {
+  width: 100%;
+  height: auto;
+  padding: 96px 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ai_face_analysis::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
+  opacity: 0.5;
+  z-index: -1;
+}
+.ai_text_container {
+  gap: 8px;
+}
+.ai_top {
+  gap: 48px;
+}
+.ai_text_container .ai_title {
+  h2 {
+    color: var(--point--color);
+  }
+  p {
+    color: var(--font--color);
+  }
+}
+.hashtag {
+  flex-wrap: nowrap;
+  gap: 8px;
+
+  p {
+    background: var(--light--gray);
+    color: var(--point--color);
+    border-radius: 5px;
+    padding: 0 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+.wrap video {
+  display: block;
+  width: 100%;
+  max-width: 188px;
+  aspect-ratio: 188/384;
+  margin: 0 auto;
+  clip-path: inset(0 round 36px);
+}
+.ai_description {
+  box-sizing: border-box;
+  width: 100%;
+  list-style: none;
+  gap: 56px;
+}
+.ai_description_item {
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 10px;
+  position: relative;
+  padding: 16px 56px;
+  gap: 32px;
+  box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
+}
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.ai_description_item .material-icons-round {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+.ai_text {
+  gap: 8px;
+}
+h3 {
+  color: var(--point--color);
+}
+p {
+  color: var(--font--color);
+}
+
+.ai_btn {
+  width: 100%;
+  box-sizing: border-box;
+
+  .ai_btn_outline,
+  .ai_btn_filled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 999px;
+
+    gap: 8px;
+
+    animation: firefly 2.5s ease-in-out infinite;
+  }
+
+  .ai_btn_outline {
+    background: var(--white);
+    color: var(--main--color);
+  }
+  .ai_btn_filled {
+    background: var(--main--color);
+    color: var(--white);
+  }
+}
+
+@keyframes firefly {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(48, 134, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(48, 134, 255, 0.5);
+    transform: scale(1.01);
+  }
+}
+/* 두 번째 버튼은 살짝 늦게 시작 */
+.ai_btn_filled {
+  animation-delay: 0.6s;
+}
+
+/* 태블릿 */
+@media (min-width: 481px) {
+  .ai_container {
+    gap: 64px;
+  }
+  .ai_text_container {
+    gap: 12px;
+  }
+}
+
+.hashtag {
+  flex-wrap: nowrap;
+  gap: 12px;
+
+  p {
+    font-size: var(--body---medium);
+  }
+}
+
+.ai_text {
+  gap: 20px;
+  h3 {
+    font-size: var(--display---h4);
+    line-height: var(--display---h4-lh);
+  }
+  p {
+    font-size: var(--body---medium);
+    line-height: var(--body---medium-lh);
+  }
+}
+
+.ai_btn_outline,
+.ai_btn_filled {
+  font-size: var(--body---large);
+}
+.material-icons-round {
+  font-size: 40px;
+}
+
+/* pc버전 */
+@media (min-width: 769px) {
+  .ai_face_analysis {
+    width: 100%;
+    height: auto;
+    padding: 96px 0;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .ai_face_analysis ::before {
+    background: url("/image/ai_face_analysis_BG.png") center / cover no-repeat;
+  }
+  .ai_text_container {
+    gap: 24px;
+  }
+  .ai_top {
+    display: flex;
+    gap: 48px;
+    flex-direction: row;
+    align-items: flex-start;
+    .ai_title {
+      gap: 12px;
+    }
+  }
+  .ai_face_analysis .wrap video {
+    max-width: 320px;
+    clip-path: inset(0 round 56px);
+  }
+
+  .ai_description {
+    flex-direction: row;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
+    padding: 40px 48px;
+    gap: 64px;
+  }
+  /* 개별 카드는 박스 벗기기 */
+  .ai_description_item {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    text-align: center;
+    gap: 48px;
+  }
+  .ai_text {
+    text-align: left;
+  }
+  .pc_only {
+    margin-top: 24px;
+    .ai_btn_outline,
+    .ai_btn_filled {
+      width: 270px;
+      height: 72px;
+    }
+  }
+}
 
 /* best picks - 오예은 */
 
@@ -427,6 +628,250 @@
 }
 
 /* new collection - 최호찬 */
+.new_collection {
+  width: 100%;
+  padding: 72px 0px;
+  background-color: var(--font--color);
+  color: var(--white);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.new_collection_header {
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.new_collection_eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.new_collection_desc {
+  color: var(--white);
+}
+
+.new_collection_more {
+  align-self: flex-end;
+  color: var(--gray);
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+/* 모바일 */
+.new_collection_track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.new_collection_track::-webkit-scrollbar {
+  display: none;
+}
+
+.new_collection_page {
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.new_collection_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.new_collection_item {
+  width: 100%;
+}
+
+.new_collection_card {
+  text-decoration: none;
+  color: inherit;
+  gap: 20px;
+  width: 100%;
+}
+
+.new_collection_img_box {
+  width: 120px;
+  height: 120px;
+  background-color: var(--white);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.new_card_img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.new_card_wish_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--font--color);
+  padding: 0;
+}
+
+.new_collection_info {
+  gap: 8px;
+}
+
+.new_card_brand {
+  color: var(--main--color);
+}
+
+.new_card_name {
+  color: var(--white);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.new_card_price {
+  margin-top: 2px;
+}
+
+.new_card_shipping {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  margin-top: 4px;
+  gap: 5px;
+}
+
+/* 하단 바 */
+.new_collection_indicator {
+  width: 64px;
+  height: 2px;
+  background-color: var(--gray);
+  margin: 48px auto 0 auto;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.indicator_bar {
+  width: 50%;
+  height: 100%;
+  background-color: var(--white);
+  transform: translateX(0%);
+}
+
+/* 태블릿 */
+@media (min-width: 768px) {
+  .new_collection_track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+  .new_collection_track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .new_collection_page {
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0 32px;
+  }
+
+  .new_collection_list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    align-content: start;
+  }
+
+  .new_collection_item {
+    width: 100%;
+  }
+  .new_collection_item:first-child {
+    grid-column: 1;
+    grid-row: span 3;
+  }
+
+  .new_collection_item:not(:first-child) {
+    grid-column: 2;
+  }
+
+  .new_collection_item + .new_collection_item {
+    margin-top: 24px;
+  }
+
+  .new_collection_item:first-child .new_collection_card {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .new_collection_item:first-child .new_collection_img_box {
+    width: 288px;
+    height: 288px;
+    border-radius: 10px;
+  }
+
+  .new_collection_item:not(:first-child) .new_collection_img_box {
+    width: 144px;
+    height: 144px;
+    border-radius: 10px;
+  }
+
+  .new_collection_indicator {
+    display: block;
+    margin-top: 48px;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 1440px) {
+  .new_collection_list {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 132px;
+  }
+
+  .new_collection_item + .new_collection_item {
+    margin-top: 24px;
+  }
+  .new_collection_item:first-child .new_collection_card {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1;
+    grid-row: span 2;
+    margin-top: 128px;
+    gap: 24px;
+  }
+
+  .new_collection_item:first-child .new_collection_img_box {
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+  }
+
+  .new_collection_item:not(:first-child) .new_collection_img_box {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+  }
+  .new_collection_item:nth-child(4) {
+    display: none;
+  }
+}
 
 /* brand section - 김해나 */
 
