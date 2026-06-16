@@ -14,13 +14,15 @@
   <body>
     <main>
       <section class="wrap login-container">
-        <!-- 로그인 창 헤더-->
+        <!-- 로그인 창 헤더 -->
         <div class="login-signup-header">
           <p class="logo-sub body_cap">세상에 없던 안경 쇼핑</p>
           <h1 class="logo">rounz</h1>
         </div>
 
-        <div class="input-field">
+        <!-- 로그인 입력 필드 -->
+        <fieldset class="input-field">
+          <legend class="sr-only">로그인 입력</legend>
           <form class="form-group">
             <div class="input-group">
               <input type="email" id="useremail" required placeholder=" " />
@@ -32,9 +34,11 @@
               <label for="userpw" class="floating_label body_m">Password*</label>
               <span class="material-icons-outlined visibility-icon" aria-hidden="true">visibility</span>
             </div>
+
+            <!-- submit 버튼 -->
             <button class="submit-button body_m">continue</button>
           </form>
-        </div>
+        </fieldset>
 
         <div>
           <div class="notice-line d-flex">
