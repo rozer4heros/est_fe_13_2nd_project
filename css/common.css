@@ -437,7 +437,7 @@ header .wrap > ul:last-child button {
 
 .input-field input:focus + .floating_label,
 .input-field input:not(:placeholder-shown) + .floating_label {
-  top: -8px;
+  top: -10px;
   transform: translateY(-60%);
   font-size: var(--body---caption);
   color: var(--gray);
