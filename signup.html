@@ -3,54 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/login_signup.css" />
     <title>회원가입 | ROUNZ</title>
   </head>
   <body>
     <main>
-      <section class="wrap signup-container">
-        <div>
-          <p>세상에 없던 안경 쇼핑</p>
+      <section class="wrap login-container">
+        <!-- 회원가입 창 헤더-->
+        <div class="login-signup-header">
+          <p class="logo-sub body_cap">세상에 없던 안경 쇼핑</p>
           <h1 class="logo">rounz</h1>
         </div>
 
-        <div class="input-field">
-          <form action="" class="email-field">
-            <label for="useremail"></label>
-            <input type="email" id="useremail" required placeholder="Email address*" />
+        <!-- 회원가입 입력 필드-->
+
+        <fieldset class="input-field">
+          <legend class="sr-only">회원가입 입력</legend>
+          <form class="form-group">
+            <div class="input-group">
+              <input type="email" id="useremail" required placeholder=" " />
+              <label for="useremail" class="floating_label body_m">Email address*</label>
+            </div>
+
+            <div class="input-group">
+              <input type="password" id="userpw" required placeholder=" " minlength="8" maxlength="16" />
+              <label for="userpw" class="floating_label body_m">Password*</label>
+              <span class="material-icons-outlined visibility-icon" aria-hidden="true">visibility</span>
+            </div>
+
+            <!-- 비밀번호 규칙 -->
+            <div class="pw_rule_group body_cap">
+              <p>비밀번호 규칙:</p>
+              <ul>
+                <li>
+                  <span class="material-icons-outlined" aria-hidden="true">check_circle</span>
+                  최소 8자리 이상 영문 대소문자
+                </li>
+                <li>
+                  <span class="material-icons-outlined" aria-hidden="true">check_circle</span>
+                  영문, 숫자, 특수문자(!@#$%^*) 3가지 조합
+                </li>
+                <li>
+                  <span class="material-icons-outlined" aria-hidden="true">check_circle</span>
+                  아이디와 3자 이상 동일한 문자 금지
+                </li>
+              </ul>
+            </div>
+
+            <!-- 이용약관 동의 -->
+            <div class="agree-all-group">
+              <input type="checkbox" id="agree-all" />
+              <label for="agree-all" class="body_m">전체 동의</label>
+            </div>
+
+            <hr class="divider" />
+
+            <fieldset class="terms-group">
+              <legend class="sr-only">이용 약관 동의</legend>
+              <div class="terms-item">
+                <input type="checkbox" id="first-terms" name="terms-required" />
+                <label for="first-terms" class="body_m">[필수] 이용약관 동의</label>
+              </div>
+
+              <div class="terms-item">
+                <input type="checkbox" id="second-terms" name="terms-required" />
+                <label for="second-terms" class="body_m">[필수] 개인정보 수집 및 이용 동의</label>
+              </div>
+
+              <div class="terms-item">
+                <input type="checkbox" id="third-terms" name="terms-optional" />
+                <label for="third-terms" class="body_m">[선택] 마케팅 정보 수신 동의</label>
+              </div>
+            </fieldset>
+
+            <!-- 주석 -->
+            <button class="submit-button body_m">create account</button>
           </form>
+        </fieldset>
 
-          <form action="" class="password-field">
-            <label for="userpw">
-              <span>visibility</span>
-            </label>
-            <input type="password" id="userpw" required placeholder="Password*" minlength="8" maxlength="16" />
-          </form>
-
-          <form>
-            <label for="agree-all">전체 동의</label>
-            <input type="radio" id="agree-all" />
-          </form>
-
-          <hr />
-
-          <form>
-            <label for="first-terms">[필수] 이용약관 동의</label>
-            <input type="radio" id="first-terms" name="terms-rquired" />
-
-            <label for="second-terms">[필수] 개인정보 수집 및 이용 동의</label>
-            <input type="radio" id="second-terms" name="terms-rquired" />
-
-            <label for="third-terms">[선택] 마케팅 정보 수신 동의</label>
-            <input type="radio" id="third-terms" name="terms-optional" />
-          </form>
-          <button>create account</button>
-          <!-- 컴포넌트로 대체 예정-->
-        </div>
-
-        <div class="notice-line">
+        <div class="notice-line d-flex">
           <a href="#login.html" class="notice-line-text body_cap">로그인 화면으로 돌아가기</a>
           <a href="#index.html" class="notice-line-link body_cap">홈으로 돌아가기</a>
         </div>

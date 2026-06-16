@@ -121,19 +121,17 @@
 .ai_face_analysis {
   width: 100%;
   height: auto;
-  padding: 96px 0;
+  padding: 96px 40px;
   position: relative;
+  box-sizing: border-box;
 }
 .ai_face_analysis::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url(/image/ai_face_analysis_BG\ -\ M.png) center / cover no-repeat var(--white);
+  background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
   opacity: 0.5;
   z-index: -1;
-}
-.ai_face_analysis_wrapper {
-  padding: 0 20px;
 }
 .ai_text_container {
   gap: 8px;
@@ -156,7 +154,7 @@
   gap: 8px;
 
   p {
-    background: var(--main--light);
+    background: var(--light--gray);
     color: var(--point--color);
     font-size: var(--body---caption);
     line-height: var(--body---caption-lh);
@@ -169,32 +167,192 @@
 .ai_face_analysis_wrapper video {
   display: block;
   width: 100%;
-  margin: 0 auto;
   max-width: 188px;
-  object-fit: cover;
-  border-radius: 24px;
-  object-position: center;
   aspect-ratio: 188/384;
+  margin: 0 auto;
+  clip-path: inset(0 round 36px);
 }
 .ai_description {
+  box-sizing: border-box;
+  width: 100%;
+  list-style: none;
+  .material-icons-round {
+    margin: 24px 0;
+    font-size: 32px;
+  }
 }
 .ai_description_item {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 16px 56px;
+  gap: 64px;
+  box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  .ai_text {
+    gap: 8px;
+  }
   h3 {
     color: var(--point--color);
     font-size: var(--body---x-large);
     line-height: var(--body---x-large-lh);
+    font-weight: 700;
   }
+  p {
+    font-size: clamp(var(--body---caption), 3.5vw, var(--body---medium));
+    line-height: var(--body---medium-lh);
+  }
+}
+
+.ai_btn {
+  width: 100%;
+  box-sizing: border-box;
+
+  .ai_btn_outline,
+  .ai_btn_filled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    border-radius: 999px;
+    font-size: var(--display---h4);
+    font-weight: 600;
+
+    gap: 8px;
+
+    animation: firefly 2.5s ease-in-out infinite;
+  }
+  .material-icons-round {
+    font-size: var(--display---h2);
+  }
+
+  .ai_btn_outline {
+    background: var(--white);
+    color: var(--main--color);
+  }
+  .ai_btn_filled {
+    background: var(--main--color);
+    color: var(--white);
+  }
+}
+
+@keyframes firefly {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(48, 134, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(48, 134, 255, 0.5);
+    transform: scale(1.01);
+  }
+}
+/* 두 번째 버튼은 살짝 늦게 시작 */
+.ai_btn_filled {
+  animation-delay: 0.6s;
 }
 
 /* 태블릿 */
 @media (min-width: 481px) {
-  .ai_face_analysis {
+  .ai_container {
+    gap: 64px;
   }
+  .ai_text_container {
+    gap: 12px;
+  }
+}
+.ai_text_container .ai_title {
+  h2 {
+    font-size: var(--display---h3);
+    line-height: var(--display---h4-lh);
+    font-weight: 600;
+  }
+  p {
+    font-size: var(--display---h2);
+    line-height: var(--display---h2-lh);
+    font-weight: 700;
+  }
+}
+
+.hashtag {
+  flex-wrap: nowrap;
+  gap: 12px;
+
+  p {
+    font-size: var(--body---medium);
+  }
+}
+
+.ai_text {
+  gap: 20px;
+  h3 {
+    font-size: var(--display---h4);
+    line-height: var(--display---h4-lh);
+  }
+  p {
+    font-size: var(--body---medium);
+    line-height: var(--body---medium-lh);
+  }
+}
+
+.ai_btn_outline,
+.ai_btn_filled {
+  font-size: var(--body---large);
 }
 
 /* pc버전 */
 @media (min-width: 769px) {
   .ai_face_analysis {
+    width: 100%;
+    height: auto;
+    padding: 96px 240px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .ai_face_analysis ::before {
+    background: url("/image/ai_face_analysis_BG.png") center / cover no-repeat;
+  }
+  .ai_top {
+    display: flex;
+    gap: 48px;
+    align: left-top;
+    .ai_title {
+      gap: 12px;
+    }
+  }
+  .ai_face_analysis_wrapper video {
+    max-width: 320px;
+    clip-path: inset(0 round 56px);
+  }
+
+  .ai_description {
+    flex-direction: row;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
+    padding: 40px 48px;
+    gap: 96px;
+  }
+  /* 개별 카드는 박스 벗기기 */
+  .ai_description_item {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    text-align: center;
+    gap: 48px;
+  }
+  .ai_text {
+    text-align: left;
+    p {
+      font-weight: 400;
+    }
   }
 }
 

@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <title>Document</title>
+    <title>홈 | ROUNZ</title>
   </head>
   <body class="page_main">
     <header>
@@ -33,62 +34,67 @@
           </div>
         </div>
       </section>
-
+      <!-- ai_face_analysis - 문송연 -->
       <section class="ai_face_analysis">
         <div class="ai_face_analysis_wrapper">
-          <div class="ai_text_container d-flex flex-column">
-            <div class="ai_title body">
-              <h2>핏을 확인하고, 선택은 더 정확하게</h2>
-              <p>AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
-            </div>
-            <div class="hashtag body d-flex">
-              <p># 67개 얼굴 좌표 분석</p>
-              <p># 실시간 AR 가상피팅</p>
-              <p># 8가지 얼굴형 분석</p>
-            </div>
-            <div class="ai_btn pc_only">
-              <a href="#" class="ai_btn_outline body">AI 분석 바로가기</a>
-              <a href="#" class="ai_btn_filled body">가상피팅 하러가기</a>
-            </div>
-          </div>
-          <video
-            src="https://image.rounz.com/newrounz/collection/240925/video_etc_vf2.mp4"
-            muted
-            autoplay
-            playsinline
-            loop
-          ></video>
-          <div class="ai_description">
-            <!-- 01 -->
-            <div class="ai_description_item body">
-              <img src="image/얼굴형분석img.png" alt="" />
-              <div class="ai_text">
-                <h3>01 <br />얼굴형 분석</h3>
-                <p>내 얼굴 특징을 분석해 <br />스타일 선택의 기준을 찾아요.</p>
+          <div class="ai_container d-flex flex-column g-2">
+            <div class="ai_top">
+              <div class="ai_text_container d-flex flex-column">
+                <div class="ai_title body">
+                  <h2>핏을 확인하고, 선택은 더 정확하게</h2>
+                  <p>AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
+                </div>
+                <div class="hashtag body d-flex">
+                  <p># 67개 얼굴 좌표 분석</p>
+                  <p># 실시간 AR 가상피팅</p>
+                  <p># 8가지 얼굴형 분석</p>
+                </div>
+                <div class="ai_btn pc_only">
+                  <a href="#" class="ai_btn_outline body">AI 분석 바로가기</a>
+                  <a href="#" class="ai_btn_filled body">가상피팅 하러가기</a>
+                </div>
               </div>
+
+              <video src="video/ai_face.mp4" muted autoplay playsinline loop></video>
             </div>
-            <span class="material-icons-round below_pc"> keyboard_arrow_down </span>
-            <!-- 02 -->
-            <div class="ai_description_item body">
-              <img src="image/AI추천img.png" alt="" />
-              <div class="ai_text">
-                <h3>02 <br />AI 추천</h3>
-                <p>얼굴 분석 결과를 바탕으로 <br />어울리는 프레임을 추천해요.</p>
-              </div>
+
+            <ul class="ai_description d-flex flex-column align-items-center">
+              <!-- 01 -->
+              <li class="ai_description_item body d-flex align-items-center">
+                <img src="image/얼굴형분석img.png" alt="얼굴형 분석 아이콘" />
+                <div class="ai_text d-flex flex-column">
+                  <h3 class="display_h3">01 <br />얼굴형 분석</h3>
+                  <p class="body_xl">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
+                </div>
+              </li>
+              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
+              <!-- 02 -->
+              <li class="ai_description_item body d-flex align-items-center">
+                <img src="image/AI추천img.png" alt="AI 추천 아이콘" />
+                <div class="ai_text d-flex flex-column">
+                  <h3 class="display_h3">02 <br />AI 추천</h3>
+                  <p class="body_xl">분석 결과로 어울리는 프레임을 추천해요.</p>
+                </div>
+              </li>
+              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
+              <!-- 03 -->
+              <li class="ai_description_item body d-flex align-items-center">
+                <img src="image/가상피팅img.png" alt="가상피팅 아이콘" />
+                <div class="ai_text d-flex flex-column">
+                  <h3 class="display_h3">03 <br />가상피팅</h3>
+                  <p class="body_xl">추천 안경을 화면에서 바로 착용해보세요.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="ai_btn below_pc d-flex flex-column align-items-center g-1">
+              <a href="#" class="ai_btn_outline body">
+                AI 분석 바로가기<span class="material-icons-round"> arrow_circle_right </span></a
+              >
+              <a href="#" class="ai_btn_filled body"
+                >가상피팅 하러가기<span class="material-icons-round"> arrow_circle_right </span></a
+              >
             </div>
-            <span class="material-icons-round below_pc"> keyboard_arrow_down </span>
-            <!-- 03 -->
-            <div class="ai_description_item body">
-              <img src="image/가상피팅img.png" alt="" />
-              <div class="ai_text">
-                <h3>03 <br />가상피팅</h3>
-                <p>추천 안경을 화면에서 바로 <br />착용해보며 비교할 수 있어요.</p>
-              </div>
-            </div>
-          </div>
-          <div class="ai_btn below_pc">
-            <a href="#" class="ai_btn_outline body">AI 분석 바로가기</a>
-            <a href="#" class="ai_btn_filled body">가상피팅 하러가기</a>
           </div>
         </div>
       </section>
