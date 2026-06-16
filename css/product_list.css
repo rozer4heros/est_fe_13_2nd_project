@@ -54,14 +54,14 @@
   margin-top: var(--base-unit);
   overflow: hidden;
   max-height: 0px;
-  transition: 1s;
+  transition: 0.5s ease-in;
 
   .select_all_sizes {
     grid-column: 1 / -1;
   }
 }
 .filter_drawer_accordion_list li.active ul {
-  max-height: calc(var(--base-unit) * 50);
+  max-height: calc(var(--base-unit) * 63);
 }
 .filter_drawer_accordion_list .filter_drawer_brand .filter_drawer_btn,
 .filter_drawer_accordion_list .filter_drawer_shape .filter_drawer_btn {
@@ -95,22 +95,44 @@ main {
 }
 
 .filter_active_list .reset_btn {
-  cursor: pointer;
   color: #22283180;
+  cursor: pointer;
 }
 
 .sort_dropdown {
   position: relative;
   z-index: 1;
 }
+.sort_dropdown_trigger {
+  cursor: pointer;
+}
 .sort_dropdown_menu {
   position: absolute;
+  top: 100%;
+  right: 0;
+  width: 144px;
+
+  background: var(--white);
+  color: var(--gray);
+  box-shadow: var(--shadow);
+
   overflow: hidden;
   max-height: 0;
-  transition: 1s;
+  transition: 0.5s ease-in;
 }
 .sort_dropdown.active .sort_dropdown_menu {
-  max-height: calc(var(--base-unit) * 20);
+  max-height: calc(var(--base-unit) * 31);
+}
+.sort_dropdown_menu li {
+  width: 120px;
+  padding: var(--base-unit-x0-5) 0;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.sort_dropdown_menu li.selected {
+  background: var(--light--gray);
+  color: var(--font--color);
 }
 
 .product_list {
