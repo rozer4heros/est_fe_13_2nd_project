@@ -41,6 +41,7 @@ main {
   margin-top: calc(var(--base-unit) * 2);
 }
 
+/* -OR- 구분선 */
 .divider-text {
   margin-top: calc(var(--base-unit) * 2);
   margin-bottom: calc(var(--base-unit) * 3);
@@ -111,6 +112,7 @@ main {
   font-weight: 700;
 }
 
+/* 체크박스 모양 커스텀 */
 .input-field .agree-all-group input[type="checkbox"],
 .input-field .terms-item input[type="checkbox"] {
   appearance: none;
@@ -126,6 +128,7 @@ main {
   transition: border-color 0.15s;
 }
 
+/* input 호버 및 체크 시 색상 변동 */
 .input-field .agree-all-group input[type="checkbox"]:hover,
 .input-field .terms-item input[type="checkbox"]:hover,
 .input-field .agree-all-group input[type="checkbox"]:checked,
@@ -133,7 +136,9 @@ main {
   border-color: var(--main--color);
 }
 
-.terms-group > legend {
+/* fieldset의 legend 숨김 처리 */
+.terms-group > legend,
+.input-field > legend {
   position: absolute;
   width: 1px;
   height: 1px;
