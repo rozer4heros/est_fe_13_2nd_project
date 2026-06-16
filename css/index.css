@@ -45,12 +45,25 @@
 
 .widget_coupon {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+.widget_coupon_track {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease-in-out;
+}
+.widget_coupon_slide {
+  width: 50%;
+  flex-shrink: 0;
 }
 
 .widget_coupon img {
   width: 100%;
   max-width: 100%;
   display: block;
+  object-fit: cover;
 }
 
 /* 태블릿 */
@@ -107,13 +120,8 @@
   .widget_coupon {
     height: 144px;
   }
-
-  .coupon_title {
-    font-size: 32px;
-  }
-
-  .coupon_desc {
-    font-size: 24px;
+  .widget_coupon_track .widget_coupon_slide {
+    height: 100%;
   }
 }
 
