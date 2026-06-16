@@ -1,5 +1,6 @@
 export function renderHeader() {
   const target = document.querySelector("header");
+  if (!target) return;
   target.innerHTML = `
       <div class="wrap d-flex justify-content-between align-items-center">
         <button class="below_pc"><span class="material-icons-round"> menu </span></button>

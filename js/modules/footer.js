@@ -1,5 +1,6 @@
 export function renderFooter() {
   const target = document.querySelector("footer");
+  if (!target) return;
   target.innerHTML = `
       <div class="wrap d-flex flex-column">
         <div class="footer_heading">

@@ -1,5 +1,6 @@
 export function renderNavDrawer() {
   const target = document.querySelector(".nav_drawer_wrap");
+  if (!target) return;
   target.classList.add("drawer_wrap", "below_pc");
   target.innerHTML = `
       <div class="drawer">

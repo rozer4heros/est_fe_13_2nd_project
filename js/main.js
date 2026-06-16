@@ -1,13 +1,15 @@
 import { renderHeader } from "./modules/header.js";
 import { renderNavDrawer } from "./modules/nav_drawer.js";
 import { renderFooter } from "./modules/footer.js";
+
+/* new collection */
 import { initNewCollection } from "./newCollection.js";
 
-/* =========================
-    Limited Time Offer 섹션
-    김해나 작업
-  ========================== */
+// ==========================================
+// DOM Selectors
+// ==========================================
 
+/* Limited Time Offer 섹션 - 김해나 작업 */
 const sliderTrack = document.querySelector(".limited_slider_track");
 const prevButton = document.querySelector(".limited_btn_prev");
 const nextButton = document.querySelector(".limited_btn_next");
@@ -17,9 +19,23 @@ const hoursEl = document.querySelector(".timer_hours");
 const minEl = document.querySelector(".timer_min");
 const secEl = document.querySelector(".timer_sec");
 
+/* widget coupon slide */
+const widgetTrack = document.querySelector(".widget_coupon_track");
+const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
+
+// ==========================================
+// State & Constants
+// ==========================================
+
+/* Limited Time Offer 섹션 - 김해나 작업 */
 const targetDate = new Date("July 17, 2026 10:00:00").getTime();
 let timerInterval = null;
 
+// ==========================================
+// Functions & Core Logic
+// ==========================================
+
+/* Limited Time Offer 섹션 - 김해나 작업 */
 function updateTimer() {
   const now = new Date().getTime();
   const difference = targetDate - now;
@@ -125,13 +141,7 @@ function initSwiper() {
   }
 }
 
-loadProductsData();
-
 /* widget coupon slide */
-
-const widgetTrack = document.querySelector(".widget_coupon_track");
-const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
-
 if (widgetTrack && widgetSlides.length > 0) {
   let currentIndex = 0;
   const slideCount = widgetSlides.length;
@@ -145,10 +155,21 @@ if (widgetTrack && widgetSlides.length > 0) {
   setInterval(nextSlide, slideInterval);
 }
 
-/* widget coupon slide */
+// ==========================================
+// Event Listeners
+// ==========================================
+
+// ==========================================
+// Initialization & Execution
+// ==========================================
+
+/* Render header, nav_drawer, footer - 유태구 작업 */
+renderHeader();
+renderNavDrawer();
+renderFooter();
+
+/* Limited Time Offer 섹션 - 김해나 작업 */
+loadProductsData();
 
 /* new collection */
-
 initNewCollection();
-
-/* new collection */
