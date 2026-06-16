@@ -547,13 +547,15 @@ input:focus {
 
 /* Filter drawer button */
 .filter_drawer_btn {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 100%;
   padding: var(--base-unit) 0;
   border: 1px solid var(--light--gray);
+  border-radius: 10px;
   box-sizing: border-box;
-
-  text-align: center;
 
   cursor: pointer;
 }
