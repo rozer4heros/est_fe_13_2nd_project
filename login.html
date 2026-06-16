@@ -3,80 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/login_signup.css" />
     <title>로그인 | ROUNZ</title>
   </head>
   <body>
     <main>
-      <section class="wrap login-cantainer">
-        <!-- 로그인 창 헤더-->
-         <div>
-            <p>세상에 없던 안경 쇼핑</p>
-            <h1 class="logo">rounz</h1>
-         </div>
+      <section class="wrap login-container">
+        <!-- 로그인 창 헤더 -->
+        <div class="login-signup-header">
+          <p class="logo-sub body_cap">세상에 없던 안경 쇼핑</p>
+          <h1 class="logo">rounz</h1>
+        </div>
 
-         <div class="input-field">
+        <!-- 로그인 입력 필드 -->
+        <fieldset class="input-field">
+          <legend class="sr-only">로그인 입력</legend>
+          <form class="form-group">
+            <div class="input-group">
+              <input type="email" id="useremail" required placeholder=" " />
+              <label for="useremail" class="floating_label body_m">Email address*</label>
+            </div>
 
-          <form action="" class="email-field">
-            <label for="useremail"></label>
-            <input type="email" id="useremail" required placeholder="Email address*">
+            <div class="input-group">
+              <input type="password" id="userpw" required placeholder=" " minlength="8" maxlength="16" />
+              <label for="userpw" class="floating_label body_m">Password*</label>
+              <span class="material-icons-outlined visibility-icon" aria-hidden="true">visibility</span>
+            </div>
+
+            <!-- submit 버튼 -->
+            <button class="submit-button body_m">continue</button>
           </form>
+        </fieldset>
 
-          <form action="" class="password-field">
-            <label for="userpw">
-              <span>visibility</span>
-            </label>
-            <input type="password" id="userpw" required placeholder="Password*" minlength="8" maxlength="16">
-          </form>
+        <div>
+          <div class="notice-line d-flex">
+            <span class="notice-line-text body_cap">아직 회원이 아니신가요?</span>
+            <a href="#signup.html" class="notice-line-link body_cap">회원가입하기</a>
+          </div>
 
-          <button>continue</button> <!-- 컴포넌트로 대체 예정-->
-          <p>아직 회원이 아니신가요?</p>
-          <p><a href="#signup.html">회원가입하기</a></p>
-         </div>
+          <div class="divider-text body_cap d-flex">or</div>
+        </div>
 
-         <div class="divider">
-          <hr>
-          <span>or</span>
-          <hr>
-         </div>
+        <ul class="social_button_list d-flex">
+          <li>
+            <a href="#" class="social_kakao">
+              <img src="image/social_icon/Button_Kakao_Login.png" alt="카카오로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_naver">
+              <img src="image/social_icon/Button_Naver_Login.png" alt="네이버로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_google">
+              <img src="image/social_icon/Button_Google_Login.png" alt="구글로 로그인하기" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social_apple">
+              <img src="image/social_icon/Button_Apple_Login.png" alt="애플로 로그인하기" />
+            </a>
+          </li>
+        </ul>
 
-         <div class="social-login">
-          <ul>
-            <li>
-              <a href="#">
-                <img src="" alt="카카오로 로그인하기">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="" alt="네이버로 로그인하기">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="" alt="구글로 로그인하기">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="" alt="애플로 로그인하기">
-              </a>
-            </li>
-          </ul>
-         </div>
-
-         <div class="find-account">
-          <ul>
-            <li>
-              <a href="#">아이디 찾기</a>
-            </li>
-            <li>
-              <a href="#">비밀번호 찾기</a>
-            </li>
-         </div>
-
+        <div class="find-account">
+          <a href="#">아이디 찾기</a>
+          <a href="#">비밀번호 찾기</a>
+        </div>
       </section>
     </main>
   </body>

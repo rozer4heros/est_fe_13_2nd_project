@@ -1,0 +1,213 @@
+/* 작업자: 김해나; */
+
+body {
+  background: url("../image/login_background.png") no-repeat fixed center / cover;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active {
+  box-shadow: none;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.login-signup-header {
+  margin-bottom: calc(var(--base-unit) * 3);
+}
+
+.logo-sub {
+  margin-bottom: 16px;
+}
+
+.submit-button {
+  margin-top: calc(var(--base-unit) * 2);
+}
+
+/* -OR- 구분선 */
+.divider-text {
+  margin-top: calc(var(--base-unit) * 2);
+  margin-bottom: calc(var(--base-unit) * 3);
+}
+
+/* 아이디 찾기ㅣ비밀번호 찾기 */
+.find-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(var(--base-unit) * 3);
+}
+
+.find-account a:hover {
+  color: var(--main--color);
+}
+
+.find-account a + a::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background-color: var(--light--gray);
+  margin: 0 calc(var(--base-unit) * 2);
+  vertical-align: middle;
+}
+
+/* 이용약관 그룹 */
+.agree-all-group label,
+.terms-item label {
+  color: var(--font--color);
+  cursor: pointer;
+  line-height: var(--base-unit);
+}
+
+/* 전체 동의 박스 정렬 */
+.input-field .agree-all-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* 중간 실선 */
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--light--gray);
+  margin: 7px 0;
+  width: 100%;
+}
+
+.input-field .terms-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.input-field .terms-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.input-field .agree-all-group label {
+  font-weight: 700;
+}
+
+/* 체크박스 모양 커스텀 */
+.input-field .agree-all-group input[type="checkbox"],
+.input-field .terms-item input[type="checkbox"] {
+  appearance: none;
+  width: var(--base-unit) !important;
+  height: var(--base-unit) !important;
+  padding: 0;
+  box-sizing: border-box;
+
+  border: 3px solid var(--light--gray);
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+/* input 호버 및 체크 시 색상 변동 */
+.input-field .agree-all-group input[type="checkbox"]:hover,
+.input-field .terms-item input[type="checkbox"]:hover,
+.input-field .agree-all-group input[type="checkbox"]:checked,
+.input-field .terms-item input[type="checkbox"]:checked {
+  border-color: var(--main--color);
+}
+
+/* fieldset의 legend 숨김 처리 */
+.terms-group > legend,
+.input-field > legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* 과거 브라우저 호환용 */
+  clip-path: inset(50%); /* 최신 웹 표준 방식 */
+  border: 0;
+  white-space: nowrap;
+}
+
+/* 비밀번호 규칙 */
+.pw_rule_group {
+  width: 100%;
+  color: var(--gray);
+  background: var(--main--light);
+  border: 1px solid var(--light--gray);
+  border-radius: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-height: 0;
+  padding: 0 var(--base-unit);
+  overflow: hidden;
+  opacity: 0;
+
+  transition:
+    max-height 0.3s ease-in-out,
+    padding 0.3s ease-in-out,
+    opacity 0.2s ease,
+    border-color 0.3s;
+}
+
+/* 비밀번호 입력 필드 활성화 시 비밀번호 규칙 노출 */
+.input-group:has(input[type="password"]:focus) + .pw_rule_group {
+  max-height: 200px;
+  padding: var(--base-unit);
+  opacity: 1;
+  border-color: var(--light--gray);
+  margin-top: 10px;
+}
+
+.pw_rule_group > p {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pw_rule_group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.pw_rule_group ul li {
+  display: flex;
+  align-items: center;
+}
+
+.pw_rule_group ul li .material-icons-outlined {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* 비밀번호 규칙 통과(active로 변경) 시 색상 변동 */
+.pw_rule_group ul li.active .material-icons-outlined {
+  color: var(--main--color);
+}
