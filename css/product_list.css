@@ -1,0 +1,16 @@
+.product_list {
+  display: grid;
+  gap: var(--base-unit-x0-5);
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 481px) {
+  .product_list {
+    gap: var(--base-unit-x2) var(--base-unit);
+  }
+}
+@media (min-width: 769px) {
+  .product_list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--base-unit-x3) var(--base-unit);
+  }
+}

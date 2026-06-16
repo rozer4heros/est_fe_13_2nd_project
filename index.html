@@ -29,8 +29,15 @@
             <li><img src="image/widget_lens_analysis.png" alt="" /><span class="body_m">렌즈맞춤</span></li>
           </ul>
 
-          <div class="widget_coupon d-flex justify-content-center align-items-center">
-            <img src="image/widget_coupon.png" alt="2만원 즉시 할인 쿠폰" />
+          <div class="widget_coupon">
+            <div class="widget_coupon_track">
+              <div class="widget_coupon_slide">
+                <img src="image/widget_coupon.png" alt="2만원 즉시 할인 쿠폰" />
+              </div>
+              <div class="widget_coupon_slide">
+                <img src="image/widget_coupon2.png" alt="추가 할인 쿠폰" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -113,16 +120,16 @@
         <div></div>
       </section>
       <section class="new_collection">
-        <div class="new_collection_inner">
-          <div class="new_collection_header text-center">
+        <div class="wrap">
+          <div class="new_collection_header d-flex flex-column align-items-center text-center">
             <div>
               <p class="new_collection_eyebrow display_h1">new collection</p>
               <p class="new_collection_desc body_xl">새롭게 입고된 브랜드 컬렉션</p>
             </div>
-            <a href="product_list.html" class="new_collection_more">더보기 &rarr;</a>
+            <a href="product_list.html" class="new_collection_more body_cap">더보기 &rarr;</a>
           </div>
 
-          <ul class="new_collection_list" aria-label="새 컬렉션 상품"></ul>
+          <div class="new_collection_track"></div>
 
           <div class="new_collection_indicator">
             <div class="indicator_bar"></div>
@@ -212,6 +219,6 @@
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </footer>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
