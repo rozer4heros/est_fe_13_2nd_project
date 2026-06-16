@@ -27,8 +27,6 @@
 .filter_drawer_accordion_list {
   padding: var(--base-unit-x3) 0;
 }
-.filter_drawer_accordion_list li {
-}
 .filter_drawer_accordion_list .material-icons-round {
   font-size: var(--base-unit-x2);
   line-height: var(--base-unit-x2);
@@ -92,6 +90,16 @@
 
 main {
   padding: calc(var(--base-unit) * 4) 0;
+}
+
+.filter_dropdown_list button {
+  width: var(--base-unit-x2);
+  min-width: var(--base-unit-x2);
+  height: var(--base-unit-x2);
+  border-radius: 100%;
+
+  background: var(--font--color);
+  color: var(--white);
 }
 
 .filter_active_list .reset_btn {

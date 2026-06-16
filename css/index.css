@@ -513,6 +513,7 @@ p {
   text-align: center;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 12px;
@@ -791,6 +792,7 @@ p {
   color: var(--white);
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
