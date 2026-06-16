@@ -91,33 +91,44 @@
             <li><img src="image/widget_lens_analysis.png" alt="" /><span class="body_m">렌즈맞춤</span></li>
           </ul>
 
-          <div class="widget_coupon d-flex justify-content-center align-items-center">
-            <img src="image/widget_coupon.png" alt="2만원 즉시 할인 쿠폰" />
+          <div class="widget_coupon">
+            <div class="widget_coupon_track">
+              <div class="widget_coupon_slide">
+                <img src="image/widget_coupon.png" alt="2만원 즉시 할인 쿠폰" />
+              </div>
+              <div class="widget_coupon_slide">
+                <img src="image/widget_coupon2.png" alt="추가 할인 쿠폰" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
       <!-- ai_face_analysis - 문송연 -->
       <section class="ai_face_analysis">
-        <div class="ai_face_analysis_wrapper">
+        <div class="wrap">
           <div class="ai_container d-flex flex-column g-2">
-            <div class="ai_top">
+            <div class="ai_top d-flex flex-column">
               <div class="ai_text_container d-flex flex-column">
-                <div class="ai_title body">
-                  <p>핏을 확인하고, 선택은 더 정확하게</p>
-                  <h2>AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</h2>
+                <div class="ai_title body d-flex flex-column">
+                  <h2 class="display_h4">핏을 확인하고, 선택은 더 정확하게</h2>
+                  <p class="display_h2">AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
                 </div>
                 <div class="hashtag body d-flex">
-                  <p># 67개 얼굴 좌표 분석</p>
-                  <p># 실시간 AR 가상피팅</p>
-                  <p># 8가지 얼굴형 분석</p>
+                  <p class="body_m"># 67개 얼굴 좌표 분석</p>
+                  <p class="body_m"># 실시간 AR 가상피팅</p>
+                  <p class="body_m"># 8가지 얼굴형 분석</p>
                 </div>
-                <div class="ai_btn pc_only">
-                  <a href="#" class="ai_btn_outline body">AI 분석 바로가기</a>
-                  <a href="#" class="ai_btn_filled body">가상피팅 하러가기</a>
+                <div class="ai_btn pc_only d-flex flex-column g-1">
+                  <a href="#" class="ai_btn_outline body display_h3">AI 분석 바로가기 <span class="material-icons-round"> arrow_circle_right </span></a
+              ></a>
+                  <a href="#" class="ai_btn_filled body display_h3">가상피팅 하러가기 <span class="material-icons-round"> arrow_circle_right </span></a
+              ></a>
                 </div>
               </div>
 
-              <video src="video/ai_face.mp4" muted autoplay playsinline loop></video>
+              <video muted autoplay playsinline loop>
+                <source src="video/ai_face.mp4" type="video/mp4" />
+              </video>
             </div>
 
             <ul class="ai_description d-flex flex-column align-items-center">
@@ -125,35 +136,35 @@
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/얼굴형분석img.png" alt="얼굴형 분석 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">01 <br />얼굴형 분석</h3>
-                  <p class="body_xl">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
+                  <h3 class="display_h4">01 <br />얼굴형 분석</h3>
+                  <p class=".body_l">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
                 </div>
+                <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               </li>
-              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               <!-- 02 -->
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/AI추천img.png" alt="AI 추천 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">02 <br />AI 추천</h3>
-                  <p class="body_xl">분석 결과로 어울리는 프레임을 추천해요.</p>
+                  <h3 class="display_h4">02 <br />AI 추천</h3>
+                  <p class="body_l">분석 결과로 어울리는 프레임을 추천해요.</p>
                 </div>
+                <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               </li>
-              <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               <!-- 03 -->
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/가상피팅img.png" alt="가상피팅 아이콘" />
                 <div class="ai_text d-flex flex-column">
-                  <h3 class="display_h3">03 <br />가상피팅</h3>
-                  <p class="body_xl">추천 안경을 화면에서 바로 착용해보세요.</p>
+                  <h3 class="display_h4">03 <br />가상피팅</h3>
+                  <p class="body_l">추천 안경을 화면에서 바로 착용해보세요.</p>
                 </div>
               </li>
             </ul>
 
             <div class="ai_btn below_pc d-flex flex-column align-items-center g-1">
-              <a href="#" class="ai_btn_outline body">
+              <a href="#" class="ai_btn_outline body display_h4">
                 AI 분석 바로가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
-              <a href="#" class="ai_btn_filled body"
+              <a href="#" class="ai_btn_filled body display_h4"
                 >가상피팅 하러가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
             </div>
@@ -171,16 +182,16 @@
         <div></div>
       </section>
       <section class="new_collection">
-        <div class="new_collection_inner">
-          <div class="new_collection_header text-center">
+        <div class="wrap">
+          <div class="new_collection_header d-flex flex-column align-items-center text-center">
             <div>
               <p class="new_collection_eyebrow display_h1">new collection</p>
               <p class="new_collection_desc body_xl">새롭게 입고된 브랜드 컬렉션</p>
             </div>
-            <a href="product_list.html" class="new_collection_more">더보기 &rarr;</a>
+            <a href="product_list.html" class="new_collection_more body_cap">더보기 &rarr;</a>
           </div>
 
-          <ul class="new_collection_list" aria-label="새 컬렉션 상품"></ul>
+          <div class="new_collection_track"></div>
 
           <div class="new_collection_indicator">
             <div class="indicator_bar"></div>
@@ -270,6 +281,6 @@
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </footer>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
