@@ -531,6 +531,8 @@ input:focus {
   border-radius: 5px;
   background: var(--white);
   color: var(--gray);
+
+  cursor: pointer;
 }
 .filter_dropdown.active .filter_dropdown_btn {
   border: 1px solid var(--font--color);
@@ -543,49 +545,22 @@ input:focus {
   display: block;
 }
 
-/* Filter drawer */
-.filter_drawer {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  max-height: 90%;
+/* Filter drawer button */
+.filter_drawer_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  background: var(--white);
-  transform: translateY(100%);
-  transition: 0.3s ease-in;
-}
-.drawer_wrap.active .filter_drawer {
-  transform: translateY(0%);
-  transition: 0.3s ease-out;
-}
+  width: 100%;
+  padding: var(--base-unit) 0;
+  border: 1px solid var(--light--gray);
+  border-radius: 10px;
+  box-sizing: border-box;
 
-.filter_drawer_accordion_list .material-icons-round {
-  width: var(--base-unit-x2);
-  height: var(--base-unit-x2);
-  text-align: center;
-  font-size: var(--base-unit-x2);
-  line-height: 100%;
+  cursor: pointer;
+}
+.filter_drawer_btn:hover {
   box-shadow: var(--shadow);
-  border-radius: 100%;
-}
-.filter_drawer_accordion_list li ul {
-  display: none;
-}
-.filter_drawer_accordion_list li.active {
-  .filter_drawer_category {
-  }
-  .filter_drawer_brand {
-  }
-  .filter_drawer_shape {
-  }
-  .filter_drawer_gender {
-  }
-  .filter_drawer_frame_size {
-  }
-  .filter_drawer_price {
-  }
 }
 
 /* Product Card */

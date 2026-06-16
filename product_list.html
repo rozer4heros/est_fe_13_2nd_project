@@ -13,11 +13,187 @@
   </head>
   <body>
     <header></header>
-    <div class="drawer"></div>
+    <div class="nav_drawer_wrap drawer_wrap below_pc">
+      <!-- JS로 넣을 예정 -->
+      <!-- components.html 참고 -->
+    </div>
+    <div class="filter_drawer_wrap drawer_wrap below_pc">
+      <div class="filter_drawer">
+        <div><h3 class="display_h1 text-center">filters</h3></div>
+        <ul class="filter_drawer_accordion_list display_h2 d-flex flex-column g-1">
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>카테고리</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_category body_l">
+              <li><label for="" class="filter_drawer_btn">안경테</label></li>
+              <li><label for="" class="filter_drawer_btn">선글라스</label></li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>브랜드</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_brand body_l">
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/ray_ban_logo.png" alt="" />
+                  <span class="sr_only">Ray-Ban</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Locomotive</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Lash</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Izipizi</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/oklay.png" alt="" />
+                  <span class="sr_only">Oakley</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Carven</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Rounz</span>
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="sr_only">Chloe</span>
+                </label>
+              </li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>모양</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_shape body_l">
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/round.png" alt="" />
+                  라운드
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/square.png" alt="" />
+                  스퀘어
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/cat_eye.png" alt="" />
+                  캣아이
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/half_rim.png" alt="" />
+                  하금테
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/mix.png" alt="" />
+                  믹스
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/aviator.png" alt="" />
+                  보잉
+                </label>
+              </li>
+              <li>
+                <label for="" class="filter_drawer_btn">
+                  <img src="image/filter/etc.png" alt="" />
+                  기타
+                </label>
+              </li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>얼굴형 추천</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_face_shape body_l">
+              <li><label for="" class="filter_drawer_btn">둥근형</label></li>
+              <li><label for="" class="filter_drawer_btn">계란형</label></li>
+              <li><label for="" class="filter_drawer_btn">각진형</label></li>
+              <li><label for="" class="filter_drawer_btn">하트형</label></li>
+              <li><label for="" class="filter_drawer_btn">긴형</label></li>
+              <li><label for="" class="filter_drawer_btn">역삼각형</label></li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>성별</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_gender display_h2">
+              <li><label for="" class="filter_drawer_btn">여자</label></li>
+              <li><label for="" class="filter_drawer_btn">남자</label></li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>프레임 크기</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_frame_size body_l">
+              <li class="select_all_sizes"><label for="" class="filter_drawer_btn">전체</label></li>
+              <li><label for="" class="filter_drawer_btn">40 ~ 45mm</label></li>
+              <li><label for="" class="filter_drawer_btn">46 ~ 50mm</label></li>
+              <li><label for="" class="filter_drawer_btn">51 ~ 55mm</label></li>
+              <li><label for="" class="filter_drawer_btn">56mm 이상</label></li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>가격</span>
+              <span class="material-icons-round">arrow_drop_down_circle</span>
+            </div>
+            <ul class="filter_drawer_price"></ul>
+          </li>
+        </ul>
+        <div class="display_h2 d-flex justify-content-between align-items-center g-0-5">
+          <button class="reset_btn submit-button">초기화</button>
+          <button class="apply_btn submit-button">
+            총 100개 <span class="mo_only"><br /></span> 상품 보기
+          </button>
+        </div>
+      </div>
+    </div>
     <main>
       <div class="wrap d-flex flex-column g-1">
         <h2 class="display_h1">아이웨어</h2>
-        <ul class="display_h4 d-flex g-1">
+        <ul class="display_h4 d-flex g-0-5">
           <li>전체</li>
           <li>안경테</li>
           <li>선글라스</li>
@@ -27,138 +203,6 @@
         </ul>
       </div>
       <ul class="product_list wrap">
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="product_card">
-            <div class="product_card_imgbox">
-              <img
-                src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
-                alt=""
-              />
-              <button class="try_on_btn body_xl text-center">TRY ON</button>
-            </div>
-            <div class="d-flex flex-column g-0-5">
-              <h3 class="product_name body_xl">레이밴 라운드 메탈 선글라스 RB3447001 50mm</h3>
-              <div class="product_card_header d-flex justify-content-between align-items-center">
-                <span class="brand display_h3">RAY-BAN</span>
-                <button class="product_card_wish_btn material-symbols-rounded">heart_plus</button>
-              </div>
-              <div class="product_card_price d-flex align-items-center g-0-5">
-                <span class="price display_h3">204,800원</span>
-                <span class="discount_rate body_xl">20%</span>
-              </div>
-            </div>
-          </article>
-        </li>
         <li>
           <article class="product_card">
             <div class="product_card_imgbox">
