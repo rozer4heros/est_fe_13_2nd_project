@@ -125,6 +125,7 @@
   position: relative;
   box-sizing: border-box;
 }
+
 .ai_face_analysis::before {
   content: "";
   position: absolute;
@@ -136,17 +137,15 @@
 .ai_text_container {
   gap: 8px;
 }
+.ai_top {
+  gap: 48px;
+}
 .ai_text_container .ai_title {
   h2 {
     color: var(--point--color);
-    font-size: var(--body---medium);
-    line-height: var(--body---medium-lh);
-    font-weight: 600;
   }
   p {
-    font-size: var(--display---h3);
-    line-height: var(--display---h3-lh);
-    font-weight: 700;
+    color: var(--font--color);
   }
 }
 .hashtag {
@@ -156,15 +155,13 @@
   p {
     background: var(--light--gray);
     color: var(--point--color);
-    font-size: var(--body---caption);
-    line-height: var(--body---caption-lh);
     border-radius: 5px;
     padding: 0 8px;
     white-space: nowrap;
     flex-shrink: 0;
   }
 }
-.ai_face_analysis_wrapper video {
+.wrap video {
   display: block;
   width: 100%;
   max-width: 188px;
@@ -176,37 +173,39 @@
   box-sizing: border-box;
   width: 100%;
   list-style: none;
-  .material-icons-round {
-    margin: 24px 0;
-    font-size: 32px;
-  }
+  gap: 56px;
 }
 .ai_description_item {
   box-sizing: border-box;
   width: 100%;
+  justify-content: center;
   background: var(--white);
   border-radius: 10px;
+  position: relative;
   padding: 16px 56px;
-  gap: 64px;
+  gap: 32px;
   box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
-  img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-  }
-  .ai_text {
-    gap: 8px;
-  }
-  h3 {
-    color: var(--point--color);
-    font-size: var(--body---x-large);
-    line-height: var(--body---x-large-lh);
-    font-weight: 700;
-  }
-  p {
-    font-size: clamp(var(--body---caption), 3.5vw, var(--body---medium));
-    line-height: var(--body---medium-lh);
-  }
+}
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.ai_description_item .material-icons-round {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+.ai_text {
+  gap: 8px;
+}
+h3 {
+  color: var(--point--color);
+}
+p {
+  color: var(--font--color);
 }
 
 .ai_btn {
@@ -219,17 +218,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 48px;
+    height: 56px;
     border-radius: 999px;
-    font-size: var(--display---h4);
-    font-weight: 600;
 
     gap: 8px;
 
     animation: firefly 2.5s ease-in-out infinite;
-  }
-  .material-icons-round {
-    font-size: var(--display---h2);
   }
 
   .ai_btn_outline {
@@ -267,18 +261,6 @@
     gap: 12px;
   }
 }
-.ai_text_container .ai_title {
-  h2 {
-    font-size: var(--display---h4);
-    line-height: var(--display---h4-lh);
-    font-weight: 600;
-  }
-  p {
-    font-size: var(--display---h2);
-    line-height: var(--display---h2-lh);
-    font-weight: 700;
-  }
-}
 
 .hashtag {
   flex-wrap: nowrap;
@@ -305,28 +287,35 @@
 .ai_btn_filled {
   font-size: var(--body---large);
 }
+.material-icons-round {
+  font-size: 40px;
+}
 
 /* pc버전 */
 @media (min-width: 769px) {
   .ai_face_analysis {
     width: 100%;
     height: auto;
-    padding: 96px 240px;
+    padding: 96px 0;
     position: relative;
     box-sizing: border-box;
   }
   .ai_face_analysis ::before {
     background: url("/image/ai_face_analysis_BG.png") center / cover no-repeat;
   }
+  .ai_text_container {
+    gap: 24px;
+  }
   .ai_top {
     display: flex;
     gap: 48px;
-    align: left-top;
+    flex-direction: row;
+    align-items: flex-start;
     .ai_title {
       gap: 12px;
     }
   }
-  .ai_face_analysis_wrapper video {
+  .ai_face_analysis .wrap video {
     max-width: 320px;
     clip-path: inset(0 round 56px);
   }
@@ -334,10 +323,10 @@
   .ai_description {
     flex-direction: row;
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
     padding: 40px 48px;
-    gap: 96px;
+    gap: 64px;
   }
   /* 개별 카드는 박스 벗기기 */
   .ai_description_item {
@@ -350,8 +339,13 @@
   }
   .ai_text {
     text-align: left;
-    p {
-      font-weight: 400;
+  }
+  .pc_only {
+    margin-top: 24px;
+    .ai_btn_outline,
+    .ai_btn_filled {
+      width: 270px;
+      height: 72px;
     }
   }
 }
