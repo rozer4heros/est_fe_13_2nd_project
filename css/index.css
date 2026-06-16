@@ -97,7 +97,7 @@
 
 @media (min-width: 1440px) {
   .widget {
-    padding: 96px 0;
+    padding: 48px 0;
   }
 
   .widget .wrap {
@@ -110,7 +110,7 @@
 
   .widget_menu li {
     font-size: 16px;
-    gap: 40px;
+    gap: 20px;
   }
 
   .widget_menu li img {
