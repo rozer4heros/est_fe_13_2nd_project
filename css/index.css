@@ -10,12 +10,8 @@
   box-sizing: border-box;
 }
 
-.widget_container {
-  width: 100%;
-  max-width: 480px;
+.widget .wrap {
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   gap: 48px;
 }
 
@@ -64,8 +60,7 @@
     padding: 48px 20px;
   }
 
-  .widget_container {
-    max-width: 768px;
+  .widget .wrap {
     gap: 48px;
   }
 
@@ -92,8 +87,7 @@
     padding: 96px 0;
   }
 
-  .widget_container {
-    max-width: 1440px;
+  .widget .wrap {
     gap: 72px;
   }
 
