@@ -362,6 +362,271 @@ p {
 
 /* Limited Time Offer - 김해나 */
 
+.limited_slider_header {
+  text-align: right;
+  max-width: 1440px;
+  margin: 0 auto 20px auto;
+  position: relative;
+}
+
+.limited_slider_header a {
+  text-decoration: underline;
+}
+
+.timed_offer {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.timed_offer_title {
+  margin-bottom: calc(var(--base-unit) * 2);
+  color: var(--font--color);
+}
+
+.limited_timer_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: var(--base-unit) 0 var(--base-unit) 0;
+}
+
+.timer_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+.timer_num {
+  color: var(--main--color);
+  line-height: 1;
+}
+.timer_label {
+  font-size: 11px;
+  color: var(--light--gray);
+  text-transform: uppercase;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+.timer_colon {
+  transform: translateY(-4px);
+}
+
+.swiper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+/* 슬라이드 레이아웃 */
+
+.limited_slide_item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  transform: scale(0.8);
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.limited_slide_item.swiper-slide-active {
+  transform: scale(1.1);
+  z-index: 10;
+  opacity: 1;
+}
+
+.limited_slide_item.swiper-slide-active + .limited_slide_item {
+  transform: scale(0.8) translateX(80px);
+}
+
+.swiper-slide-prev {
+  transform: scale(0.8) translateX(-80px) !important;
+}
+
+.limited_slide_item.swiper-slide-active .limited_card_image_wrap {
+  box-shadow: 0px 0px 10px rgba(74, 168, 255, 0.4);
+}
+
+.limited_card_image_wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.limited_card_image_wrap img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+}
+
+/* 하단 상품 정보 텍스트 영역 */
+.limited_card_info {
+  text-align: center;
+  padding: 20px 8px;
+}
+
+.limited_brand_title {
+  text-align: center;
+  margin-top: var(--base-unit);
+  margin-bottom: 12px;
+
+  font-size: var(--display---h4);
+  line-height: var(--display---h4-lh);
+  font-weight: 600;
+  text-transform: uppercase;
+  /* 텍스트 크기가 바뀔 때의 애니메이션 */
+  transition:
+    font-size 0.4s ease,
+    line-height 0.4s ease;
+}
+
+/* 중간 카드 활성화 시 h3으로 덮어쓰기 */
+.limited_slide_item.swiper-slide-active .limited_brand_title {
+  font-size: var(--display---h3);
+  line-height: var(--display---h3-lh);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.limited_product_name {
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.limited_price_wrap {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.limited_discount_rate,
+.limited_price {
+  font-size: var(--body---x-large);
+  line-height: var(--body---x-large-lh);
+  font-weight: 700;
+  text-transform: capitalize;
+
+  transition:
+    font-size 0.4s ease,
+    line-height 0.4s ease;
+}
+
+.limited_discount_rate {
+  color: var(--red);
+}
+.limited_price {
+  color: var(--font--color);
+}
+
+.limited_slide_item.swiper-slide-active .limited_discount_rate,
+.limited_slide_item.swiper-slide-active .limited_price {
+  font-size: var(--display---h3);
+  line-height: var(--display---h3-lh);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.delivery_badge {
+  color: var(--font--color);
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* DETAIL VIEW 버튼 스타일 */
+.detail_view_btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 85%;
+  height: 46px;
+  background-color: var(--main--color);
+  color: var(--white);
+  border-radius: 23px;
+  font-weight: 700;
+  font-size: 18px; /* 원본이 너무 크길래 임의로 넣었습니다 */
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+/* 가운데 활성화된 카드에 마우스를 올릴 때만 표출 */
+.limited_slide_item.swiper-slide-active:hover .detail_view_btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+/* 위시리스트 하트 버튼 */
+.wish_btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+  z-index: 5;
+}
+
+/* 위시리스트 하트 버튼 호버 시 색 변화*/
+.wish_btn:hover {
+  color: var(--main--color);
+  transition: color 0.2s;
+}
+
+/* 내비게이션 화살표 */
+.limited_slide_btn {
+  position: absolute;
+  top: 40%;
+  z-index: 50;
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0px 10px rgba(34, 40, 49, 0.3);
+  text-align: center;
+  align-items: center;
+}
+.limited_slide_btn .material-icons-round {
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  width: 100%;
+  height: 100%;
+}
+.limited_btn_prev {
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 30px)) translateX(-205px);
+}
+.limited_btn_next {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, calc(-50% - 30px)) translateX(205px);
+}
+
 /* new collection - 최호찬 */
 .new_collection {
   width: 100%;
