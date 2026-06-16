@@ -1,7 +1,3 @@
-main {
-  padding: calc(var(--base-unit) * 4) 0;
-}
-
 .filter_drawer {
   display: block;
   position: absolute;
@@ -57,17 +53,15 @@ main {
 
   margin-top: var(--base-unit);
   overflow: hidden;
-  height: 0px;
-  /* max-height: 0px; */
-  transition: 0.5s;
+  max-height: 0px;
+  transition: 1s;
 
   .select_all_sizes {
     grid-column: 1 / -1;
   }
 }
 .filter_drawer_accordion_list li.active ul {
-  height: auto;
-  /* max-height: calc(var(--base-unit) * 50); */
+  max-height: calc(var(--base-unit) * 50);
 }
 .filter_drawer_accordion_list .filter_drawer_brand .filter_drawer_btn,
 .filter_drawer_accordion_list .filter_drawer_shape .filter_drawer_btn {
@@ -94,6 +88,29 @@ main {
 }
 .filter_drawer .apply_btn {
   height: calc(var(--base-unit) * 4);
+}
+
+main {
+  padding: calc(var(--base-unit) * 4) 0;
+}
+
+.filter_active_list .reset_btn {
+  cursor: pointer;
+  color: #22283180;
+}
+
+.sort_dropdown {
+  position: relative;
+  z-index: 1;
+}
+.sort_dropdown_menu {
+  position: absolute;
+  overflow: hidden;
+  max-height: 0;
+  transition: 1s;
+}
+.sort_dropdown.active .sort_dropdown_menu {
+  max-height: calc(var(--base-unit) * 20);
 }
 
 .product_list {
