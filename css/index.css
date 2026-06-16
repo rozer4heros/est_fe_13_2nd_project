@@ -375,6 +375,7 @@
   background-color: var(--font--color);
   color: var(--white);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .new_collection_header {
@@ -398,13 +399,33 @@
   margin-top: 8px;
 }
 
+/* 모바일 */
+.new_collection_track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.new_collection_track::-webkit-scrollbar {
+  display: none;
+}
+
+.new_collection_page {
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
 .new_collection_list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 48px;
+  width: 100%;
 }
 
 .new_collection_item {
@@ -456,7 +477,7 @@
 .new_card_name {
   color: var(--white);
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* 한줄만 */
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -467,10 +488,13 @@
 }
 
 .new_card_shipping {
+  display: flex;
+  align-items: center;
   color: var(--white);
   margin-top: 4px;
   gap: 5px;
 }
+
 /* 하단 바 */
 .new_collection_indicator {
   width: 64px;
@@ -485,15 +509,44 @@
   width: 50%;
   height: 100%;
   background-color: var(--white);
+  transform: translateX(0%);
 }
 
 /* 태블릿 */
 @media (min-width: 768px) {
+  .new_collection_track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+  .new_collection_track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .new_collection_page {
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0 32px;
+  }
+
   .new_collection_list {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: start;
+    align-content: start;
   }
+
+  .new_collection_item {
+    width: 100%;
+  }
+  .new_collection_item:first-child {
+    grid-column: 1;
+    grid-row: span 3;
+  }
+
   .new_collection_item:not(:first-child) {
     grid-column: 2;
   }
@@ -520,6 +573,7 @@
   }
 
   .new_collection_indicator {
+    display: block;
     margin-top: 48px;
   }
 }
@@ -534,10 +588,13 @@
   .new_collection_item + .new_collection_item {
     margin-top: 24px;
   }
-
   .new_collection_item:first-child .new_collection_card {
     flex-direction: row;
+    justify-content: center;
     align-items: center;
+    grid-column: 1;
+    grid-row: span 2;
+    margin-top: 128px;
     gap: 24px;
   }
 
@@ -551,6 +608,9 @@
     width: 200px;
     height: 200px;
     border-radius: 10px;
+  }
+  .new_collection_item:nth-child(4) {
+    display: none;
   }
 }
 

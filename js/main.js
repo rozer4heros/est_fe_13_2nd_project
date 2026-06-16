@@ -1,4 +1,7 @@
+import { initNewCollection } from "./newCollection.js";
+
 /* widget coupon slide */
+
 document.addEventListener("DOMContentLoaded", () => {
   const widgetTrack = document.querySelector(".widget_coupon_track");
   const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
@@ -16,4 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(nextSlide, slideInterval);
   }
 });
+
 /* widget coupon slide */
+
+/* new collection */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initNewCollection();
+});
+
+/* new collection */
