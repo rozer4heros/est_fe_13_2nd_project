@@ -520,6 +520,34 @@ input:focus {
   margin-left: 20px;
 }
 
+/* Product card for product_list.html */
+/* 작업자: 유태구; */
+.product_card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-unit);
+}
+.product_card_imgbox {
+  position: relative;
+  border-radius: 20px;
+}
+.product_card_imgbox .try_on_btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  padding: var(--base-unit-x0-5) var(--base-unit);
+  border-radius: 40px;
+  color: var(--white);
+  background: var(--font--color);
+}
+.product_card .product_name {
+  font-weight: 400;
+}
+.product_card .discount_rate {
+  color: var(--red);
+}
+
 /* notice-line */
 .notice-line {
   width: 100%;
