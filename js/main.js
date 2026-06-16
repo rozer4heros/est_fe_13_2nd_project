@@ -1,3 +1,6 @@
+import { renderHeader } from "./modules/header.js";
+import { renderNavDrawer } from "./modules/nav_drawer.js";
+import { renderFooter } from "./modules/footer.js";
 import { initNewCollection } from "./newCollection.js";
 
 /* =========================
@@ -5,68 +8,67 @@ import { initNewCollection } from "./newCollection.js";
     김해나 작업
   ========================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-  const sliderTrack = document.querySelector(".limited_slider_track");
-  const prevButton = document.querySelector(".limited_btn_prev");
-  const nextButton = document.querySelector(".limited_btn_next");
+const sliderTrack = document.querySelector(".limited_slider_track");
+const prevButton = document.querySelector(".limited_btn_prev");
+const nextButton = document.querySelector(".limited_btn_next");
 
-  const daysEl = document.querySelector(".timer_days");
-  const hoursEl = document.querySelector(".timer_hours");
-  const minEl = document.querySelector(".timer_min");
-  const secEl = document.querySelector(".timer_sec");
+const daysEl = document.querySelector(".timer_days");
+const hoursEl = document.querySelector(".timer_hours");
+const minEl = document.querySelector(".timer_min");
+const secEl = document.querySelector(".timer_sec");
 
-  const targetDate = new Date("July 17, 2026 10:00:00").getTime();
-  let timerInterval = null;
+const targetDate = new Date("July 17, 2026 10:00:00").getTime();
+let timerInterval = null;
 
-  function updateTimer() {
-    const now = new Date().getTime();
-    const difference = targetDate - now;
+function updateTimer() {
+  const now = new Date().getTime();
+  const difference = targetDate - now;
 
-    if (difference <= 0) {
-      if (daysEl) daysEl.textContent = "00";
-      if (hoursEl) hoursEl.textContent = "00";
-      if (minEl) minEl.textContent = "00";
-      if (secEl) secEl.textContent = "00";
-      if (timerInterval) clearInterval(timerInterval);
-      return;
-    }
-
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
-    if (minEl) minEl.textContent = String(minutes).padStart(2, "0");
-    if (secEl) secEl.textContent = String(seconds).padStart(2, "0");
+  if (difference <= 0) {
+    if (daysEl) daysEl.textContent = "00";
+    if (hoursEl) hoursEl.textContent = "00";
+    if (minEl) minEl.textContent = "00";
+    if (secEl) secEl.textContent = "00";
+    if (timerInterval) clearInterval(timerInterval);
+    return;
   }
 
-  if (daysEl || hoursEl || minEl || secEl) {
-    updateTimer();
-    timerInterval = setInterval(updateTimer, 1000);
-  }
-  //여기까지가 타이머
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  function loadProductsData() {
-    fetch("data/products.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((products) => {
-        if (!products || !Array.isArray(products)) return;
+  if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
+  if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+  if (minEl) minEl.textContent = String(minutes).padStart(2, "0");
+  if (secEl) secEl.textContent = String(seconds).padStart(2, "0");
+}
+// updateTimer() failsafe
+if (daysEl || hoursEl || minEl || secEl) {
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+}
+// 여기까지가 타이머
 
-        const limitedProducts = products.slice(0, 20);
+function loadProductsData() {
+  fetch("data/products.json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(products => {
+      if (!products || !Array.isArray(products)) return;
 
-        let cardHTML = "";
-        limitedProducts.forEach((product) => {
-          //가격 자동 콤마 변환 처리
-          const formattedPrice = Number(product.salePrice || 0).toLocaleString();
+      const limitedProducts = products.slice(0, 20);
 
-          cardHTML += `
+      let cardHTML = "";
+      limitedProducts.forEach(product => {
+        //가격 자동 콤마 변환 처리
+        const formattedPrice = Number(product.salePrice || 0).toLocaleString();
+
+        cardHTML += `
             <li class="limited_slide_item swiper-slide">
               <div class="limited_card_image_wrap">
                 <img
@@ -91,67 +93,62 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </li>
           `;
-        });
-
-        if (sliderTrack) {
-          sliderTrack.innerHTML = cardHTML;
-        }
-
-        initSwiper();
-      })
-      .catch((error) => {
-        console.error("데이터 로딩 실패:", error);
-        if (sliderTrack) {
-          sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
-        }
       });
-  }
 
-  function initSwiper() {
-    if (typeof Swiper !== "undefined") {
-      new Swiper(".mySwiper", {
-        slidesPerView: 5,
-        spaceBetween: 20,
-        centeredSlides: true,
-        loop: true,
-        navigation: {
-          nextEl: nextButton,
-          prevEl: prevButton,
-        },
-        grabCursor: true,
-      });
-    }
-  }
+      if (sliderTrack) {
+        sliderTrack.innerHTML = cardHTML;
+      }
 
-  loadProductsData();
-});
+      initSwiper();
+    })
+    .catch(error => {
+      console.error("데이터 로딩 실패:", error);
+      if (sliderTrack) {
+        sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
+      }
+    });
+}
+
+function initSwiper() {
+  if (typeof Swiper !== "undefined") {
+    new Swiper(".mySwiper", {
+      slidesPerView: 5,
+      spaceBetween: 20,
+      centeredSlides: true,
+      loop: true,
+      navigation: {
+        nextEl: nextButton,
+        prevEl: prevButton,
+      },
+      grabCursor: true,
+    });
+  }
+}
+
+loadProductsData();
 
 /* widget coupon slide */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const widgetTrack = document.querySelector(".widget_coupon_track");
-  const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
+const widgetTrack = document.querySelector(".widget_coupon_track");
+const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
 
-  if (widgetTrack && widgetSlides.length > 0) {
-    let currentIndex = 0;
-    const slideCount = widgetSlides.length;
-    const slideInterval = 3000;
+if (widgetTrack && widgetSlides.length > 0) {
+  let currentIndex = 0;
+  const slideCount = widgetSlides.length;
+  const slideInterval = 3000;
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slideCount;
-      widgetTrack.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
-    }
-
-    setInterval(nextSlide, slideInterval);
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    widgetTrack.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
   }
-});
+
+  setInterval(nextSlide, slideInterval);
+}
 
 /* widget coupon slide */
 
 /* new collection */
 
-document.addEventListener("DOMContentLoaded", () => {
-  initNewCollection();
-});
+initNewCollection();
 
 /* new collection */
