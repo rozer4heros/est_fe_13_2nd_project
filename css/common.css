@@ -524,7 +524,7 @@ input:focus {
 /* 작업자: 유태구; */
 
 /* Filter dropdown */
-.filter_dropdown .filter_dropdown_btn {
+.filter_dropdown .filter_dropdown_trigger {
   padding: var(--base-unit-x0-5);
   border: 1px solid #2238314c;
   width: 80px;
@@ -535,7 +535,7 @@ input:focus {
 
   cursor: pointer;
 }
-.filter_dropdown.active .filter_dropdown_btn {
+.filter_dropdown.active .filter_dropdown_trigger {
   border: 1px solid var(--font--color);
   color: var(--font--color);
 }
@@ -547,12 +547,12 @@ input:focus {
 }
 
 @media (min-width: 481px) {
-  .filter_dropdown .filter_dropdown_btn {
+  .filter_dropdown .filter_dropdown_trigger {
     width: 100px;
   }
 }
 @media (min-width: 769px) {
-  .filter_dropdown .filter_dropdown_btn {
+  .filter_dropdown .filter_dropdown_trigger {
     width: 120px;
   }
 }
