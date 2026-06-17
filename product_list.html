@@ -197,6 +197,178 @@
           <button class="below_pc d-flex justify-content-center align-items-center">
             <span class="material-icons-round">tune</span>
           </button>
+
+          <!-- 브랜드 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>브랜드</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <div class="filter_dropdown_search_wrap">
+                <input type="text" placeholder="브랜드 명을 입력해주세요" class="filter_dropdown_search_input" />
+                <span class="material-icons-round search_icon">search</span>
+              </div>
+              <ul class="body_xl">
+                <li>
+                  <label for="brand_rayban" class="d-flex justify-content-between align-items-center">
+                    <span>Ray-Ban</span>
+                    <input type="checkbox" id="brand_rayban" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_oakley" class="d-flex justify-content-between align-items-center">
+                    <span>OAKLEY</span>
+                    <input type="checkbox" id="brand_oakley" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_lash" class="d-flex justify-content-between align-items-center">
+                    <span>LASH</span>
+                    <input type="checkbox" id="brand_lash" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_locomotive" class="d-flex justify-content-between align-items-center">
+                    <span>LOCOMOTIVE</span>
+                    <input type="checkbox" id="brand_locomotive" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_rounz_basic" class="d-flex justify-content-between align-items-center">
+                    <span>ROUNZ BASIC</span>
+                    <input type="checkbox" id="brand_rounz_basic" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_rounz_standard" class="d-flex justify-content-between align-items-center">
+                    <span>ROUNZ STANDARD</span>
+                    <input type="checkbox" id="brand_rounz_standard" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_izipizi" class="d-flex justify-content-between align-items-center">
+                    <span>IZIPIZI</span>
+                    <input type="checkbox" id="brand_izipizi" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_carven" class="d-flex justify-content-between align-items-center">
+                    <span>CARVEN</span>
+                    <input type="checkbox" id="brand_carven" />
+                  </label>
+                </li>
+                <li>
+                  <label for="brand_chloe" class="d-flex justify-content-between align-items-center">
+                    <span>CHLOE</span>
+                    <input type="checkbox" id="brand_chloe" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 모양 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>모양</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <ul class="body_xl">
+                <li>
+                  <label for="shape_round" class="d-flex justify-content-between align-items-center">
+                    <span>라운드</span>
+                    <input type="checkbox" id="shape_round" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_square" class="d-flex justify-content-between align-items-center">
+                    <span>스퀘어</span>
+                    <input type="checkbox" id="shape_square" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_cateye" class="d-flex justify-content-between align-items-center">
+                    <span>캣아이</span>
+                    <input type="checkbox" id="shape_cateye" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_halfrim" class="d-flex justify-content-between align-items-center">
+                    <span>하금테</span>
+                    <input type="checkbox" id="shape_halfrim" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_mix" class="d-flex justify-content-between align-items-center">
+                    <span>믹스</span>
+                    <input type="checkbox" id="shape_mix" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_aviator" class="d-flex justify-content-between align-items-center">
+                    <span>보잉</span>
+                    <input type="checkbox" id="shape_aviator" />
+                  </label>
+                </li>
+                <li>
+                  <label for="shape_etc" class="d-flex justify-content-between align-items-center">
+                    <span>기타</span>
+                    <input type="checkbox" id="shape_etc" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 얼굴형 추천 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>얼굴형 추천</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <ul class="body_xl">
+                <li>
+                  <label for="face_round" class="d-flex justify-content-between align-items-center">
+                    <span>둥근형</span>
+                    <input type="checkbox" id="face_round" />
+                  </label>
+                </li>
+                <li>
+                  <label for="face_oval" class="d-flex justify-content-between align-items-center">
+                    <span>계란형</span>
+                    <input type="checkbox" id="face_oval" />
+                  </label>
+                </li>
+                <li>
+                  <label for="face_angular" class="d-flex justify-content-between align-items-center">
+                    <span>각진형</span>
+                    <input type="checkbox" id="face_angular" />
+                  </label>
+                </li>
+                <li>
+                  <label for="face_heart" class="d-flex justify-content-between align-items-center">
+                    <span>하트형</span>
+                    <input type="checkbox" id="face_heart" />
+                  </label>
+                </li>
+                <li>
+                  <label for="face_long" class="d-flex justify-content-between align-items-center">
+                    <span>긴형</span>
+                    <input type="checkbox" id="face_long" />
+                  </label>
+                </li>
+                <li>
+                  <label for="face_triangle" class="d-flex justify-content-between align-items-center">
+                    <span>역삼각형</span>
+                    <input type="checkbox" id="face_triangle" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="filter_active_list d-flex g-0-5">
           <button class="reset_btn body_cap d-flex align-items-center">
