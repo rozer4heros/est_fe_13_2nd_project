@@ -429,23 +429,26 @@
 .ai_face_analysis {
   width: 100%;
   height: auto;
-  padding: 96px 40px;
+  padding: 96px 0 ;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .ai_face_analysis::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
+
   background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
   opacity: 0.5;
-  z-index: -1;
 }
-.ai_text_container {
-  gap: 8px;
+.ai_face_analysis .ai_text_container {
+  gap: 48px;
 }
-.ai_top {
+.ai_face_analysis .ai_top {
+  flex-direction: column;
   gap: 48px;
 }
 .ai_text_container .ai_title {
@@ -982,9 +985,7 @@ p {
 =========== 모바일 반응형 */
 
 @media (max-width: 480px) {
-
   .timed_offer {
-
     align-items: center !important;
     text-align: center;
     width: 100% !important;
@@ -998,7 +999,6 @@ p {
     gap: 12px !important; /* 요소 사이 간격 축소 */
     width: 100% !important;
     max-width: 320px !important; /* 모바일 화면 안에 무조건 가두기 */
-
   }
 
   /* 땡땡(:) 콜론 이미지 크기 조절 */
@@ -1015,8 +1015,8 @@ p {
   .limited_slider_header {
     width: 100% !important;
     display: flex !important;
-    justify-content: flex-end !important; 
-    padding: 0 30px !important; 
+    justify-content: flex-end !important;
+    padding: 0 30px !important;
     box-sizing: border-box;
     margin-bottom: 10px !important;
   }
@@ -1027,9 +1027,9 @@ p {
 
   .limited_product_slider .swiper {
     width: 100% !important;
-    max-width: 100vw !important; 
+    max-width: 100vw !important;
     overflow: hidden !important;
-    padding: 30px 0 !important; 
+    padding: 30px 0 !important;
   }
 
   .limited_slide_btn {
@@ -1039,10 +1039,10 @@ p {
   .limited_slide_item {
     width: 100% !important;
     max-width: 100% !important;
-    transform: scale(1) translateX(0) !important; 
+    transform: scale(1) translateX(0) !important;
     opacity: 1 !important;
     box-sizing: border-box !important;
-    padding: 0 calc(var(--base-unit) * 3) !important; /
+    padding: 0 calc(var(--base-unit) * 3) !important;
   }
 
   .limited_slide_item.swiper-slide-active,
@@ -1065,11 +1065,11 @@ p {
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
 
-    width: 100% !important; 
-    height: 100% !important; 
+    width: 100% !important;
+    height: 100% !important;
     max-width: 100% !important;
     max-height: 100% !important;
-    object-fit: contain !important; 
+    object-fit: contain !important;
   }
 
   .limited_slide_item.swiper-slide-active .detail_view_btn {
@@ -1082,7 +1082,7 @@ p {
     transform: translateX(0) !important;
   }
 
-    /* 스크롤 바 */
+  /* 스크롤 바 */
   .limited_product_slider .swiper_scrollbar {
     position: relative !important;
     bottom: 0 !important;
@@ -1091,24 +1091,21 @@ p {
 
     width: 88px !important;
     height: 2px !important;
-    background: var(--light--gray) !important; 
+    background: var(--light--gray) !important;
     border-radius: 0 !important;
     margin-top: var(--base-unit) !important;
   }
 
   .limited_product_slider .swiper_scrollbar_drag {
-    background: var(--font--color) !important; 
+    background: var(--font--color) !important;
     border-radius: 0 !important;
   }
 }
-
 
 /* Limited Time Offer
 =========== 태블릿 반응형 */
 
 @media (min-width: 481px) and (max-width: 768px) {
-
-
   .timed_offer {
     width: 100% !important;
     max-width: 100% !important;
@@ -1119,44 +1116,44 @@ p {
   }
 
   .timed_offer_title {
-      margin-bottom: var(--base-unit) !important;
-    }
+    margin-bottom: var(--base-unit) !important;
+  }
 
   .timed_offer > p {
-      margin-bottom: calc(var(--base-unit) / 2) !important;
+    margin-bottom: calc(var(--base-unit) / 2) !important;
   }
   .limited_timer_container {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 15px !important;      
+    gap: 15px !important;
     width: 100% !important;
     max-width: 450px !important;
     margin: 0 auto !important;
   }
 
   .timed_offer_title,
-.limited_timer_container {
-  padding: 0 20px;
-}
+  .limited_timer_container {
+    padding: 0 20px;
+  }
 
-   .limited_product_slider{
+  .limited_product_slider {
     width: 100%;
     max-width: 100%;
   }
 
   .limited_price_wrap {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  flex-wrap:nowrap;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
 
-.limited_price,
-.limited_discount_rate {
-  white-space: nowrap;
-}
+  .limited_price,
+  .limited_discount_rate {
+    white-space: nowrap;
+  }
 
   .limited_slider_header {
     width: 100% !important;
@@ -1165,7 +1162,6 @@ p {
     justify-content: flex-end !important;
     box-sizing: border-box !important;
   }
-
 
   .limited_product_slider .swiper {
     width: 100% !important;
@@ -1179,15 +1175,18 @@ p {
 
   .limited_product_slider .limited_slide_item {
     box-sizing: border-box !important;
-    transition: transform 0.4s ease, opacity 0.4s ease !important;
-    padding: 0 10px !important; 
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease !important;
+    padding: 0 10px !important;
     opacity: 0.8;
-    transform: scale(0.85) !important; 
-    transition: transform 0.4s ease, opacity 0.4s ease !important;
+    transform: scale(0.85) !important;
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease !important;
   }
 
-
-  .limited_product_slider .limited_slide_item.swiper-slide-active{
+  .limited_product_slider .limited_slide_item.swiper-slide-active {
     transform: scale(1.1) !important;
     opacity: 1 !important;
     z-index: 10 !important;
@@ -1197,14 +1196,14 @@ p {
   .limited_slide_item .detail_view_btn {
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translate(-50%, 10px) !important; 
+    transform: translate(-50%, 10px) !important;
     transition: all 0.3s ease !important;
   }
 
   .limited_slide_item.swiper-slide-active .detail_view_btn {
     opacity: 1 !important;
     pointer-events: auto !important;
-    transform: translate(-50%, 0) !important; 
+    transform: translate(-50%, 0) !important;
     width: 75%;
     min-width: 140px;
     display: flex;
@@ -1226,22 +1225,21 @@ p {
     display: flex !important;
     justify-content: flex-end !important;
 
-    padding: 0 24px !important; 
+    padding: 0 24px !important;
     box-sizing: border-box;
     margin-bottom: 15px !important;
     position: relative !important;
   }
-  
 
   .limited_product_slider .swiper_scrollbar {
     display: block !important;
     visibility: visible !important;
     position: absolute !important;
-    
-    width: 144px !important; 
-    height: 2px !important; 
+
+    width: 144px !important;
+    height: 2px !important;
     background: var(--light--gray) !important;
-    
+
     bottom: calc(var(--base-unit) * 2) !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -1264,8 +1262,6 @@ p {
 }
 
 /* Limited Time Offer 섹션 종료 */
-
-
 
 /* new collection - 최호찬 */
 .new_collection {
@@ -1608,4 +1604,7 @@ p {
 
 /* pc */
 
-/* store section - 유태구 */
+/* 매장 찾기 섹션 - 유태구 */
+.store_locator {
+  padding: calc(var(--base-unit) * 4) 0;
+}
