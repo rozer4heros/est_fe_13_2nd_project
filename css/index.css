@@ -1741,27 +1741,38 @@
 
 /* 매장 찾기 섹션 - 유태구 */
 .store_locator {
-  padding: calc(var(--base-unit) * 4) 0;
+  padding: calc(var(--base-unit) * 4) 20px;
 }
 .store_locator .map_api {
   width: 100%;
   height: calc(var(--base-unit) * 15);
 }
+.store_locator .dropdown {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 344px;
+}
 .store_locator .dropdown_trigger {
-  min-width: 344px;
   padding: var(--base-unit-x0-5) var(--base-unit);
   border: 1px solid var(--light--gray);
   border-radius: 10px;
-
-  z-index: 1;
-
   background: var(--white);
   box-shadow: var(--shadow);
 }
-.store_locator .dropdown_label {
+.store_locator .dropdown_trigger .dropdown_label {
   opacity: 0.6;
 }
 .store_locator .dropdown_menu {
+  position: absolute;
+  top: 100%;
+
+  width: 100%;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+
   overflow: hidden;
   max-height: 0;
   transition: 0.3s ease-in;
@@ -1769,21 +1780,19 @@
 .store_locator .dropdown.active .dropdown_menu {
   max-height: calc(var(--base-unit) * 15);
 }
+.store_locator .dropdown_menu li {
+  padding: 6px var(--base-unit);
+}
 
 .store_locator .store_list article {
-  width: 100%;
   border-radius: 20px;
-  padding: var(--base-unit) 108px;
-  background: var(--white);
-  transition: 0.3s ease-in;
-}
-.store_locator .store_list article.active {
   padding: var(--base-unit) 20px;
   background: var(--main--light);
-  transition: 0.3s ease-out;
 }
 .store_locator .store_tag_list li {
-  min-width: 80px;
+  padding: 0 5px;
+  box-sizing: border-box;
+
   border-radius: 5px;
   text-align: center;
   background: var(--light--gray);
@@ -1792,6 +1801,8 @@
   color: var(--point--color);
 }
 .store_locator .store_list article img {
+  border-radius: 20px;
+
   object-fit: cover;
   object-position: center;
 
@@ -1800,6 +1811,19 @@
   transition: 0.3s ease-in;
 }
 .store_locator .store_list article.active img {
-  max-height: calc(var(--base-unit) * 31);
+  max-height: calc(var(--base-unit) * 15);
   transition: 0.3s ease-out;
+}
+@media (min-width: 481px) {
+  .store_locator .store_tag_list li {
+    min-width: 80px;
+  }
+  .store_locator {
+    padding: calc(var(--base-unit) * 4) 32px;
+  }
+}
+@media (min-width: 769px) {
+  .store_locator {
+    padding: calc(var(--base-unit) * 4) 0px;
+  }
 }
