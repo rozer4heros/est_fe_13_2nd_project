@@ -145,13 +145,14 @@ function initSwiper() {
         hide: false,
         draggable: true,
       },
+      slidesPerView: 1,
       breakpoints: {
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
         481: {
-          slidesPerView: 5,
+          slidesPerView: 2.2, //태블릿
+          spaceBetween: 0,
+        },
+        769: {
+          slidesPerView: 5, //PC
           spaceBetween: 20,
         },
       },
