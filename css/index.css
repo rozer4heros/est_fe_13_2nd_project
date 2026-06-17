@@ -1,68 +1,120 @@
 /* hero - 문송연 */
 /* 모바일 퍼스트 */
-/* slide 1 */
-.hero_swiper {
+
+.hero {
   width: 100%;
-  padding: 0 !important;
-  position: relative;
+  overflow: hidden;
 }
+
 .hero .wrap {
+  position: relative;
+  width: 100%;
+  max-width: none;
   padding: 0 !important;
+  overflow: hidden;
 }
+
+/* swiper 공통 */
+.hero_swiper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.hero_swiper .swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.hero_swiper .swiper-slide {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  min-width: 100%;
+  aspect-ratio: 480 / 562;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero_slide_img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* search */
 .search {
   position: absolute;
   top: 40px;
-  z-index: 10;
-  width: auto;
-  height: 48px;
   left: 20px;
   right: 20px;
+  z-index: 10;
+
+  width: auto;
+  height: 48px;
+  padding: 0 24px;
+
+  box-sizing: border-box;
   background: rgba(249, 252, 255, 0.5);
   border: 2px solid var(--main--color);
   border-radius: 10px;
-  padding: 0 24px;
-  box-sizing: border-box;
 }
+
 .search_input {
+  flex: 1;
+  min-width: 0;
   height: 100%;
   border: none;
   outline: none;
   background: transparent;
 }
+
 .search_btn {
+  flex-shrink: 0;
   height: 100%;
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
 }
+
 .search_btn .material-icons-round {
   color: var(--main--color);
 }
+
+/* slide 1 */
 .hero_ai_container {
   position: relative;
 }
+
 .hero_ai_text_container {
   position: absolute;
-  bottom: 40px;
   left: 0;
+  bottom: 40px;
+  z-index: 2;
+
   width: 100%;
-  text-align: center;
   padding: 0 20px;
+
   box-sizing: border-box;
+  text-align: center;
 }
-.hero_ai_container img {
-  width: 100%;
-  height: auto;
-}
+
 .hero_ai_title p {
   color: var(--point--color);
 }
+
 .hero_ai_btn {
-  box-sizing: border-box;
-  width: auto;
+  width: fit-content;
   height: auto;
   padding: 12px 24px;
   gap: 8px;
+
+  box-sizing: border-box;
   background: var(--white);
   color: var(--main--color);
   border: 2px solid var(--main--color);
@@ -73,81 +125,94 @@
 .coupon_container {
   position: relative;
 }
-.coupon_container img {
-  width: 100%;
-  height: auto;
-}
+
 .coupon_text_container {
   position: absolute;
   top: 72px;
   left: 0;
-  width: auto;
-  text-align: left;
+  z-index: 2;
+
+  width: 100%;
   padding: 0 20px;
   gap: 12px;
+
   box-sizing: border-box;
+  text-align: left;
 }
+
 .coupon_title p {
   color: var(--point--color);
 }
+
 .coupon_btn {
+  width: fit-content;
+  min-width: 130px;
+  height: 40px;
+  padding: 8px 16px;
+
   box-sizing: border-box;
   color: var(--point--color);
   border: 1px solid var(--point--color);
   border-radius: 999px;
-  width: 130px;
-  height: 40px;
-  padding: 12px 8px;
 }
 
 /* slide 3 */
 .stylework_container {
   position: relative;
 }
+
 .stylework_container::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
+
+  pointer-events: none;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1));
 }
-.stylework_container img {
-  width: 100%;
-  height: auto;
-}
+
 .stylework_text_container {
   position: absolute;
   left: 0;
   bottom: 40px;
-  width: auto;
-  text-align: center;
-  gap: 12px;
-  box-sizing: border-box;
+  z-index: 2;
+
+  width: 100%;
   padding: 0 20px;
+  gap: 12px;
+
+  box-sizing: border-box;
+  text-align: center;
 }
-.stylework_title {
-  h2 {
-    color: var(--white);
-  }
-  p {
-    display: none;
-  }
+
+.stylework_title h2 {
+  color: var(--white);
+}
+
+.stylework_title p {
+  display: none;
 }
 
 .promotion_title .price_sale {
   color: var(--point--color);
 }
+
 .style_btn {
+  width: fit-content;
+  padding: 12px 20px;
+
   background: var(--white);
   border-radius: 999px;
-  padding: 12px 20px;
 }
-.promotion_title h3,
-.promotion_price,
-.price_origin,
-.material-icons-round,
-p {
+
+.stylework_container .promotion_title h3,
+.stylework_container .promotion_price,
+.stylework_container .price_origin,
+.stylework_container .material-icons-round,
+.stylework_container p {
   color: var(--white);
 }
+
 .price_origin {
   text-decoration: line-through;
 }
@@ -156,51 +221,69 @@ p {
 .try_on_container {
   position: relative;
 }
-.try_on_container img {
-  width: 100%;
-  height: auto;
-}
+
 .try_on_text_container {
   position: absolute;
   left: 0;
   bottom: 40px;
-  width: auto;
-  gap: 24px;
-  box-sizing: border-box;
+  z-index: 2;
+
+  width: 100%;
   padding: 0 20px;
+  gap: 24px;
+
+  box-sizing: border-box;
 }
+
 .try_on_badge {
+  width: fit-content;
+  padding: 8px 12px;
+
   color: var(--main--color);
   background: var(--white);
   border: 1px solid var(--main--color);
   border-radius: 999px;
 }
+
 .try_on_title span {
   color: var(--main--color);
 }
+
 .try_on_btn {
+  width: fit-content;
+  height: 40px;
+  padding: 0 18px;
+
   box-sizing: border-box;
   color: var(--white);
-  width: auto;
-  height: 40px;
   background: var(--main--color);
   border-radius: 999px;
 }
 
 .try_on_step_number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
   color: var(--white);
   background: var(--main--color);
-  border: 99px;
+  border-radius: 50%;
 }
 
 .try_on_benefits {
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .try_on_benefit {
+  padding: 8px 12px;
   border: 1px solid var(--main--color);
-  border-radius: 99px;
+  border-radius: 999px;
 }
+
 .try_on_benefit_wide {
   flex: 0 0 100%;
 }
@@ -465,7 +548,7 @@ p {
 }
 
 /* 태블릿 */
-@media (min-width: 481px) {
+@media (min-width: 768px) {
   .ai_container {
     gap: 64px;
   }
@@ -495,16 +578,12 @@ p {
   }
 }
 
-.ai_btn_outline,
-.ai_btn_filled {
-  font-size: var(--body---large);
-}
 .ai_btn .material-icons-round {
   font-size: 40px;
 }
 
 /* pc버전 */
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .ai_face_analysis {
     width: 100%;
     height: auto;
@@ -1292,7 +1371,7 @@ p {
   background-size: cover;
 }
 .Celeb_text_container h2,
-p,
+.Celeb_text_container p,
 .gla_btn,
 .sun_btn,
 .celeb_product .like {
