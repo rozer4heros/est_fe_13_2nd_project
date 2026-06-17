@@ -24,9 +24,12 @@
         <fieldset class="input-field">
           <legend class="sr-only">로그인 입력</legend>
           <form class="form-group">
-            <div class="input-group">
-              <input type="email" id="useremail" required placeholder=" " />
-              <label for="useremail" class="floating_label body_m">Email address*</label>
+            <div class="input-group-container">
+              <div class="input-group">
+                <input type="email" id="useremail" required placeholder=" " />
+                <label for="useremail" class="floating_label body_m">Email address*</label>
+              </div>
+              <p class="error-message email-error body_cap"></p>
             </div>
 
             <div class="input-group">
@@ -43,7 +46,7 @@
         <div>
           <div class="notice-line d-flex">
             <span class="notice-line-text body_cap">아직 회원이 아니신가요?</span>
-            <a href="#signup.html" class="notice-line-link body_cap">회원가입하기</a>
+            <a href="signup.html" class="notice-line-link body_cap">회원가입하기</a>
           </div>
 
           <div class="divider-text body_cap d-flex">or</div>
@@ -76,8 +79,15 @@
           <a href="#">아이디 찾기</a>
           <a href="#">비밀번호 찾기</a>
         </div>
+
+        <div class="auth-footer-bar login-footer d-flex">
+          <a href="index.html" class="footer-tab-btn d-flex">
+            <span class="display_h4">홈으로 이동</span>
+            <span class="material-icons-outlined">home</span>
+          </a>
+        </div>
       </section>
     </main>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/login_signup.js"></script>
   </body>
 </html>

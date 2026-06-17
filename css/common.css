@@ -242,9 +242,7 @@ header {
 
 /* Side Drawer Menu */
 /* 작업자: 유태구; */
-<<<<<<< HEAD
-=======
-.drawer_wrap {
+HEAD .drawer_wrap {
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -294,13 +292,13 @@ header {
 .drawer_accordion_list li.active ul {
   display: flex;
 }
->>>>>>> c7fc4943deb2762cc0b73a082b8172f79fae2958
 
 /* Social button list */
 .social_button_list {
   display: flex;
   gap: var(--base-unit);
   justify-content: center;
+  align-items: center;
 }
 
 /* Footer */
