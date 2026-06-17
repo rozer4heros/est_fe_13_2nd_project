@@ -19,7 +19,7 @@
   transform: translateY(0%);
   transition: 0.3s ease-out;
 }
-.filter_drawer div:has(h3) {
+.filter_drawer .filter_drawer_header {
   padding: var(--base-unit-x0-5);
   border-bottom: 1px solid var(--font--color);
 }
