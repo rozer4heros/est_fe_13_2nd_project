@@ -481,7 +481,7 @@
   gap: 32px;
   box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
 }
-img {
+.ai_description img {
   width: 100px;
   height: 100px;
   object-fit: contain;
@@ -496,10 +496,10 @@ img {
 .ai_text {
   gap: 8px;
 }
-h3 {
+.ai_description h3 {
   color: var(--point--color);
 }
-p {
+.ai_description p {
   color: var(--font--color);
 }
 
@@ -631,7 +631,7 @@ p {
   .ai_text {
     text-align: left;
   }
-  .pc_only {
+  .ai_face_analysis .pc_only {
     margin-top: 24px;
     .ai_btn_outline,
     .ai_btn_filled {
