@@ -1,4 +1,17 @@
-# Copilot 작업 가이드라인
+# 코딩 에이전트 작업 가이드라인
+
+## 프로젝트 개요 및 기술 스택
+
+이 프로젝트는 JavaScript를 사용해 동적 웹 사이트를 구현하는 과제입니다.
+
+### 1. JavaScript 작성 금지
+
+- 별도의 허락이나 도움 요청 없이 없다면 JavaScript 파일 작성 및 편집 금지
+
+### 2. HTML, CSS, Vanilla JS만 사용
+
+- HTML, CSS, Vanilla JS(도움 요청시)만 사용해 코드 작성
+- 이 프로젝트는 SASS, LESS같은 CSS 전처리기(preprocessor)나 React같은 프레임워크(framework)를 사용하지 않음
 
 ## 파일 편집 및 Git 안전 조치
 
