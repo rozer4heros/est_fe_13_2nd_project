@@ -416,23 +416,26 @@
 .ai_face_analysis {
   width: 100%;
   height: auto;
-  padding: 96px 40px;
+  padding: 96px 0 ;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .ai_face_analysis::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
+
   background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
   opacity: 0.5;
-  z-index: -1;
 }
-.ai_text_container {
-  gap: 8px;
+.ai_face_analysis .ai_text_container {
+  gap: 48px;
 }
-.ai_top {
+.ai_face_analysis .ai_top {
+  flex-direction: column;
   gap: 48px;
 }
 .ai_text_container .ai_title {
