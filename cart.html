@@ -18,6 +18,7 @@
     </div>
 
     <main class="cart_page_main">
+      <h1 class="sr-only">장바구니 페이지 입니다.</h1>
       <div class="wrap cart_layout_container"></div>
       <div class="best_picks">
         <div class="best_picks_wrap">
@@ -26,8 +27,15 @@
             <p class="best_picks_subtitle body_m">함께 보면 좋은 상품</p>
           </div>
 
-          <div class="best_picks_container" id="bestPicksContainer">
-            <!-- JS로 처리 -->
+          <div class="best_picks_slider_window">
+            <ul class="best_picks_slider_track" id="bestPicksContainer" aria-label="추천 상품 슬라이드 목록">
+              <li class="best_picks_page" id="bestPicksPage1"></li>
+              <li class="best_picks_page" id="bestPicksPage2"></li>
+            </ul>
+          </div>
+
+          <div class="best_picks_indicator_track" id="bestPicksIndicatorTrack">
+            <div class="best_picks_indicator_bar" id="bestPicksIndicatorBar"></div>
           </div>
         </div>
       </div>

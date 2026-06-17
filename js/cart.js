@@ -23,11 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("상품 데이터를 불러오는 데 실패했습니다.");
       }
       productsDB = await response.json();
-
-      // [기존] 장바구니 리스트 렌더링
       renderCart();
-
-      // [신규] 중복 통신 없이 로드 완료된 데이터를 기반으로 추천 상품 렌더링
       renderBestPicks();
     } catch (error) {
       console.error("에러 발생:", error);
@@ -39,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //담긴 상품
   function renderCart() {
     const cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
 
@@ -211,17 +208,19 @@ document.addEventListener("DOMContentLoaded", () => {
     calculatePrice();
   }
 
-  // [신규] 추천 상품(Best Picks) 영역 동적 출력 처리 함수
+  //추천 상품
   function renderBestPicks() {
-    const bestContainer = document.getElementById("bestPicksContainer");
-    if (!bestContainer) return;
+    const sliderTrack = document.getElementById("bestPicksContainer");
+    const page1 = document.getElementById("bestPicksPage1");
+    const page2 = document.getElementById("bestPicksPage2");
 
-    // 대다수의 데이터 중 데스크탑 시안 기준에 맞춰 상위 4개 아이템만 추출
-    const bestItems = productsDB.slice(0, 4);
-    bestContainer.innerHTML = ""; // 초기화
+    if (!sliderTrack || !page1 || !page2) return;
 
-    bestItems.forEach(product => {
-      // 외부 URL 대신 고유 productId를 dataset에 바인딩하도록 변경
+    const bestItems = productsDB.slice(0, 8);
+    page1.innerHTML = "";
+    page2.innerHTML = "";
+
+    bestItems.forEach((product, index) => {
       const bestCardHtml = `
         <div class="best_picks_card d-flex flex-column ${product.isSoldOut ? "is_soldout" : ""}" data-id="${product.productId}">
           <div class="best_picks_imagebox">
@@ -248,34 +247,59 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
-
-      bestContainer.insertAdjacentHTML("beforeend", bestCardHtml);
+      if (index < 4) {
+        page1.insertAdjacentHTML("beforeend", bestCardHtml);
+      } else {
+        page2.insertAdjacentHTML("beforeend", bestCardHtml);
+      }
     });
 
-    // 위시 토글 및 상세 페이지 이동용 독자적 이벤트 바인딩
-    bindBestPicksEvents(bestContainer);
+    bindBestPicksEvents(page1);
+    bindBestPicksEvents(page2);
+
+    initBestPicksManualSlider(sliderTrack);
   }
 
-  // [신규] 추천상품 전용 통합 클릭 제어 (이벤트 위임 패턴 적용)
+  //추천상품 클릭 시 이벤트
   function bindBestPicksEvents(container) {
     container.addEventListener("click", e => {
       const wishBtn = e.target.closest(".best_picks_wishbtn");
       const card = e.target.closest(".best_picks_card");
 
-      // 1. 하트 버튼 클릭 시 버블링을 완벽 차단하고 클래스 토글 처리
       if (wishBtn) {
         e.stopPropagation();
         wishBtn.classList.toggle("active");
         return;
       }
 
-      // 2. 카드 전체 클릭 시 외부 주소가 아닌 프로젝트 내부의 details.html?id=### 구조로 쿼리 스트링 전환
       if (card && card.dataset.id) {
         window.location.href = `details.html?id=${card.dataset.id}`;
       }
     });
   }
 
+  //슬라이더
+  function initBestPicksManualSlider(sliderTrack) {
+    const indicatorTrack = document.getElementById("bestPicksIndicatorTrack");
+    const indicatorBar = document.getElementById("bestPicksIndicatorBar");
+    if (!sliderTrack || !indicatorTrack || !indicatorBar) return;
+
+    let currentPage = 0;
+
+    indicatorTrack.addEventListener("click", () => {
+      currentPage = currentPage === 0 ? 1 : 0;
+
+      if (currentPage === 1) {
+        sliderTrack.style.transform = "translateX(-50%)";
+        indicatorBar.style.transform = "translateX(100%)";
+      } else {
+        sliderTrack.style.transform = "translateX(0)";
+        indicatorBar.style.transform = "translateX(0)";
+      }
+    });
+  }
+
+  //체크박스, 수량
   function bindEvents() {
     const selectAllCheckbox = document.getElementById("selectAll");
     const singleCheckboxes = document.querySelectorAll(".single_checkbox");
@@ -358,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //가격계산
   function calculatePrice() {
     const cards = document.querySelectorAll(".cart_item_card");
     let totalBasePrice = 0;
