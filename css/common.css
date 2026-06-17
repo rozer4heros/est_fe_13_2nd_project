@@ -299,6 +299,7 @@ header {
   display: flex;
   gap: var(--base-unit);
   justify-content: center;
+  align-items: center;
 }
 
 /* Footer */
