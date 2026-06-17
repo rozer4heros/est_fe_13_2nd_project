@@ -1743,3 +1743,63 @@
 .store_locator {
   padding: calc(var(--base-unit) * 4) 0;
 }
+.store_locator .map_api {
+  width: 100%;
+  height: calc(var(--base-unit) * 15);
+}
+.store_locator .dropdown_trigger {
+  min-width: 344px;
+  padding: var(--base-unit-x0-5) var(--base-unit);
+  border: 1px solid var(--light--gray);
+  border-radius: 10px;
+
+  z-index: 1;
+
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.store_locator .dropdown_label {
+  opacity: 0.6;
+}
+.store_locator .dropdown_menu {
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+.store_locator .dropdown.active .dropdown_menu {
+  max-height: calc(var(--base-unit) * 15);
+}
+
+.store_locator .store_list article {
+  width: 100%;
+  border-radius: 20px;
+  padding: var(--base-unit) 108px;
+  background: var(--white);
+  transition: 0.3s ease-in;
+}
+.store_locator .store_list article.active {
+  padding: var(--base-unit) 20px;
+  background: var(--main--light);
+  transition: 0.3s ease-out;
+}
+.store_locator .store_tag_list li {
+  min-width: 80px;
+  border-radius: 5px;
+  text-align: center;
+  background: var(--light--gray);
+}
+.store_locator .store_opening_hours span {
+  color: var(--point--color);
+}
+.store_locator .store_list article img {
+  object-fit: cover;
+  object-position: center;
+
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+.store_locator .store_list article.active img {
+  max-height: calc(var(--base-unit) * 31);
+  transition: 0.3s ease-out;
+}
