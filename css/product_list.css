@@ -92,6 +92,21 @@ main {
   padding: calc(var(--base-unit) * 4) 0;
 }
 
+/* Dropdown list container responsive and overflow settings */
+.filter_dropdown_list {
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: center;
+}
+.filter_dropdown {
+  flex-shrink: 0;
+}
+.filter_dropdown_list button.below_pc {
+  flex-shrink: 0;
+}
+.filter_dropdown .filter_dropdown_trigger span {
+  white-space: nowrap;
+}
 .filter_dropdown_list button {
   width: var(--base-unit-x2);
   min-width: var(--base-unit-x2);

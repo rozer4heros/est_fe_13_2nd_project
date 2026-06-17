@@ -295,6 +295,36 @@
       </div>
     </div>
 
+    <!-- Price Range Slider Component -->
+    <div class="price_slider_container" style="max-width: 360px; padding: 20px; border: 1px solid var(--light--gray); border-radius: 20px; margin-bottom: 20px;">
+      <div class="price_range_values d-flex justify-content-between body_m" style="margin-bottom: 12px;">
+        <span class="min_val">0원</span>
+        <span class="max_val">300,000원+</span>
+      </div>
+      <div class="range_slider_track_wrap">
+        <div class="slider_track"></div>
+        <input type="range" min="0" max="300000" step="10000" value="0" id="component_price_min" class="price_range_input" />
+        <input type="range" min="0" max="300000" step="10000" value="300000" id="component_price_max" class="price_range_input" />
+      </div>
+    </div>
+
+    <!-- Pagination Component -->
+    <div class="product_list_pagination d-flex justify-content-center align-items-center" style="margin: 20px 0;">
+      <button class="pagination_btn prev_btn" aria-label="이전 페이지">
+        <span class="material-icons-round">chevron_left</span>
+      </button>
+      <ul class="pagination_pages d-flex body_l">
+        <li class="page_num active">1</li>
+        <li class="page_num">2</li>
+        <li class="page_num">3</li>
+        <li class="page_num">4</li>
+        <li class="page_num">5</li>
+      </ul>
+      <button class="pagination_btn next_btn" aria-label="다음 페이지">
+        <span class="material-icons-round">chevron_right</span>
+      </button>
+    </div>
+
     <!-- Filter drawer button -->
     <label for="" class="filter_drawer_btn body_l">선글라스</label>
 
