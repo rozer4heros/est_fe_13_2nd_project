@@ -1691,6 +1691,23 @@
 
 /* brand section - 김해나 */
 
+.brand_showcase {
+  width: 100%;
+}
+
+.brand_inner_wrap {
+  width: 100%;
+  max-width: 1224px;
+  margin: 0 auto;
+  padding: 0 110px;
+  box-sizing: border-box;
+}
+
+.brand_inner_wrap > h2 {
+  margin: calc(var(--base-unit) * 4) 0 calc(var(--base-unit) * 2) 0;
+}
+
+/* 브랜드 로고 자동 슬라이드 */
 .brand_slider {
   width: 100%;
   overflow: hidden;
@@ -1709,6 +1726,7 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  flex-shrink: 0;
 }
 
 .brand_rolling_item img {
@@ -1746,6 +1764,257 @@
     transform: translateX(0);
   }
 }
+
+/* brand 그리드 카드 */
+.brand_master_slider_track {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--base-unit) * 6);
+  width: 100%;
+  max-width: 100%;
+  margin-top: calc(var(--base-unit) * 2);
+  box-sizing: border-box;
+}
+
+.brand_content_block {
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.brand_block_header {
+  margin-bottom: var(--base-unit);
+}
+
+.brand_name_title {
+  color: var(--main--color);
+  text-transform: uppercase;
+}
+
+.brand_wide_banner {
+  width: 100%;
+  margin-bottom: var(--base-unit);
+}
+.brand_wide_banner img {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.brand_product_row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 32px;
+  row-gap: var(--base-unit);
+  width: 100%;
+  margin-bottom: var(--base-unit);
+}
+
+.product_card {
+  display: block;
+  width: 100%;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  box-sizing: border-box;
+}
+
+.prod_img_wrap {
+  width: 100% !important;
+  height: auto;
+  aspect-ratio: 2.3 / 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--light--gray);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.prod_img_wrap img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prod_info_wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.prod_brand_header {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.prod_brand_name {
+  color: var(--point--color);
+
+  flex: 1;
+  min-width: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn_wishlist {
+  cursor: pointer;
+}
+
+.prod_desc {
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+}
+
+.prod_price_info {
+  width: 100%;
+  gap: 7px;
+}
+
+.brand_content_block,
+.brand_product_row,
+.product_card {
+  min-width: 0;
+}
+
+.inner_sub_pagination {
+  margin-top: auto;
+}
+
+.inner_sub_pagination button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.master_pagination {
+  margin: 40px 0;
+}
+
+.fade_in_effect {
+  animation: fadeInActive 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInActive {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand_product_scroll_container {
+  width: 100%;
+}
+/* Brand
+=========== 모바일 반응형 */
+
+@media (max-width: 480px) {
+  .brand_inner_wrap {
+    padding: 0 20px !important;
+  }
+
+  .brand_inner_wrap > h2 {
+    margin: calc(var(--base-unit) * 2) 0;
+  }
+
+  .brand_block_header,
+  .brand_wide_banner {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .brand_rolling_item img {
+    height: 34px;
+  }
+
+  .inner_sub_pagination {
+    display: none; /* 페이지네이션 숨김 */
+  }
+
+  .brand_master_slider_track {
+    grid-template-columns: 1fr;
+    gap: calc(var(--base-unit) * 4);
+  }
+
+  .brand_product_scroll_container {
+    overflow-x: auto !important; /* 가로 스크롤 강제 활성화 */
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+    width: auto !important;
+
+    padding-left: 0 !important; /* 스크롤 시작점 여백 */
+    padding-right: 0 !important; /* 스크롤 끝점 여백 */
+    padding-bottom: 12px;
+
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    box-sizing: border-box;
+  }
+
+  .brand_product_scroll_container::-webkit-scrollbar {
+    height: 2px;
+  }
+  .brand_product_scroll_container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 3px;
+  }
+
+  .brand_product_row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+
+    gap: 12px !important;
+    width: max-content !important;
+    margin-bottom: 0;
+    grid-template-columns: none !important;
+
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .product_card {
+    display: flex !important;
+    flex-direction: column;
+
+    width: 165px !important;
+    min-width: 165px !important;
+
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .prod_img_wrap {
+    width: 100% !important;
+    aspect-ratio: 1.2 / 1 !important;
+    overflow: hidden;
+  }
+}
+
+/* brand section 종료 */
 
 /* celebs pick - 문송연 */
 /* 모바일 */
@@ -1785,5 +2054,89 @@
 
 /* 매장 찾기 섹션 - 유태구 */
 .store_locator {
-  padding: calc(var(--base-unit) * 4) 0;
+  padding: calc(var(--base-unit) * 4) 20px;
+}
+.store_locator .map_api {
+  width: 100%;
+  height: calc(var(--base-unit) * 15);
+}
+.store_locator .dropdown {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 344px;
+}
+.store_locator .dropdown_trigger {
+  padding: var(--base-unit-x0-5) var(--base-unit);
+  border: 1px solid var(--light--gray);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.store_locator .dropdown_trigger .dropdown_label {
+  opacity: 0.6;
+}
+.store_locator .dropdown_menu {
+  position: absolute;
+  top: 100%;
+
+  width: 100%;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+.store_locator .dropdown.active .dropdown_menu {
+  max-height: calc(var(--base-unit) * 15);
+}
+.store_locator .dropdown_menu li {
+  padding: 6px var(--base-unit);
+}
+
+.store_locator .store_list article {
+  border-radius: 20px;
+  padding: var(--base-unit) 20px;
+  background: var(--main--light);
+}
+.store_locator .store_tag_list li {
+  padding: 0 5px;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  text-align: center;
+  background: var(--light--gray);
+}
+.store_locator .store_opening_hours span {
+  color: var(--point--color);
+}
+.store_locator .store_list article img {
+  border-radius: 20px;
+
+  object-fit: cover;
+  object-position: center;
+
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+.store_locator .store_list article.active img {
+  max-height: calc(var(--base-unit) * 15);
+  transition: 0.3s ease-out;
+}
+@media (min-width: 481px) {
+  .store_locator .store_tag_list li {
+    min-width: 80px;
+  }
+  .store_locator {
+    padding: calc(var(--base-unit) * 4) 32px;
+  }
+}
+@media (min-width: 769px) {
+  .store_locator {
+    padding: calc(var(--base-unit) * 4) 0px;
+  }
 }
