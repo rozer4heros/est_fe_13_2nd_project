@@ -4,19 +4,26 @@ import { renderFooter } from "./modules/footer.js";
 
 // hero - 문송연
 // slide 추가
-new Swiper(".hero_swiper", {
+const heroSwiper = new Swiper(".hero_swiper", {
   loop: true,
   slidesPerView: 1,
+  spaceBetween: 0,
+  centeredSlides: false,
+  watchOverflow: true,
+
   scrollbar: {
-    el: ".swiper-scrollbar",
+    el: ".hero_swiper .swiper-scrollbar",
     draggable: true,
   },
+
   pagination: {
-    el: ".swiper-pagination",
+    el: ".hero_swiper .swiper-pagination",
+    clickable: true,
   },
+
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".hero_swiper .swiper-button-next",
+    prevEl: ".hero_swiper .swiper-button-prev",
   },
 });
 
@@ -86,19 +93,19 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then((products) => {
+    .then(products => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach((product) => {
+      limitedProducts.forEach(product => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
@@ -136,7 +143,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;

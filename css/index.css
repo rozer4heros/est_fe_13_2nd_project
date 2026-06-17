@@ -15,24 +15,37 @@
 }
 
 /* swiper 공통 */
+.hero {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
 .hero_swiper {
   position: relative;
   width: 100%;
   max-width: 100%;
   padding: 0 !important;
+  margin: 0;
   overflow: hidden;
 }
 
 .hero_swiper .swiper-wrapper {
   display: flex;
-  width: 100%;
+  align-items: stretch;
 }
 
 .hero_swiper .swiper-slide {
   position: relative;
   flex-shrink: 0;
-  width: 100%;
-  min-width: 100%;
+  height: auto;
   aspect-ratio: 480 / 562;
   overflow: hidden;
   box-sizing: border-box;
