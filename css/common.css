@@ -202,14 +202,12 @@ body {
 }
 @media (min-width: 769px) {
   .wrap {
-    max-width: 1272px;
+    max-width: 1276px;
     padding: 0 0px;
     margin: 0 auto;
   }
   .page_main .wrap {
-    width: 75%;
-    max-width: none;
-    margin: none;
+    max-width: 1440px;
   }
 }
 
@@ -228,7 +226,7 @@ body {
 /* Header */
 /* 작업자: 유태구; */
 header {
-  padding: var(--base-unit) 0px;
+  padding: var(--base-unit-x0-5) 0;
   position: sticky;
   top: 0;
   z-index: 32767;
@@ -384,11 +382,15 @@ footer .wrap {
   padding: 0 0 var(--base-unit-x0-5);
 }
 .footer_accordion > :last-child {
-  /* display: none; */
   display: flex;
+
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.2s ease-in;
 }
 .footer_accordion.active > :last-child {
-  display: flex;
+  max-height: calc(var(--base-unit) * 15);
+  transition: 0.2s ease-out;
 }
 
 .footer_contact {
@@ -455,6 +457,9 @@ footer .wrap {
   .footer_accordion.business_info > div {
     width: auto;
     min-width: 0;
+  }
+  .footer_accordion > :last-child {
+    max-height: none;
   }
 
   .footer_contact {
