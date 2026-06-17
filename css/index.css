@@ -214,9 +214,13 @@
 .promotion_title .material-icons-round {
   color: var(--white);
 }
+.price_origin {
+  text-decoration: line-through;
+}
 .price_sale {
   color: var(--point--color);
 }
+
 .style_btn {
   justify-content: center;
   background: var(--white);
@@ -254,7 +258,7 @@
   color: var(--point--color);
 }
 .tryon_btn {
-  background: var(--point--color);
+  background: var(--main--color);
   color: var(--white);
   align-items: center;
 }
@@ -294,7 +298,7 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  background: var(--point--color);
+  background: var(--main--color);
   color: var(--white);
   border-radius: 99px;
 }
@@ -398,26 +402,451 @@
 }
 /* PC */
 @media (min-width: 1440px) {
-  .hero_swiper .swiper-slide {
-    height: 100vh;
-    aspect-ratio: auto;
+  /* 히어로 공통 */
+  .hero {
+    width: 100%;
+    overflow: hidden;
   }
 
-  .search {
-    display: none;
+  .hero_swiper {
+    width: 100%;
+    max-width: none;
+    margin: 0;
   }
+
+  /* PC 이미지 비율: 1920 × 900 */
+  .hero_swiper .swiper-slide {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1920 / 900;
+    overflow: hidden;
+  }
+
+  .hero_slide_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /*  PC 이미지 교체 */
+  .hero_ai_container .hero_slide_img {
+    content: url("../image/hero_ai.webp");
+  }
+
+  .coupon_container .hero_slide_img {
+    content: url("../image/hero_coupon.jpg");
+  }
+
+  .stylework_container .hero_slide_img {
+    content: url("../image/hero_stylework.webp");
+  }
+
+  .try_on_container .hero_slide_img {
+    content: url("../image/hero_tryon.webp");
+  }
+
+  /* 텍스트 공통 초기화
+     모바일의 left:0 / right:0 해제 */
 
   .hero_ai_text_container,
   .coupon_text_container,
   .stylework_text_container,
   .tryon_text_container {
-    padding-inline: 0;
+    top: 50%;
+    bottom: auto;
+    width: 560px;
+    padding: 0;
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    text-align: left;
+  }
+  /* 각 버튼 애니메이션 공통 추가 */
+  /* 버튼 크기 통일 */
+  .hero_action_btn {
+    position: relative;
+    isolation: isolate;
+
+    width: 250px;
+    min-width: 250px;
+    height: 72px;
+    padding: 0 76px 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border: 2px solid var(--btn-fill-color);
+    border-radius: 999px;
+    background: var(--btn-base-color);
+
+    cursor: pointer;
   }
 
+  /* 파란색 버튼 */
+  .hero_ai_btn,
+  .coupon_btn,
+  .tryon_btn {
+    --btn-fill-color: var(--main--color);
+    --btn-base-color: var(--white);
+    --btn-filled-text: var(--white);
+
+    --btn-arrow-start: var(--main--color);
+    --btn-arrow-end: var(--white);
+  }
+
+  /* 스타일워크 버튼 */
+  .style_btn {
+    --btn-fill-color: var(--font--color);
+    --btn-base-color: transparent;
+    --btn-filled-text: var(--white);
+
+    --btn-arrow-start: var(--font--color);
+    --btn-arrow-end: var(--white);
+  }
+
+  /* meterial icon 사이즈 */
+
+  .hero_action_btn .hero_btn_arrow.material-icons-round {
+    width: 56px;
+    height: 56px;
+
+    font-size: 56px;
+    line-height: 56px;
+
+    display: grid;
+    place-items: center;
+  }
+  .hero_ai_btn .material-icons-round {
+    font-size: 40px;
+  }
+  .coupon_btn .material-icons-round {
+    font-size: 40px;
+  }
+  .style_btn .material-icons-round {
+    font-size: 40px;
+  }
+  .tryon_btn .material-icons-round {
+    font-size: 32px;
+  }
+
+  .hero_action_btn {
+    width: 270px;
+    min-width: 270px;
+    height: 68px;
+    padding: 0 68px 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 999px;
+  }
+
+  .hero_action_btn .hero_btn_arrow.material-icons-round {
+    width: 58px;
+    height: 58px;
+
+    font-size: 58px;
+    line-height: 58px;
+
+    display: grid;
+    place-items: center;
+  }
+
+  /* 화살표가 지나간 자리부터 채워지는 배경 */
+  .hero_action_btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background: var(--btn-fill-color);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  /* 글씨 */
+  .hero_btn_text {
+    position: relative;
+    z-index: 2;
+
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+
+    color: var(--btn-filled-text);
+
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  /* 원형 화살표 박스 */
+  .hero_btn_arrow {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    z-index: 3;
+
+    display: block;
+    padding: 0;
+
+    background: none;
+    border-radius: 0;
+
+    color: var(--btn-arrow-start);
+    font-size: 64px;
+    line-height: 1;
+
+    transform: translateY(-50%);
+  }
+
+  /* 활성 슬라이드에서 자동 실행 */
+  .swiper-slide-active .hero_action_btn::before {
+    animation: heroFillAuto 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .swiper-slide-active .hero_btn_arrow {
+    animation: heroArrowAuto 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .swiper-slide-active .hero_btn_text {
+    animation: heroTextAuto 0.85s ease-out 0.25s both;
+  }
+
+  /* 호버하면 다른 이름의 애니메이션으로 재실행 */
+  .swiper-slide-active .hero_action_btn:hover::before {
+    animation: heroFillHover 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .swiper-slide-active .hero_action_btn:hover .hero_btn_arrow {
+    animation: heroArrowHover 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .swiper-slide-active .hero_action_btn:hover .hero_btn_text {
+    animation: heroTextHover 0.85s ease-out 0.25s both;
+  }
+
+  /* slide 1 */
+  .hero_ai_text_container {
+    top: 60%;
+    bottom: auto;
+    right: max(40px, calc((100vw - 1440px) / 2));
+    left: auto;
+    align-items: flex-start;
+
+    transform: translateY(-50%);
+  }
+  .hero_ai_title {
+    align-items: flex-start;
+  }
+  /* slide 2 */
+  .coupon_text_container {
+    left: max(40px, calc((100vw - 1440px) / 2));
+    right: auto;
+    align-items: flex-start;
+  }
+
+  /* slide 3 */
+
+  /* 스타일워크 PC 텍스트 색상 */
+  .stylework_title h2,
+  .promotion_title h3,
+  .promotion_title p,
+  .promotion_price,
+  .price_origin,
+  .promotion_title .material-icons-round {
+    color: var(--font--color);
+  }
+  .stylework_text_container {
+    left: auto;
+    right: max(40px, calc((100vw - 1440px) / 2));
+    align-items: flex-start;
+  }
+  .stylework_container::before {
+    display: none;
+  }
+
+  .stylework_group {
+    align-items: flex-start;
+  }
+  .stylework_title {
+    color: var(--font--color);
+  }
+
+  .style_btn {
+    align-self: flex-start;
+  }
+
+  /* slide 4 */
+  .try_on_container::before {
+    display: none;
+  }
+  .tryon_text_container {
+    left: max(40px, calc((100vw - 1440px) / 2));
+    right: auto;
+    width: 620px;
+    align-items: flex-start;
+  }
+
+  .tryon_steps {
+    gap: 40px;
+  }
+
+  .tryon_step {
+    animation: none;
+    transform: none;
+  }
+  .tryon_benefits {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  .tryon_benefit {
+    flex-shrink: 0;
+    width: auto;
+    white-space: nowrap;
+  }
+  .benefit_text {
+    white-space: nowrap;
+  }
+
+  /* PC 슬라이드 컨트롤
+     1440 그리드에 맞춤 */
   .swiper_controls {
-    left: 80px;
-    right: 80px;
+    left: max(40px, calc((100vw - 1440px) / 2));
+    right: max(40px, calc((100vw - 1440px) / 2));
     bottom: 32px;
+    gap: 24px;
+  }
+
+  /* 스타일워크 슬라이드도 PC에서는 검은 컨트롤 */
+  .hero_swiper.is-stylework .swiper-scrollbar {
+    background: rgba(34, 40, 49, 0.4);
+  }
+
+  .hero_swiper.is-stylework .swiper-scrollbar-drag {
+    background: var(--font--color);
+  }
+
+  .hero_swiper.is-stylework .hero_arrow {
+    color: var(--font--color);
+  }
+}
+
+/* 자동 실행 */
+@keyframes heroArrowAuto {
+  0% {
+    left: 5px;
+    color: var(--btn-arrow-start);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  100% {
+    left: calc(100% - 63px);
+    color: var(--btn-arrow-end);
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes heroArrowHover {
+  0% {
+    left: 5px;
+    color: var(--btn-arrow-start);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  100% {
+    left: calc(100% - 63px);
+    color: var(--btn-arrow-end);
+    transform: translateY(-50%) scale(1);
+  }
+}
+@keyframes heroFillAuto {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroTextAuto {
+  0%,
+  20% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes heroFillHover {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroTextHover {
+  0%,
+  20% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes heroArrowAuto {
+  0% {
+    left: 6px;
+    color: var(--btn-arrow-start);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  65% {
+    color: var(--btn-arrow-start);
+  }
+
+  100% {
+    left: calc(100% - 68px);
+    color: var(--btn-arrow-end);
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes heroArrowHover {
+  0% {
+    left: 6px;
+    color: var(--btn-arrow-start);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  65% {
+    color: var(--btn-arrow-start);
+  }
+
+  100% {
+    left: calc(100% - 68px);
+    color: var(--btn-arrow-end);
+    transform: translateY(-50%) scale(1);
   }
 }
 
