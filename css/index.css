@@ -1190,5 +1190,39 @@ p {
 }
 
 /* celebs pick - 문송연 */
+/* 모바일 */
+.celebs_pick {
+  width: 100%;
+  background: var(--font--color);
+  padding: 96px 0;
+}
+.celebs_pick::before {
+  content: "";
+  background-image: url(../image/celeb_background.jpg);
+  background-size: cover;
+}
+.Celeb_text_container h2,
+p,
+.gla_btn,
+.sun_btn,
+.celeb_product .like {
+  color: var(--white);
+}
+.Celeb_text_container {
+  text-align: center;
+}
+.gla_btn {
+  border-radius: 50px 0 0 50px;
+  border: 1px solid var(--main--color);
+}
+
+.sun_btn {
+  border-radius: 0 50px 50px 0;
+  border: 1px solide var(--main--color);
+}
+
+/* 태블릿 */
+
+/* pc */
 
 /* store section - 유태구 */

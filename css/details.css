@@ -113,7 +113,7 @@
   object-fit: cover;
 }
 
-/* 순수 CSS로 구현된 탭 */
+/* 탭 */
 .detail-tab-container {
   display: flex;
   width: 100%;
@@ -170,187 +170,278 @@
   border-radius: 20px;
 }
 
-/* 우측 끈적이(Sticky) 정보 카드 */
-.detail-info-card {
+/* 우측 Sticky 정보 카드 */
+.product-info-card {
   width: 520px;
   background: #f9fcff;
   border-radius: 20px;
-  padding: 40px;
-  filter: drop-shadow(0px 0px 4px rgba(74, 168, 255, 0.5));
+  padding: 48px;
+  box-shadow: 0px 0px 4px rgba(74, 168, 255, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
   position: sticky;
-  top: 40px;
+  top: 100px;
 }
-.detail-brand-name {
-  color: #007be5;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.detail-product-name {
-  font-size: 32px;
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.detail-rating {
+
+.product-title {
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #007be5;
+  letter-spacing: -0.7px;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222831;
+  letter-spacing: -1.6px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+
+.rating {
+  display: flex;
+  gap: 6px;
   align-items: center;
-  gap: 8px;
 }
-.detail-rating-stars {
-  width: 100px;
+
+.stars {
+  display: flex;
+  gap: 2px;
 }
-.detail-rating-stars svg {
-  width: 100%;
+
+.star {
+  color: #4aa8ff;
+  font-size: 20px;
 }
-.detail-rating-text {
+
+.rating-text {
   font-size: 20px;
   font-weight: 700;
-}
-.detail-rating-count {
-  color: #acacac;
-  font-weight: 400;
+  color: #222831;
+  letter-spacing: -1px;
 }
 
-.detail-price-row {
+.reviews {
+  color: #acacac;
+}
+
+/* 가격 */
+.product-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.detail-price-current {
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.current-price {
   font-size: 32px;
   font-weight: 700;
+  color: #222831;
+  letter-spacing: -1.6px;
+  text-transform: uppercase;
 }
-.detail-price-discount {
+
+.discount-info {
   display: flex;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 7px;
+  align-items: center;
 }
-.detail-price-original {
+
+.original-price {
+  font-size: 14px;
   color: #64748b;
+  opacity: 0.6;
   text-decoration: line-through;
+  letter-spacing: -0.7px;
 }
-.detail-price-pct {
+
+.discount-rate {
+  font-size: 14px;
   color: #ff2e2e;
+  letter-spacing: -0.7px;
 }
-.detail-heart-icon {
+
+.favorite-icon {
   font-size: 40px;
   color: rgba(34, 40, 49, 0.5);
-  cursor: pointer;
 }
 
-.detail-divider {
-  border: none;
-  border-top: 2px solid rgba(197, 203, 210, 0.3);
-  margin: 0;
-}
-.detail-divider.dark {
-  border-top-color: rgba(100, 116, 139, 0.3);
-}
-.detail-divider.white {
-  border-top-color: #f9fcff;
+.material-symbols-rounded {
+  font-variation-settings:
+    "FILL" 0,
+    "GRAD" 0;
 }
 
-/* 순수 CSS 컬러/사이즈 버튼 */
-.detail-options-row {
+/* 구분선 */
+.divider {
+  height: 2px;
+  background: #c5cbd2;
+  opacity: 0.3;
+}
+
+.divider-light {
+  height: 2px;
+  background: #64748b;
+  opacity: 0.3;
+  margin: 24px 0;
+}
+
+/* 옵션 선택 */
+.options-section {
   display: flex;
   justify-content: space-between;
+  gap: 24px;
 }
-.detail-option-label {
-  color: #007be5;
+
+.color-select,
+.size-select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-label {
+  font-size: 14px;
   font-weight: 700;
+  color: #007be5;
+  letter-spacing: -0.7px;
   text-transform: uppercase;
-  margin-bottom: 12px;
 }
-.detail-color-buttons,
-.detail-size-buttons {
+
+.color-buttons {
   display: flex;
   gap: 16px;
   align-items: center;
+  padding: 9px 4px;
+  position: relative;
 }
-.detail-color-dot {
+
+.color-circle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-.detail-color-dot.selected::after {
+
+.color-circle.selected::after {
   content: "";
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
   border: 1px solid rgba(34, 40, 49, 0.5);
   border-radius: 50%;
 }
-.detail-size-item {
+
+.size-buttons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 12px 4px;
+}
+
+.size-option {
   font-size: 16px;
   font-weight: 700;
   color: #64748b;
+  letter-spacing: -0.8px;
   cursor: pointer;
 }
-.detail-size-item.active {
+
+.size-option.active {
   color: #4aa8ff;
 }
 
-.detail-action-buttons {
+/* 버튼 */
+.action-buttons {
   display: flex;
-  gap: 10px;
-}
-.detail-btn-cart,
-.detail-btn-buy {
-  flex: 1;
-  padding: 16px 0;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
-.detail-btn-cart {
-  background: #007be5;
-  color: #fff;
-  border: none;
-}
-.detail-btn-buy {
-  background: #fff;
-  color: #007be5;
-  border: 1px solid #007be5;
+  gap: 8px;
 }
 
-.detail-price-extra {
+.btn-cart {
+  flex: 1;
+  background: #007be5;
+  color: #f9fcff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.btn-buy {
+  flex: 1;
+  background: #f9fcff;
+  color: #007be5;
+  border: 1px solid #007be5;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* 추가 가격 정보 */
+.price-extra {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.detail-discount-max {
+
+.new-member-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.new-member-label {
+  display: flex;
+  gap: 7px;
+  align-items: center;
   font-size: 18px;
   font-weight: 500;
+  color: #222831;
+  letter-spacing: -0.9px;
 }
-.detail-discount-amount {
+
+.new-member-value {
   font-size: 24px;
   font-weight: 700;
+  color: #222831;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
 }
-.detail-extra-info-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.detail-extra-info-list li {
+
+.info-row {
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
   font-weight: 500;
+  color: #222831;
+  letter-spacing: -0.9px;
 }
+
 .cj-one {
   color: #4aa8ff;
 }
@@ -410,10 +501,9 @@
 .detail-coupon-section {
   position: relative;
   z-index: 0;
-  margin: 60px auto;
   border-radius: 10px;
   overflow: hidden;
-  padding: 40px;
+  padding: 36px;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -506,17 +596,29 @@
   align-items: center;
   gap: 20px;
 }
+
+/* 💡 공통 아이콘 박스 설정 (원래 주신 130x80 크기 복원) */
 .detail-dim-icon {
   width: 130px;
   height: 80px;
-  overflow: hidden;
-  position: relative;
+  /* CSS 파일에서는 한 단계 위로 올라가야 하므로 ../ 를 붙여야 이미지가 나옵니다 */
+  background-image: url("../image/dim-icon.png");
+  background-repeat: no-repeat;
+  /* 이미지가 2x2 바둑판 배열 형태일 때 박스에 꽉 차게 조절 */
+  background-size: 300% 300%;
 }
-.detail-dim-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} /* 복잡한 offset 대신 cover 적용 */
+
+/* 💡 원래 작성하셨던 object-position 값을 background-position으로 그대로 매칭 */
+.icon-01 {
+  background-position: 0% 50%;
+} /* 좌측 상단 (기본) */
+.icon-02 {
+  background-position: 50% 50%;
+} /* 우측 상단 */
+.icon-03 {
+  background-position: 100% 50%;
+} /* 좌측 하단 */
+
 .detail-dim-label {
   font-size: 32px;
   font-weight: 700;
@@ -531,14 +633,16 @@
 /* ============================================
    6~10. 부가 기능 카드 영역 공통 (.detail-feature-card)
    ============================================ */
+/* [공통] 1. 카드 레이아웃 & 배경 오버레이*/
 .detail-feature-card {
   position: relative;
   z-index: 0;
   width: 100%;
-  min-height: 500px;
+  min-height: 840px;
   display: flex;
   align-items: center;
 }
+
 .detail-card-bg {
   position: absolute;
   top: 0;
@@ -547,12 +651,13 @@
   height: 100%;
   z-index: -1;
 }
-/* 기괴한 % 사이즈를 제거하고 정상적인 cover 사용 */
+
 .detail-card-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .detail-overlay {
   position: absolute;
   top: 0;
@@ -561,19 +666,52 @@
   height: 100%;
 }
 
+/* 어두운 배경, 오버레이 믹스 스타일들 */
+.overlay-mix-1 {
+  background-color: rgba(59, 62, 71, 0.3);
+  mix-blend-mode: overlay;
+}
+.overlay-mix-2 {
+  background-color: rgba(57, 87, 111, 0.46);
+  mix-blend-mode: darken;
+}
+.overlay-mix-3 {
+  background-color: #4a515b;
+  mix-blend-mode: hard-light;
+}
+/* [공통] 2. 내부 콘텐츠 기본 레이아웃 (좌측 정렬 고정) */
 .detail-card-content {
   padding-top: 80px;
   padding-bottom: 80px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 48px;
   color: #fff;
 }
-.detail-card-content.center-align {
-  align-items: center;
-  text-align: center;
+/* 상단 타이틀 */
+.detail-card-title {
+  display: flex;
+  flex-direction: column;
 }
-
+.detail-card-title h2 {
+  font-size: 48px;
+  margin: 0;
+  margin-bottom: 8px; /* 제목과 설명 사이 간격 살짝 띄우기 */
+  font-weight: 700;
+}
+.detail-card-title p {
+  font-size: 24px;
+  color: #e3f2ff;
+  margin: 0;
+  line-height: 1.4;
+}
+.detail-card-text p {
+  font-size: 32px;
+  color: #e3f2ff;
+  font-weight: 700;
+  margin: 0;
+}
+/* 뱃지 */
 .detail-badge {
   display: inline-block;
   padding: 8px 24px;
@@ -581,9 +719,6 @@
   font-weight: 700;
   font-size: 20px;
   align-self: flex-start;
-}
-.center-align .detail-badge {
-  align-self: center;
 }
 .detail-badge-white {
   border: 2px solid #fff;
@@ -598,42 +733,86 @@
   color: #fff;
 }
 
-.detail-card-title h2 {
-  font-size: 48px;
-  margin-bottom: 10px;
+/* 공통 텍스트 포인트 컬러 */
+.text-yellow {
+  color: #ffc943;
 }
-.detail-card-title p {
-  font-size: 24px;
-  color: #e3f2ff;
+.detail-card-title .text-yellow {
+  color: #ffc943;
+  font-size: 32px;
+  font-style: bold;
+}
+.detail-sale-row .text-yellow {
+  color: #ffc943;
+}
+/* 무료증정 등 강조 문구 스케일 업 (어느 카드든 사용 가능) */
+.detail-free-gift-highlight {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-align: left;
 }
 
-/* 리스트 스타일 통합 */
-.detail-feature-list {
-  display: flex;
-  gap: 30px;
-  list-style: none;
+/* 하단 구분선 & 버튼 */
+.detail-divider.white {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  margin: 0;
 }
-.detail-feature-list li {
+.detail-btn-yellow {
+  background: #ffc943;
+  color: #222831;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* [공통] 3. <br> 대신 한 줄씩 떨어뜨리는 텍스트 리스트 */
+/* 5개 카드 공통 리스트 정렬 (아이콘이 있든 없든 공용 사용) */
+.detail-feature-list,
+.detail-feature-text-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-feature-list li,
+.detail-feature-text-list li {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-weight: 500;
-  font-size: 18px;
 }
+
 .detail-feature-list img {
   width: 48px;
   height: 48px;
 }
 
-.detail-feature-text-list {
+/* 💡 핵심: <br>을 쓰지 않고 글자를 왼쪽 정렬로 툭툭 떨어뜨리는 범용 박스 */
+.detail-feature-text-block {
   display: flex;
-  gap: 40px;
-  list-style: none;
+  flex-direction: column;
+  gap: 6px;
+}
+.detail-feature-text-block p {
   font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  color: #fff;
+  text-align: left;
 }
 
+/* [공통] 4. 가격 안내 정보 박스 & 기타 예외 규칙 */
 .detail-sale-box {
-  background: rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 10px;
   width: fit-content;
@@ -666,18 +845,7 @@
   opacity: 0.8;
 }
 
-.detail-btn-yellow {
-  background: #ffc943;
-  color: #222831;
-  border: none;
-  border-radius: 10px;
-  padding: 16px 32px;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* 카드별 예외 처리들 */
+/* 헤드라인 및 서브타이틀 확장 스타일 */
 .detail-card-headline p {
   font-size: 48px;
   font-weight: 700;
@@ -707,105 +875,242 @@
   height: 72px;
   margin-bottom: 10px;
 }
-
-.detail-feature-flex {
-  display: flex;
-  gap: 40px;
-}
-.detail-flex-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 18px;
-}
-.detail-flex-item img {
-  width: 60px;
-}
-
 /* ============================================
    11. 비교 테이블 (.detail-compare-section)
    ============================================ */
-.detail-compare-section {
-  padding: 80px 0;
-}
-.detail-compare-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.detail-compare-title h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-.detail-compare-title p {
-  font-size: 20px;
-  color: #64748b;
+.compare-section {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
 }
 
-.detail-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  margin-bottom: 20px;
-}
-.detail-compare-table {
-  min-width: 800px;
+.compare-inner {
   display: flex;
   flex-direction: column;
-}
-.detail-table-header,
-.detail-table-row {
-  display: flex;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  gap: 48px;
   align-items: center;
-}
-.detail-table-header {
-  background: #f9fafb;
-  font-weight: 700;
-  color: #64748b;
-}
-.col-1 {
-  flex: 2;
-  padding-left: 20px;
-}
-.col-2,
-.col-3,
-.col-4 {
-  flex: 1;
-  text-align: center;
-}
-.detail-lens-cell {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.detail-color-swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
+  padding: 96px 322px;
+  width: 100%;
 }
 
-.detail-info-box {
-  background: #eff6ff;
-  border: 1px solid #bedbff;
-  border-radius: 20px;
-  padding: 30px;
-}
-.detail-info-box .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #007be5;
-  margin-bottom: 16px;
-}
-.detail-info-box ul {
+.compare-title {
   display: flex;
-  gap: 30px;
-  list-style: none;
-  margin-bottom: 16px;
-  font-weight: 700;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  flex-shrink: 0;
+  width: 450px;
+  color: #64748b;
+  text-transform: uppercase;
 }
-.detail-info-box .note {
-  font-size: 14px;
+
+.compare-h1 {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.compare-hash {
+  color: #64748b;
+}
+.compare-blue {
+  color: #4aa8ff;
+}
+
+.compare-sub {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #64748b;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1.2px;
   opacity: 0.6;
+  width: 100%;
+}
+
+.compare-table-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.compare-table-header {
+  background-color: #f9fafb;
+  display: flex;
+  gap: 236px;
+  height: 72px;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1276px;
+  border-bottom: 1px solid black;
+}
+
+.compare-col-label {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: black;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.compare-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: 1276px;
+}
+
+.compare-row {
+  background-color: white;
+  display: flex;
+  gap: 236px;
+  height: 72px;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.compare-lens-cell {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 196px;
+}
+
+.color-swatch {
+  border-radius: 4px;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+
+.lens-info {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: black;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lens-info p {
+  opacity: 0.6;
+  text-align: center;
+}
+
+.compare-data-med {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #222831;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  width: 88px;
+  height: 25px;
+}
+
+.compare-data-bold {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: black;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  width: 88px;
+  height: 25px;
+}
+
+.compare-info-box {
+  background-color: #eff6ff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 24px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  width: 1276px;
+  border: 1px solid #bedbff;
+}
+
+.info-box-title {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #007be5;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.info-box-item {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #222831;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1px;
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.info-box-note {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #222831;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.7px;
+  opacity: 0.6;
+  width: 370px;
+  flex-shrink: 0;
 }
 
 /* ============================================
