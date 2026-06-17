@@ -249,6 +249,7 @@ header nav ul {
 }
 header nav li {
   justify-self: center;
+  white-space: nowrap;
 }
 
 header nav a {
