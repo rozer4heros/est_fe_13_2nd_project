@@ -182,13 +182,13 @@ main {
     padding: var(--base-unit) 32px;
   }
   .product_list {
-    gap: var(--base-unit-x2) var(--base-unit);
+    gap: var(--base-unit-x2) 20px;
   }
 }
 @media (min-width: 769px) {
   .product_list {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--base-unit-x3) var(--base-unit);
+    gap: var(--base-unit-x3) 20px;
   }
 }
 
