@@ -1,8 +1,212 @@
 /* hero - 문송연 */
+/* 모바일 퍼스트 */
+/* slide 1 */
+.hero_swiper {
+  width: 100%;
+  padding: 0 !important;
+  position: relative;
+}
+.hero .wrap {
+  padding: 0 !important;
+}
+.search {
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  width: auto;
+  height: 48px;
+  left: 20px;
+  right: 20px;
+  background: rgba(249, 252, 255, 0.5);
+  border: 2px solid var(--main--color);
+  border-radius: 10px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+.search_input {
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.search_btn {
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.search_btn .material-icons-round {
+  color: var(--main--color);
+}
+.hero_ai_container {
+  position: relative;
+}
+.hero_ai_text_container {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.hero_ai_container img {
+  width: 100%;
+  height: auto;
+}
+.hero_ai_title p {
+  color: var(--point--color);
+}
+.hero_ai_btn {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  padding: 12px 24px;
+  gap: 8px;
+  background: var(--white);
+  color: var(--main--color);
+  border: 2px solid var(--main--color);
+  border-radius: 999px;
+}
+
+/* slide 2 */
+.coupon_container {
+  position: relative;
+}
+.coupon_container img {
+  width: 100%;
+  height: auto;
+}
+.coupon_text_container {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: auto;
+  text-align: left;
+  padding: 0 20px;
+  gap: 12px;
+  box-sizing: border-box;
+}
+.coupon_title p {
+  color: var(--point--color);
+}
+.coupon_btn {
+  box-sizing: border-box;
+  color: var(--point--color);
+  border: 1px solid var(--point--color);
+  border-radius: 999px;
+  width: 130px;
+  height: 40px;
+  padding: 12px 8px;
+}
+
+/* slide 3 */
+.stylework_container {
+  position: relative;
+}
+.stylework_container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1));
+}
+.stylework_container img {
+  width: 100%;
+  height: auto;
+}
+.stylework_text_container {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: auto;
+  text-align: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.stylework_title {
+  h2 {
+    color: var(--white);
+  }
+  p {
+    display: none;
+  }
+}
+
+.promotion_title .price_sale {
+  color: var(--point--color);
+}
+.style_btn {
+  background: var(--white);
+  border-radius: 999px;
+  padding: 12px 20px;
+}
+.promotion_title h3,
+.promotion_price,
+.price_origin,
+.material-icons-round,
+p {
+  color: var(--white);
+}
+.price_origin {
+  text-decoration: line-through;
+}
+
+/* slide 4 */
+.try_on_container {
+  position: relative;
+}
+.try_on_container img {
+  width: 100%;
+  height: auto;
+}
+.try_on_text_container {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: auto;
+  gap: 24px;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.try_on_badge {
+  color: var(--main--color);
+  background: var(--white);
+  border: 1px solid var(--main--color);
+  border-radius: 999px;
+}
+.try_on_title span {
+  color: var(--main--color);
+}
+.try_on_btn {
+  box-sizing: border-box;
+  color: var(--white);
+  width: auto;
+  height: 40px;
+  background: var(--main--color);
+  border-radius: 999px;
+}
+
+.try_on_step_number {
+  color: var(--white);
+  background: var(--main--color);
+  border: 99px;
+}
+
+.try_on_benefits {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.try_on_benefit {
+  border: 1px solid var(--main--color);
+  border-radius: 99px;
+}
+.try_on_benefit_wide {
+  flex: 0 0 100%;
+}
 
 /* QuickMenu Widget - 최호찬 */
 /* 모바일 우선 */
-
 .widget {
   width: 100%;
   padding: 32px 20px;
@@ -982,5 +1186,39 @@ p {
 }
 
 /* celebs pick - 문송연 */
+/* 모바일 */
+.celebs_pick {
+  width: 100%;
+  background: var(--font--color);
+  padding: 96px 0;
+}
+.celebs_pick::before {
+  content: "";
+  background-image: url(../image/celeb_background.jpg);
+  background-size: cover;
+}
+.Celeb_text_container h2,
+p,
+.gla_btn,
+.sun_btn,
+.celeb_product .like {
+  color: var(--white);
+}
+.Celeb_text_container {
+  text-align: center;
+}
+.gla_btn {
+  border-radius: 50px 0 0 50px;
+  border: 1px solid var(--main--color);
+}
+
+.sun_btn {
+  border-radius: 0 50px 50px 0;
+  border: 1px solide var(--main--color);
+}
+
+/* 태블릿 */
+
+/* pc */
 
 /* store section - 유태구 */
