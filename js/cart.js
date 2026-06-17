@@ -1,5 +1,6 @@
 import { renderHeader } from "./modules/header.js";
 import { renderFooter } from "./modules/footer.js";
+import { renderNavDrawer } from "./modules/nav_drawer.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const cartLayoutContainer = document.querySelector(".cart_layout_container");
@@ -129,22 +130,22 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="summary_title pc_only body_m text-muted">
               <span class="material-icons-round">list_alt</span> 주문 요약
             </div>
-            <div class="summary_row d-flex justify-content-between align-items-center body_m">
+            <div class="summary_row body_m">
               <span class="body_cap text-muted">상품</span>
               <div>
                 <span class="text-muted mo_ta_only body_l">총 <span id="summary_qty">0</span>개 </span>
                 <span class="body_l" id="summary_total_price">0원</span>
               </div>
             </div>
-            <div class="summary_row pc_only d-flex justify-content-between align-items-center body_l">
+            <div class="summary_row pc_only body_l">
               <span class="body_cap text-muted">수량</span>
               <span class="body-m"><span id="sidebar_qty">0</span>개</span>
             </div>
-            <div class="summary_row pc_only d-flex justify-content-between align-items-center body_m">
+            <div class="summary_row pc_only body_m">
               <span class="body_cap text-muted">배송비</span>
               <span class="body_l ptcolor">무료</span>
             </div>
-            <div class="summary_row points_row d-flex justify-content-between align-items-center body_m">
+            <div class="summary_row points_row body_m">
               <span class="body_cap text-muted ">적립 예정 포인트</span>
               <span class="body-l ptcolor" id="summary_points">0P</span>
             </div>

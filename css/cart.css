@@ -210,6 +210,9 @@
   margin-bottom: var(--base-unit-x0-5);
 }
 .summary_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
 }
 
