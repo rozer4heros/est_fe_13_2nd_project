@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. DOM 요소 취득
   const cartLayoutContainer = document.querySelector(".cart_layout_container");
   if (!cartLayoutContainer) return;
 
-  // 2. 테스트용 가상 데이터 설정 (localStorage 구조화)
   if (localStorage.getItem("rounz_cart") === null) {
     const dummyCart = [
       { productId: "3003222", quantity: 1 },
@@ -12,25 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("rounz_cart", JSON.stringify(dummyCart));
   }
 
-  // 외부에서 비동기로 가져온 상품 데이터를 담을 변수
   let productsDB = [];
 
-  // 3. 외부 products.json 파일을 불러오는 비동기 함수 생성
   async function loadProductsData() {
     try {
-      // json 파일 경로를 적어줍니다. (cart.html 기준 상대 경로)
-      // 만약 data 폴더 안에 있다면 'data/products.json' 등으로 경로를 수정해 주세요.
       const response = await fetch("data/products.json");
 
       if (!response.ok) {
         throw new Error("상품 데이터를 불러오는 데 실패했습니다.");
       }
-
-      // 전역 변수에 받아온 json 데이터 저장
       productsDB = await response.json();
-
-      // 데이터를 정상적으로 다 읽어온 후에 메인 장바구니 화면을 그립니다.
       renderCart();
+      renderBestPicks();
     } catch (error) {
       console.error("에러 발생:", error);
       cartLayoutContainer.innerHTML = `
@@ -41,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 4. 화면 렌더링 메인 함수
+  //담긴 상품
   function renderCart() {
     const cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
 
@@ -213,6 +204,99 @@ document.addEventListener("DOMContentLoaded", () => {
     bindEvents();
     calculatePrice();
   }
+
+  //추천 상품
+  function renderBestPicks() {
+    const sliderTrack = document.getElementById("bestPicksContainer");
+    const page1 = document.getElementById("bestPicksPage1");
+    const page2 = document.getElementById("bestPicksPage2");
+
+    if (!sliderTrack || !page1 || !page2) return;
+
+    const bestItems = productsDB.slice(0, 8);
+    page1.innerHTML = "";
+    page2.innerHTML = "";
+
+    bestItems.forEach((product, index) => {
+      const bestCardHtml = `
+        <div class="best_picks_card d-flex flex-column ${product.isSoldOut ? "is_soldout" : ""}" data-id="${product.productId}">
+          <div class="best_picks_imagebox">
+            <img src="${product.mainImage}" alt="${product.name}" class="best_picks_img" loading="lazy">
+            
+            ${product.isSoldOut ? `<div class="best_picks_soldout_badge body_cap">품절</div>` : ""}
+            
+            <button type="button" class="best_picks_wishbtn d-flex align-items-center justify-content-center" aria-label="위시리스트 추가">
+              <span class="material-icons-round best_picks_heart">heart_plus</span>
+            </button>
+          </div>
+
+          <div class="best_picks_infobox">
+            <h3 class="best_picks_brand body_m">${product.brand}</h3>
+            <p class="best_picks_name body_cap">${product.name}</p>
+            
+            <div class="best_picks_pricebox d-flex flex-column">
+              <div class="best_picks_discountrow d-flex align-items-center">
+                <span class="best_picks_original">${Number(product.originalPrice).toLocaleString()}원</span>
+                <span class="best_picks_rate body_cap">${product.discountRate}%</span>
+              </div>
+              <div class="best_picks_current display_h4">${Number(product.salePrice).toLocaleString()}원</div>
+            </div>
+          </div>
+        </div>
+      `;
+      if (index < 4) {
+        page1.insertAdjacentHTML("beforeend", bestCardHtml);
+      } else {
+        page2.insertAdjacentHTML("beforeend", bestCardHtml);
+      }
+    });
+
+    bindBestPicksEvents(page1);
+    bindBestPicksEvents(page2);
+
+    initBestPicksManualSlider(sliderTrack);
+  }
+
+  //추천상품 클릭 시 이벤트
+  function bindBestPicksEvents(container) {
+    container.addEventListener("click", e => {
+      const wishBtn = e.target.closest(".best_picks_wishbtn");
+      const card = e.target.closest(".best_picks_card");
+
+      if (wishBtn) {
+        e.stopPropagation();
+        wishBtn.classList.toggle("active");
+        return;
+      }
+
+      if (card && card.dataset.id) {
+        window.location.href = `details.html?id=${card.dataset.id}`;
+      }
+    });
+  }
+
+  //슬라이더
+  function initBestPicksManualSlider(sliderTrack) {
+    const indicatorTrack = document.getElementById("bestPicksIndicatorTrack");
+    const indicatorBar = document.getElementById("bestPicksIndicatorBar");
+    if (!sliderTrack || !indicatorTrack || !indicatorBar) return;
+
+    let currentPage = 0;
+
+    indicatorTrack.addEventListener("click", () => {
+      currentPage = currentPage === 0 ? 1 : 0;
+
+      if (currentPage === 1) {
+        sliderTrack.style.transform = "translateX(-50%)";
+        indicatorBar.style.transform = "translateX(100%)";
+      } else {
+        sliderTrack.style.transform = "translateX(0)";
+        indicatorBar.style.transform = "translateX(0)";
+      }
+    });
+  }
+
+  //체크박스, 수량
   function bindEvents() {
     const selectAllCheckbox = document.getElementById("selectAll");
     const singleCheckboxes = document.querySelectorAll(".single_checkbox");
@@ -295,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //가격계산
   function calculatePrice() {
     const cards = document.querySelectorAll(".cart_item_card");
     let totalBasePrice = 0;
