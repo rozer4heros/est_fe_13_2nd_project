@@ -702,34 +702,36 @@
 
       <!-- 매장 찾기 섹션 -->
       <!-- 작업자="유태구" -->
-      <section class="store_locator wrap">
-        <h2 class="display_h1">offline store</h2>
-        <p class="body_xl">가까운 파트너 스토어에서 직접 착용해보세요</p>
+      <section class="store_locator wrap d-flex flex-column g-1">
+        <div>
+          <h2 class="display_h1">offline store</h2>
+          <p class="body_xl">가까운 파트너 스토어에서 직접 착용해보세요</p>
+        </div>
         <!-- 지도 -->
         <div class="map_api"></div>
-        <div class="toolbar">
+        <div class="dropdown_toolbar d-flex g-2">
           <div class="dropdown region">
             <div class="dropdown_trigger">
-              <div>
-                <span>지역</span>
+              <div class="display_h4 d-flex justify-content-between align-items-center">
+                <span class="dropdown_label">지역</span>
                 <span class="material-icons-round">keyboard_arrow_down</span>
               </div>
-              <span class="">대한민국</span>
+              <span class="selected_region body_xl">대한민국</span>
             </div>
-            <ul class="dropdown_menu">
-              <li class="selected">대한민국</li>
+            <ul class="dropdown_menu body_xl">
+              <li class="selected" data-value="">대한민국</li>
             </ul>
           </div>
           <div class="dropdown district">
             <div class="dropdown_trigger">
-              <div>
-                <span>시군구</span>
+              <div class="display_h4 d-flex justify-content-between align-items-center">
+                <span class="dropdown_label">시군구</span>
                 <span class="material-icons-round">keyboard_arrow_down</span>
               </div>
-              <span class="">경기</span>
+              <span class="selected_district body_xl">경기</span>
             </div>
-            <ul class="dropdown_menu">
-              <li class="selected">경기</li>
+            <ul class="dropdown_menu body_xl">
+              <li class="selected" data-value="">경기</li>
             </ul>
           </div>
         </div>
@@ -737,10 +739,10 @@
           <span class="material-icons-round">location_searching</span>
           현재 위치 사용
         </button>
-        <div class="store_list">
+        <div class="store_list d-flex flex-column g-1">
           <article class="active">
             <h3 class="display_h4">라운즈 강남역점</h3>
-            <ul class="store_tags body_m d-flex g-0-5">
+            <ul class="store_tag_list body_m d-flex g-0-5">
               <li>피팅 서비스</li>
               <li>렌즈 상담</li>
               <li>A/S 상담</li>
@@ -753,7 +755,7 @@
           </article>
           <article class="">
             <h3 class="display_h4">라운즈 판교점</h3>
-            <ul class="store_tags body_m d-flex g-0-5">
+            <ul class="store_tag_list body_m d-flex g-0-5">
               <li>피팅 서비스</li>
               <li>렌즈 상담</li>
               <li>A/S 상담</li>
