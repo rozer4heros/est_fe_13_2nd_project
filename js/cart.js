@@ -1,6 +1,3 @@
-import { renderHeader } from "./modules/header.js";
-import { renderFooter } from "./modules/footer.js";
-
 document.addEventListener("DOMContentLoaded", () => {
   const cartLayoutContainer = document.querySelector(".cart_layout_container");
   if (!cartLayoutContainer) return;
