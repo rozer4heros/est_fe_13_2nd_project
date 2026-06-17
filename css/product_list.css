@@ -59,7 +59,7 @@
   }
 }
 .filter_drawer_accordion_list li.active ul {
-  max-height: calc(var(--base-unit) * 63);
+  max-height: calc(var(--base-unit) * 64);
 }
 .filter_drawer_accordion_list .filter_drawer_brand .filter_drawer_btn,
 .filter_drawer_accordion_list .filter_drawer_shape .filter_drawer_btn {
@@ -129,7 +129,7 @@ main {
   transition: 0.5s ease-in;
 }
 .sort_dropdown.active .sort_dropdown_menu {
-  max-height: calc(var(--base-unit) * 31);
+  max-height: calc(var(--base-unit) * 32);
 }
 .sort_dropdown_menu li {
   width: 108px;

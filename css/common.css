@@ -524,6 +524,10 @@ input:focus {
 /* 작업자: 유태구; */
 
 /* Filter dropdown */
+.filter_dropdown {
+  position: relative;
+  z-index: 1;
+}
 .filter_dropdown .filter_dropdown_trigger {
   padding: var(--base-unit-x0-5);
   border: 1px solid #2238314c;
@@ -540,10 +544,25 @@ input:focus {
   color: var(--font--color);
 }
 .filter_dropdown_menu {
-  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  padding: var(--base-unit) 0;
+  border: 1px solid var(--light--gray);
+
+  background: var(--white);
+
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.5s ease-in;
 }
 .filter_dropdown.active .filter_dropdown_menu {
-  display: block;
+  max-height: calc(var(--base-unit) * 32);
+}
+.filter_dropdown_menu ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media (min-width: 481px) {
