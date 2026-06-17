@@ -155,7 +155,33 @@
     </aside>
 
     <!-- Product card for best_picks -->
-    <div></div>
+    <div class="best_picks_card d-flex flex-column">
+      <div class="best_picks_imagebox">
+        <img
+          src="https://image.rounz.com/_data/product/RAYBAN/RB3016F-W0365(55)/RB3016F-W0365(55)_11.jpg"
+          alt="레이밴 클럽마스터 선글라스"
+          class="best_picks_img"
+        />
+        <button
+          class="best_picks_wishbtn d-flex align-items-center justify-content-center"
+          aria-label="위시리스트 추가"
+          onclick="toggleWishlist(this)"
+        >
+          <span class="material-icons-round best_picks_heart">heart_plus</span>
+        </button>
+      </div>
+      <div class="best_picks_infobox">
+        <h3 class="best_picks_brand display_h4">Ray-Ban</h3>
+        <p class="best_picks_name body_l">레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F</p>
+        <div class="best_picks_pricebox">
+          <div class="best_picks_discountrow body_xl">
+            <span class="best_picks_original">256,000원</span>
+            <span class="best_picks_rate">20%</span>
+          </div>
+          <div class="best_picks_current display_h4">204,800원</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Product card for timed_offer -->
     <div></div>

@@ -24,7 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       productsDB = await response.json();
 
+      // [기존] 장바구니 리스트 렌더링
       renderCart();
+
+      // [신규] 중복 통신 없이 로드 완료된 데이터를 기반으로 추천 상품 렌더링
+      renderBestPicks();
     } catch (error) {
       console.error("에러 발생:", error);
       cartLayoutContainer.innerHTML = `
@@ -206,6 +210,72 @@ document.addEventListener("DOMContentLoaded", () => {
     bindEvents();
     calculatePrice();
   }
+
+  // [신규] 추천 상품(Best Picks) 영역 동적 출력 처리 함수
+  function renderBestPicks() {
+    const bestContainer = document.getElementById("bestPicksContainer");
+    if (!bestContainer) return;
+
+    // 대다수의 데이터 중 데스크탑 시안 기준에 맞춰 상위 4개 아이템만 추출
+    const bestItems = productsDB.slice(0, 4);
+    bestContainer.innerHTML = ""; // 초기화
+
+    bestItems.forEach(product => {
+      // 외부 URL 대신 고유 productId를 dataset에 바인딩하도록 변경
+      const bestCardHtml = `
+        <div class="best_picks_card d-flex flex-column ${product.isSoldOut ? "is_soldout" : ""}" data-id="${product.productId}">
+          <div class="best_picks_imagebox">
+            <img src="${product.mainImage}" alt="${product.name}" class="best_picks_img" loading="lazy">
+            
+            ${product.isSoldOut ? `<div class="best_picks_soldout_badge body_cap">품절</div>` : ""}
+            
+            <button type="button" class="best_picks_wishbtn d-flex align-items-center justify-content-center" aria-label="위시리스트 추가">
+              <span class="material-icons-round best_picks_heart">heart_plus</span>
+            </button>
+          </div>
+
+          <div class="best_picks_infobox">
+            <h3 class="best_picks_brand body_m">${product.brand}</h3>
+            <p class="best_picks_name body_cap">${product.name}</p>
+            
+            <div class="best_picks_pricebox d-flex flex-column">
+              <div class="best_picks_discountrow d-flex align-items-center">
+                <span class="best_picks_original">${Number(product.originalPrice).toLocaleString()}원</span>
+                <span class="best_picks_rate body_cap">${product.discountRate}%</span>
+              </div>
+              <div class="best_picks_current display_h4">${Number(product.salePrice).toLocaleString()}원</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      bestContainer.insertAdjacentHTML("beforeend", bestCardHtml);
+    });
+
+    // 위시 토글 및 상세 페이지 이동용 독자적 이벤트 바인딩
+    bindBestPicksEvents(bestContainer);
+  }
+
+  // [신규] 추천상품 전용 통합 클릭 제어 (이벤트 위임 패턴 적용)
+  function bindBestPicksEvents(container) {
+    container.addEventListener("click", e => {
+      const wishBtn = e.target.closest(".best_picks_wishbtn");
+      const card = e.target.closest(".best_picks_card");
+
+      // 1. 하트 버튼 클릭 시 버블링을 완벽 차단하고 클래스 토글 처리
+      if (wishBtn) {
+        e.stopPropagation();
+        wishBtn.classList.toggle("active");
+        return;
+      }
+
+      // 2. 카드 전체 클릭 시 외부 주소가 아닌 프로젝트 내부의 details.html?id=### 구조로 쿼리 스트링 전환
+      if (card && card.dataset.id) {
+        window.location.href = `details.html?id=${card.dataset.id}`;
+      }
+    });
+  }
+
   function bindEvents() {
     const selectAllCheckbox = document.getElementById("selectAll");
     const singleCheckboxes = document.querySelectorAll(".single_checkbox");
