@@ -1558,6 +1558,23 @@
 
 /* brand section - 김해나 */
 
+.brand_showcase {
+  width: 100%;
+}
+
+.brand_inner_wrap {
+  width: 100%;
+  max-width: 1224px;
+  margin: 0 auto;
+  padding: 0 110px;
+  box-sizing: border-box;
+}
+
+.brand_inner_wrap > h2 {
+  margin: calc(var(--base-unit) * 4) 0 calc(var(--base-unit) * 2) 0;
+}
+
+/* 브랜드 로고 자동 슬라이드 */
 .brand_slider {
   width: 100%;
   overflow: hidden;
@@ -1576,6 +1593,7 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  flex-shrink: 0;
 }
 
 .brand_rolling_item img {
@@ -1613,6 +1631,77 @@
     transform: translateX(0);
   }
 }
+
+/* brand 그리드 카드 */
+.brand_master_slider_track {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--base-unit) * 6);
+  width: 100%;
+  margin-top: calc(var(--base-unit) * 2);
+}
+
+.brand_content_block {
+  flex-direction: column;
+  width: 100%;
+}
+
+.brand_block_header {
+  margin-bottom: var(--base-unit);
+}
+
+.brand_name_title {
+  color: var(--main--color);
+  text-transform: uppercase;
+}
+
+.brand_wide_banner {
+  width: 100%;
+  margin-bottom: var(--base-unit);
+}
+.brand_wide_banner img {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.brand_product_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: var(--base-unit);
+}
+
+.product_card {
+  position: relative;
+  width: 100%;
+}
+
+.prod_img_wrap {
+  width: 100%;
+  background-color: var(--light--gray);
+  border-radius: 10px;
+  display: block;
+}
+
+.inner_sub_pagination {
+  margin-top: auto;
+}
+
+.inner_sub_pagination button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.master_pagination {
+  margin: 40px 0;
+}
+
+/* brand section 종료 */
 
 /* celebs pick - 문송연 */
 /* 모바일 */
