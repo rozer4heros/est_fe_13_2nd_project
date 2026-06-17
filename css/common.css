@@ -236,9 +236,45 @@ header {
   background: var(--white);
   box-shadow: var(--shadow);
 }
-@media (min-width: 481px) {
+header nav.pc_only {
+  flex: 0 0 50%;
+  width: 50%;
+  max-width: 50%;
+  min-width: 0;
 }
-@media (min-width: 769px) {
+header nav ul {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--base-unit-x0-5);
+  width: 100%;
+  min-width: 0;
+}
+header nav li {
+  justify-self: center;
+}
+
+header nav a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: calc(var(--base-unit) * 0.5) 0;
+}
+header .wrap > ul:last-child {
+  display: flex;
+  align-items: center;
+  gap: var(--base-unit);
+  margin: 0;
+  padding: 0;
+}
+header .wrap > ul:last-child li {
+  margin: 0;
+  padding: 0;
+}
+header .wrap > ul:last-child a,
+header .wrap > ul:last-child button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Side Drawer Menu */
