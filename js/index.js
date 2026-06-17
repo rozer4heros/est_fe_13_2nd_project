@@ -8,21 +8,40 @@ import { initBrandSection } from "./brandSection.js";
 
 // hero - 문송연
 // slide 추가
-new Swiper(".hero_swiper", {
+const heroSwiperEl = document.querySelector(".hero_swiper");
+
+const heroSwiper = new Swiper(".hero_swiper", {
   loop: true,
   slidesPerView: 1,
+  spaceBetween: 0,
+  centeredSlides: false,
+  watchOverflow: true,
+
   scrollbar: {
-    el: ".swiper-scrollbar",
+    el: ".hero_swiper .swiper-scrollbar",
     draggable: true,
   },
-  pagination: {
-    el: ".swiper-pagination",
-  },
+
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".hero_arrow_next",
+    prevEl: ".hero_arrow_prev",
+  },
+
+  on: {
+    init(swiper) {
+      changeHeroControlColor(swiper);
+    },
+
+    slideChange(swiper) {
+      changeHeroControlColor(swiper);
+    },
   },
 });
+
+function changeHeroControlColor(swiper) {
+  // 0부터 시작하므로 세 번째 슬라이드는 2
+  heroSwiperEl.classList.toggle("is-stylework", swiper.realIndex === 2);
+}
 
 // ==========================================
 // DOM Selectors
