@@ -771,12 +771,14 @@ p {
 }
 
 .new_collection_eyebrow {
+  color: var(--white);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .new_collection_desc {
   color: var(--white);
+  margin-top: 24px;
 }
 
 .new_collection_more {
