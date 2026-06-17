@@ -429,7 +429,6 @@
 .ai_face_analysis {
   width: 100%;
   height: auto;
-  padding: 96px 0 ;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -444,14 +443,28 @@
   background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
   opacity: 0.5;
 }
+.ai_face_analysis .pc_only {
+  display: none;
+}
+
+.ai_face_analysis .below_pc {
+  display: flex;
+}
+.ai_container {
+  padding: 96px 0;
+  gap: 48px;
+}
 .ai_face_analysis .ai_text_container {
-  gap: 48px;
+  flex: 1;
+  min-width: 0;
+  gap: 8px;
 }
-.ai_face_analysis .ai_top {
+.ai_top {
   flex-direction: column;
+  align-items: stretch;
   gap: 48px;
 }
-.ai_text_container .ai_title {
+.ai_title {
   h2 {
     color: var(--point--color);
   }
@@ -460,48 +473,74 @@
   }
 }
 .hashtag {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
-
-  p {
-    background: var(--light--gray);
-    color: var(--point--color);
-    border-radius: 5px;
-    padding: 0 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
 }
-.wrap video {
+.hashtag p {
+  background: var(--light--gray);
+  color: var(--point--color);
+  border-radius: 5px;
+  padding: 0 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: var(--body---caption);
+}
+.ai_face_analysis .wrap video {
   display: block;
   width: 100%;
   max-width: 188px;
   aspect-ratio: 188/384;
   margin: 0 auto;
   clip-path: inset(0 round 36px);
+  flex-shrink: 0;
+  object-fit: cover;
 }
 .ai_description {
   box-sizing: border-box;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
   list-style: none;
   gap: 56px;
 }
 .ai_description_item {
+  justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  justify-content: center;
+  min-width: 0;
   background: var(--white);
   border-radius: 10px;
   position: relative;
-  padding: 16px 56px;
+  padding: 20px 16px;
   gap: 32px;
   box-shadow: 0 0 10px rgba(48, 134, 255, 0.5);
 }
-img {
-  width: 100px;
-  height: 100px;
+.ai_description_item img {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
   object-fit: contain;
 }
+.ai_text {
+  flex: 0 1 auto;
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+}
+
+.ai_text h3,
+.ai_text p {
+  word-break: keep-all;
+}
+
+.ai_text h3 {
+  color: var(--point--color);
+}
+.ai_text p {
+  color: var(--font--color);
+}
+
 .ai_description_item .material-icons-round {
   position: absolute;
   bottom: -40px;
@@ -509,16 +548,6 @@ img {
   transform: translateX(-50%);
   margin: 0;
 }
-.ai_text {
-  gap: 8px;
-}
-h3 {
-  color: var(--point--color);
-}
-p {
-  color: var(--font--color);
-}
-
 .ai_btn {
   width: 100%;
   box-sizing: border-box;
@@ -569,29 +598,49 @@ p {
     gap: 64px;
   }
   .ai_text_container {
-    gap: 12px;
+    width: 100%;
+    min-width: 0;
   }
 }
-
+.ai_top {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 64px;
+}
 .hashtag {
   flex-wrap: nowrap;
   gap: 12px;
-
-  p {
-    font-size: var(--body---medium);
-  }
+}
+.hashtag p {
+  font-size: var(--body---medium);
+}
+.ai_title,
+.ai_text_container {
+  gap: 12px;
+}
+.ai_description_item {
+  justify-content: center;
+  padding: 32px 48px;
+}
+.ai_description_item img {
+  width: 100px;
+  height: 100px;
 }
 
 .ai_text {
+  flex: 0 1 auto;
+  min-width: 0;
+  text-align: left;
   gap: 20px;
-  h3 {
-    font-size: var(--display---h4);
-    line-height: var(--display---h4-lh);
-  }
-  p {
-    font-size: var(--body---medium);
-    line-height: var(--body---medium-lh);
-  }
+}
+.ai_text h3 {
+  font-size: var(--display---h4);
+  line-height: var(--display---h4-lh);
+}
+.ai_text p {
+  font-size: var(--body---medium);
+  line-height: var(--body---medium-lh);
+  word-break: keep-all;
 }
 
 .ai_btn .material-icons-round {
@@ -600,15 +649,15 @@ p {
 
 /* pc버전 */
 @media (min-width: 1440px) {
-  .ai_face_analysis {
-    width: 100%;
-    height: auto;
-    padding: 96px 0;
-    position: relative;
-    box-sizing: border-box;
-  }
-  .ai_face_analysis ::before {
+  .ai_face_analysis::before {
     background: url("/image/ai_face_analysis_BG.png") center / cover no-repeat;
+  }
+  .ai_face_analysis .pc_only {
+    display: flex;
+  }
+
+  .ai_face_analysis .below_pc {
+    display: none;
   }
   .ai_text_container {
     gap: 24px;
@@ -647,8 +696,11 @@ p {
   .ai_text {
     text-align: left;
   }
-  .pc_only {
+  .ai_btn.pc_only {
+    display: flex;
+    flex-direction: column;
     margin-top: 24px;
+    gap: 24px;
     .ai_btn_outline,
     .ai_btn_filled {
       width: 270px;
@@ -1279,12 +1331,14 @@ p {
 }
 
 .new_collection_eyebrow {
+  color: var(--white);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .new_collection_desc {
   color: var(--white);
+  margin-top: 24px;
 }
 
 .new_collection_more {
@@ -1292,6 +1346,11 @@ p {
   color: var(--gray);
   text-decoration: none;
   margin-top: 8px;
+}
+.new_card_img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* 모바일 */

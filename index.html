@@ -284,7 +284,7 @@
               </li>
             </ul>
 
-            <div class="ai_btn below_pc flex-column g-1">
+            <div class="ai_btn below_pc d-flex flex-column g-1">
               <a href="#" class="ai_btn_outline display_h4">
                 AI 분석 바로가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
@@ -598,13 +598,72 @@
         <h2 class="display_h1">offline store</h2>
         <p class="body_xl">가까운 파트너 스토어에서 직접 착용해보세요</p>
         <!-- 지도 -->
-        <div class="store_locator_map_api"></div>
+        <div class="map_api"></div>
+        <div class="toolbar">
+          <div class="dropdown region">
+            <div class="dropdown_trigger">
+              <div>
+                <span>지역</span>
+                <span class="material-icons-round">keyboard_arrow_down</span>
+              </div>
+              <span class="">대한민국</span>
+            </div>
+            <ul class="dropdown_menu">
+              <li class="selected">대한민국</li>
+            </ul>
+          </div>
+          <div class="dropdown district">
+            <div class="dropdown_trigger">
+              <div>
+                <span>시군구</span>
+                <span class="material-icons-round">keyboard_arrow_down</span>
+              </div>
+              <span class="">경기</span>
+            </div>
+            <ul class="dropdown_menu">
+              <li class="selected">경기</li>
+            </ul>
+          </div>
+        </div>
+        <button class="body_l d-flex align-items-center g-0-5">
+          <span class="material-icons-round">location_searching</span>
+          현재 위치 사용
+        </button>
+        <div class="store_list">
+          <article class="active">
+            <h3 class="display_h4">라운즈 강남역점</h3>
+            <ul class="store_tags body_m d-flex g-0-5">
+              <li>피팅 서비스</li>
+              <li>렌즈 상담</li>
+              <li>A/S 상담</li>
+            </ul>
+            <p class="store_opening_hours body_xl"><span>오픈</span> 오후 8:00시까지 영업</p>
+            <p class="store_location body_l">서울특별시 강남구 역삼로 109 1층</p>
+            <div>
+              <img src="" alt="" />
+            </div>
+          </article>
+          <article class="">
+            <h3 class="display_h4">라운즈 판교점</h3>
+            <ul class="store_tags body_m d-flex g-0-5">
+              <li>피팅 서비스</li>
+              <li>렌즈 상담</li>
+              <li>A/S 상담</li>
+            </ul>
+            <p class="store_opening_hours body_xl"><span>오픈</span> 오후 8:00시까지 영업</p>
+            <p class="store_location body_l">경기도 성남시 분당구 판교역로 192번길 12 1층</p>
+            <div>
+              <img src="" alt="" />
+            </div>
+          </article>
+        </div>
       </section>
     </main>
     <footer>
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </footer>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>

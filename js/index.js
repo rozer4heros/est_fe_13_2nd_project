@@ -1,6 +1,9 @@
-import { renderHeader } from "./modules/header.js";
-import { renderNavDrawer } from "./modules/nav_drawer.js";
-import { renderFooter } from "./modules/footer.js";
+// ==========================================
+// Imports & External Libraries
+// ==========================================
+
+/* new collection */
+import { initNewCollection } from "./newCollection.js";
 
 // hero - 문송연
 // slide 추가
@@ -26,9 +29,6 @@ const heroSwiper = new Swiper(".hero_swiper", {
     prevEl: ".hero_swiper .swiper-button-prev",
   },
 });
-
-/* new collection */
-import { initNewCollection } from "./newCollection.js";
 
 // ==========================================
 // DOM Selectors
@@ -206,11 +206,6 @@ if (widgetTrack && widgetSlides.length > 0) {
 // ==========================================
 // Initialization & Execution
 // ==========================================
-
-/* Render header, nav_drawer, footer - 유태구 작업 */
-renderHeader();
-renderNavDrawer();
-renderFooter();
 
 /* Limited Time Offer 섹션 - 김해나 작업 */
 loadProductsData();
