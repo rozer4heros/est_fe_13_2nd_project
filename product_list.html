@@ -22,21 +22,21 @@
         <div class="filter_drawer_header"><h3 class="display_h1 text-center">filters</h3></div>
         <ul class="filter_drawer_accordion_list display_h2 d-flex flex-column g-1">
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>카테고리</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_category body_l">
+            <ul class="filter_drawer_category filter_drawer_accordion_menu body_l">
               <li><label for="" class="filter_drawer_btn">안경테</label></li>
               <li><label for="" class="filter_drawer_btn">선글라스</label></li>
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>브랜드</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_brand body_l">
+            <ul class="filter_drawer_brand filter_drawer_accordion_menu body_l">
               <li>
                 <label for="" class="filter_drawer_btn">
                   <img src="image/ray_ban_logo.png" alt="Ray-Ban" />
@@ -80,11 +80,11 @@
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>모양</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_shape body_l">
+            <ul class="filter_drawer_shape filter_drawer_accordion_menu body_l">
               <li>
                 <label for="" class="filter_drawer_btn">
                   <img src="image/filter/round.png" alt="" />
@@ -130,11 +130,11 @@
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>얼굴형 추천</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_face_shape body_l">
+            <ul class="filter_drawer_face_shape filter_drawer_accordion_menu body_l">
               <li><label for="" class="filter_drawer_btn">둥근형</label></li>
               <li><label for="" class="filter_drawer_btn">계란형</label></li>
               <li><label for="" class="filter_drawer_btn">각진형</label></li>
@@ -144,21 +144,21 @@
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>성별</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_gender display_h2">
+            <ul class="filter_drawer_gender filter_drawer_accordion_menu display_h2">
               <li><label for="" class="filter_drawer_btn">여자</label></li>
               <li><label for="" class="filter_drawer_btn">남자</label></li>
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>프레임 크기</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_frame_size body_l">
+            <ul class="filter_drawer_frame_size filter_drawer_accordion_menu body_l">
               <li class="select_all_sizes"><label for="" class="filter_drawer_btn">전체</label></li>
               <li><label for="" class="filter_drawer_btn">40 ~ 45mm</label></li>
               <li><label for="" class="filter_drawer_btn">46 ~ 50mm</label></li>
@@ -167,11 +167,39 @@
             </ul>
           </li>
           <li class="">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="filter_drawer_accordion_header d-flex justify-content-between align-items-center">
               <span>가격</span>
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
-            <ul class="filter_drawer_price"></ul>
+            <div class="filter_drawer_price filter_drawer_accordion_menu">
+              <div class="price_slider_container">
+                <div class="price_range_values d-flex justify-content-between body_m">
+                  <span class="min_val">0원</span>
+                  <span class="max_val">300,000원+</span>
+                </div>
+                <div class="range_slider_track_wrap">
+                  <div class="slider_track"></div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="300000"
+                    step="10000"
+                    value="0"
+                    id="drawer_price_min"
+                    class="price_range_input"
+                  />
+                  <input
+                    type="range"
+                    min="0"
+                    max="300000"
+                    step="10000"
+                    value="300000"
+                    id="drawer_price_max"
+                    class="price_range_input"
+                  />
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
         <div class="display_h2 d-flex justify-content-between align-items-center g-0-5">
@@ -369,6 +397,109 @@
               </ul>
             </div>
           </div>
+
+          <!-- 성별 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>성별</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <ul class="body_xl">
+                <li>
+                  <label for="gender_female" class="d-flex justify-content-between align-items-center">
+                    <span>여자</span>
+                    <input type="checkbox" id="gender_female" />
+                  </label>
+                </li>
+                <li>
+                  <label for="gender_male" class="d-flex justify-content-between align-items-center">
+                    <span>남자</span>
+                    <input type="checkbox" id="gender_male" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 프레임 크기 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>프레임 크기</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <ul class="body_xl">
+                <li class="select_all_sizes">
+                  <label for="size_all" class="d-flex justify-content-between align-items-center">
+                    <span>전체</span>
+                    <input type="checkbox" id="size_all" />
+                  </label>
+                </li>
+                <li>
+                  <label for="size_40_45" class="d-flex justify-content-between align-items-center">
+                    <span>40 ~ 45mm</span>
+                    <input type="checkbox" id="size_40_45" />
+                  </label>
+                </li>
+                <li>
+                  <label for="size_46_50" class="d-flex justify-content-between align-items-center">
+                    <span>46 ~ 50mm</span>
+                    <input type="checkbox" id="size_46_50" />
+                  </label>
+                </li>
+                <li>
+                  <label for="size_51_55" class="d-flex justify-content-between align-items-center">
+                    <span>51 ~ 55mm</span>
+                    <input type="checkbox" id="size_51_55" />
+                  </label>
+                </li>
+                <li>
+                  <label for="size_56_above" class="d-flex justify-content-between align-items-center">
+                    <span>56mm 이상</span>
+                    <input type="checkbox" id="size_56_above" />
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 가격 필터 (PC 전용) -->
+          <div class="filter_dropdown pc_only">
+            <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
+              <span>가격</span>
+              <span class="material-icons-round">expand_more</span>
+            </div>
+            <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <div class="price_slider_container">
+                <div class="price_range_values d-flex justify-content-between body_m">
+                  <span class="min_val">0원</span>
+                  <span class="max_val">300,000원+</span>
+                </div>
+                <div class="range_slider_track_wrap">
+                  <div class="slider_track"></div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="300000"
+                    step="10000"
+                    value="0"
+                    id="price_min"
+                    class="price_range_input"
+                  />
+                  <input
+                    type="range"
+                    min="0"
+                    max="300000"
+                    step="10000"
+                    value="300000"
+                    id="price_max"
+                    class="price_range_input"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="filter_active_list d-flex g-0-5">
           <button class="reset_btn body_cap d-flex align-items-center">
@@ -540,6 +671,21 @@
           </article>
         </li>
       </ul>
+      <div class="product_list_pagination d-flex justify-content-center align-items-center">
+        <button class="pagination_btn prev_btn" aria-label="이전 페이지">
+          <span class="material-icons-round">chevron_left</span>
+        </button>
+        <ul class="pagination_pages d-flex body_l">
+          <li class="page_num active">1</li>
+          <li class="page_num">2</li>
+          <li class="page_num">3</li>
+          <li class="page_num">4</li>
+          <li class="page_num">5</li>
+        </ul>
+        <button class="pagination_btn next_btn" aria-label="다음 페이지">
+          <span class="material-icons-round">chevron_right</span>
+        </button>
+      </div>
     </main>
     <footer></footer>
     <script type="module" src="./js/main.js"></script>
