@@ -1,3 +1,7 @@
+main {
+  padding: calc(var(--base-unit) * 4) 0;
+}
+
 .filter_drawer {
   display: block;
   position: absolute;
@@ -96,6 +100,9 @@
   display: grid;
   gap: var(--base-unit-x0-5);
   grid-template-columns: repeat(2, 1fr);
+}
+.product_list h3:hover {
+  text-decoration: underline;
 }
 @media (min-width: 481px) {
   .filter_drawer_accordion_list .filter_drawer_shape img {

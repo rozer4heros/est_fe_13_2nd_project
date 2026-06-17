@@ -527,6 +527,7 @@ input:focus {
 .filter_dropdown .filter_dropdown_btn {
   padding: var(--base-unit-x0-5);
   border: 1px solid #2238314c;
+  width: 80px;
 
   border-radius: 5px;
   background: var(--white);
@@ -545,6 +546,16 @@ input:focus {
   display: block;
 }
 
+@media (min-width: 481px) {
+  .filter_dropdown .filter_dropdown_btn {
+    width: 100px;
+  }
+}
+@media (min-width: 769px) {
+  .filter_dropdown .filter_dropdown_btn {
+    width: 120px;
+  }
+}
 /* Filter drawer button */
 .filter_drawer_btn {
   display: flex;
@@ -590,7 +601,7 @@ input:focus {
   right: 20px;
   bottom: 20px;
 
-  padding: var(--base-unit-x0-5) var(--base-unit);
+  padding: var(--base-unit-x0-5) var(--base-unit-x0-5);
   border-radius: 40px;
   color: var(--white);
   background: var(--font--color);
@@ -608,6 +619,9 @@ input:focus {
 @media (min-width: 481px) {
   .product_card_imgbox {
     height: calc(var(--base-unit) * 12);
+  }
+  .product_card_imgbox .try_on_btn {
+    padding: var(--base-unit-x0-5) var(--base-unit);
   }
 }
 
