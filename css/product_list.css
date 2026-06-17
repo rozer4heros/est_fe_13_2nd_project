@@ -27,8 +27,6 @@
 .filter_drawer_accordion_list {
   padding: var(--base-unit-x3) 0;
 }
-.filter_drawer_accordion_list li {
-}
 .filter_drawer_accordion_list .material-icons-round {
   font-size: var(--base-unit-x2);
   line-height: var(--base-unit-x2);
@@ -61,7 +59,7 @@
   }
 }
 .filter_drawer_accordion_list li.active ul {
-  max-height: calc(var(--base-unit) * 63);
+  max-height: calc(var(--base-unit) * 64);
 }
 .filter_drawer_accordion_list .filter_drawer_brand .filter_drawer_btn,
 .filter_drawer_accordion_list .filter_drawer_shape .filter_drawer_btn {
@@ -94,6 +92,16 @@ main {
   padding: calc(var(--base-unit) * 4) 0;
 }
 
+.filter_dropdown_list button {
+  width: var(--base-unit-x2);
+  min-width: var(--base-unit-x2);
+  height: var(--base-unit-x2);
+  border-radius: 100%;
+
+  background: var(--font--color);
+  color: var(--white);
+}
+
 .filter_active_list .reset_btn {
   color: #22283180;
   cursor: pointer;
@@ -110,7 +118,7 @@ main {
   position: absolute;
   top: 100%;
   right: 0;
-  width: 144px;
+  width: 120px;
 
   background: var(--white);
   color: var(--gray);
@@ -121,10 +129,10 @@ main {
   transition: 0.5s ease-in;
 }
 .sort_dropdown.active .sort_dropdown_menu {
-  max-height: calc(var(--base-unit) * 31);
+  max-height: calc(var(--base-unit) * 32);
 }
 .sort_dropdown_menu li {
-  width: 120px;
+  width: 108px;
   padding: var(--base-unit-x0-5) 0;
   border-radius: 10px;
   text-align: center;
@@ -147,6 +155,14 @@ main {
   .filter_drawer_accordion_list .filter_drawer_shape img {
     height: var(--base-unit-x3);
   }
+
+  .sort_dropdown_menu {
+    width: 144px;
+  }
+  .sort_dropdown_menu li {
+    width: 120px;
+  }
+
   .filter_drawer {
     padding: var(--base-unit) 32px;
   }
