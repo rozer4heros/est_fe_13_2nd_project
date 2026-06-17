@@ -1,9 +1,10 @@
+import { renderHeader } from "./modules/header.js";
+import { renderFooter } from "./modules/footer.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. DOM 요소 취득
   const cartLayoutContainer = document.querySelector(".cart_layout_container");
   if (!cartLayoutContainer) return;
 
-  // 2. 테스트용 가상 데이터 설정 (localStorage 구조화)
   if (localStorage.getItem("rounz_cart") === null) {
     const dummyCart = [
       { productId: "3003222", quantity: 1 },
@@ -12,24 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("rounz_cart", JSON.stringify(dummyCart));
   }
 
-  // 외부에서 비동기로 가져온 상품 데이터를 담을 변수
   let productsDB = [];
 
-  // 3. 외부 products.json 파일을 불러오는 비동기 함수 생성
   async function loadProductsData() {
     try {
-      // json 파일 경로를 적어줍니다. (cart.html 기준 상대 경로)
-      // 만약 data 폴더 안에 있다면 'data/products.json' 등으로 경로를 수정해 주세요.
       const response = await fetch("data/products.json");
 
       if (!response.ok) {
         throw new Error("상품 데이터를 불러오는 데 실패했습니다.");
       }
-
-      // 전역 변수에 받아온 json 데이터 저장
       productsDB = await response.json();
 
-      // 데이터를 정상적으로 다 읽어온 후에 메인 장바구니 화면을 그립니다.
       renderCart();
     } catch (error) {
       console.error("에러 발생:", error);
@@ -41,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 4. 화면 렌더링 메인 함수
   function renderCart() {
     const cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
 
