@@ -659,6 +659,7 @@
     }
   }
   .ai_face_analysis .wrap video {
+    width: 100%;
     max-width: 320px;
     clip-path: inset(0 round 56px);
   }
