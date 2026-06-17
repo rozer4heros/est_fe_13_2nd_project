@@ -23,10 +23,14 @@
         <!-- 회원가입 입력 필드-->
         <fieldset class="input-field">
           <legend class="sr-only">회원가입 입력</legend>
+
           <form class="form-group">
-            <div class="input-group">
-              <input type="email" id="useremail" required placeholder=" " />
-              <label for="useremail" class="floating_label body_m">Email address*</label>
+            <div class="input-group-container">
+              <div class="input-group">
+                <input type="email" id="useremail" required placeholder=" " />
+                <label for="useremail" class="floating_label body_m">Email address*</label>
+              </div>
+              <p class="error-message email-error body_cap"></p>
             </div>
 
             <div class="input-group">
@@ -86,11 +90,17 @@
         </fieldset>
 
         <div class="notice-line d-flex">
-          <a href="#login.html" class="notice-line-text body_cap">로그인 화면으로 돌아가기</a>
-          <a href="#index.html" class="notice-line-link body_cap">홈으로 돌아가기</a>
+          <a href="login.html" class="notice-line-text body_cap">로그인 화면으로 돌아가기</a>
+          <a href="index.html" class="notice-line-link body_cap">홈으로 돌아가기</a>
+        </div>
+
+        <div class="auth-footer-bar signup-footer d-flex">
+          <a href="login.html" class="footer-tab-btn right-border body_l d-flex">로그인하기</a>
+          <a href="index.html" class="footer-tab-btn body_l d-flex">홈으로 이동</a>
         </div>
       </section>
     </main>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="./js/login_signup.js"></script>
   </body>
 </html>
