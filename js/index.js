@@ -7,6 +7,8 @@ import { initNewCollection } from "./newCollection.js";
 
 // hero - 문송연
 // slide 추가
+const heroSwiperEl = document.querySelector(".hero_swiper");
+
 const heroSwiper = new Swiper(".hero_swiper", {
   loop: true,
   slidesPerView: 1,
@@ -19,16 +21,26 @@ const heroSwiper = new Swiper(".hero_swiper", {
     draggable: true,
   },
 
-  pagination: {
-    el: ".hero_swiper .swiper-pagination",
-    clickable: true,
+  navigation: {
+    nextEl: ".hero_arrow_next",
+    prevEl: ".hero_arrow_prev",
   },
 
-  navigation: {
-    nextEl: ".hero_swiper .swiper-button-next",
-    prevEl: ".hero_swiper .swiper-button-prev",
+  on: {
+    init(swiper) {
+      changeHeroControlColor(swiper);
+    },
+
+    slideChange(swiper) {
+      changeHeroControlColor(swiper);
+    },
   },
 });
+
+function changeHeroControlColor(swiper) {
+  // 0부터 시작하므로 세 번째 슬라이드는 2
+  heroSwiperEl.classList.toggle("is-stylework", swiper.realIndex === 2);
+}
 
 // ==========================================
 // DOM Selectors
