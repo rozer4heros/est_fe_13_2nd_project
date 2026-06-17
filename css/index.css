@@ -1790,7 +1790,9 @@
   background: var(--main--light);
 }
 .store_locator .store_tag_list li {
-  min-width: 80px;
+  padding: 0 5px;
+  box-sizing: border-box;
+
   border-radius: 5px;
   text-align: center;
   background: var(--light--gray);
@@ -1813,6 +1815,9 @@
   transition: 0.3s ease-out;
 }
 @media (min-width: 481px) {
+  .store_locator .store_tag_list li {
+    min-width: 80px;
+  }
   .store_locator {
     padding: calc(var(--base-unit) * 4) 32px;
   }
