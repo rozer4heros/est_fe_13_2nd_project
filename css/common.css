@@ -336,6 +336,11 @@ header .wrap > ul:last-child button {
   align-items: center;
 }
 
+/* 찜목록 추가 버튼 */
+.like {
+  cursor: pointer;
+}
+
 /* Footer */
 /* 작업자: 유태구; */
 footer {
@@ -948,6 +953,8 @@ input:focus {
   height: 100%;
   object-fit: cover;
   object-position: center;
+
+  cursor: pointer;
 }
 .product_card_imgbox .try_on_btn {
   position: absolute;
@@ -958,6 +965,8 @@ input:focus {
   border-radius: 40px;
   color: var(--white);
   background: var(--font--color);
+
+  cursor: pointer;
 }
 .product_card .product_name {
   order: 2;
