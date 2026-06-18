@@ -931,10 +931,14 @@ input:focus {
   width: 100%;
   box-sizing: border-box;
 }
-.price_range_values {
+.price_range_values_top,
+.price_range_values_bottom {
   margin-bottom: 16px;
   color: var(--font--color);
   font-weight: 600;
+}
+.price_range_values_bottom {
+  justify-content: space-evenly;
 }
 .range_slider_track_wrap {
   position: relative;
