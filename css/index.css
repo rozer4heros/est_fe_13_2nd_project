@@ -2661,6 +2661,42 @@
   margin: 40px 0;
 }
 
+.page_indicator.circle_badge_type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 54px;
+  height: 28px;
+  background-color: var(--main--light); 
+  border-radius: 20px;
+  margin: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray);
+}
+.page_indicator.circle_badge_type .current {
+  color: var(--font--color);
+}
+.page_indicator.circle_badge_type .divider {
+  width: 1px;
+  height: 8px;
+  background-color: var(--light--gray); 
+}
+.page_indicator.circle_badge_type .total {
+  color: var(--light--gray);
+}
+
+.master_pagination button .material-icons-outlined {
+  color: var(--gray);
+  transition: color 0.2s ease;
+}
+
+.master_pagination button:hover .material-icons-outlined {
+  color: var(--point--color); 
+  cursor: pointer;
+}
+
 .fade_in_effect {
   animation: fadeInActive 0.4s ease-in-out forwards;
 }
