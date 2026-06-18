@@ -34,7 +34,7 @@
   color: var(--white);
   text-shadow: var(--shadow);
 }
-.filter_drawer .accordion_list li .filter_drawer_accordion_header {
+.filter_drawer .accordion_list li .accordion_header {
   cursor: pointer;
 }
 .filter_drawer .accordion_list li .material-icons-round {
@@ -44,7 +44,7 @@
 .filter_drawer .accordion_list li.active .material-icons-round {
   transform: rotate(-180deg);
 }
-.filter_drawer .accordion_list li .accordion_menu {
+.filter_drawer .accordion_list li .accordion_body {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(2, 1fr);
@@ -58,7 +58,7 @@
     grid-column: 1 / -1;
   }
 }
-.filter_drawer .accordion_list li.active .accordion_menu {
+.filter_drawer .accordion_list li.active .accordion_body {
   max-height: calc(var(--base-unit) * 64);
 }
 .filter_drawer .accordion_list .filter_drawer_brand .filter_drawer_btn,
