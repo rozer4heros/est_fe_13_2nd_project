@@ -156,6 +156,7 @@ filterDropdownEls.forEach(fdd => {
 sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", e => {
   sortDropdownEl.classList.toggle("active");
 });
+
 // ==========================================
 // Initialization & Execution
 // ==========================================
