@@ -1258,7 +1258,302 @@
   }
 }
 
-/* best picks - 오예은 */
+/* best picks - 김해나 */
+.best_picks {
+  position: relative;
+  width: 100%;
+  padding: 72px 0;
+  background: url("/image/celeb_background.jpg") no-repeat center / cover;
+  overflow: hidden;
+}
+
+.best_picks .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.best_picks_header {
+  gap: 20px;
+  width: 100%;
+}
+
+.best_picks_title_group {
+  gap: 8px;
+}
+
+.best_picks_title {
+  color: var(--font--color);
+}
+
+.best_picks_subtitle {
+  color: var(--gray);
+}
+
+.best_picks_more {
+  flex-shrink: 0;
+  color: var(--font--color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.best_picks_slider_wrap {
+  position: relative;
+  width: 100%;
+}
+
+.best_picks_scroller {
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0 16px;
+}
+
+.best_picks_list {
+  --best-picks-visible: 1;
+
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.best_pick_item {
+  flex: 0 0 calc((100% - (20px * (var(--best-picks-visible) - 1))) / var(--best-picks-visible));
+  min-width: 0;
+  height: auto !important;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+.best_pick_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  color: var(--font--color);
+}
+
+.best_pick_link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.best_pick_img_box {
+  position: relative;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 305 / 192;
+  margin: 0 auto;
+  background-color: transparent !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.best_pick_img_box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.25s ease;
+}
+
+.best_pick_wish_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--gray);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.best_pick_info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 4px 0 4px; /* 가변 대응을 위해 좌우 패딩을 최소화 */
+  box-sizing: border-box;
+}
+
+.best_pick_brand {
+  font-weight: 700;
+}
+
+.best_pick_name {
+  display: -webkit-box;
+  min-height: 40px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.best_pick_price {
+  gap: 8px;
+  font-weight: 700;
+}
+
+.best_pick_rate {
+  color: var(--red);
+}
+
+.best_pick_sale {
+  color: var(--font--color);
+}
+
+.best_picks_btn_prev {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.best_picks_btn_next {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.bestpick_slide_btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.bestpick_slide_btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.bestpick_slide_btn .material-icons-round {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.best_picks_scrollbar_wrap {
+  position: relative;
+  width: 144px;
+  height: 2px;
+  margin: 16px auto 0;
+  background: rgba(197, 203, 210, 0.8);
+  overflow: hidden;
+}
+
+.best_picks_scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: var(--font--color);
+  transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (min-width: 481px) {
+  .best_picks {
+    padding: 96px 0;
+  }
+
+  .best_picks .wrap {
+    gap: 32px;
+    padding: 0 32px;
+  }
+
+  .best_picks_list {
+    --best-picks-visible: 2;
+  }
+}
+
+@media (min-width: 769px) {
+  .best_picks_list {
+    --best-picks-visible: 4;
+  }
+
+  .best_picks_btn_prev {
+    left: -22px;
+  }
+
+  .best_picks_btn_next {
+    right: -22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .best_picks .wrap {
+    padding: 0;
+  }
+
+  .best_picks_btn_prev {
+    left: -64px;
+  }
+
+  .best_picks_btn_next {
+    right: -64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .best_picks_header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .best_picks_more {
+    align-self: flex-end;
+  }
+
+  .best_picks_scroller {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .best_picks_scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bestpick_slide_btn {
+    display: none !important;
+  }
+}
 
 /* Limited Time Offer - 김해나 */
 
