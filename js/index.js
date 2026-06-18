@@ -428,13 +428,51 @@ function connectYoutubeHover() {
 loadCelebPickData();
 
 /* 지도 - 유태구 작업 */
+
+const storeDropdownEls = document.querySelectorAll(".store_locator .dropdown");
+const storeArticleEls = document.querySelectorAll(".store_list article");
+
 const mapEl = document.getElementById("map_api");
-let map = null;
-let mapOptions = {
+const markerList = [];
+const mapOptions = {
   center: new naver.maps.LatLng(37.4935506, 127.0310534),
-  zoom: 15,
+  zoom: 16,
 };
-function initMap() {
-  map = new naver.maps.Map(mapEl, mapOptions);
-}
-initMap();
+const map = new naver.maps.Map(mapEl, mapOptions);
+const marker = new naver.maps.Marker({
+  position: new naver.maps.LatLng(37.4935506, 127.0310534),
+  map: map,
+});
+
+document.addEventListener("click", e => {
+  storeDropdownEls.forEach(sdd => {
+    if (!sdd.contains(e.target)) {
+      sdd.classList.remove("active");
+    }
+  });
+});
+storeDropdownEls.forEach(sdd => {
+  sdd.querySelector(".dropdown_trigger").addEventListener("click", e => {
+    if (sdd.classList.contains("active")) {
+      sdd.classList.remove("active");
+      return;
+    }
+    storeDropdownEls.forEach(f => f.classList.remove("active"));
+    sdd.classList.add("active");
+  });
+});
+storeArticleEls.forEach(store => {
+  store.addEventListener("click", e => {
+    if (store.classList.contains("active")) {
+      store.classList.remove("active");
+      return;
+    }
+    storeArticleEls.forEach(s => {
+      s.classList.remove("active");
+    });
+    store.classList.add("active");
+    const pos = new naver.maps.LatLng(store.dataset.lat, store.dataset.lng);
+    map.setCenter(pos);
+    marker.setPosition(pos);
+  });
+});
