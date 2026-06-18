@@ -359,6 +359,284 @@ p {
 }
 
 /* best picks - 오예은 */
+/* ============================================
+       Best Picks — 슬라이더 스타일 (독립형)
+       ============================================ */
+
+.best-picks-section {
+  padding: 80px 0;
+  background-image: url("/image/best-img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    sans-serif;
+}
+
+.best-container {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* 타이틀 */
+.best-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.best-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #222831;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* 슬라이더 래퍼 — 화살표 기준점 */
+.best-slider-wrapper {
+  position: relative;
+}
+
+/* 화살표 */
+.best-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #334155;
+  transition: all 0.2s;
+}
+.best-arrow:hover:not(:disabled) {
+  background: #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.best-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.best-arrow .material-symbols-rounded {
+  font-size: 28px;
+  font-variation-settings: "wght" 300;
+}
+.best-prev {
+  left: -60px;
+}
+.best-next {
+  right: -60px;
+}
+
+/* 트랙 — 넘치는 카드 숨김 */
+.best-grid-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ★ 핵심: flex 한 줄, 카드가 가로로 쭉 나열됨 */
+.best-grid {
+  display: flex !important; /* grid 덮어쓰기 방지 */
+  flex-wrap: nowrap !important;
+  gap: 24px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* 카드 — 트랙 너비의 정확히 1/4 */
+.best-card {
+  flex: 0 0 calc(25% - 18px) !important; /* (gap 24 * 3) / 4 = 18 */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* 썸네일 */
+.best-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f8fafc;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.best-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s;
+}
+.best-card:hover .best-thumb {
+  transform: scale(1.06);
+}
+
+/* 찜하기 */
+.best-wish-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222831;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+.best-wish-btn .material-symbols-rounded {
+  font-size: 20px;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400;
+}
+.best-wish-btn:hover {
+  transform: scale(1.15);
+  color: #ff2e2e;
+}
+.best-wish-btn.liked {
+  color: #ff2e2e;
+}
+.best-wish-btn.liked .material-symbols-rounded {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400;
+}
+
+/* 상품 정보 */
+.best-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+}
+.best-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222831;
+  margin-bottom: 6px;
+}
+.best-item-name {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: keep-all;
+  height: 40px;
+}
+
+/* 가격 */
+.best-price-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.best-price-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.best-original {
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+.best-discount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff2e2e;
+}
+.best-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222831;
+}
+.best-price .unit {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 1px;
+}
+
+/* 진행 바 */
+.best-line-container {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  margin-top: 64px;
+}
+.long-line {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+  background: rgba(150, 150, 150, 0.35);
+}
+.short-bold-line {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25%; /* 첫 그룹부터 25% */
+  height: 3px;
+  background: #222831;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .best-container {
+    padding: 0 60px;
+  }
+  .best-prev {
+    left: -48px;
+  }
+  .best-next {
+    right: -48px;
+  }
+}
+@media (max-width: 768px) {
+  .best-container {
+    padding: 0 20px;
+  }
+  .best-arrow {
+    display: none;
+  }
+  .best-card {
+    flex: 0 0 calc(50% - 8px) !important;
+  }
+}
 
 /* Limited Time Offer - 김해나 */
 
