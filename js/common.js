@@ -50,6 +50,21 @@ function toggleAccordion(target = navDrawerWrapEl) {
   navQuickLinksEl.classList.add("hidden");
 }
 
+function addToCart(productId, quantity = 1) {
+  let cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
+
+  const existingItemIndex = cartItems.findIndex(item => item.productId === productId);
+
+  //있는거면 수량 추가, 없으면 상품 추가
+  if (existingItemIndex > -1) {
+    cartItems[existingItemIndex].quantity += quantity;
+  } else {
+    cartItems.push({ productId: productId, quantity: quantity });
+  }
+
+  localStorage.setItem("rounz_cart", JSON.stringify(cartItems));
+}
+
 // ==========================================
 // Event Listeners
 // ==========================================
