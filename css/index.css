@@ -896,7 +896,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .widget_coupon_track {
   display: flex;
