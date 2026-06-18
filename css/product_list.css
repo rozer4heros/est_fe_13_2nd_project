@@ -299,9 +299,11 @@ main {
   border-color: var(--font--color);
   background: rgba(34, 40, 49, 0.04);
 }
+.pagination_btn.disabled,
 .pagination_btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .pagination_pages {
   list-style: none;

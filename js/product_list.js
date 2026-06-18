@@ -41,9 +41,9 @@ const resetBtnEls = document.querySelectorAll(".reset_btn");
 const productListEl = document.querySelector(".product_list");
 
 // Pagination DOM
-const pager = document.querySelector(".pagination .pager");
-const pagerPrevBtn = document.querySelector(".pagination .prev");
-const pagerNextBtn = document.querySelector(".pagination .next");
+const pager = document.querySelector(".product_list_pagination .pagination_pages");
+const pagerPrevBtn = document.querySelector(".product_list_pagination .prev_btn");
+const pagerNextBtn = document.querySelector(".product_list_pagination .next_btn");
 
 // ==========================================
 // State & Constants
@@ -136,11 +136,12 @@ function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
   updateCount();
   if (filteredProducts.length === 0) {
     productListEl.textContent = "해당하는 상품이 없습니다.";
-    return;
+  } else {
+    for (let i = firstIndex; i <= lastIndex; i++) {
+      renderProductCard(filteredProducts[i]);
+    }
   }
-  for (let i = firstIndex; i <= lastIndex; i++) {
-    renderProductCard(filteredProducts[i]);
-  }
+  createPagination();
 }
 
 function updateCount(count = filteredProducts.length) {
@@ -223,6 +224,55 @@ function escHTML(string) {
     .replaceAll("&", "&amp;")
     .replaceAll("'", "&apos;")
     .replaceAll('"', "&quot;");
+}
+
+function createPagination(total = filteredProducts.length) {
+  paginationCount = Math.ceil(total / countPerPage);
+  const pagerGroupCount = Math.ceil(paginationCount / pagerPerGroup);
+
+  const startPage = (curGroup - 1) * pagerPerGroup + 1;
+  const endPage = Math.min(startPage + pagerPerGroup - 1, paginationCount);
+
+  let pagerHTML = "";
+  for (let i = startPage; i <= endPage; i++) {
+    pagerHTML += `<li class="page_num ${i === curPage ? "active" : ""}">${i}</li>`;
+  }
+  pager.innerHTML = pagerHTML;
+
+  if (curGroup === 1) pagerPrevBtn.classList.add("disabled");
+  else pagerPrevBtn.classList.remove("disabled");
+  if (curGroup === pagerGroupCount) pagerNextBtn.classList.add("disabled");
+  else pagerNextBtn.classList.remove("disabled");
+
+  const pagerBtns = pager.querySelectorAll(".page_num");
+  pagerBtns.forEach(curBtn => {
+    curBtn.addEventListener("click", e => {
+      e.preventDefault();
+      let targetPage = Number(curBtn.textContent);
+
+      if (curPage === targetPage) return;
+      curPage = targetPage;
+      renderProducts((curPage - 1) * 12, curPage * 12 - 1);
+
+      // 모든 페이지에서 active 제거, 현재 활성화된 a에만 active 추가
+      pagerBtns.forEach(b => {
+        b.classList.remove("active");
+      });
+      curBtn.classList.add("active");
+    });
+  });
+}
+function paginate(dataArray = [], page = 1) {
+  const start = (page - 1) * countPerPage;
+  const end = start + countPerPage;
+  return dataArray.slice(start, end);
+}
+
+function moveGroup(dir) {
+  curGroup += dir;
+  curPage = (curGroup - 1) * 5 + 1;
+  createPagination(allProducts.length);
+  renderProducts(filteredData);
 }
 
 // ==========================================
@@ -335,6 +385,15 @@ resetBtnEls.forEach(reset => {
   reset.addEventListener("click", e => {
     resetFilter();
   });
+});
+
+pagerPrevBtn.addEventListener("click", e => {
+  e.preventDefault();
+  moveGroup(-1);
+});
+pagerNextBtn.addEventListener("click", e => {
+  e.preventDefault();
+  moveGroup(+1);
 });
 
 // ==========================================
