@@ -35,10 +35,8 @@
   object-position: center;
 }
 
-/* ========================================
-   HERO 버튼 공통
-   모바일 · 태블릿 · PC
-======================================== */
+/* HERO 버튼 공통
+   모바일 · 태블릿 · PC */
 
 .hero_action_btn {
   position: relative;
@@ -175,11 +173,11 @@
 }
 /* 모바일 기본 버튼 */
 .hero_action_btn {
-  --arrow-end-offset: 34px;
+  --arrow-end-offset: 32px;
 
   width: 160px;
   min-width: 160px;
-  height: 44px;
+  height: 40px;
 
   padding: 0 40px 0 8px;
   gap: 0;
