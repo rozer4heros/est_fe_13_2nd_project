@@ -3,47 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
     />
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <!-- 공통 CSS -->
     <link rel="stylesheet" href="css/common.css" />
+
+    <!-- 상세페이지 CSS -->
     <link rel="stylesheet" href="css/details.css" />
+
     <title>상품 상세 | ROUNZ</title>
   </head>
+
   <body>
     <header></header>
+
     <div class="nav_drawer_wrap drawer_wrap below_pc"></div>
 
     <main class="detail_page">
+      <!-- 상품 상세 상단-->
       <section class="detail_product">
-        <div class="wrap detail_product_layout">
-          <div class="detail_gallery d-flex flex-column">
-            <div class="detail_visual">
-              <img src="image/detail_img1.png" alt="상품 대표 이미지" data-detail-main-image />
+        <div class="wrap detail_product_layout d-flex flex-column g-2">
+          <!-- 상품 이미지 영역 -->
+          <div class="detail_gallery d-flex flex-column g-2">
+            <!-- 대표 이미지 Swiper -->
+            <div class="detail_visual detail_main_swiper swiper">
+              <!-- JSON의 mainImage, thumbImgs가 JS로 생성 -->
+              <div class="swiper-wrapper" data-detail-main-wrapper></div>
+
+              <!-- 현재 이미지 번호 -->
+              <div
+                class="gallery_count body_m d-flex justify-content-center align-items-center g-0-5"
+                aria-live="polite"
+              >
+                <span data-gallery-current>1</span>
+                <span aria-hidden="true">/</span>
+                <span data-gallery-total>1</span>
+              </div>
             </div>
 
-            <nav class="detail_tabs" aria-label="상품 상세 탭">
+            <!-- 썸네일 Swiper -->
+            <div class="detail_thumbnail_swiper swiper">
+              <!-- JSON의 썸네일이 JS로 생성 -->
+              <div class="swiper-wrapper" data-detail-thumbnail-wrapper></div>
+
+              <!-- Swiper draggable Scrollbar -->
+              <div class="swiper-scrollbar"></div>
+            </div>
+
+            <!-- 상품 상세 탭 -->
+            <nav class="detail_tabs d-flex g-1" aria-label="상품 상세 탭">
               <button type="button" class="detail-tab-item active">상품 정보</button>
+
               <button type="button" class="detail-tab-item">구매 후기</button>
+
               <button type="button" class="detail-tab-item">배송 정보</button>
             </nav>
 
+            <!-- 상품 정보 -->
             <div class="detail-tab-content active">
-              <div class="detail_image_stack">
-                <img src="image/detail_img1.png" alt="상품 상세 이미지 1" data-detail-image />
-                <img src="image/detail_img2.png" alt="상품 상세 이미지 2" data-detail-image />
-                <div class="detail_image_pair">
-                  <img src="image/detail_img3.png" alt="상품 상세 이미지 3" data-detail-image />
-                  <img src="image/detail_img4.png" alt="상품 상세 이미지 4" data-detail-image />
-                </div>
-              </div>
+              <!--
+                JSON의 detailImgs가 JS로 생성
+                detailImgs가 없으면 thumbImgs 사용
+              -->
+              <div class="detail_image_stack d-flex flex-column" data-detail-image-stack></div>
             </div>
+
+            <!-- 구매 후기 -->
             <div class="detail-tab-content">
               <div class="detail_empty">
                 <p class="body_l">아직 등록된 후기가 없습니다.</p>
               </div>
             </div>
+
+            <!-- 배송 정보 -->
             <div class="detail-tab-content">
               <div class="detail_empty">
                 <p class="body_l">평균 배송 기간은 결제 완료 후 2~3일입니다.</p>
@@ -51,55 +90,75 @@
             </div>
           </div>
 
-          <aside class="product_panel" aria-label="상품 구매 정보">
-            <div class="product_heading d-flex flex-column">
-              <p class="product_brand body_cap" data-detail-brand>BRAND</p>
-              <h1 class="product_title display_h3" data-detail-name>상품명이 들어갑니다</h1>
-              <div class="product_rating d-flex align-items-center">
-                <span class="material-icons-round" aria-hidden="true">star</span>
-                <span class="material-icons-round" aria-hidden="true">star</span>
-                <span class="material-icons-round" aria-hidden="true">star</span>
-                <span class="material-icons-round" aria-hidden="true">star</span>
-                <span class="material-icons-round" aria-hidden="true">star</span>
+          <!-- 상품 구매 정보-->
+          <aside class="product_panel d-flex flex-column g-1" aria-label="상품 구매 정보">
+            <!-- 브랜드 / 상품명 / 리뷰 -->
+            <div class="product_heading d-flex flex-column g-0-5">
+              <p class="product_brand body_cap" data-detail-brand></p>
+
+              <h1 class="product_title display_h3" data-detail-name></h1>
+
+              <div class="product_rating d-flex align-items-center g-0-5">
+                <span class="material-icons-round" aria-hidden="true"> star </span>
+
+                <span class="material-icons-round" aria-hidden="true"> star </span>
+
+                <span class="material-icons-round" aria-hidden="true"> star </span>
+
+                <span class="material-icons-round" aria-hidden="true"> star </span>
+
+                <span class="material-icons-round" aria-hidden="true"> star </span>
+
                 <strong>5/5</strong>
-                <span class="review_count" data-detail-reviews>(0개 리뷰)</span>
+
+                <span class="review_count body_m" data-detail-reviews></span>
               </div>
             </div>
 
-            <div class="product_price_row d-flex justify-content-between align-items-center">
-              <div>
-                <p class="product_price display_h3" data-detail-sale-price>000,000원</p>
-                <p class="product_discount body_cap">
-                  <del data-detail-original-price>000,000원</del>
-                  <span data-detail-discount-rate>0% 할인</span>
+            <!-- 상품 가격 -->
+            <div class="product_price_row d-flex justify-content-between align-items-center g-1">
+              <div class="d-flex flex-column g-0-5">
+                <p class="product_price display_h3" data-detail-sale-price></p>
+
+                <p class="product_discount body_cap d-flex align-items-center g-0-5">
+                  <del data-detail-original-price></del>
+
+                  <span data-detail-discount-rate></span>
                 </p>
               </div>
-              <button type="button" class="wish_btn" aria-label="찜하기">
-                <span class="material-symbols-rounded" aria-hidden="true">heart_plus</span>
+
+              <button
+                type="button"
+                class="wish_btn d-flex justify-content-center align-items-center"
+                aria-label="찜하기"
+              >
+                <span class="material-symbols-rounded" aria-hidden="true"> heart_plus </span>
               </button>
             </div>
 
             <div class="panel_divider"></div>
 
+            <!-- 상품 옵션 -->
             <div class="product_options">
-              <div class="option_group">
+              <!-- 컬러 -->
+              <div class="option_group d-flex flex-column g-0-5">
                 <p class="option_label body_cap">COLOR</p>
-                <div class="color_list d-flex align-items-center" data-detail-colors>
-                  <button
-                    type="button"
-                    class="color_chip is-active"
-                    style="--chip-color: #222831"
-                    aria-label="기본 색상"
-                  ></button>
-                </div>
+
+                <!-- JSON colors -->
+                <div class="color_list d-flex align-items-center g-0-5" data-detail-colors></div>
               </div>
 
-              <div class="option_group">
+              <!-- 사이즈 -->
+              <div class="option_group d-flex flex-column g-0-5">
                 <p class="option_label body_cap">SIZE</p>
-                <div class="size_list d-flex align-items-center">
+
+                <div class="size_list d-flex align-items-center g-0-5">
                   <button type="button">XS</button>
+
                   <button type="button">S</button>
+
                   <button type="button">M</button>
+
                   <button type="button" class="is-active">L</button>
                 </div>
               </div>
@@ -107,247 +166,465 @@
 
             <div class="panel_divider"></div>
 
-            <div class="purchase_buttons d-flex">
+            <!-- 구매 버튼 -->
+            <div class="purchase_buttons d-flex g-0-5">
               <button type="button" class="submit-button">장바구니</button>
+
               <button type="button" class="buy_now">바로 구매하기</button>
             </div>
 
-            <dl class="benefit_list">
-              <div class="benefit_highlight d-flex justify-content-between align-items-center">
+            <!-- 구매 혜택 -->
+            <dl class="benefit_list d-flex flex-column g-0-5">
+              <div class="benefit_highlight d-flex justify-content-between align-items-center g-0-5">
                 <dt class="body_l">신규 회원 최대 할인 가격</dt>
-                <dd class="body_xl">334,070원</dd>
+
+                <!-- JSON 또는 JS 계산값 -->
+                <dd class="body_xl" data-detail-member-price></dd>
               </div>
-              <div class="d-flex justify-content-between">
-                <dt>배송비</dt>
-                <dd>무료배송</dd>
+
+              <div class="d-flex justify-content-between align-items-center g-0-5">
+                <dt class="body_m">배송비</dt>
+
+                <!-- JSON 또는 JS 기본값 -->
+                <dd class="body_m" data-detail-delivery-fee></dd>
               </div>
-              <div class="d-flex justify-content-between">
-                <dt>적립금</dt>
-                <dd>16,700원</dd>
+
+              <div class="d-flex justify-content-between align-items-center g-0-5">
+                <dt class="body_m">적립금</dt>
+
+                <!-- JSON 또는 JS 계산값 -->
+                <dd class="body_m" data-detail-point></dd>
               </div>
-              <div class="d-flex justify-content-between">
-                <dt><span>CJ ONE</span> 포인트 적립</dt>
-                <dd>최대 10,656P</dd>
+
+              <div class="d-flex justify-content-between align-items-center g-0-5">
+                <dt class="body_m">
+                  <span>CJ ONE</span>
+                  포인트 적립
+                </dt>
+
+                <!-- JSON 또는 JS 계산값 -->
+                <dd class="body_m" data-detail-cj-point></dd>
               </div>
             </dl>
           </aside>
         </div>
       </section>
 
+      <!-- 프리미엄 렌즈 기술 -->
       <section class="lens_tech">
-        <div class="wrap lens_tech_inner d-flex flex-column text-center">
-          <div class="section_head d-flex flex-column">
+        <div class="wrap lens_tech_inner d-flex flex-column text-center g-1">
+          <div class="section_head d-flex flex-column g-1">
             <h2 class="display_h2">프리미엄 렌즈 기술</h2>
+
             <p class="body_xl">선명한 시야를 위한 설계. 일상을 위한 기능.</p>
           </div>
+
           <ul class="tech_grid">
-            <li>
-              <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+            <li class="d-flex flex-column align-items-center g-0-5">
+              <span class="material-symbols-rounded" aria-hidden="true"> visibility </span>
+
               <h3 class="display_h4">블루라이트 차단</h3>
+
               <p class="body_m">유해한 블루라이트를 줄여 눈의 피로를 덜어줍니다.</p>
             </li>
-            <li>
-              <span class="material-symbols-rounded" aria-hidden="true">wb_sunny</span>
+
+            <li class="d-flex flex-column align-items-center g-0-5">
+              <span class="material-symbols-rounded" aria-hidden="true"> wb_sunny </span>
+
               <h3 class="display_h4">UV400 자외선 차단</h3>
+
               <p class="body_m">UVA와 UVB 자외선을 안정적으로 차단합니다.</p>
             </li>
-            <li>
-              <span class="material-symbols-rounded" aria-hidden="true">flare</span>
+
+            <li class="d-flex flex-column align-items-center g-0-5">
+              <span class="material-symbols-rounded" aria-hidden="true"> flare </span>
+
               <h3 class="display_h4">반사 방지 코팅</h3>
+
               <p class="body_m">빛 반사를 줄여 깨끗하고 편안한 시야를 제공합니다.</p>
             </li>
-            <li>
-              <span class="material-symbols-rounded" aria-hidden="true">shield</span>
+
+            <li class="d-flex flex-column align-items-center g-0-5">
+              <span class="material-symbols-rounded" aria-hidden="true"> shield </span>
+
               <h3 class="display_h4">하드 코팅</h3>
+
               <p class="body_m">스크래치에 강한 코팅으로 렌즈의 내구성을 높입니다.</p>
             </li>
           </ul>
         </div>
       </section>
 
+      <!-- 쿠폰 배너 -->
       <section class="coupon_banner">
         <img src="image/coupon_img.png" alt="" />
-        <div class="wrap coupon_content d-flex align-items-center">
+
+        <div class="wrap coupon_content d-flex justify-content-between align-items-center g-0-5">
           <div>
             <h2 class="display_h3">2만원 즉시 할인 쿠폰</h2>
+
             <p class="body_l">6월 한정, 결제 시 바로 할인받기</p>
           </div>
-          <button type="button" class="coupon_ticket d-flex align-items-center">
-            <span>
+
+          <button type="button" class="coupon_ticket d-flex justify-content-between align-items-center g-0-5">
+            <span class="d-flex flex-column">
               <strong>20,000원</strong>
               <small>즉시 할인 적용</small>
             </span>
-            <span class="material-icons-round" aria-hidden="true">save_alt</span>
+
+            <span class="material-icons-round" aria-hidden="true"> save_alt </span>
           </button>
         </div>
       </section>
 
+      <!-- 상품 치수 -->
       <section class="detail_dimensions">
         <div class="wrap d-flex flex-column align-items-center">
           <img class="dimension_image" src="image/dim-img.png" alt="상품 치수 안내 이미지" />
+
           <ul class="dimension_specs">
-            <li>
+            <li class="d-flex align-items-center g-0-5">
               <span class="dimension_icon icon_01" aria-hidden="true"></span>
+
               <div>
-                <p class="body_xl"><strong>01</strong> 렌즈 가로 너비</p>
-                <span class="display_h4">52 mm</span>
+                <p class="body_xl">
+                  <strong>01</strong>
+                  렌즈 가로 너비
+                </p>
+
+                <span class="display_h4"> 52 mm </span>
               </div>
             </li>
-            <li>
+
+            <li class="d-flex align-items-center g-0-5">
               <span class="dimension_icon icon_02" aria-hidden="true"></span>
+
               <div>
-                <p class="body_xl"><strong>02</strong> 브릿지 너비</p>
-                <span class="display_h4">18 mm</span>
+                <p class="body_xl">
+                  <strong>02</strong>
+                  브릿지 너비
+                </p>
+
+                <span class="display_h4"> 18 mm </span>
               </div>
             </li>
-            <li>
+
+            <li class="d-flex align-items-center g-0-5">
               <span class="dimension_icon icon_03" aria-hidden="true"></span>
+
               <div>
-                <p class="body_xl"><strong>03</strong> 다리 길이</p>
-                <span class="display_h4">145 mm</span>
+                <p class="body_xl">
+                  <strong>03</strong>
+                  다리 길이
+                </p>
+
+                <span class="display_h4"> 145 mm </span>
               </div>
             </li>
           </ul>
         </div>
       </section>
 
+      <!-- 추가 구성 렌즈 -->
       <section class="option_story story_lens">
         <img src="image/option_img1.png" alt="" />
-        <div class="wrap story_content d-flex flex-column">
-          <span class="story_badge">추가 구성</span>
+
+        <div class="wrap story_content d-flex flex-column g-1">
+          <span class="story_badge"> 추가 구성 </span>
+
           <h2 class="display_h1">필수 아이템 렌즈</h2>
+
           <p class="body_xl">일상용 클리어 렌즈를 추가로 구매할 수 있습니다.</p>
+
           <ul class="story_feature_list">
-            <li><img src="image/feature_icon1.png" alt="" />안경테에 간편하게 장착</li>
-            <li><img src="image/feature_icon2.png" alt="" />비전과 브릿지에 호환 가능</li>
-            <li><img src="image/feature_icon3.png" alt="" />휴대용 케이스 포함</li>
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon1.png" alt="" />
+
+              안경테에 간편하게 장착
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon2.png" alt="" />
+
+              비전과 브릿지에 호환 가능
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon3.png" alt="" />
+
+              휴대용 케이스 포함
+            </li>
           </ul>
+
           <div class="story_price_box">
-            <p><strong>1EA</strong> <del>5,000원</del> <b>4,500원</b> <span>10% 할인</span></p>
-            <p><strong>3EA</strong> <del>15,000원</del> <b>12,500원</b> <span>16% 할인</span></p>
+            <p class="d-flex align-items-center g-0-5">
+              <strong>1EA</strong>
+              <del>5,000원</del>
+              <b>4,500원</b>
+              <span>10% 할인</span>
+            </p>
+
+            <p class="d-flex align-items-center g-0-5">
+              <strong>3EA</strong>
+              <del>15,000원</del>
+              <b>12,500원</b>
+              <span>16% 할인</span>
+            </p>
           </div>
         </div>
       </section>
 
+      <!-- 렌즈 클리너 스프레이 -->
       <section class="option_story story_cleaner">
         <img src="image/option_img2.png" alt="" />
-        <div class="wrap story_content d-flex flex-column">
-          <span class="story_badge yellow">추가 옵션</span>
-          <h2 class="display_h1">렌즈 클리너 스프레이 <span>(50ml)</span></h2>
+
+        <div class="wrap story_content d-flex flex-column g-1">
+          <span class="story_badge yellow"> 추가 옵션 </span>
+
+          <h2 class="display_h1">
+            렌즈 클리너 스프레이
+            <span>(50ml)</span>
+          </h2>
+
           <p class="body_xl">손 안에 쏙 들어오는 간편한 렌즈 관리 아이템</p>
-          <strong class="gift_text display_h3">고급 극세사 천 무료 증정</strong>
+
+          <strong class="gift_text display_h3"> 고급 극세사 천 무료 증정 </strong>
+
           <button type="button" class="story_cta">필수 아이템 구매하러 가기</button>
         </div>
       </section>
 
+      <!-- 안경 클리너 -->
       <section class="option_story story_cloth">
         <img src="image/option_img3.png" alt="" />
-        <div class="wrap story_content d-flex flex-column">
-          <span class="story_badge">추가 구성</span>
-          <div class="story_headline display_h1">
-            <p>당신의 <span>맑은 시야</span>를</p>
+
+        <div class="wrap story_content d-flex flex-column g-1">
+          <span class="story_badge"> 추가 구성 </span>
+
+          <div class="story_headline display_h1 d-flex flex-column">
+            <p>
+              당신의
+              <span>맑은 시야</span>를
+            </p>
+
             <p>더 오래 지킬 수 있도록</p>
           </div>
-          <div class="story_subtitle">
+
+          <div class="story_subtitle d-flex flex-column g-0-5">
             <p class="body_xl">round glasses cleaner</p>
+
             <h2 class="display_h2">라운즈 안경 클리너</h2>
           </div>
+
           <ul class="story_icon_grid">
-            <li><img src="image/feature_icon4.png" alt="" />부드러운 극세사</li>
-            <li><img src="image/feature_icon5.png" alt="" />지문과 유분 제거</li>
-            <li><img src="image/feature_icon6.png" alt="" />모든 렌즈 사용 가능</li>
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon4.png" alt="" />
+
+              부드러운 극세사
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon5.png" alt="" />
+
+              지문과 유분 제거
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon6.png" alt="" />
+
+              모든 렌즈 사용 가능
+            </li>
           </ul>
+
           <button type="button" class="story_cta">안경클립 구매하러 가기 →</button>
         </div>
       </section>
 
+      <!-- 렌즈 클리닝 티슈 -->
       <section class="option_story story_tissue">
         <img src="image/option_img4.png" alt="" />
-        <div class="wrap story_content d-flex flex-column">
-          <span class="story_badge yellow">추가 옵션</span>
-          <h2 class="display_h1">렌즈 클리닝 티슈 <span>(10매)</span></h2>
+
+        <div class="wrap story_content d-flex flex-column g-1">
+          <span class="story_badge yellow"> 추가 옵션 </span>
+
+          <h2 class="display_h1">
+            렌즈 클리닝 티슈
+            <span>(10매)</span>
+          </h2>
+
           <p class="body_xl">99% 항균 작용과 김서림, 정전기 방지 효과가 있는 일회용 클리닝 티슈</p>
+
           <ul class="story_feature_list story_feature_two">
-            <li><img src="image/feature_icon7.png" alt="" /><span><strong>99% 항균</strong> 작용<br />김서림 예방</span></li>
-            <li><img src="image/feature_icon8.png" alt="" /><span><strong>정전기 방지</strong><br />먼지 흡착 감소</span></li>
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon7.png" alt="" />
+
+              <span>
+                <strong>99% 항균</strong>
+                작용
+                <br />
+                김서림 예방
+              </span>
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon8.png" alt="" />
+
+              <span>
+                <strong>정전기 방지</strong>
+                <br />
+                먼지 흡착 감소
+              </span>
+            </li>
           </ul>
+
           <button type="button" class="story_cta">필수 아이템 구매하러 가기</button>
         </div>
       </section>
 
+      <!-- 셀프 A/S 키트 -->
       <section class="option_story story_kit">
         <img src="image/option_img5.png" alt="" />
-        <div class="wrap story_content d-flex flex-column">
-          <span class="story_badge">추가 옵션</span>
+
+        <div class="wrap story_content d-flex flex-column g-1">
+          <span class="story_badge"> 추가 옵션 </span>
+
           <h2 class="display_h1">라운즈 셀프 A/S 키트</h2>
-          <p class="body_xl"><span>내 손 안의 작은 수리점</span></p>
+
+          <p class="body_xl">
+            <span>내 손 안의 작은 수리점</span>
+          </p>
+
           <ul class="story_feature_list story_feature_two">
-            <li><img src="image/feature_icon9.png" alt="" />스스로 간편하게<br />수리 &amp; 조절</li>
-            <li><img src="image/feature_icon10.png" alt="" />작고 가벼운 사이즈로<br />휴대와 보관이 용이</li>
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon9.png" alt="" />
+
+              스스로 간편하게
+              <br />
+              수리 &amp; 조절
+            </li>
+
+            <li class="d-flex align-items-center g-0-5">
+              <img src="image/feature_icon10.png" alt="" />
+
+              작고 가벼운 사이즈로
+              <br />
+              휴대와 보관이 용이
+            </li>
           </ul>
+
           <div class="story_price_box">
-            <p><strong>1EA</strong> <del>5,000원</del> <b>4,500원</b> <span>10% 할인</span></p>
-            <p><strong>3EA</strong> <del>15,000원</del> <b>12,500원</b> <span>16% 할인</span></p>
+            <p class="d-flex align-items-center g-0-5">
+              <strong>1EA</strong>
+              <del>5,000원</del>
+              <b>4,500원</b>
+              <span>10% 할인</span>
+            </p>
+
+            <p class="d-flex align-items-center g-0-5">
+              <strong>3EA</strong>
+              <del>15,000원</del>
+              <b>12,500원</b>
+              <span>16% 할인</span>
+            </p>
           </div>
+
           <button type="button" class="story_cta">A/S키트 구매하러 가기 →</button>
         </div>
       </section>
 
+      <!-- 렌즈 가격 비교 -->
       <section class="compare_section">
-        <div class="wrap compare_inner d-flex flex-column align-items-center text-center">
-          <div class="section_head d-flex flex-column">
-            <h2 class="display_h2"><span>#</span> 필수렌즈 가격 걱정되시나요?</h2>
+        <div class="wrap compare_inner d-flex flex-column align-items-center text-center g-2">
+          <div class="section_head d-flex flex-column g-1">
+            <h2 class="display_h2">
+              <span>#</span>
+              필수렌즈 가격 걱정되시나요?
+            </h2>
+
             <p class="body_xl">렌즈 맞춤 비용을 비교해 보세요.</p>
           </div>
+
           <div class="compare_table" role="table" aria-label="렌즈 가격 비교">
             <div class="compare_row compare_header" role="row">
-              <span role="columnheader">구분</span>
-              <span role="columnheader">압축</span>
-              <span role="columnheader">가격</span>
-              <span role="columnheader">고도수</span>
+              <span role="columnheader"> 구분 </span>
+
+              <span role="columnheader"> 압축 </span>
+
+              <span role="columnheader"> 가격 </span>
+
+              <span role="columnheader"> 고도수 </span>
             </div>
+
             <div class="compare_row" role="row">
-              <span role="cell"><i style="--swatch: #fcd34d"></i>1.56 비구면 ASP</span>
-              <span role="cell">-10%</span>
-              <strong role="cell">40,000원</strong>
-              <span role="cell">+20,000원</span>
+              <span role="cell">
+                <i style="--swatch: #fcd34d"></i>
+                1.56 비구면 ASP
+              </span>
+
+              <span role="cell"> -10% </span>
+
+              <strong role="cell"> 40,000원 </strong>
+
+              <span role="cell"> +20,000원 </span>
             </div>
+
             <div class="compare_row" role="row">
-              <span role="cell"><i style="--swatch: #ec4899"></i>1.60 비구면 ASP</span>
-              <span role="cell">-15%</span>
-              <strong role="cell">60,000원</strong>
-              <span role="cell">+30,000원</span>
+              <span role="cell">
+                <i style="--swatch: #ec4899"></i>
+                1.60 비구면 ASP
+              </span>
+
+              <span role="cell"> -15% </span>
+
+              <strong role="cell"> 60,000원 </strong>
+
+              <span role="cell"> +30,000원 </span>
             </div>
+
             <div class="compare_row" role="row">
-              <span role="cell"><i style="--swatch: #3b82f6"></i>1.67 비구면 ASP</span>
-              <span role="cell">-20%</span>
-              <strong role="cell">80,000원</strong>
-              <span role="cell">+40,000원</span>
+              <span role="cell">
+                <i style="--swatch: #3b82f6"></i>
+                1.67 비구면 ASP
+              </span>
+
+              <span role="cell"> -20% </span>
+
+              <strong role="cell"> 80,000원 </strong>
+
+              <span role="cell"> +40,000원 </span>
             </div>
           </div>
+
           <div class="compare_notice">
-            <strong>프리미엄 렌즈 기능 기본 탑재</strong>
+            <strong> 프리미엄 렌즈 기능 기본 탑재 </strong>
+
             <p>자외선 및 블루라이트 차단, 비구면 설계, 정전기 차단 코팅을 포함합니다.</p>
           </div>
         </div>
       </section>
 
-      <section class="recommend_section">
+      <!-- 추천 상품
+           section이 아닌 div 사용
+           JSON 상품이 JS로 생성 -->
+      <div class="recommend_section">
         <div class="wrap">
-          <h2 class="display_h2 text-center">You May Also <span>Like</span></h2>
-          <ul class="recommend_track">
-            <li><img src="image/slide_item1.png" alt="추천 상품 1" /></li>
-            <li><img src="image/slide_item2.png" alt="추천 상품 2" /></li>
-            <li><img src="image/slide_item3.png" alt="추천 상품 3" /></li>
-            <li><img src="image/slide_item1.png" alt="추천 상품 4" /></li>
-          </ul>
+          <h2 class="display_h2 text-center">
+            You May Also
+            <span>Like</span>
+          </h2>
+
+          <ul class="recommend_track d-flex g-1" data-recommend-track></ul>
         </div>
-      </section>
+      </div>
     </main>
 
     <footer></footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
     <script type="module" src="js/common.js"></script>
+
     <script type="module" src="js/detail.js"></script>
   </body>
 </html>
