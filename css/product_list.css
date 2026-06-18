@@ -124,16 +124,17 @@ main {
 
 .sort_dropdown {
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 .sort_dropdown_trigger {
   cursor: pointer;
 }
 .sort_dropdown_menu {
   position: absolute;
-  top: 100%;
+  top: var(--base-unit-x1-5);
   right: 0;
   width: 120px;
+  border-radius: 10px;
 
   background: var(--white);
   color: var(--gray);
@@ -141,10 +142,11 @@ main {
 
   overflow: hidden;
   max-height: 0;
-  transition: 0.5s ease-in;
+  transition: 0.2s ease-in;
 }
 .sort_dropdown.active .sort_dropdown_menu {
-  max-height: calc(var(--base-unit) * 32);
+  max-height: calc(var(--base-unit) * 15);
+  transition: 0.2s ease-out;
 }
 .sort_dropdown_menu li {
   width: 108px;
