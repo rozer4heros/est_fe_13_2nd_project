@@ -18,7 +18,7 @@ renderFooter();
 const navDrawerWrapEl = document.querySelector(".nav_drawer_wrap");
 const hamburgerBtnEl = document.querySelector(".hamburger_btn");
 const navCloseBtnEl = document.querySelector(".nav_close_btn");
-const navAccordionEls = document.querySelectorAll(".drawer_accordion_list li > div");
+const navAccordionHeaderEls = document.querySelectorAll(".drawer_accordion_list li > div");
 const navQuickLinksEl = document.querySelector(".drawer_quick_links");
 
 // ==========================================
@@ -43,11 +43,27 @@ function toggleAccordion(target = navDrawerWrapEl) {
     return;
   }
 
-  navAccordionEls.forEach(acc => {
+  navAccordionHeaderEls.forEach(acc => {
     acc.parentElement.classList.remove("active");
   });
   target.classList.add("active");
   navQuickLinksEl.classList.add("hidden");
+}
+
+/* 장바구니 담기 함수 추가 */
+function addToCart(productId, quantity = 1) {
+  let cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
+
+  const existingItemIndex = cartItems.findIndex(item => item.productId === productId);
+
+  //있는거면 수량 추가, 없으면 상품 추가
+  if (existingItemIndex > -1) {
+    cartItems[existingItemIndex].quantity += quantity;
+  } else {
+    cartItems.push({ productId: productId, quantity: quantity });
+  }
+
+  localStorage.setItem("rounz_cart", JSON.stringify(cartItems));
 }
 
 // ==========================================
@@ -67,8 +83,8 @@ navCloseBtnEl.addEventListener("click", e => {
   closeNavDrawer();
 });
 
-navAccordionEls.forEach(acc => {
-  acc.addEventListener("click", e => {
+navAccordionHeaderEls.forEach(accHead => {
+  accHead.addEventListener("click", e => {
     toggleAccordion(e.currentTarget.parentElement);
   });
 });
