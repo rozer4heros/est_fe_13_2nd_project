@@ -1044,7 +1044,7 @@ input:focus {
   right: 20px;
   bottom: 20px;
 
-  padding: var(--base-unit-x0-5) var(--base-unit-x0-5);
+  padding: 3px 6px;
   border-radius: 40px;
   color: var(--white);
   background: var(--font--color);
@@ -1061,6 +1061,7 @@ input:focus {
 .product_card .product_name {
   order: 2;
   font-weight: 400;
+  min-height: var(--base-unit-x3);
 }
 .product_card .product_card_price {
   order: 3;
@@ -1076,12 +1077,15 @@ input:focus {
     height: calc(var(--base-unit) * 12);
   }
   .product_card_imgbox .try_on_btn {
-    padding: var(--base-unit-x0-5) var(--base-unit);
+    padding: 6px var(--base-unit-x0-5);
   }
 }
 @media (min-width: 769px) {
   .product_card {
     padding: 0 32px;
+  }
+  .product_card_imgbox .try_on_btn {
+    padding: var(--base-unit-x0-5) var(--base-unit);
   }
 }
 
