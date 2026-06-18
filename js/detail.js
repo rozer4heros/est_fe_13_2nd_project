@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetch("data/products.json")
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then((products) => {
-      const product = products.find((p) => String(p.productId) === productId);
+    .then(products => {
+      const product = products.find(p => String(p.productId) === productId);
 
       if (!product) {
         alert("해당 상품을 찾을 수 없습니다.");
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       renderProductDetail(product);
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("상세 페이지 로딩 실패:", error);
     });
 });
