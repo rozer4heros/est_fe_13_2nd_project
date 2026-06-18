@@ -605,10 +605,9 @@
         </div>
       </section>
 
-      <!-- celeb pick 문송연 -->
+      ```html
+      <!-- celeb's pick - 문송연 -->
       <section class="celebs_pick">
-        <img src="image/celeb_background.jpg" alt="" class="celeb_bg" />
-
         <div class="Celeb_text_container d-flex flex-column align-items-center">
           <h2 class="display_h2">celeb&apos;s pick</h2>
           <p class="body_xl">지금 주목받는 셀럽 아이웨어</p>
@@ -621,9 +620,25 @@
           <a href="product_list.html" class="celeb_more body_cap"> 더보기 &rarr; </a>
         </div>
 
-        <!-- 버튼 아래에 카드들이 출력되는 자리 -->
-        <div class="celeb_slider_wrapper"></div>
+        <div class="celeb_swiper swiper">
+          <!-- JS에서 celeb_slide swiper-slide 카드 출력 -->
+          <div class="celeb_slider_wrapper swiper-wrapper"></div>
+
+          <!-- 좌우 버튼 + 현재 슬라이드 번호 -->
+          <div class="celeb_controls">
+            <button type="button" class="celeb_prev" aria-label="이전 슬라이드">
+              <span class="material-icons-round" aria-hidden="true"> chevron_left </span>
+            </button>
+
+            <div class="celeb_fraction"></div>
+
+            <button type="button" class="celeb_next" aria-label="다음 슬라이드">
+              <span class="material-icons-round" aria-hidden="true"> chevron_right </span>
+            </button>
+          </div>
+        </div>
       </section>
+      ```
 
       <!-- 매장 찾기 섹션 -->
       <!-- 작업자="유태구" -->
