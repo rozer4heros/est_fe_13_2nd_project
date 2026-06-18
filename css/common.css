@@ -1064,7 +1064,7 @@ input:focus {
   font-weight: 400;
   min-height: var(--base-unit-x3);
 }
-.product_card .product_card_price {
+.product_card .product_card_footer {
   order: 3;
 }
 .product_card .discount_rate {
