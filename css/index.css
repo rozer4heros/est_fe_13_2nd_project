@@ -3128,8 +3128,7 @@ grid-template-columns: 1fr !important;
 
 /* 제품 정보 */
 .celeb_product {
-  display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) 32px;
+  display: flex;
   align-items: center;
   gap: 12px;
 
@@ -3137,11 +3136,23 @@ grid-template-columns: 1fr !important;
   min-height: 88px;
   padding: 12px;
   box-sizing: border-box;
-
   background: var(--white);
 }
 
+.celeb_product_link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+
+  color: inherit;
+  text-decoration: none;
+}
+
 .celeb_product_img_box {
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3162,51 +3173,30 @@ grid-template-columns: 1fr !important;
 }
 
 .celeb_product_info {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
   min-width: 0;
-  gap: 4px;
+}
+
+.celeb_product_brand,
+.celeb_product_name,
+.celeb_product_price {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .celeb_product_brand {
   color: var(--point--color);
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.celeb_product_name {
-  color: var(--font--color);
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .celeb_product_price {
-  color: var(--font--color);
   font-weight: 700;
-  white-space: nowrap;
 }
-
 /* 찜 버튼 */
 .celeb_like {
-  display: grid;
-  place-items: center;
-
-  width: 32px;
-  height: 32px;
-  padding: 0;
-
-  border: 0;
-  background: transparent;
-  color: var(--gray);
-
-  cursor: pointer;
+  flex-shrink: 0;
 }
-
-.celeb_like .material-icons-round {
+.celeb_like .material-symbols-rounded {
   font-size: 24px;
 }
 
@@ -3242,7 +3232,8 @@ grid-template-columns: 1fr !important;
 }
 
 .celeb_prev .material-icons-round,
-.celeb_next .material-icons-round {
+.celeb_next .material-icons-round,
+.celeb_like .material-symbols-rounded {
   font-size: 24px;
   line-height: 1;
 }
@@ -3297,7 +3288,6 @@ grid-template-columns: 1fr !important;
   }
 
   .celeb_product {
-    grid-template-columns: 64px minmax(0, 1fr) 40px;
     min-height: 104px;
     padding: 16px;
     gap: 16px;
@@ -3313,7 +3303,7 @@ grid-template-columns: 1fr !important;
     height: 40px;
   }
 
-  .celeb_like .material-icons-round {
+  .celeb_like .material-symbols-rounded {
     font-size: 28px;
   }
 
@@ -3348,7 +3338,6 @@ grid-template-columns: 1fr !important;
   }
 
   .celeb_product {
-    grid-template-columns: 72px minmax(0, 1fr) 40px;
     min-height: 112px;
     padding: 16px;
   }
