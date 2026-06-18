@@ -2057,6 +2057,16 @@
   .new_collection_item:nth-child(4) {
     display: none;
   }
+  .new_collection_track {
+    display: flex;
+    overflow-x: auto;
+    cursor: grab; /* 👈 기본 마우스 커서를 잡는 모양으로 변경 */
+    user-select: none; /* 드래그 시 내부 텍스트나 이미지가 블록 지정되는 현상 방지 */
+  }
+
+  .new_collection_track:active {
+    cursor: grabbing; /* 👈 클릭 후 드래그 중일 때는 꽉 쥔 모양으로 변경 */
+  }
 }
 
 /* brand section - 김해나 */
