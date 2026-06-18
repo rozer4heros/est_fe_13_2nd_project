@@ -106,19 +106,19 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then((products) => {
+    .then(products => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach((product) => {
+      limitedProducts.forEach(product => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
@@ -157,7 +157,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
@@ -213,11 +213,11 @@ function initSwiper() {
   /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
   const originals = [...grid.querySelectorAll(".best-card")];
   for (let g = 1; g < TOTAL_GROUPS; g++) {
-    originals.forEach((card) => grid.appendChild(card.cloneNode(true)));
+    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
   }
 
   /* 찜하기 토글 */
-  grid.addEventListener("click", (e) => {
+  grid.addEventListener("click", e => {
     const btn = e.target.closest(".best-wish-btn");
     if (btn) btn.classList.toggle("liked");
   });
@@ -426,3 +426,27 @@ function connectYoutubeHover() {
 }
 
 loadCelebPickData();
+
+/* 지도 - 유태구 작업 */
+async function initMap() {
+  // Request needed libraries.
+  const [{ AdvancedMarkerElement }, { Map: GoogleMap }] = await Promise.all([
+    google.maps.importLibrary("marker"),
+    google.maps.importLibrary("maps"),
+  ]);
+
+  const mapContainer = document.getElementById("map_api");
+
+  const map = new GoogleMap(mapContainer, {
+    center: { lat: 37.4935506, lng: 127.0310534 },
+    zoom: 15,
+    mapId: "85c8c84b1afe73166dd4c6fe",
+  });
+
+  const marker = new AdvancedMarkerElement({
+    map: map,
+    position: { lat: 37.4935506, lng: 127.0310534 },
+  });
+  mapContainer.append(marker);
+}
+void initMap();
