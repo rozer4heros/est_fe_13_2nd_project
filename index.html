@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
@@ -43,23 +43,24 @@
           <div class="swiper-wrapper">
             <!-- slide 1 -->
             <div class="swiper-slide hero_ai_container">
-              <img src="image/hero_ai_M.webp" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
+              <img src="image/hero_ai_M.jpg" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
 
               <div class="hero_ai_text_container d-flex flex-column align-items-center g-1">
-                <div class="hero_ai_title d-flex flex-column align-items-center">
-                  <p class="display_h4">find your perfect fit</p>
+                <div class="hero_ai_content d-flex flex-column">
+                  <div class="hero_ai_title d-flex flex-column align-items-center">
+                    <p class="display_h4">find your perfect fit</p>
 
-                  <h2 class="display_h2">
-                    얼굴형을 분석하고,<br />
-                    어울리는 프레임을 추천합니다.
-                  </h2>
+                    <h2 class="display_h2">
+                      얼굴형을 분석하고,<br />
+                      어울리는 프레임을 추천합니다.
+                    </h2>
+                  </div>
+
+                  <a href="#" class="hero_ai_btn hero_action_btn d-flex align-items-center">
+                    <span class="hero_btn_text">AI 서비스 알아보기</span>
+                    <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                  </a>
                 </div>
-
-                <a href="#" class="hero_ai_btn hero_action_btn d-flex align-items-center display_h4">
-                  <span class="hero_btn_text">AI 서비스 알아보기</span>
-
-                  <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
-                </a>
               </div>
             </div>
 
@@ -131,7 +132,7 @@
 
             <!-- slide 4 -->
             <div class="swiper-slide try_on_container">
-              <img src="image/hero_tryon_M.jpg" alt="써보기 섹션 배경 이미지" class="hero_slide_img" />
+              <img src="image/tryon_M.jpg" alt="써보기 섹션 배경 이미지" class="hero_slide_img" />
 
               <div class="tryon_text_container d-flex flex-column g-1">
                 <div class="tryon_title_container d-flex flex-column">
@@ -309,60 +310,96 @@
           </div>
         </div>
       </section>
+
+      <!-- Best Picks 섹션 -->
+      <!-- 작업자="김해나" -->
       <section class="best_picks">
-        <h2>best picks</h2>
-        <!-- 슬라이더 -->
-        <div></div>
+        <div class="wrap">
+          <div class="best_picks_header d-flex justify-content-between align-items-end">
+            <div class="best_picks_title_group d-flex flex-column">
+              <h2 class="best_picks_title display_h1">best picks</h2>
+              <p class="best_picks_subtitle body_xl">지금 가장 많이 찾는 아이웨어</p>
+            </div>
+            <a href="product_list.html" class="best_picks_more body_cap">더보기 &rarr;</a>
+          </div>
+
+          <div class="best_picks_slider_wrap">
+            <button
+              type="button"
+              class="bestpick_slide_btn bestpick_btn_prev best_picks_btn_prev d-flex"
+              aria-label="이전 슬라이드"
+            >
+              <span class="material-icons-round d-flex">keyboard_arrow_left</span>
+            </button>
+            <button
+              type="button"
+              class="bestpick_slide_btn bestpick_btn_next best_picks_btn_next d-flex"
+              aria-label="다음 슬라이드"
+            >
+              <span class="material-icons-round d-flex">keyboard_arrow_right</span>
+            </button>
+
+            <div class="best_picks_scroller" aria-label="Best picks product list">
+              <ul class="best_picks_list" id="best_picks_list"></ul>
+            </div>
+
+            <div class="best_picks_scrollbar_wrap" aria-hidden="true">
+              <div class="best_picks_scrollbar_thumb"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Limited Time Offer 섹션 -->
       <!-- 작업자="김해나" -->
-      <section class="timed_offer d-flex">
-        <h2 class="timed_offer_title display_h1">6월 한정 특별 혜택</h2>
-        <p class="body_l">⏳ 특가 종료까지</p>
-        <!-- 타이머 -->
-        <div class="limited_timer_container d-flex">
-          <div class="timer_block">
-            <span class="timer_num timer_days display_h1">00</span>
-            <span class="timer_label body_cap">days</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+      <section class="timed_offer_wrap">
+        <section class="timed_offer d-flex">
+          <h2 class="timed_offer_title display_h1">6월 한정 특별 혜택</h2>
+          <p class="body_l">⏳ 특가 종료까지</p>
+          <!-- 타이머 -->
+          <div class="limited_timer_container d-flex">
+            <div class="timer_block">
+              <span class="timer_num timer_days display_h1">00</span>
+              <span class="timer_label body_cap">days</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_hours display_h1">00</span>
-            <span class="timer_label body_cap">hours</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+            <div class="timer_block">
+              <span class="timer_num timer_hours display_h1">00</span>
+              <span class="timer_label body_cap">hours</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_min display_h1">00</span>
-            <span class="timer_label body_cap">min</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+            <div class="timer_block">
+              <span class="timer_num timer_min display_h1">00</span>
+              <span class="timer_label body_cap">min</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_sec display_h1">00</span>
-            <span class="timer_label body_cap">sec</span>
-          </div>
-        </div>
-
-        <!-- 슬라이더 -->
-        <section class="limited_product_slider">
-          <div class="limited_slider_header">
-            <a href="#" class="more_btn">더보기 &rarr;</a>
+            <div class="timer_block">
+              <span class="timer_num timer_sec display_h1">00</span>
+              <span class="timer_label body_cap">sec</span>
+            </div>
           </div>
 
-          <div class="swiper mySwiper">
-            <button type="button" class="limited_slide_btn limited_btn_prev d-flex" aria-label="이전 슬라이드">
-              <span class="material-icons-round d-flex">keyboard_arrow_left</span>
-            </button>
-            <button type="button" class="limited_slide_btn limited_btn_next d-flex" aria-label="다음 슬라이드">
-              <span class="material-icons-round d-flex">keyboard_arrow_right</span>
-            </button>
+          <!-- 슬라이더 -->
+          <section class="limited_product_slider">
+            <div class="limited_slider_header">
+              <a href="#" class="more_btn">더보기 &rarr;</a>
+            </div>
 
-            <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
-            <div class="swiper_scrollbar"></div>
-          </div>
+            <div class="swiper mySwiper">
+              <button type="button" class="limited_slide_btn limited_btn_prev d-flex" aria-label="이전 슬라이드">
+                <span class="material-icons-round d-flex">keyboard_arrow_left</span>
+              </button>
+              <button type="button" class="limited_slide_btn limited_btn_next d-flex" aria-label="다음 슬라이드">
+                <span class="material-icons-round d-flex">keyboard_arrow_right</span>
+              </button>
+
+              <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
+              <div class="swiper_scrollbar"></div>
+            </div>
+          </section>
         </section>
       </section>
 
@@ -394,8 +431,8 @@
 
           <section class="brand_slider d-flex">
             <div class="brand_slider_roller row_top d-flex">
-              <ul class="brand_rolling_list">
-                <li class="brand_rolling_item" aria-hidden="true">
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
                   <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
                 </li>
                 <li class="brand_rolling_item">
@@ -449,8 +486,8 @@
             </div>
 
             <div class="brand_slider_roller row_bottom d-flex">
-              <ul class="brand_rolling_list">
-                <li class="brand_rolling_item" aria-hidden="true">
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
                   <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
                 </li>
                 <li class="brand_rolling_item">
@@ -507,13 +544,15 @@
           <div class="brand_master_slider_track">
             <article class="brand_content_block d-flex" data-block-index="0">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
+                <h2 class="brand_name_title display_h3"></h2>
                 <a href="#" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
                 <img src="" alt="brand banner" />
               </div>
-              <div class="brand_product_row"></div>
+              <div class="brand_product_scroll_container">
+                <div class="brand_product_row"></div>
+              </div>
               <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
                 <button type="button" class="btn_inner_prev">
                   <span class="material-icons-outlined">chevron_left</span>
@@ -527,13 +566,15 @@
 
             <article class="brand_content_block d-flex" data-block-index="1">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
+                <h2 class="brand_name_title display_h3"></h2>
                 <a href="#" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
                 <img src="" alt="brand banner" />
               </div>
-              <div class="brand_product_row"></div>
+              <div class="brand_product_scroll_container">
+                <div class="brand_product_row"></div>
+              </div>
               <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
                 <button type="button" class="btn_inner_prev">
                   <span class="material-icons-outlined">chevron_left</span>
@@ -542,10 +583,6 @@
                 <button type="button" class="btn_inner_next">
                   <span class="material-icons-outlined">chevron_right</span>
                 </button>
-              </div>
-
-              <div class="brand_product_scroll_container">
-                <div class="brand_product_row"></div>
               </div>
             </article>
           </div>
@@ -560,104 +597,22 @@
 
       <!-- celeb pick 문송연 -->
       <section class="celebs_pick">
-        <div class="Celeb_text_container">
+        <img src="image/celeb_background.jpg" alt="" class="celeb_bg" />
+
+        <div class="Celeb_text_container d-flex flex-column align-items-center">
           <h2 class="display_h2">celeb&apos;s pick</h2>
           <p class="body_xl">지금 주목받는 셀럽 아이웨어</p>
 
-          <div class="celeb_tag d-flex justify-content-center">
-            <button class="gla_btn body_xl">안경테</button>
-            <button class="sun_btn body_xl">선글라스</button>
+          <div class="celeb_category">
+            <button type="button" class="gla_btn is-active">안경테</button>
+            <button type="button" class="sun_btn">선글라스</button>
           </div>
+
+          <a href="product_list.html" class="celeb_more body_cap"> 더보기 &rarr; </a>
         </div>
-        <!-- Celeb_text_container 닫기 -->
 
-        <!-- 숏츠 슬라이더 -->
-        <div class="celeb_slider_wrapper d-flex">
-          <!-- 숏츠 1 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 2 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 3 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 4 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 5 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <!-- 버튼 아래에 카드들이 출력되는 자리 -->
+        <div class="celeb_slider_wrapper"></div>
       </section>
 
       <!-- 매장 찾기 섹션 -->

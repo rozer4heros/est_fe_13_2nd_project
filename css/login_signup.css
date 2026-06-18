@@ -295,8 +295,37 @@ main {
   }
 
   /* login.html 전용 패딩 */
-  .login-page-class .login-container {
+  .login_page_class .login-container {
     padding: calc(var(--base-unit) * 2) var(--base-unit);
+  }
+
+  .login-signup-header {
+    margin-bottom: calc(var(--base-unit) * 1.5);
+  }
+
+  .form-group {
+    gap: var(--base-unit);
+  }
+  .submit-button {
+    margin-top: var(--base-unit);
+  }
+
+  .notice-line {
+    margin-top: var(--base-unit);
+    margin-bottom: 0;
+  }
+
+  .divider-text {
+    margin-top: var(--base-unit);
+    margin-bottom: var(--base-unit);
+  }
+
+  .social_button_list {
+    margin-bottom: var(--base-unit);
+  }
+
+  .find-account {
+    margin-top: var(--base-unit);
   }
 
   /* signup.html 전용 */
@@ -376,8 +405,7 @@ main {
     background-color: #edf2fc;
   }
 
-  .login-container .notice-line,
-  .login-container .back-to-links-group {
+  .signup_hidden {
     display: none !important;
   }
 }
