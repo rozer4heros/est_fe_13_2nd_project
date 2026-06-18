@@ -1,7 +1,7 @@
 /* 작업자: 김해나; */
 
 body {
-  background: url("../image/login_background.png") no-repeat fixed center / cover;
+  background: #f4f6fa url("../image/login_background.webp") no-repeat fixed center / cover;
 }
 
 button:focus,
