@@ -9,7 +9,7 @@
     />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/details.css" />
-    <title>오클리 레이다락 패스 선글라스 | ROUNZ</title>
+    <title>상품 상세 | ROUNZ</title>
   </head>
   <body>
     <header></header>
@@ -20,7 +20,7 @@
         <div class="wrap detail_product_layout">
           <div class="detail_gallery d-flex flex-column">
             <div class="detail_visual">
-              <img src="image/detail_img1.png" alt="오클리 레이다락 패스 선글라스 블랙 프레임" />
+              <img src="image/detail_img1.png" alt="상품 대표 이미지" data-detail-main-image />
             </div>
 
             <nav class="detail_tabs" aria-label="상품 상세 탭">
@@ -31,11 +31,11 @@
 
             <div class="detail-tab-content active">
               <div class="detail_image_stack">
-                <img src="image/detail_img1.png" alt="선글라스 정면 상세" />
-                <img src="image/detail_img2.png" alt="선글라스 측면 상세" />
+                <img src="image/detail_img1.png" alt="상품 상세 이미지 1" data-detail-image />
+                <img src="image/detail_img2.png" alt="상품 상세 이미지 2" data-detail-image />
                 <div class="detail_image_pair">
-                  <img src="image/detail_img3.png" alt="프레임 디테일" />
-                  <img src="image/detail_img4.png" alt="착용 이미지" />
+                  <img src="image/detail_img3.png" alt="상품 상세 이미지 3" data-detail-image />
+                  <img src="image/detail_img4.png" alt="상품 상세 이미지 4" data-detail-image />
                 </div>
               </div>
             </div>
@@ -53,8 +53,8 @@
 
           <aside class="product_panel" aria-label="상품 구매 정보">
             <div class="product_heading d-flex flex-column">
-              <p class="product_brand body_cap">OAKLEY</p>
-              <h1 class="product_title display_h3">오클리 레이다락 패스 선글라스<br />프리즘 블랙 OO9206-41</h1>
+              <p class="product_brand body_cap" data-detail-brand>BRAND</p>
+              <h1 class="product_title display_h3" data-detail-name>상품명이 들어갑니다</h1>
               <div class="product_rating d-flex align-items-center">
                 <span class="material-icons-round" aria-hidden="true">star</span>
                 <span class="material-icons-round" aria-hidden="true">star</span>
@@ -62,16 +62,16 @@
                 <span class="material-icons-round" aria-hidden="true">star</span>
                 <span class="material-icons-round" aria-hidden="true">star</span>
                 <strong>5/5</strong>
-                <span class="review_count">(33개 리뷰)</span>
+                <span class="review_count" data-detail-reviews>(0개 리뷰)</span>
               </div>
             </div>
 
             <div class="product_price_row d-flex justify-content-between align-items-center">
               <div>
-                <p class="product_price display_h3">355,200원</p>
+                <p class="product_price display_h3" data-detail-sale-price>000,000원</p>
                 <p class="product_discount body_cap">
-                  <del>548,999원</del>
-                  <span>20% 할인</span>
+                  <del data-detail-original-price>000,000원</del>
+                  <span data-detail-discount-rate>0% 할인</span>
                 </p>
               </div>
               <button type="button" class="wish_btn" aria-label="찜하기">
@@ -84,21 +84,13 @@
             <div class="product_options">
               <div class="option_group">
                 <p class="option_label body_cap">COLOR</p>
-                <div class="color_list d-flex align-items-center">
-                  <button type="button" class="color_chip is-active" style="--chip-color: #222831" aria-label="블랙"></button>
+                <div class="color_list d-flex align-items-center" data-detail-colors>
                   <button
                     type="button"
-                    class="color_chip"
-                    style="--chip-color: linear-gradient(180deg, #a9feff 0%, #e8a5d4 100%)"
-                    aria-label="핑크 블루 그라데이션"
+                    class="color_chip is-active"
+                    style="--chip-color: #222831"
+                    aria-label="기본 색상"
                   ></button>
-                  <button
-                    type="button"
-                    class="color_chip"
-                    style="--chip-color: linear-gradient(90deg, #8a628e 0%, #ae4951 32%, #eb4522 68%, #f1af25 100%)"
-                    aria-label="멀티 컬러"
-                  ></button>
-                  <button type="button" class="color_chip" style="--chip-color: #77ebff" aria-label="스카이 블루"></button>
                 </div>
               </div>
 
