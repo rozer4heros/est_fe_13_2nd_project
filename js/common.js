@@ -18,7 +18,7 @@ renderFooter();
 const navDrawerWrapEl = document.querySelector(".nav_drawer_wrap");
 const hamburgerBtnEl = document.querySelector(".hamburger_btn");
 const navCloseBtnEl = document.querySelector(".nav_close_btn");
-const navAccordionEls = document.querySelectorAll(".drawer_accordion_list li > div");
+const navAccordionHeaderEls = document.querySelectorAll(".drawer_accordion_list li > div");
 const navQuickLinksEl = document.querySelector(".drawer_quick_links");
 
 // ==========================================
@@ -43,7 +43,7 @@ function toggleAccordion(target = navDrawerWrapEl) {
     return;
   }
 
-  navAccordionEls.forEach(acc => {
+  navAccordionHeaderEls.forEach(acc => {
     acc.parentElement.classList.remove("active");
   });
   target.classList.add("active");
@@ -67,8 +67,8 @@ navCloseBtnEl.addEventListener("click", e => {
   closeNavDrawer();
 });
 
-navAccordionEls.forEach(acc => {
-  acc.addEventListener("click", e => {
+navAccordionHeaderEls.forEach(accHead => {
+  accHead.addEventListener("click", e => {
     toggleAccordion(e.currentTarget.parentElement);
   });
 });
