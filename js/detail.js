@@ -359,28 +359,14 @@ function addThumbnailKeyboardEvents() {
 function renderDetailImages(product) {
   if (!detailImageStack) return;
 
-  /*
-    detailImgs가 있으면 detailImgs 사용
-    없으면 thumbImgs 사용
-    둘 다 없으면 mainImage 또는 image 사용
-  */
   const detailImages = getUniqueImages(
     Array.isArray(product.detailImgs) && product.detailImgs.length > 0
       ? product.detailImgs
-      : Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0
-        ? product.thumbImgs
-        : [product.mainImage, product.image],
+      : [product.image, product.mainImage],
   );
 
   if (detailImages.length === 0) {
-    detailImageStack.innerHTML = `
-      <div class="detail_empty">
-        <p class="body_l">
-          등록된 상품 이미지가 없습니다.
-        </p>
-      </div>
-    `;
-
+    detailImageStack.innerHTML = "";
     return;
   }
 

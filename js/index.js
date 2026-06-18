@@ -198,70 +198,229 @@ function initSwiper() {
     });
   }
 }
+/* Best Picks - 오예은 */
 
-// best pick - 오예은 작업
-(function () {
-  const grid = document.getElementById("bestGrid");
-  const track = grid.parentElement; // .best-grid-track
-  const prevBtn = document.querySelector(".best-prev");
-  const nextBtn = document.querySelector(".best-next");
-  const progressLine = document.getElementById("progressLine");
+const bestSection = document.querySelector(".best-picks-section");
 
-  const TOTAL_GROUPS = 4;
-  let currentPage = 0;
+if (bestSection) {
+  const bestGrid = bestSection.querySelector("#bestGrid");
 
-  /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
-  const originals = [...grid.querySelectorAll(".best-card")];
-  for (let g = 1; g < TOTAL_GROUPS; g++) {
-    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
+  let bestSwiper = null;
+
+  function formatPrice(price) {
+    const numberPrice = Number(price || 0);
+
+    return Number.isFinite(numberPrice) ? numberPrice.toLocaleString("ko-KR") : "0";
   }
 
-  /* 찜하기 토글 */
-  grid.addEventListener("click", e => {
-    const btn = e.target.closest(".best-wish-btn");
-    if (btn) btn.classList.toggle("liked");
-  });
-
-  /* 페이지 이동 */
-  function goTo(page) {
-    currentPage = page;
-
-    // 트랙 너비 = 한 그룹(4장+3gap)의 너비
-    const trackW = track.offsetWidth;
-    const gap = 24;
-    // 페이지마다 (trackW + gap) 픽셀씩 이동
-    grid.style.transform = `translateX(-${page * (trackW + gap)}px)`;
-
-    prevBtn.disabled = page === 0;
-    nextBtn.disabled = page === TOTAL_GROUPS - 1;
-
-    // 진행 바: 그룹1=25% … 그룹4=100%
-    progressLine.style.width = `${((page + 1) / TOTAL_GROUPS) * 100}%`;
+  function escapeHtml(value = "") {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 0) goTo(currentPage - 1);
-  });
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < TOTAL_GROUPS - 1) goTo(currentPage + 1);
-  });
-
-  goTo(0);
-  window.addEventListener("resize", () => goTo(currentPage));
-})();
-
-/* widget coupon slide */
-if (widgetTrack && widgetSlides.length > 0) {
-  let currentIndex = 0;
-  const slideCount = widgetSlides.length;
-  const slideInterval = 3000;
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slideCount;
-    widgetTrack.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
+  function getDetailUrl(product) {
+    return `details.html?productId=${encodeURIComponent(product.productId)}`;
   }
 
-  setInterval(nextSlide, slideInterval);
+  function getProductImage(product) {
+    if (product.image) {
+      return product.image;
+    }
+
+    if (product.mainImage) {
+      return product.mainImage;
+    }
+
+    if (Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0) {
+      return product.thumbImgs[0];
+    }
+
+    return "";
+  }
+
+  async function loadBestPicks() {
+    try {
+      const response = await fetch("data/products.json");
+
+      if (!response.ok) {
+        throw new Error(`products.json 로딩 실패: ${response.status}`);
+      }
+
+      const products = await response.json();
+
+      if (!Array.isArray(products)) {
+        throw new Error("상품 데이터가 배열이 아닙니다.");
+      }
+
+      renderBestPicks(products);
+    } catch (error) {
+      console.error("Best Picks 로딩 실패:", error);
+
+      if (bestGrid) {
+        bestGrid.innerHTML = `
+          <p class="body_l">
+            Best Picks 상품을 불러오지 못했습니다.
+          </p>
+        `;
+      }
+    }
+  }
+
+  function renderBestPicks(products) {
+    if (!bestGrid) return;
+
+    const bestProducts = products
+      .filter(product => product && !product.isSoldOut)
+      .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
+      .slice(0, 8);
+
+    bestGrid.innerHTML = bestProducts.map(product => createBestCard(product)).join("");
+
+    initBestSwiper();
+  }
+
+  function createBestCard(product) {
+    const detailUrl = getDetailUrl(product);
+    const image = getProductImage(product);
+
+    const brand = product.brand || "ROUNZ";
+    const name = product.name || "상품명";
+    const salePrice = Number(product.salePrice || 0);
+    const discountRate = Number(product.discountRate || 0);
+
+    return `
+      <article class="product_card best-card swiper-slide">
+        <a href="${detailUrl}" class="product_card_imgbox">
+          <img
+            src="${escapeHtml(image)}"
+            alt="${escapeHtml(name)}"
+            loading="lazy"
+          />
+
+          <button type="button" class="try_on_btn body_xl text-center">
+            TRY ON
+          </button>
+        </a>
+
+        <div class="d-flex flex-column g-0-5">
+          <h3 class="product_name body_xl">
+            <a href="${detailUrl}">
+              ${escapeHtml(name)}
+            </a>
+          </h3>
+
+          <div class="product_card_header d-flex justify-content-between align-items-center">
+            <span class="brand display_h4">
+              ${escapeHtml(brand)}
+            </span>
+
+            <button
+              type="button"
+              class="like product_card_wish_btn material-symbols-rounded"
+              aria-label="찜하기"
+            >heart_plus</button>
+          </div>
+
+          <div class="product_card_footer d-flex justify-content-between align-items-center">
+            <div class="product_card_price d-flex align-items-center g-0-5">
+              <span class="price display_h4">
+                ${formatPrice(salePrice)}원
+              </span>
+
+              ${
+                discountRate > 0
+                  ? `
+                    <span class="discount_rate body_xl">
+                      ${discountRate}%
+                    </span>
+                  `
+                  : ""
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function initBestSwiper() {
+    if (typeof Swiper === "undefined") {
+      console.error("Swiper를 찾을 수 없습니다.");
+      return;
+    }
+
+    if (bestSwiper) {
+      bestSwiper.destroy(true, true);
+    }
+
+    bestSwiper = new Swiper(".best-swiper", {
+      slidesPerView: 2,
+      spaceBetween: 16,
+      grabCursor: true,
+
+      scrollbar: {
+        el: ".best-swiper .swiper-scrollbar",
+        draggable: true,
+        hide: false,
+      },
+
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+
+        1440: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+      },
+    });
+  }
+
+  bestGrid?.addEventListener("click", event => {
+    const wishBtn = event.target.closest(".product_card_wish_btn");
+
+    const cartBtn = event.target.closest(".material-icons-outlined");
+
+    const tryOnBtn = event.target.closest(".try_on_btn");
+
+    if (wishBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      wishBtn.classList.toggle("is-active");
+
+      const isActive = wishBtn.classList.contains("is-active");
+
+      wishBtn.textContent = isActive ? "favorite" : "heart_plus";
+
+      wishBtn.setAttribute("aria-label", isActive ? "찜 취소" : "찜하기");
+
+      return;
+    }
+
+    if (cartBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      alert("장바구니에 담겼습니다.");
+      return;
+    }
+
+    if (tryOnBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      alert("가상피팅 페이지로 이동합니다.");
+    }
+  });
+
+  loadBestPicks();
 }
 
 // ==========================================
