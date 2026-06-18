@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
@@ -317,52 +317,54 @@
 
       <!-- Limited Time Offer 섹션 -->
       <!-- 작업자="김해나" -->
-      <section class="timed_offer d-flex">
-        <h2 class="timed_offer_title display_h1">6월 한정 특별 혜택</h2>
-        <p class="body_l">⏳ 특가 종료까지</p>
-        <!-- 타이머 -->
-        <div class="limited_timer_container d-flex">
-          <div class="timer_block">
-            <span class="timer_num timer_days display_h1">00</span>
-            <span class="timer_label body_cap">days</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+      <section class="timed_offer_wrap">
+        <section class="timed_offer d-flex">
+          <h2 class="timed_offer_title display_h1">6월 한정 특별 혜택</h2>
+          <p class="body_l">⏳ 특가 종료까지</p>
+          <!-- 타이머 -->
+          <div class="limited_timer_container d-flex">
+            <div class="timer_block">
+              <span class="timer_num timer_days display_h1">00</span>
+              <span class="timer_label body_cap">days</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_hours display_h1">00</span>
-            <span class="timer_label body_cap">hours</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+            <div class="timer_block">
+              <span class="timer_num timer_hours display_h1">00</span>
+              <span class="timer_label body_cap">hours</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_min display_h1">00</span>
-            <span class="timer_label body_cap">min</span>
-          </div>
-          <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
+            <div class="timer_block">
+              <span class="timer_num timer_min display_h1">00</span>
+              <span class="timer_label body_cap">min</span>
+            </div>
+            <span class="timer_colon"><img src="image/timer_colon.png" alt="timer colon" /></span>
 
-          <div class="timer_block">
-            <span class="timer_num timer_sec display_h1">00</span>
-            <span class="timer_label body_cap">sec</span>
-          </div>
-        </div>
-
-        <!-- 슬라이더 -->
-        <section class="limited_product_slider">
-          <div class="limited_slider_header">
-            <a href="#" class="more_btn">더보기 &rarr;</a>
+            <div class="timer_block">
+              <span class="timer_num timer_sec display_h1">00</span>
+              <span class="timer_label body_cap">sec</span>
+            </div>
           </div>
 
-          <div class="swiper mySwiper">
-            <button type="button" class="limited_slide_btn limited_btn_prev d-flex" aria-label="이전 슬라이드">
-              <span class="material-icons-round d-flex">keyboard_arrow_left</span>
-            </button>
-            <button type="button" class="limited_slide_btn limited_btn_next d-flex" aria-label="다음 슬라이드">
-              <span class="material-icons-round d-flex">keyboard_arrow_right</span>
-            </button>
+          <!-- 슬라이더 -->
+          <section class="limited_product_slider">
+            <div class="limited_slider_header">
+              <a href="#" class="more_btn">더보기 &rarr;</a>
+            </div>
 
-            <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
-            <div class="swiper_scrollbar"></div>
-          </div>
+            <div class="swiper mySwiper">
+              <button type="button" class="limited_slide_btn limited_btn_prev d-flex" aria-label="이전 슬라이드">
+                <span class="material-icons-round d-flex">keyboard_arrow_left</span>
+              </button>
+              <button type="button" class="limited_slide_btn limited_btn_next d-flex" aria-label="다음 슬라이드">
+                <span class="material-icons-round d-flex">keyboard_arrow_right</span>
+              </button>
+
+              <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
+              <div class="swiper_scrollbar"></div>
+            </div>
+          </section>
         </section>
       </section>
 
@@ -394,8 +396,8 @@
 
           <section class="brand_slider d-flex">
             <div class="brand_slider_roller row_top d-flex">
-              <ul class="brand_rolling_list">
-                <li class="brand_rolling_item" aria-hidden="true">
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
                   <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
                 </li>
                 <li class="brand_rolling_item">
@@ -449,8 +451,8 @@
             </div>
 
             <div class="brand_slider_roller row_bottom d-flex">
-              <ul class="brand_rolling_list">
-                <li class="brand_rolling_item" aria-hidden="true">
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
                   <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
                 </li>
                 <li class="brand_rolling_item">
@@ -507,13 +509,15 @@
           <div class="brand_master_slider_track">
             <article class="brand_content_block d-flex" data-block-index="0">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
+                <h2 class="brand_name_title display_h3"></h2>
                 <a href="#" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
                 <img src="" alt="brand banner" />
               </div>
-              <div class="brand_product_row"></div>
+              <div class="brand_product_scroll_container">
+                <div class="brand_product_row"></div>
+              </div>
               <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
                 <button type="button" class="btn_inner_prev">
                   <span class="material-icons-outlined">chevron_left</span>
@@ -527,13 +531,15 @@
 
             <article class="brand_content_block d-flex" data-block-index="1">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
+                <h2 class="brand_name_title display_h3"></h2>
                 <a href="#" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
                 <img src="" alt="brand banner" />
               </div>
-              <div class="brand_product_row"></div>
+              <div class="brand_product_scroll_container">
+                <div class="brand_product_row"></div>
+              </div>
               <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
                 <button type="button" class="btn_inner_prev">
                   <span class="material-icons-outlined">chevron_left</span>
@@ -542,10 +548,6 @@
                 <button type="button" class="btn_inner_next">
                   <span class="material-icons-outlined">chevron_right</span>
                 </button>
-              </div>
-
-              <div class="brand_product_scroll_container">
-                <div class="brand_product_row"></div>
               </div>
             </article>
           </div>
