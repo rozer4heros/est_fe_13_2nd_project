@@ -312,42 +312,117 @@
           </div>
         </div>
       </section>
-
-      <!-- Best Picks 섹션 -->
-      <!-- 작업자="김해나" -->
-      <section class="best_picks">
-        <div class="wrap">
-          <div class="best_picks_header d-flex justify-content-between align-items-end">
-            <div class="best_picks_title_group d-flex flex-column">
-              <h2 class="best_picks_title display_h1">best picks</h2>
-              <p class="best_picks_subtitle body_xl">지금 가장 많이 찾는 아이웨어</p>
-            </div>
-            <a href="product_list.html" class="best_picks_more body_cap">더보기 &rarr;</a>
+      <!-- best picks - 오예은 -->
+      <section class="best-picks-section">
+        <div class="best-container">
+          <div class="best-header">
+            <h2 class="best-title">Best Picks</h2>
           </div>
 
-          <div class="best_picks_slider_wrap">
-            <button
-              type="button"
-              class="bestpick_slide_btn bestpick_btn_prev best_picks_btn_prev d-flex"
-              aria-label="이전 슬라이드"
-            >
-              <span class="material-icons-round d-flex">keyboard_arrow_left</span>
+          <div class="best-slider-wrapper">
+            <button class="best-arrow best-prev" aria-label="이전 상품" disabled>
+              <span class="material-symbols-rounded">chevron_left</span>
             </button>
-            <button
-              type="button"
-              class="bestpick_slide_btn bestpick_btn_next best_picks_btn_next d-flex"
-              aria-label="다음 슬라이드"
-            >
-              <span class="material-icons-round d-flex">keyboard_arrow_right</span>
+            <button class="best-arrow best-next" aria-label="다음 상품">
+              <span class="material-symbols-rounded">chevron_right</span>
             </button>
 
-            <div class="best_picks_scroller" aria-label="Best picks product list">
-              <ul class="best_picks_list" id="best_picks_list"></ul>
-            </div>
+            <div class="best-grid-track">
+              <div class="best-grid" id="bestGrid">
+                <!-- 그룹 1 -->
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 RB4258F" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">[파우치증정] 레이밴 선글라스 RB4258F 601/71 RB4258-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">548,999원</span><span class="best-discount">20%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">355,200<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="best_picks_scrollbar_wrap" aria-hidden="true">
-              <div class="best_picks_scrollbar_thumb"></div>
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 클럽마스터" class="best-thumb" />
+                    <button class="best-wish-btn liked" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">218,000원</span><span class="best-discount">15%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">185,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 헥사곤" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 헥사곤 선글라스 RB3548N 001 54mm RB3548-N</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">470,000원</span><span class="best-discount">10%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">423,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="래쉬 클리프트" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">LASH</span>
+                    <h3 class="best-item-name">래쉬 레트로스펙트 클리프트 안경테 CLIFT BK 46mm 빈티지 에디션</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">198,000원</span><span class="best-discount">25%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">148,500<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /#bestGrid -->
             </div>
+            <!-- /.best-grid-track -->
+          </div>
+          <!-- /.best-slider-wrapper -->
+
+          <div class="best-line-container">
+            <span class="long-line"></span>
+            <span class="short-bold-line" id="progressLine"></span>
           </div>
         </div>
       </section>
