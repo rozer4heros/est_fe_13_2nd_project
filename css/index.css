@@ -1910,6 +1910,9 @@
   color: var(--font--color);
   padding: 0;
 }
+.new_card_wish_btn.active {
+  color: red;
+}
 
 .new_collection_info {
   gap: 8px;
