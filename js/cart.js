@@ -3,11 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!cartLayoutContainer) return;
 
   if (localStorage.getItem("rounz_cart") === null) {
-    const dummyCart = [
-      { productId: "3003222", quantity: 1 },
-      { productId: "11536", quantity: 2 },
-    ];
-    localStorage.setItem("rounz_cart", JSON.stringify(dummyCart));
+    localStorage.setItem("rounz_cart", JSON.stringify([]));
   }
 
   let productsDB = [];
@@ -179,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="item_info_details d-flex flex-column justify-content-between">
           <div class="item_header_info">
             <div class="d-flex justify-content-between align-items-start">
-              <h3 class="body_xl brand_name">${product.brand}</h3>
+              <h3 class="body_m brand_name">${product.brand}</h3>
               <button type="button" class="delete_item_btn"><span class="material-icons-round">close</span></button>
             </div>
             <p class="body_m model_name">${product.name}</p>

@@ -30,7 +30,7 @@
       <!-- hero - 문송연 -->
       <section class="hero">
         <!-- 검색창 -->
-        <div class="search below_pc d-flex justify-content-between">
+        <div class="search d-flex justify-content-between">
           <input type="search" class="search_input body_m" placeholder="검색" />
 
           <button type="submit" class="search_btn d-flex align-items-center" aria-label="검색">
@@ -43,23 +43,24 @@
           <div class="swiper-wrapper">
             <!-- slide 1 -->
             <div class="swiper-slide hero_ai_container">
-              <img src="image/hero_ai_M.webp" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
+              <img src="image/hero_ai_M.jpg" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
 
               <div class="hero_ai_text_container d-flex flex-column align-items-center g-1">
-                <div class="hero_ai_title d-flex flex-column align-items-center">
-                  <p class="display_h4">find your perfect fit</p>
+                <div class="hero_ai_content d-flex flex-column">
+                  <div class="hero_ai_title d-flex flex-column align-items-center">
+                    <p class="display_h4">find your perfect fit</p>
 
-                  <h2 class="display_h2">
-                    얼굴형을 분석하고,<br />
-                    어울리는 프레임을 추천합니다.
-                  </h2>
+                    <h2 class="display_h2">
+                      얼굴형을 분석하고,<br />
+                      어울리는 프레임을 추천합니다.
+                    </h2>
+                  </div>
+
+                  <a href="#" class="hero_ai_btn hero_action_btn d-flex align-items-center">
+                    <span class="hero_btn_text">AI 서비스 알아보기</span>
+                    <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                  </a>
                 </div>
-
-                <a href="#" class="hero_ai_btn hero_action_btn d-flex align-items-center display_h4">
-                  <span class="hero_btn_text">AI 서비스 알아보기</span>
-
-                  <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
-                </a>
               </div>
             </div>
 
@@ -68,15 +69,17 @@
               <img src="image/hero_coupon_m.jpg" alt="혜택 히어로 섹션 배경 이미지" class="hero_slide_img" />
 
               <div class="coupon_text_container d-flex flex-column">
-                <div class="coupon_title d-flex flex-column">
-                  <p class="body_xl">member benefit</p>
-                  <h2 class="display_h2">라운즈 회원만을 위한 특별 혜택</h2>
-                </div>
+                <div class="coupon_title_group d-flex flex-column">
+                  <div class="coupon_title d-flex flex-column">
+                    <p class="body_xl">member benefit</p>
+                    <h2 class="display_h2">라운즈 회원만을 위한 특별 혜택</h2>
+                  </div>
 
-                <p class="body_m">
-                  신규 회원 쿠폰부터 기간 한정 이벤트까지,<br />
-                  더 좋은 조건으로 아이웨어를 만나보세요.
-                </p>
+                  <p class="coupon_sub_title body_m">
+                    신규 회원 쿠폰부터 기간 한정 이벤트까지,<br />
+                    더 좋은 조건으로 아이웨어를 만나보세요.
+                  </p>
+                </div>
 
                 <a href="#" class="coupon_btn hero_action_btn d-flex align-items-center display_h4">
                   <span class="hero_btn_text">혜택 보러가기</span>
@@ -131,7 +134,7 @@
 
             <!-- slide 4 -->
             <div class="swiper-slide try_on_container">
-              <img src="image/hero_tryon_M.jpg" alt="써보기 섹션 배경 이미지" class="hero_slide_img" />
+              <img src="image/tryon_M.jpg" alt="써보기 섹션 배경 이미지" class="hero_slide_img" />
 
               <div class="tryon_text_container d-flex flex-column g-1">
                 <div class="tryon_title_container d-flex flex-column">
@@ -309,10 +312,119 @@
           </div>
         </div>
       </section>
-      <section class="best_picks">
-        <h2>best picks</h2>
-        <!-- 슬라이더 -->
-        <div></div>
+      <!-- best picks - 오예은 -->
+      <section class="best-picks-section">
+        <div class="best-container">
+          <div class="best-header">
+            <h2 class="best-title">Best Picks</h2>
+          </div>
+
+          <div class="best-slider-wrapper">
+            <button class="best-arrow best-prev" aria-label="이전 상품" disabled>
+              <span class="material-symbols-rounded">chevron_left</span>
+            </button>
+            <button class="best-arrow best-next" aria-label="다음 상품">
+              <span class="material-symbols-rounded">chevron_right</span>
+            </button>
+
+            <div class="best-grid-track">
+              <div class="best-grid" id="bestGrid">
+                <!-- 그룹 1 -->
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 RB4258F" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">[파우치증정] 레이밴 선글라스 RB4258F 601/71 RB4258-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">548,999원</span><span class="best-discount">20%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">355,200<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 클럽마스터" class="best-thumb" />
+                    <button class="best-wish-btn liked" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">218,000원</span><span class="best-discount">15%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">185,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 헥사곤" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 헥사곤 선글라스 RB3548N 001 54mm RB3548-N</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">470,000원</span><span class="best-discount">10%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">423,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="래쉬 클리프트" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">LASH</span>
+                    <h3 class="best-item-name">래쉬 레트로스펙트 클리프트 안경테 CLIFT BK 46mm 빈티지 에디션</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">198,000원</span><span class="best-discount">25%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">148,500<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /#bestGrid -->
+            </div>
+            <!-- /.best-grid-track -->
+          </div>
+          <!-- /.best-slider-wrapper -->
+
+          <div class="best-line-container">
+            <span class="long-line"></span>
+            <span class="short-bold-line" id="progressLine"></span>
+          </div>
+        </div>
       </section>
 
       <!-- Limited Time Offer 섹션 -->
@@ -550,114 +662,42 @@
             </article>
           </div>
 
-          <div class="master_pagination d-flex justify-content-center align-items-center body_cap">
-            <button type="button" class="btn_prev"><span class="material-icons-outlined">chevron_left</span></button>
-            <div class="page_indicator"><span class="current">1</span> / <span class="total">3</span></div>
-            <button type="button" class="btn_next"><span class="material-icons-outlined">chevron_right</span></button>
+          <div class="master_pagination d-flex justify-content-center align-items-center">
+            <button type="button" class="btn_prev">
+              <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+            </button>
+
+            <div class="page_indicator circle_badge_type">
+              <span class="current">1</span>
+              <span class="divider"></span>
+              <span class="total">3</span>
+            </div>
+
+            <button type="button" class="btn_next">
+              <span class="material-icons-outlined">keyboard_double_arrow_right</span>
+            </button>
           </div>
         </div>
       </section>
 
       <!-- celeb pick 문송연 -->
       <section class="celebs_pick">
-        <div class="Celeb_text_container">
+        <img src="image/celeb_background.jpg" alt="" class="celeb_bg" />
+
+        <div class="Celeb_text_container d-flex flex-column align-items-center">
           <h2 class="display_h2">celeb&apos;s pick</h2>
           <p class="body_xl">지금 주목받는 셀럽 아이웨어</p>
 
-          <div class="celeb_tag d-flex justify-content-center">
-            <button class="gla_btn body_xl">안경테</button>
-            <button class="sun_btn body_xl">선글라스</button>
+          <div class="celeb_category">
+            <button type="button" class="gla_btn is-active">안경테</button>
+            <button type="button" class="sun_btn">선글라스</button>
           </div>
+
+          <a href="product_list.html" class="celeb_more body_cap"> 더보기 &rarr; </a>
         </div>
-        <!-- Celeb_text_container 닫기 -->
 
-        <!-- 숏츠 슬라이더 -->
-        <div class="celeb_slider_wrapper d-flex">
-          <!-- 숏츠 1 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 2 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 3 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 4 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 숏츠 5 -->
-          <article class="celeb-video-card">
-            <div class="celebs_card d-flex flex-column">
-              <video muted playsinline loop>
-                <source src="" type="video/mp4" />
-              </video>
-
-              <div class="celeb_product">
-                <img src="" alt="" />
-                <button type="button" class="like" aria-label="좋아요">
-                  <span class="material-symbols-rounded">heart_plus</span>
-                </button>
-                <a href="#" target="_blank">더보기 &rarr;</a>
-              </div>
-            </div>
-          </article>
-        </div>
+        <!-- 버튼 아래에 카드들이 출력되는 자리 -->
+        <div class="celeb_slider_wrapper"></div>
       </section>
 
       <!-- 매장 찾기 섹션 -->

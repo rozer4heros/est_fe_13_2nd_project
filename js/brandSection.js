@@ -3,20 +3,23 @@ const jsonPath = "data/products.json";
 let allProducts = [];
 let totalUniqueBrands = [];
 let currentMasterPage = 0;
-
 let subPageStatus = { 0: 0, 1: 0 };
 
 const brandBannerMap = {
-  "MIU MIU": "/image/brand_section/miumiu_banner1.png",
-  "RAY-BAN": "/image/brand_section/rayban_banner.png",
-  LASH: "/image/brand_section/lash_banner.png",
-  LOCOMOTIVE: "/image/brand_section/locomotive_banner.png",
-  OAKLEY: "/image/brand_section/oakley_banner.png",
-  "TART OPTICAL": "/image/brand_section/tartoptical_banner.png",
-  "RADIO EYES": "/image/brand_section/radioeyes_banner.png",
-  "ROUNZ ABSOLUTE": "/image/brand_section/rounzabsolute_banner.png",
-  PARANOID: "/image/brand_section/paranoid_banner.png",
+  "MIU MIU": "image/brand_section/miumiu_banner1.png",
+  "RAY-BAN": "image/brand_section/rayban_banner.png",
+  LASH: "image/brand_section/lash_banner.png",
+  LOCOMOTIVE: "image/brand_section/locomotive_banner.png",
+  OAKLEY: "image/brand_section/oakley_banner.png",
+  "TART OPTICAL": "image/brand_section/tartoptical_banner.png",
+  "RADIO EYES": "image/brand_section/radioeyes_banner.png",
+  "ROUNZ ABSOLUTE": "image/brand_section/rounzabsolute_banner.png",
+  PARANOID: "image/brand_section/paranoid_banner.png",
 };
+
+function isMobile() {
+  return window.innerWidth <= 480 || document.documentElement.clientWidth <= 480;
+}
 
 export async function initBrandSection() {
   try {
@@ -35,7 +38,9 @@ export async function initBrandSection() {
 }
 
 function renderMasterPage() {
-  const itemsPerPage = 2;
+  const mobile = isMobile();
+  const itemsPerPage = mobile ? 1 : 2;
+
   const startIndex = currentMasterPage * itemsPerPage;
   const activeBrands = totalUniqueBrands.slice(startIndex, startIndex + itemsPerPage);
   const totalMasterPages = Math.ceil(totalUniqueBrands.length / itemsPerPage);
@@ -46,47 +51,69 @@ function renderMasterPage() {
   if (currentIndicator) currentIndicator.textContent = currentMasterPage + 1;
   if (totalIndicator) totalIndicator.textContent = totalMasterPages || 1;
 
-  for (let slotIndex = 0; slotIndex < 2; slotIndex++) {
-    const article = document.querySelector(`[data-block-index="${slotIndex}"]`);
-    if (!article) continue;
-
-    const brandName = activeBrands[slotIndex];
-
-    if (!brandName) {
-      article.style.display = "none";
-      continue;
+  // 현재 보이는 article에 slide_out 먼저 적용
+  const visibleArticles = document.querySelectorAll(".brand_content_block");
+  visibleArticles.forEach((el) => {
+    if (el.style.display !== "none") {
+      el.classList.add("slide_out");
     }
-    article.style.display = "block";
+  });
 
-    subPageStatus[slotIndex] = 0;
+  // 애니메이션 끝나고 새 콘텐츠 렌더링
+  setTimeout(() => {
+    for (let slotIndex = 0; slotIndex < 2; slotIndex++) {
+      const article = document.querySelector(`[data-block-index="${slotIndex}"]`);
+      if (!article) continue;
 
-    article.querySelector(".brand_name_title").textContent = brandName;
-    const bannerImg = article.querySelector(".brand_wide_banner img");
-    bannerImg.src = brandBannerMap[brandName] || "/image/brand_section/default_banner.png";
-    bannerImg.alt = `${brandName} main banner`;
+      const brandName = activeBrands[slotIndex];
 
-    // 스크롤바 위치 초기화
-    const scrollContainer = article.querySelector(".brand_product_scroll_container");
-    if (scrollContainer) scrollContainer.scrollLeft = 0;
+      if (!brandName || (mobile && slotIndex === 1)) {
+        article.style.display = "none";
+        article.classList.remove("slide_out", "slide_in");
+        continue;
+      }
 
-    renderSubProductRow(slotIndex, brandName);
-  }
+      article.style.display = "flex";
+      article.classList.remove("slide_out");
+      article.classList.add("slide_in");
+
+      // slide_in 클래스는 애니메이션 끝나면 제거
+      article.addEventListener(
+        "animationend",
+        () => {
+          article.classList.remove("slide_in");
+        },
+        { once: true },
+      );
+
+      subPageStatus[slotIndex] = 0;
+
+      article.querySelector(".brand_name_title").textContent = brandName;
+
+      const bannerImg = article.querySelector(".brand_wide_banner img");
+      bannerImg.src = brandBannerMap[brandName] || "/image/brand_section/default_banner.png";
+      bannerImg.alt = `${brandName} main banner`;
+
+      const scrollContainer = article.querySelector(".brand_product_scroll_container");
+      if (scrollContainer) scrollContainer.scrollLeft = 0;
+
+      renderSubProductRow(slotIndex, brandName);
+    }
+  }, 300); // slide_out transition 시간(0.3s)과 맞춤
 }
 
 function renderSubProductRow(slotIndex, brandName) {
   const article = document.querySelector(`[data-block-index="${slotIndex}"]`);
-  const productContainer = article.querySelector(".brand_product_row");
+  const productContainer = article.querySelector(".brand_product_scroll_container .brand_product_row");
   const pageText = article.querySelector(".inner_sub_pagination .inner_page_text");
 
   const currentBrandProducts = allProducts.filter((p) => p.brand?.toUpperCase() === brandName);
 
-  // 모바일 스크롤 처리를 위해 슬라이스 범위를 조건부로 변경 (모바일 환경이면 전체 로드, 웹이면 2개씩 분할)
-  const isMobile = window.innerWidth <= 480;
+  const mobile = isMobile();
   const totalSubPages = Math.min(Math.ceil(currentBrandProducts.length / 2), 3);
 
   let displayProducts = [];
-  if (isMobile) {
-    // 모바일에서는 스크롤바 이동을 고려하여 최대 6개(3페이지 분량)를 한 번에 그립니다.
+  if (mobile) {
     displayProducts = currentBrandProducts.slice(0, 6);
   } else {
     const currentSubPage = subPageStatus[slotIndex];
@@ -102,62 +129,58 @@ function renderSubProductRow(slotIndex, brandName) {
       const discountBadge = product.discountRate ? `<span class="discount_rate">${product.discountRate}%</span>` : "";
 
       return `
-      <div class="product_card" data-id="${product.productId}">
-        <div class="prod_img_wrap">
-          <img src="${product.image || ""}" alt="${product.name}" />
-        </div>
-        <div class="prod_info_wrap">
-          <div class="prod_brand_header d-flex justify-content-between align-items-center">
-            <h3 class="prod_brand_name display_h3" title="${product.brand}">${product.brand}</h3>
-            <button type="button" class="btn_wishlist">
-              <span class="material-symbols-outlined">heart_plus</span>
-            </button>
+        <div class="product_card" data-id="${product.productId}">
+          <div class="prod_img_wrap">
+            <img src="${product.image || ""}" alt="${product.name}" />
           </div>
-          <p class="prod_desc body_xl">${product.name}</p>
-          <div class="prod_price_info d-flex align-items-center">
-            <span class="discount_rate body_xl">${discountBadge}</span>
-            <span class="price_val body_xl">${formattedPrice}원</span>
+          <div class="prod_info_wrap">
+            <div class="prod_brand_header d-flex justify-content-between align-items-center">
+              <h3 class="prod_brand_name display_h4" title="${product.brand}">${product.brand}</h3>
+              <button type="button" class="btn_wishlist">
+                <span class="material-symbols-outlined">heart_plus</span>
+              </button>
+            </div>
+            <p class="prod_desc body_xl">${product.name}</p>
+            <div class="prod_price_info d-flex align-items-center">
+              <span class="discount_rate body_xl">${discountBadge}</span>
+              <span class="price_val body_xl">${formattedPrice}원</span>
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
     })
     .join("");
 
-  if (isMobile) {
-    setupMobileScrollEvent(slotIndex, totalSubPages);
+  if (mobile) {
+    setupMobileScrollEvent(slotIndex);
   } else {
     setupSubPaginationEvents(slotIndex, brandName, totalSubPages);
   }
 }
 
-// [핵심 추가] 모바일에서 가로 스크롤이 끝에 닿았을 때 다음 액션을 지시하는 스크롤 리스너 함수
-function setupMobileScrollEvent(slotIndex, totalSubPages) {
+function setupMobileScrollEvent(slotIndex) {
   const article = document.querySelector(`[data-block-index="${slotIndex}"]`);
   const scrollContainer = article.querySelector(".brand_product_scroll_container");
 
   if (!scrollContainer) return;
 
-  let isThrottled = false; // 연속 트리거 방지용 불리언 변수
+  if (scrollContainer.dataset.scrollBound) return;
+  scrollContainer.dataset.scrollBound = "true";
+
+  let isThrottled = false;
 
   scrollContainer.addEventListener("scroll", () => {
     if (isThrottled) return;
 
-    // 현재 스크롤 위치값 계산 (오른쪽 끝 검사)
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
 
-    // 우측 끝에 도달하기 대략 5px 전 상황 감지
     if (scrollLeft + clientWidth >= scrollWidth - 5) {
       isThrottled = true;
-
       setTimeout(() => {
         const nextButton = document.querySelector(".master_pagination .btn_next");
-        if (nextButton) {
-          // 자연스럽게 다음 마스터 브랜드로 페이지를 넘김
-          nextButton.click();
-        }
+        if (nextButton) nextButton.click();
         isThrottled = false;
-      }, 400); // 0.4초 딜레이를 주어 급격한 화면 튕김 현상 방지
+      }, 400);
     }
   });
 }
@@ -195,9 +218,12 @@ function setupSubPaginationEvents(slotIndex, brandName, totalSubPages) {
 function setupMasterPagination() {
   const prevBtn = document.querySelector(".master_pagination .btn_prev");
   const nextBtn = document.querySelector(".master_pagination .btn_next");
-  const totalMasterPages = Math.ceil(totalUniqueBrands.length / 2);
 
   prevBtn.addEventListener("click", () => {
+    const mobile = isMobile();
+    const itemsPerPage = mobile ? 1 : 2;
+    const totalMasterPages = Math.ceil(totalUniqueBrands.length / itemsPerPage);
+
     if (currentMasterPage > 0) {
       currentMasterPage--;
     } else {
@@ -207,6 +233,10 @@ function setupMasterPagination() {
   });
 
   nextBtn.addEventListener("click", () => {
+    const mobile = isMobile();
+    const itemsPerPage = mobile ? 1 : 2;
+    const totalMasterPages = Math.ceil(totalUniqueBrands.length / itemsPerPage);
+
     if (currentMasterPage < totalMasterPages - 1) {
       currentMasterPage++;
     } else {
@@ -215,3 +245,12 @@ function setupMasterPagination() {
     renderMasterPage();
   });
 }
+
+const row = document.querySelector(".brand_product_row");
+const container = document.querySelector(".brand_product_scroll_container");
+console.log("row padding-left:", getComputedStyle(row).paddingLeft);
+console.log("container margin-left:", getComputedStyle(container).marginLeft);
+console.log("container width:", container.offsetWidth);
+console.log("row width:", row.offsetWidth);
+
+console.log(window.matchMedia("(max-width: 480px)").matches);

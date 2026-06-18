@@ -112,6 +112,11 @@
   position: relative;
   border: 1px solid transparent;
 }
+
+.item_info_details .brand_name {
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .cart_item_card {
     border: 1px solid var(--main--light);
@@ -166,7 +171,7 @@
 }
 .qty_btn {
   width: 33px;
-  height: 33px;
+  height: 28px;
   cursor: pointer;
   background: #fafafa;
   color: var(--font--color);
@@ -176,7 +181,7 @@
 }
 .qty_input {
   width: 40px;
-  height: 33px;
+  height: 28px;
   border-left: 1px solid var(--light--gray);
   border-right: 1px solid var(--light--gray);
 }
@@ -607,7 +612,7 @@
   margin-bottom: 12px;
   word-break: break-all;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

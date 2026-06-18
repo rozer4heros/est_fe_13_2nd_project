@@ -15,7 +15,7 @@
     <!-- 작업자="유태구" -->
     <header>
       <div class="wrap d-flex justify-content-between align-items-center">
-        <button class="below_pc"><span class="material-icons-round"> menu </span></button>
+        <button class="hamburger_btn below_pc material-icons-round">menu</button>
         <h1 class="logo"><a href="index.html">rounz</a></h1>
         <nav class="display_h4 pc_only">
           <ul class="d-flex justify-content-between">
@@ -44,21 +44,23 @@
       </div>
     </header>
 
-    <!-- Side Drawer Menu -->
+    <!-- Nav Drawer Menu -->
     <!-- 작업자="유태구" -->
     <div class="nav_drawer_wrap drawer_wrap below_pc">
       <div class="drawer">
-        <div>
-          <span class="material-icons-round">arrow_back</span>
+        <div class="">
+          <button class="nav_close_btn material-icons-round">arrow_back</button>
+          <!--
           <div>
             <input type="text" id="search" />
             <label for="search"></label>
           </div>
+          -->
         </div>
         <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-        <dialog></dialog>
+        <!-- <dialog></dialog> -->
         <ul class="display_h3 drawer_accordion_list d-flex flex-column g-1">
-          <li class="active">
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>쇼핑</span>
               <span class="material-icons-round">chevron_right</span>
@@ -121,22 +123,22 @@
             </ul>
           </li>
         </ul>
-        <ul class="body_l d-flex flex-column g-1">
+        <ul class="drawer_quick_links body_l d-flex flex-column g-1">
           <li>
-            <a href="product_list.html" class="d-flex align-items-center">
+            <a href="product_list.html" class="d-flex align-items-center g-0-5">
               <span>찜한 상품</span>
               <span class="material-icons-round">arrow_outward</span>
             </a>
           </li>
           <li>
-            <a href="cart.html" class="d-flex align-items-center">
+            <a href="cart.html" class="d-flex align-items-center g-0-5">
               <span>장바구니</span>
               <span class="material-icons-round">arrow_outward</span>
             </a>
           </li>
         </ul>
         <div></div>
-        <div class="display_h3">
+        <div class="display_h3 d-flex justify-content-center g-0-5">
           <a href="login.html" class="drawer_login">log in</a>
           <a href="signup.html" class="drawer_signup">sign up</a>
         </div>
@@ -220,7 +222,23 @@
     <article></article>
 
     <!-- Product card for celebs_pick -->
-    <div></div>
+    <div>
+      <article class="celeb-video-card">
+        <div class="celebs_card d-flex flex-column">
+          <video muted playsinline loop>
+            <source src="" type="video/mp4" />
+          </video>
+
+          <div class="celeb_product">
+            <img src="" alt="" />
+            <button type="button" class="like" aria-label="좋아요">
+              <span class="material-symbols-rounded">heart_plus</span>
+            </button>
+            <a href="details.html" target="_blank">더보기 &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
 
     <!-- Input field for login/signup -->
     <!-- 작업자="김해나" -->

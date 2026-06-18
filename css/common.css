@@ -234,6 +234,15 @@ header {
   background: var(--white);
   box-shadow: var(--shadow);
 }
+header button {
+  cursor: pointer;
+}
+header .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 header nav.pc_only {
   flex: 0 0 50%;
   width: 50%;
@@ -275,8 +284,16 @@ header .wrap > ul:last-child button {
   align-items: center;
   justify-content: center;
 }
+@media (min-width: 769px) {
+  header .logo {
+    position: static;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
 
-/* Side Drawer Menu */
+/* Nav Drawer Menu */
 /* 작업자: 유태구; */
 .drawer_wrap {
   opacity: 0;
@@ -293,6 +310,9 @@ header .wrap > ul:last-child button {
   visibility: visible;
   transition: 0.3s ease-out;
 }
+.drawer_wrap > * {
+  z-index: 9999;
+}
 .drawer {
   display: flex;
   flex-direction: column;
@@ -302,9 +322,9 @@ header .wrap > ul:last-child button {
   bottom: 0;
   left: 0;
   width: 60%;
-  padding: var(--base-unit-x3) 32px;
+  padding: var(--base-unit-x3) 20px;
 
-  background: var(--white);
+  background: var(--main--light);
   transform: translateX(-100%);
   transition: 0.3s ease-in;
 }
@@ -312,12 +332,12 @@ header .wrap > ul:last-child button {
   transform: translateX(0%);
   transition: 0.3s ease-out;
 }
+.drawer button {
+  cursor: pointer;
+}
 
-.drawer_accordion_list ul {
-  display: none;
-  padding: 20px;
-  flex-direction: column;
-  gap: var(--base-unit);
+.drawer_accordion_list li > div {
+  cursor: pointer;
 }
 .drawer_accordion_list li .material-icons-round {
   transition: 0.3s;
@@ -325,8 +345,69 @@ header .wrap > ul:last-child button {
 .drawer_accordion_list li.active .material-icons-round {
   transform: rotate(90deg);
 }
-.drawer_accordion_list li.active ul {
+.drawer_accordion_list ul {
   display: flex;
+  flex-direction: column;
+  gap: var(--base-unit);
+
+  overflow: hidden;
+  padding: 0 20px;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+.drawer_accordion_list li.active ul {
+  padding: 20px 20px;
+  max-height: calc(var(--base-unit) * 15);
+  transition: 0.3s ease-out;
+}
+.drawer_accordion_list a {
+  display: block;
+}
+
+.drawer_quick_links {
+  overflow: hidden;
+  max-height: calc(var(--base-unit) * 5);
+  transition: 0.3s ease-out;
+}
+.drawer_quick_links.hidden {
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+
+.drawer .drawer_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 200px;
+  height: var(--base-unit-x3);
+
+  border-radius: 50px;
+  background: var(--point--color);
+  color: var(--white);
+}
+.drawer .drawer_signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 200px;
+  height: var(--base-unit-x3);
+
+  border: 1px solid var(--point--color);
+  box-sizing: border-box;
+
+  border-radius: 50px;
+  background: var(--main--light);
+  color: var(--point--color);
+}
+
+@media (min-width: 481px) {
+  .drawer {
+    padding: var(--base-unit-x3) 32px;
+  }
 }
 
 /* Social button list */
@@ -735,15 +816,16 @@ input:focus {
   max-height: 0;
   padding: 0 24px;
   transition:
-    max-height 0.3s ease-out,
-    padding 0.3s ease-out,
-    border-width 0.3s ease-out;
+    max-height 0.2s ease-out,
+    padding 0.2s ease-out,
+    border-width 0.2s ease-out;
   z-index: 10;
 }
 .filter_dropdown.active .filter_dropdown_menu {
   max-height: 600px;
   padding: 24px;
   border: 1px solid var(--light--gray);
+  z-index: 20;
 }
 
 /* Dropdown Search Box */
@@ -963,7 +1045,7 @@ input:focus {
   right: 20px;
   bottom: 20px;
 
-  padding: var(--base-unit-x0-5) var(--base-unit-x0-5);
+  padding: 3px 6px;
   border-radius: 40px;
   color: var(--white);
   background: var(--font--color);
@@ -980,6 +1062,7 @@ input:focus {
 .product_card .product_name {
   order: 2;
   font-weight: 400;
+  min-height: var(--base-unit-x3);
 }
 .product_card .product_card_price {
   order: 3;
@@ -995,12 +1078,15 @@ input:focus {
     height: calc(var(--base-unit) * 12);
   }
   .product_card_imgbox .try_on_btn {
-    padding: var(--base-unit-x0-5) var(--base-unit);
+    padding: 6px var(--base-unit-x0-5);
   }
 }
 @media (min-width: 769px) {
   .product_card {
     padding: 0 32px;
+  }
+  .product_card_imgbox .try_on_btn {
+    padding: var(--base-unit-x0-5) var(--base-unit);
   }
 }
 
