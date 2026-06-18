@@ -30,6 +30,7 @@
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
             <ul class="filter_drawer_category accordion_body body_l">
+              <li class="select_all_sizes"><label for="category_all" class="filter_drawer_btn">전체</label></li>
               <li><label for="category_frame" class="filter_drawer_btn">안경테</label></li>
               <li><label for="category_sunglass" class="filter_drawer_btn">선글라스</label></li>
             </ul>
@@ -133,6 +134,7 @@
               </li>
             </ul>
           </li>
+          <!--
           <li class="">
             <div class="accordion_header d-flex justify-content-between align-items-center">
               <span>얼굴형 추천</span>
@@ -147,6 +149,7 @@
               <li><label for="face_triangle" class="filter_drawer_btn">역삼각형</label></li>
             </ul>
           </li>
+          -->
           <li class="">
             <div class="accordion_header d-flex justify-content-between align-items-center">
               <span>성별</span>
@@ -215,7 +218,7 @@
         <div class="display_h2 d-flex justify-content-between align-items-center g-0-5">
           <button class="reset_btn submit-button">초기화</button>
           <button class="apply_btn submit-button">
-            <span class="product_count">총 100개</span> <br />
+            <span class="product_count">총 0개</span> <br />
             상품 보기
           </button>
         </div>
@@ -227,7 +230,7 @@
         <ul class="filter_category product_list_tabs display_h4 d-flex g-0-5">
           <label class="product_list_tab active">
             <span>전체</span>
-            <input type="radio" name="category" id="category_all" value="all" checked />
+            <input type="radio" name="category" id="category_all" value="all_category" checked />
           </label>
           <label class="product_list_tab">
             <span>안경테</span>
@@ -451,7 +454,7 @@
                 <li class="select_all_sizes">
                   <label for="size_all" class="d-flex justify-content-between align-items-center">
                     <span>전체</span>
-                    <input type="checkbox" id="size_all" value="all" checked />
+                    <input type="checkbox" id="size_all" value="all_size" checked />
                   </label>
                 </li>
                 <li>

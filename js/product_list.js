@@ -6,14 +6,14 @@
 // DOM Selectors
 // ==========================================
 
+const allLabelEls = document.querySelectorAll("label");
+
 const filterDrawerBtnEl = document.querySelector(".filter_dropdown_list > button");
 const filterDrawerWrapEl = document.querySelector(".filter_drawer_wrap");
 const filterDrawerCloseEl = document.querySelector(".filter_drawer_header .close_btn");
 const filterAccordionEls = document.querySelectorAll(".accordion_list > li");
-const filterAccordionLabels = document.querySelectorAll(".accordion_list label");
 const drawerPriceMinEl = document.querySelector("#drawer_price_min");
 const drawerPriceMaxEl = document.querySelector("#drawer_price_max");
-const drawerProductCountEl = document.querySelector(".filter_");
 
 const productListTabEls = document.querySelectorAll(".product_list_tab");
 const filterDropdownEls = document.querySelectorAll(".filter_dropdown");
@@ -40,6 +40,11 @@ const inputElsAll = [
 const resetBtnEls = document.querySelectorAll(".reset_btn");
 const productListEl = document.querySelector(".product_list");
 
+// Pagination DOM
+const pager = document.querySelector(".pagination .pager");
+const pagerPrevBtn = document.querySelector(".pagination .prev");
+const pagerNextBtn = document.querySelector(".pagination .next");
+
 // ==========================================
 // State & Constants
 // ==========================================
@@ -55,6 +60,13 @@ let selectedGenders = [];
 let selectedSizes = [];
 let selectedPriceMin = 0;
 let selectedPriceMax = 300000;
+
+// Pagination State
+const countPerPage = 12;
+const pagerPerGroup = 5;
+let curPage = 1;
+let curGroup = 1;
+let paginationCount = 0;
 
 // ==========================================
 // Functions & Core Logic
@@ -77,7 +89,6 @@ async function fetchProducts() {
   console.log(filteredProducts[0]);
 
   renderProducts();
-  updateCount();
 }
 
 function renderProductCard(product) {
@@ -122,6 +133,7 @@ function renderProductCard(product) {
 }
 function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
   productListEl.innerHTML = "";
+  updateCount();
   if (filteredProducts.length === 0) {
     productListEl.textContent = "해당하는 상품이 없습니다.";
     return;
@@ -138,10 +150,12 @@ function updateCount(count = filteredProducts.length) {
 }
 
 function applyFilter() {
+  updateLabel();
+
   // 디버깅을 위해 .filter() 함수 체인을 끊어야만 했다...
   // 카테고리
   filteredProducts = allProducts.filter(p =>
-    selectedCategories.includes("all") || selectedCategories.length === 0
+    selectedCategories.includes("all_category") || selectedCategories.length === 0
       ? true
       : selectedCategories.includes(p.category),
   );
@@ -159,7 +173,7 @@ function applyFilter() {
   );
   // 프레임 크기
   filteredProducts = filteredProducts.filter(p =>
-    selectedSizes.length === 0 ? true : selectedSizes.includes(p.frameSize),
+    selectedSizes.includes("all_size") || selectedSizes.length === 0 ? true : selectedSizes.includes(p.frameSize),
   );
   // 가격
   filteredProducts = filteredProducts.filter(p => Number(p.salePrice) >= selectedPriceMin);
@@ -170,14 +184,34 @@ function applyFilter() {
   renderProducts();
 }
 
+function updateLabel() {
+  allLabelEls.forEach(label => {
+    if (!label.control) return;
+    label.control.checked ? label.classList.add("active") : label.classList.remove("active");
+  });
+}
+
 function resetFilter() {
   inputElsAll.forEach(input => {
-    input.checked = input.value === "all" ? true : false;
+    input.checked = input.value.startsWith("all_");
+  });
+  allLabelEls.forEach(label => {
+    label.classList.remove("active");
+    if (label.getAttribute("for").endsWith("_all")) label.classList.add("active");
   });
   inputElsPrice[0].value = 0;
   inputElsPrice[1].value = 300000;
+  drawerPriceMinEl.value = 0;
+  drawerPriceMaxEl.value = 300000;
 
-  renderProducts();
+  selectedCategories = [];
+  selectedBrands = [];
+  selectedShapes = [];
+  selectedGenders = [];
+  selectedSizes = [];
+  selectedPriceMin = 0;
+  selectedPriceMax = 300000;
+  applyFilter();
 }
 
 function escHTML(string) {
@@ -236,14 +270,6 @@ sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click",
   sortDropdownEl.classList.toggle("active");
 });
 
-productListTabEls.forEach(tab => {
-  tab.addEventListener("click", e => {
-    productListTabEls.forEach(t => {
-      t.classList.remove("active");
-    });
-    tab.classList.add("active");
-  });
-});
 inputElsCategory.forEach(input => {
   input.addEventListener("change", e => {
     selectedCategories = [...inputElsCategory].filter(l => l.checked).map(l => l.value);
@@ -270,7 +296,19 @@ inputElsGender.forEach(input => {
 });
 inputElsSize.forEach(input => {
   input.addEventListener("change", e => {
+    if (e.target.value.startsWith("all_")) {
+      inputElsSize.forEach(l => {
+        l.checked = false;
+      });
+      e.target.checked = true;
+    } else {
+      [...allLabelEls].find(l => l.control?.value === "all_size").control.checked = false;
+    }
+
     selectedSizes = [...inputElsSize].filter(l => l.checked).map(l => l.value);
+    if (selectedSizes.length === 0) {
+      [...allLabelEls].find(l => l.control?.value === "all_size").control.checked = true;
+    }
     applyFilter();
   });
 });
@@ -304,3 +342,4 @@ resetBtnEls.forEach(reset => {
 // ==========================================
 
 fetchProducts();
+updateLabel();
