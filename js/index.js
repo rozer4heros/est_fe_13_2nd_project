@@ -106,19 +106,19 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then((products) => {
+    .then(products => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach((product) => {
+      limitedProducts.forEach(product => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
@@ -156,7 +156,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
@@ -198,99 +198,56 @@ function initSwiper() {
   }
 }
 
-function initBestPicksSlider() {
-  const list = document.querySelector("#best_picks_list");
-  const scroller = document.querySelector(".best_picks_scroller");
-  const thumb = document.querySelector(".best_picks_scrollbar_thumb");
-  const prevBtn = document.querySelector(".best_picks_btn_prev");
-  const nextBtn = document.querySelector(".best_picks_btn_next");
+// best pick - 오예은 작업
+(function () {
+  const grid = document.getElementById("bestGrid");
+  const track = grid.parentElement; // .best-grid-track
+  const prevBtn = document.querySelector(".best-prev");
+  const nextBtn = document.querySelector(".best-next");
+  const progressLine = document.getElementById("progressLine");
 
-  if (!list || !scroller) return;
+  const TOTAL_GROUPS = 4;
+  let currentPage = 0;
 
-  fetch("data/products.json")
-    .then((res) => res.json())
-    .then((products) => {
-      const bestProducts = products.slice(0, 24);
+  /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
+  const originals = [...grid.querySelectorAll(".best-card")];
+  for (let g = 1; g < TOTAL_GROUPS; g++) {
+    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
+  }
 
-      list.innerHTML = bestProducts
-        .map((product) => {
-          const formattedPrice = Number(product.salePrice || 0).toLocaleString();
-          const discountBadge = product.discountRate
-            ? `<span class="best_pick_rate body_xl">${product.discountRate}%</span>`
-            : "";
+  /* 찜하기 토글 */
+  grid.addEventListener("click", e => {
+    const btn = e.target.closest(".best-wish-btn");
+    if (btn) btn.classList.toggle("liked");
+  });
 
-          return `
-          <li class="best_pick_item">
-            <article class="best_pick_card">
-              <a href="details.html?productId=${product.productId}" class="best_pick_link">
-                <div class="best_pick_img_box">
-                  <img src="${product.image || ""}" alt="${product.name || ""}" loading="lazy" />
-                </div>
-                <div class="best_pick_info d-flex flex-column">
-                  <strong class="best_pick_brand display_h4">${product.brand || ""}</strong>
-                  <p class="best_pick_name body_m">${product.name || ""}</p>
-                  <div class="best_pick_price d-flex align-items-center">
-                    ${discountBadge}
-                    <span class="best_pick_sale body_xl">${formattedPrice}원</span>
-                  </div>
-                </div>
-              </a>
-              <button type="button" class="best_pick_wish_btn" aria-label="위시리스트 추가">
-                <span class="material-symbols-rounded" aria-hidden="true">heart_plus</span>
-              </button>
-            </article>
-          </li>
-        `;
-        })
-        .join("");
+  /* 페이지 이동 */
+  function goTo(page) {
+    currentPage = page;
 
-      let currentPage = 0;
+    // 트랙 너비 = 한 그룹(4장+3gap)의 너비
+    const trackW = track.offsetWidth;
+    const gap = 24;
+    // 페이지마다 (trackW + gap) 픽셀씩 이동
+    grid.style.transform = `translateX(-${page * (trackW + gap)}px)`;
 
-      function getCardsPerView() {
-        const value = getComputedStyle(list).getPropertyValue("--best-picks-visible");
-        return Number(value.trim()) || 4;
-      }
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page === TOTAL_GROUPS - 1;
 
-      function goToPage(page) {
-        const cardsPerView = getCardsPerView();
-        const totalPages = Math.max(1, Math.ceil(bestProducts.length / cardsPerView));
-        currentPage = Math.max(0, Math.min(page, totalPages - 1));
+    // 진행 바: 그룹1=25% … 그룹4=100%
+    progressLine.style.width = `${((page + 1) / TOTAL_GROUPS) * 100}%`;
+  }
 
-        const firstItem = list.querySelector(".best_pick_item");
-        if (firstItem) {
-          const itemWidth = firstItem.getBoundingClientRect().width;
-          const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
-          const moveDistance = itemWidth * cardsPerView + gap * cardsPerView;
-          const maxTranslate = Math.max(0, list.scrollWidth - scroller.clientWidth);
-          const targetX = Math.min(currentPage * moveDistance, maxTranslate);
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 0) goTo(currentPage - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentPage < TOTAL_GROUPS - 1) goTo(currentPage + 1);
+  });
 
-          list.style.transform = `translateX(-${targetX}px)`;
-        }
-
-        if (thumb) {
-          const thumbWidth = 100 / totalPages;
-          const thumbMove = totalPages === 1 ? 0 : (currentPage / (totalPages - 1)) * (100 - thumbWidth);
-
-          thumb.style.width = `${thumbWidth}%`;
-          thumb.style.left = `${thumbMove}%`;
-        }
-
-        if (prevBtn) prevBtn.disabled = currentPage === 0;
-        if (nextBtn) nextBtn.disabled = currentPage === totalPages - 1;
-      }
-
-      if (prevBtn) prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
-      if (nextBtn) nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
-
-      // 창 크기가 수시로 바뀔 때 카드가 튕기거나 깨지지 않도록 자동 재정렬 선 방어
-      window.addEventListener("resize", () => {
-        goToPage(currentPage);
-      });
-
-      goToPage(0);
-    })
-    .catch((err) => console.error("Best picks 로드 실패:", err));
-}
+  goTo(0);
+  window.addEventListener("resize", () => goTo(currentPage));
+})();
 
 /* widget coupon slide */
 if (widgetTrack && widgetSlides.length > 0) {
