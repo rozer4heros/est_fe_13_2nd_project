@@ -38,6 +38,7 @@ async function fetchProducts() {
     });
 
   filteredProducts = allProducts.filter(product => !product.isSoldOut);
+  console.log(filteredProducts[0]);
 
   renderProducts();
   updateCount();
@@ -47,16 +48,16 @@ function renderProductCard(product) {
   const itemEl = document.createElement("li");
   itemEl.innerHTML = `
     <article class="product_card">
-      <a href="details.html" class="product_card_imgbox">
-        <img src="${product.mainImage}" alt="" />
+      <a href="details.html?id=${product.productId}" class="product_card_imgbox">
+        <img src="${product.mainImage}" alt="${escHTML(product.name)}" />
         <button class="try_on_btn body_xl text-center">TRY ON</button>
       </a>
       <div class="d-flex flex-column g-0-5">
         <h3 class="product_name body_xl">
-          <a href="details.html">${product.name}</a>
+          <a href="details.html?id=${product.productId}">${escHTML(product.name)}</a>
         </h3>
         <div class="product_card_header d-flex justify-content-between align-items-center">
-          <span class="brand display_h3">${product.brand}</span>
+          <span class="brand display_h3">${escHTML(product.brand)}</span>
           <button class="like product_card_wish_btn material-symbols-rounded">heart_plus</button>
         </div>
         <div class="product_card_price d-flex align-items-center g-0-5">
@@ -83,6 +84,17 @@ function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
 
 function updateCount(count = filteredProducts.length) {
   productCountEl.textContent = `총 ${count}개`;
+}
+
+function escHTML(string) {
+  if (!string) return "";
+  return string
+    .toString()
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("&", "&amp;")
+    .replaceAll("'", "&apos;")
+    .replaceAll('"', "&quot;");
 }
 
 // ==========================================
