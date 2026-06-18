@@ -163,7 +163,7 @@ main {
 .product_list {
   display: grid;
   gap: var(--base-unit-x0-5);
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .product_list h3:hover {
   text-decoration: underline;
