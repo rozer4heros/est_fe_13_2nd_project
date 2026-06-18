@@ -1,9 +1,47 @@
-import { renderHeader } from "./modules/header.js";
-import { renderNavDrawer } from "./modules/nav_drawer.js";
-import { renderFooter } from "./modules/footer.js";
+// ==========================================
+// Imports & External Libraries
+// ==========================================
 
 /* new collection */
 import { initNewCollection } from "./newCollection.js";
+import { initBrandSection } from "./brandSection.js";
+
+// hero - 문송연
+// slide 추가
+const heroSwiperEl = document.querySelector(".hero_swiper");
+
+const heroSwiper = new Swiper(".hero_swiper", {
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 0,
+  centeredSlides: false,
+  watchOverflow: true,
+
+  scrollbar: {
+    el: ".hero_swiper .swiper-scrollbar",
+    draggable: true,
+  },
+
+  navigation: {
+    nextEl: ".hero_arrow_next",
+    prevEl: ".hero_arrow_prev",
+  },
+
+  on: {
+    init(swiper) {
+      changeHeroControlColor(swiper);
+    },
+
+    slideChange(swiper) {
+      changeHeroControlColor(swiper);
+    },
+  },
+});
+
+function changeHeroControlColor(swiper) {
+  // 0부터 시작하므로 세 번째 슬라이드는 2
+  heroSwiperEl.classList.toggle("is-stylework", swiper.realIndex === 2);
+}
 
 // ==========================================
 // DOM Selectors
@@ -129,18 +167,87 @@ function loadProductsData() {
 function initSwiper() {
   if (typeof Swiper !== "undefined") {
     new Swiper(".mySwiper", {
-      slidesPerView: 5,
-      spaceBetween: 20,
       centeredSlides: true,
       loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
       navigation: {
         nextEl: nextButton,
         prevEl: prevButton,
       },
-      grabCursor: true,
+      scrollbar: {
+        el: ".swiper_scrollbar",
+        hide: false,
+        draggable: true,
+      },
+      slidesPerView: 1,
+      breakpoints: {
+        481: {
+          slidesPerView: 2.2, //태블릿
+          spaceBetween: 0,
+        },
+        769: {
+          slidesPerView: 5, //PC
+          spaceBetween: 20,
+        },
+      },
     });
   }
 }
+
+// best pick - 오예은 작업
+(function () {
+  const grid = document.getElementById("bestGrid");
+  const track = grid.parentElement; // .best-grid-track
+  const prevBtn = document.querySelector(".best-prev");
+  const nextBtn = document.querySelector(".best-next");
+  const progressLine = document.getElementById("progressLine");
+
+  const TOTAL_GROUPS = 4;
+  let currentPage = 0;
+
+  /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
+  const originals = [...grid.querySelectorAll(".best-card")];
+  for (let g = 1; g < TOTAL_GROUPS; g++) {
+    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
+  }
+
+  /* 찜하기 토글 */
+  grid.addEventListener("click", e => {
+    const btn = e.target.closest(".best-wish-btn");
+    if (btn) btn.classList.toggle("liked");
+  });
+
+  /* 페이지 이동 */
+  function goTo(page) {
+    currentPage = page;
+
+    // 트랙 너비 = 한 그룹(4장+3gap)의 너비
+    const trackW = track.offsetWidth;
+    const gap = 24;
+    // 페이지마다 (trackW + gap) 픽셀씩 이동
+    grid.style.transform = `translateX(-${page * (trackW + gap)}px)`;
+
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page === TOTAL_GROUPS - 1;
+
+    // 진행 바: 그룹1=25% … 그룹4=100%
+    progressLine.style.width = `${((page + 1) / TOTAL_GROUPS) * 100}%`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 0) goTo(currentPage - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentPage < TOTAL_GROUPS - 1) goTo(currentPage + 1);
+  });
+
+  goTo(0);
+  window.addEventListener("resize", () => goTo(currentPage));
+})();
 
 /* widget coupon slide */
 if (widgetTrack && widgetSlides.length > 0) {
@@ -164,13 +271,14 @@ if (widgetTrack && widgetSlides.length > 0) {
 // Initialization & Execution
 // ==========================================
 
-/* Render header, nav_drawer, footer - 유태구 작업 */
-renderHeader();
-renderNavDrawer();
-renderFooter();
-
-/* Limited Time Offer 섹션 - 김해나 작업 */
+/* Brand 섹션 - 김해나 작업 */
 loadProductsData();
+initBrandSection();
 
 /* new collection */
 initNewCollection();
+
+/* best picks - 김해나 작업 */
+initBestPicksSlider();
+
+/* celebs pick - 문송연 */

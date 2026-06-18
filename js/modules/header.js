@@ -3,7 +3,7 @@ export function renderHeader() {
   if (!target) return;
   target.innerHTML = `
       <div class="wrap d-flex justify-content-between align-items-center">
-        <button class="below_pc"><span class="material-icons-round"> menu </span></button>
+        <button class="hamburger_btn below_pc material-icons-round">menu</button>
         <h1 class="logo"><a href="index.html">rounz</a></h1>
         <nav class="display_h4 pc_only">
           <ul class="d-flex justify-content-between">

@@ -29,64 +29,194 @@
     <main>
       <!-- hero - 문송연 -->
       <section class="hero">
-        <div class="wrap">
-          <div class="swiper hero_swiper">
+        <!-- 검색창 -->
+        <div class="search d-flex justify-content-between">
+          <input type="search" class="search_input body_m" placeholder="검색" />
+
+          <button type="submit" class="search_btn d-flex align-items-center" aria-label="검색">
+            <span class="material-icons-round" aria-hidden="true"> search </span>
+          </button>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper hero_swiper">
+          <div class="swiper-wrapper">
             <!-- slide 1 -->
-            <div class="swiper-slide ai_container">
-              <div class="hero_ai_text_container">
-                <div class="hero_ai_title">
-                  <p>find your perfect fit</p>
-                  <h2>내 얼굴에 어울리는 안경을<br />ai로 더 쉽게 찾아보세요.</h2>
+            <div class="swiper-slide hero_ai_container">
+              <img src="image/hero_ai_M.jpg" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
+
+              <div class="hero_ai_text_container d-flex flex-column align-items-center g-1">
+                <div class="hero_ai_content d-flex flex-column">
+                  <div class="hero_ai_title d-flex flex-column align-items-center">
+                    <p class="display_h4">find your perfect fit</p>
+
+                    <h2 class="display_h2">
+                      얼굴형을 분석하고,<br />
+                      어울리는 프레임을 추천합니다.
+                    </h2>
+                  </div>
+
+                  <a href="#" class="hero_ai_btn hero_action_btn d-flex align-items-center">
+                    <span class="hero_btn_text">AI 서비스 알아보기</span>
+                    <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                  </a>
                 </div>
-                <a href="#" class="hero_ai_btn">ai서비스 알아보기</a>
               </div>
             </div>
+
             <!-- slide 2 -->
             <div class="swiper-slide coupon_container">
-              <div class="coupon_text_container">
-                <div class="coupon_title">
-                  <p>member benefit</p>
-                  <h2>라운즈 회원만을 위한 특별 혜택</h2>
+              <img src="image/hero_coupon_m.jpg" alt="혜택 히어로 섹션 배경 이미지" class="hero_slide_img" />
+
+              <div class="coupon_text_container d-flex flex-column">
+                <div class="coupon_title_group d-flex flex-column">
+                  <div class="coupon_title d-flex flex-column">
+                    <p class="body_xl">member benefit</p>
+                    <h2 class="display_h2">라운즈 회원만을 위한 특별 혜택</h2>
+                  </div>
+
+                  <p class="coupon_sub_title body_m">
+                    신규 회원 쿠폰부터 기간 한정 이벤트까지,<br />
+                    더 좋은 조건으로 아이웨어를 만나보세요.
+                  </p>
                 </div>
-                <p>신구 회원 쿠폰부터 기간 한정 이벤트까지,<br />더 좋은 조건으로 아이웨어를 만나보세요.</p>
+
+                <a href="#" class="coupon_btn hero_action_btn d-flex align-items-center display_h4">
+                  <span class="hero_btn_text">혜택 보러가기</span>
+
+                  <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                </a>
               </div>
-              <a href="#" class="coupon_btn">혜택 보러가기<span class="material-icons-round"> arrow_forward </span></a>
             </div>
+
             <!-- slide 3 -->
             <div class="swiper-slide stylework_container">
-              <div class="stylework_text_container">
-                <div class="style_title_container">
-                  <p>stlye:work june edit</p>
-                  <div class="stylework_title">
-                    <h2>your style, your story</h2>
-                    <p>style:work 전 제품을 특별한 가격으로 만나보세요</p>
+              <img src="image/hero_stylework_M.jpg" alt="스타일워크 섹션 배경 이미지" class="hero_slide_img" />
+
+              <div class="stylework_text_container d-flex flex-column">
+                <div class="stylework_group d-flex flex-column g-1">
+                  <div class="style_title_container">
+                    <p class="display_h4">style:work june edit</p>
+
+                    <div class="stylework_title">
+                      <h2 class="display_h1">
+                        your style,<br class="below_pc" />
+                        your story
+                      </h2>
+
+                      <p class="body_l pc_only">style:work 전 제품을 특별한 가격으로 만나보세요</p>
+                    </div>
+                  </div>
+
+                  <div class="promotion_title">
+                    <h3 class="display_h4">6월 한정 특별 혜택</h3>
+
+                    <span class="promotion_price body_l">
+                      전 제품
+                      <span class="price_origin body_l"> 69,000원 </span>
+
+                      <span class="material-icons-round" aria-hidden="true"> arrow_forward </span>
+
+                      <span class="price_sale body_xl"> 49,000원 </span>
+                    </span>
+
+                    <p class="body_m">2026.06.01 - 06.30</p>
                   </div>
                 </div>
-                <div class="promotion_title">
-                  <h3>6월 한정 특별 혜택</h3>
-                  <span
-                    >전 제품
-                    <p>69,000원</p>
-                    <span class="material-icons-round"> arrow_forward </span>
-                    <p>49,000원</p></span
-                  >
-                </div>
-                <a href="#" class="style_btn">
-                  컬렉션 보러가기 <span class="material-icons-round"> arrow_forward </span></a
-                >
+
+                <a href="#" class="style_btn hero_action_btn d-flex align-items-center display_h4">
+                  <span class="hero_btn_text">컬렉션 보러가기</span>
+
+                  <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                </a>
               </div>
             </div>
-            <!-- slide 4 -->
-            <div class="swiper-slide 4_container"></div>
 
-            <!-- pagination -->
-            <div class="swiper_controls">
-              <div class="swiper-pagination"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
+            <!-- slide 4 -->
+            <div class="swiper-slide try_on_container">
+              <img src="image/tryon_M.jpg" alt="써보기 섹션 배경 이미지" class="hero_slide_img" />
+
+              <div class="tryon_text_container d-flex flex-column g-1">
+                <div class="tryon_title_container d-flex flex-column">
+                  <div class="tryon_heading d-flex flex-column">
+                    <p class="tryon_badge body_cap">✨ 직접 착용 가능!</p>
+
+                    <h2 class="tryon_title display_h2">
+                      먼저 써보고<br />
+                      <span>결제는</span>
+                      나중에
+                    </h2>
+                  </div>
+
+                  <p class="tryon_description body_m">
+                    가까운 안경원으로 배송받아 직접 써보고<br />
+                    마음에 드는 것만 결제해요!
+                  </p>
+
+                  <a href="#" class="tryon_btn hero_action_btn d-flex align-items-center display_h4">
+                    <span class="hero_btn_text">써보기 예약하기</span>
+
+                    <span class="hero_btn_arrow material-icons-round" aria-hidden="true"> arrow_circle_right </span>
+                  </a>
+                </div>
+
+                <div class="tryon_steps d-flex">
+                  <div class="tryon_step body_xl d-flex align-items-center">
+                    <span class="tryon_step_number">1</span>
+                    <span class="try_on_step_text">제품 예약</span>
+                  </div>
+
+                  <div class="tryon_step body_xl d-flex align-items-center">
+                    <span class="tryon_step_number">2</span>
+                    <span class="tryon_step_text">안경원 방문</span>
+                  </div>
+
+                  <div class="tryon_step body_xl d-flex align-items-center">
+                    <span class="tryon_step_number">3</span>
+                    <span class="tryon_step_text">마음에 들면 결제</span>
+                  </div>
+                </div>
+
+                <div class="tryon_benefits d-flex">
+                  <span class="tryon_benefit d-flex align-items-center">
+                    <span class="benefit_emoji">🕶</span>
+
+                    <span class="benefit_text body_m"> <strong class="body_xl">최대 5개</strong> 동시예약 </span>
+                  </span>
+
+                  <span class="tryon_benefit d-flex align-items-center">
+                    <span class="benefit_emoji">🚚</span>
+
+                    <span class="benefit_text body_m"> <strong class="body_xl">전 제품</strong> 무료배송 </span>
+                  </span>
+
+                  <span class="tryon_benefit tryon_benefit_wide d-flex align-items-center">
+                    <span class="benefit_emoji">✌</span>
+
+                    <span class="benefit_text body_m">
+                      마음에 안 들면 <strong class="body_xl">두고 나와요</strong> (무료 회수)
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- // swiper-wrapper -->
+
+          <div class="swiper_controls d-flex align-items-center">
+            <div class="swiper-scrollbar"></div>
+            <div class="hero_arrow_group d-flex">
+              <button type="button" class="hero_arrow hero_arrow_prev" aria-label="이전 슬라이드">
+                <span class="material-icons-round"> navigate_before </span>
+              </button>
+
+              <button type="button" class="hero_arrow hero_arrow_next" aria-label="다음 슬라이드">
+                <span class="material-icons-round"> navigate_next </span>
+              </button>
             </div>
           </div>
         </div>
+        <!-- // hero_swiper -->
       </section>
 
       <!-- 퀵메뉴 - 최호찬 -->
@@ -115,10 +245,10 @@
       <!-- ai_face_analysis - 문송연 -->
       <section class="ai_face_analysis">
         <div class="wrap">
-          <div class="ai_container d-flex flex-column g-2">
-            <div class="ai_top d-flex flex-column">
+          <div class="ai_container d-flex flex-column">
+            <div class="ai_top d-flex">
               <div class="ai_text_container d-flex flex-column">
-                <div class="ai_title body d-flex flex-column">
+                <div class="ai_title d-flex flex-column">
                   <h2 class="display_h4">핏을 확인하고, 선택은 더 정확하게</h2>
                   <p class="display_h2">AI 분석과 가상피팅으로 나에게 맞는 <br />아이웨어를 바로 확인하세요</p>
                 </div>
@@ -127,11 +257,13 @@
                   <p class="body_m"># 실시간 AR 가상피팅</p>
                   <p class="body_m"># 8가지 얼굴형 분석</p>
                 </div>
-                <div class="ai_btn pc_only d-flex flex-column g-1">
-                  <a href="#" class="ai_btn_outline body display_h3">AI 분석 바로가기 <span class="material-icons-round"> arrow_circle_right </span></a
-              ></a>
-                  <a href="#" class="ai_btn_filled body display_h3">가상피팅 하러가기 <span class="material-icons-round"> arrow_circle_right </span></a
-              ></a>
+                <div class="ai_btn pc_only d-flex flex-column">
+                  <a href="#" class="ai_btn_outline display_h4"
+                    >AI 분석 바로가기 <span class="material-icons-round"> arrow_circle_right </span></a
+                  >
+                  <a href="#" class="ai_btn_filled display_h4"
+                    >가상피팅 하러가기 <span class="material-icons-round"> arrow_circle_right </span></a
+                  >
                 </div>
               </div>
 
@@ -140,13 +272,13 @@
               </video>
             </div>
 
-            <ul class="ai_description d-flex flex-column align-items-center">
+            <ul class="ai_description d-flex">
               <!-- 01 -->
               <li class="ai_description_item body d-flex align-items-center">
                 <img src="image/얼굴형분석img.png" alt="얼굴형 분석 아이콘" />
                 <div class="ai_text d-flex flex-column">
                   <h3 class="display_h4">01 <br />얼굴형 분석</h3>
-                  <p class=".body_l">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
+                  <p class="body_l">내 얼굴 특징을 분석해 스타일 기준을 찾아요.</p>
                 </div>
                 <span class="material-icons-round below_pc" aria-hidden="true">keyboard_arrow_down</span>
               </li>
@@ -169,21 +301,130 @@
               </li>
             </ul>
 
-            <div class="ai_btn below_pc d-flex flex-column align-items-center g-1">
-              <a href="#" class="ai_btn_outline body display_h4">
+            <div class="ai_btn below_pc d-flex flex-column g-1">
+              <a href="#" class="ai_btn_outline display_h4">
                 AI 분석 바로가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
-              <a href="#" class="ai_btn_filled body display_h4"
+              <a href="#" class="ai_btn_filled display_h4"
                 >가상피팅 하러가기<span class="material-icons-round"> arrow_circle_right </span></a
               >
             </div>
           </div>
         </div>
       </section>
-      <section class="best_picks">
-        <h2>best picks</h2>
-        <!-- 슬라이더 -->
-        <div></div>
+      <!-- best picks - 오예은 -->
+      <section class="best-picks-section">
+        <div class="best-container">
+          <div class="best-header">
+            <h2 class="best-title">Best Picks</h2>
+          </div>
+
+          <div class="best-slider-wrapper">
+            <button class="best-arrow best-prev" aria-label="이전 상품" disabled>
+              <span class="material-symbols-rounded">chevron_left</span>
+            </button>
+            <button class="best-arrow best-next" aria-label="다음 상품">
+              <span class="material-symbols-rounded">chevron_right</span>
+            </button>
+
+            <div class="best-grid-track">
+              <div class="best-grid" id="bestGrid">
+                <!-- 그룹 1 -->
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 RB4258F" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">[파우치증정] 레이밴 선글라스 RB4258F 601/71 RB4258-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">548,999원</span><span class="best-discount">20%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">355,200<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 클럽마스터" class="best-thumb" />
+                    <button class="best-wish-btn liked" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">218,000원</span><span class="best-discount">15%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">185,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="레이밴 헥사곤" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">RAY-BAN</span>
+                    <h3 class="best-item-name">레이밴 헥사곤 선글라스 RB3548N 001 54mm RB3548-N</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">470,000원</span><span class="best-discount">10%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">423,000<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="best-card">
+                  <div class="best-thumb-wrapper">
+                    <img src="image/detail_img1.png" alt="래쉬 클리프트" class="best-thumb" />
+                    <button class="best-wish-btn" aria-label="찜하기">
+                      <span class="material-symbols-rounded">heart_plus</span>
+                    </button>
+                  </div>
+                  <div class="best-info">
+                    <span class="best-brand">LASH</span>
+                    <h3 class="best-item-name">래쉬 레트로스펙트 클리프트 안경테 CLIFT BK 46mm 빈티지 에디션</h3>
+                    <div class="best-price-group">
+                      <div class="best-price-top">
+                        <span class="best-original">198,000원</span><span class="best-discount">25%</span>
+                      </div>
+                      <div class="best-price-bottom">
+                        <span class="best-price">148,500<span class="unit">원</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /#bestGrid -->
+            </div>
+            <!-- /.best-grid-track -->
+          </div>
+          <!-- /.best-slider-wrapper -->
+
+          <div class="best-line-container">
+            <span class="long-line"></span>
+            <span class="short-bold-line" id="progressLine"></span>
+          </div>
+        </div>
       </section>
 
       <!-- Limited Time Offer 섹션 -->
@@ -220,7 +461,7 @@
         <!-- 슬라이더 -->
         <section class="limited_product_slider">
           <div class="limited_slider_header">
-            <a href="#">더보기 &rarr;</a>
+            <a href="#" class="more_btn">더보기 &rarr;</a>
           </div>
 
           <div class="swiper mySwiper">
@@ -232,6 +473,7 @@
             </button>
 
             <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
+            <div class="swiper_scrollbar"></div>
           </div>
         </section>
       </section>
@@ -259,201 +501,282 @@
       <!-- Brand 섹션 -->
       <!-- 작업자="김해나" -->
       <section class="brand_showcase">
-        <h2 class="display_h1">brand</h2>
+        <div class="brand_inner_wrap">
+          <h2 class="display_h1 text-center">brand</h2>
 
-        <section class="brand_slider">
-          <div class="brand_slider_roller row_top d-flex">
-            <ul class="brand_rolling_list">
-              <li class="brand_rolling_item" aria-hidden="true">
-                <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
-              </li>
-            </ul>
-            <ul class="brand_rolling_list" aria-hidden="true">
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
-              </li>
-            </ul>
+          <section class="brand_slider d-flex">
+            <div class="brand_slider_roller row_top d-flex">
+              <ul class="brand_rolling_list">
+                <li class="brand_rolling_item" aria-hidden="true">
+                  <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
+                </li>
+              </ul>
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="brand_slider_roller row_bottom d-flex">
+              <ul class="brand_rolling_list">
+                <li class="brand_rolling_item" aria-hidden="true">
+                  <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
+                </li>
+              </ul>
+              <ul class="brand_rolling_list" aria-hidden="true">
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
+                </li>
+                <li class="brand_rolling_item">
+                  <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="brand_master_slider_track">
+            <article class="brand_content_block d-flex" data-block-index="0">
+              <div class="brand_block_header d-flex justify-content-between align-items-center">
+                <h2 class="brand_name_title display_h2"></h2>
+                <a href="#" class="more_btn">더보기 &rarr;</a>
+              </div>
+              <div class="brand_wide_banner">
+                <img src="" alt="brand banner" />
+              </div>
+              <div class="brand_product_row"></div>
+              <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
+                <button type="button" class="btn_inner_prev">
+                  <span class="material-icons-outlined">chevron_left</span>
+                </button>
+                <span class="inner_page_text">1 / 1</span>
+                <button type="button" class="btn_inner_next">
+                  <span class="material-icons-outlined">chevron_right</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="brand_content_block d-flex" data-block-index="1">
+              <div class="brand_block_header d-flex justify-content-between align-items-center">
+                <h2 class="brand_name_title display_h2"></h2>
+                <a href="#" class="more_btn">더보기 &rarr;</a>
+              </div>
+              <div class="brand_wide_banner">
+                <img src="" alt="brand banner" />
+              </div>
+              <div class="brand_product_row"></div>
+              <div class="inner_sub_pagination d-flex justify-content-center align-items-center body_cap">
+                <button type="button" class="btn_inner_prev">
+                  <span class="material-icons-outlined">chevron_left</span>
+                </button>
+                <span class="inner_page_text">1 / 1</span>
+                <button type="button" class="btn_inner_next">
+                  <span class="material-icons-outlined">chevron_right</span>
+                </button>
+              </div>
+
+              <div class="brand_product_scroll_container">
+                <div class="brand_product_row"></div>
+              </div>
+            </article>
           </div>
 
-          <div class="brand_slider_roller row_bottom d-flex">
-            <ul class="brand_rolling_list">
-              <li class="brand_rolling_item" aria-hidden="true">
-                <a href="https://www.ray-ban.com/global"><img src="image/ray_ban_logo.png" alt="rayban logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/ruby_logo.png" alt="rudy logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/rieti_logo.png" alt="rieti logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/fake_me_logo.png" alt="fakeme logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/hunter_logo.png" alt="hunter logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/nike_logo.png" alt="nike logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/uniqlo_logo.png" alt="uniqlo logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/public_logo.png" alt="public beacon logo" /></a>
-              </li>
-            </ul>
-            <ul class="brand_rolling_list" aria-hidden="true">
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/tomford_logo.png" alt="tomford logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/prada_logo.png" alt="prada logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/miumiu_logo.png" alt="miumiu logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/balenciaga_logo.png" alt="balenciaga logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/fendi_logo.png" alt="fendi logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/burberry_logo.png" alt="burberry logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/margiela_logo.png" alt="margiela logo" /></a>
-              </li>
-              <li class="brand_rolling_item">
-                <a href=""><img src="image/bottega_logo.png" alt="bottega logo" /></a>
-              </li>
-            </ul>
+          <div class="master_pagination d-flex justify-content-center align-items-center">
+            <button type="button" class="btn_prev">
+              <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+            </button>
+
+            <div class="page_indicator circle_badge_type">
+              <span class="current">1</span>
+              <span class="divider"></span>
+              <span class="total">3</span>
+            </div>
+
+            <button type="button" class="btn_next">
+              <span class="material-icons-outlined">keyboard_double_arrow_right</span>
+            </button>
           </div>
-        </section>
+        </div>
       </section>
 
       <!-- celeb pick 문송연 -->
       <section class="celebs_pick">
-        <h2>celeb&apos;s pick</h2>
-        <h3>지금 주목받는 셀럽 아이웨어</h3>
-        <button>안경테</button><button>선글라스</button>
-        <!-- 숏츠 슬라이더 -->
-        <div class="celeb-pick__videos">
-          <!-- 숏츠 1 -->
-          <article class="celeb-video-card">
-            <video src="" muted playsinline loop>
-              <source src="" type="video/mp4" />
-            </video>
-            <!-- 제품 정보영역 1 -->
-            <div class="celeb_product">
-              <img src="" alt="" />
-              <button class="like"><span class="material-symbols-rounded">heart_plus</span></button>
-              <a href="" target="_blank">더보기 &rarr;</a>
+        <img src="image/celeb_background.jpg" alt="" class="celeb_bg" />
+
+        <div class="Celeb_text_container d-flex flex-column align-items-center">
+          <h2 class="display_h2">celeb&apos;s pick</h2>
+          <p class="body_xl">지금 주목받는 셀럽 아이웨어</p>
+
+          <div class="celeb_category">
+            <button type="button" class="gla_btn is-active">안경테</button>
+            <button type="button" class="sun_btn">선글라스</button>
+          </div>
+
+          <a href="product_list.html" class="celeb_more body_cap"> 더보기 &rarr; </a>
+        </div>
+
+        <!-- 버튼 아래에 카드들이 출력되는 자리 -->
+        <div class="celeb_slider_wrapper"></div>
+      </section>
+
+      <!-- 매장 찾기 섹션 -->
+      <!-- 작업자="유태구" -->
+      <section class="store_locator wrap d-flex flex-column g-1">
+        <div>
+          <h2 class="display_h1">offline store</h2>
+          <p class="body_xl">가까운 파트너 스토어에서 직접 착용해보세요</p>
+        </div>
+        <!-- 지도 -->
+        <div class="map_api"></div>
+        <div class="dropdown_toolbar d-flex g-1">
+          <div class="dropdown region">
+            <div class="dropdown_trigger">
+              <div class="display_h4 d-flex justify-content-between align-items-center">
+                <span class="dropdown_label">지역</span>
+                <span class="material-icons-round">keyboard_arrow_down</span>
+              </div>
+              <span class="selected_region body_xl">대한민국</span>
             </div>
+            <ul class="dropdown_menu body_xl">
+              <li class="selected" data-value="">대한민국</li>
+            </ul>
+          </div>
+          <div class="dropdown district">
+            <div class="dropdown_trigger">
+              <div class="display_h4 d-flex justify-content-between align-items-center">
+                <span class="dropdown_label">시 &middot; 군 &middot; 구</span>
+                <span class="material-icons-round">keyboard_arrow_down</span>
+              </div>
+              <span class="selected_district body_xl">경기</span>
+            </div>
+            <ul class="dropdown_menu body_xl">
+              <li class="selected" data-value="">경기</li>
+              <li class="selected" data-value="">강원</li>
+              <li class="selected" data-value="">충북</li>
+              <li class="selected" data-value="">충남</li>
+              <li class="selected" data-value="">전북</li>
+              <li class="selected" data-value="">전남</li>
+              <li class="selected" data-value="">경북</li>
+              <li class="selected" data-value="">경남</li>
+            </ul>
+          </div>
+        </div>
+        <button class="body_l d-flex align-items-center g-0-5">
+          <span class="material-icons-round">location_searching</span>
+          현재 위치 사용
+        </button>
+        <div class="store_list d-flex flex-column g-1">
+          <article class="d-flex flex-column g-0-5 active">
+            <h3 class="display_h4">라운즈 강남역점</h3>
+            <ul class="store_tag_list body_m d-flex g-0-5">
+              <li>피팅 서비스</li>
+              <li>렌즈 상담</li>
+              <li>A/S 상담</li>
+            </ul>
+            <p class="store_opening_hours body_xl"><span>오픈</span> 오후 8:00시까지 영업</p>
+            <p class="store_location body_l">서울특별시 강남구 역삼로 109 1층</p>
+            <img src="image/locator_store.jpg" alt="라운즈 강남역점" />
           </article>
-          <!-- 숏츠 2 -->
-          <article class="celeb-video-card">
-            <video src="" muted playsinline loop>
-              <source src="" type="video/mp4" />
-            </video>
-            <!-- 제품 정보영역 2 -->
-            <div class="celeb_product">
-              <img src="" alt="" />
-              <button class="like"><span class="material-symbols-rounded">heart_plus</span></button>
-              <a href="" target="_blank">더보기 &rarr;</a>
-            </div>
-          </article>
-          <!-- 숏츠 3 -->
-          <article class="celeb-video-card">
-            <video src="" muted playsinline loop>
-              <source src="" type="video/mp4" />
-            </video>
-            <!-- 제품 정보영역 3 -->
-            <div class="celeb_product">
-              <img src="" alt="" />
-              <button class="like"><span class="material-symbols-rounded">heart_plus</span></button>
-              <a href="" target="_blank">더보기 &rarr;</a>
-            </div>
-          </article>
-          <!-- 숏츠 4 -->
-          <article class="celeb-video-card">
-            <video src="" muted playsinline loop>
-              <source src="" type="video/mp4" />
-            </video>
-            <!-- 제품 정보영역 4 -->
-            <div class="celeb_product">
-              <img src="" alt="" />
-              <button class="like"><span class="material-symbols-rounded">heart_plus</span></button>
-              <a href="" target="_blank">더보기 &rarr;</a>
-            </div>
-          </article>
-          <!-- 숏츠 5 -->
-          <article class="celeb-video-card">
-            <video src="" muted playsinline loop>
-              <source src="" type="video/mp4" />
-            </video>
-            <!-- 제품 정보영역 5 -->
-            <div class="celeb_product">
-              <img src="" alt="" />
-              <button class="like"><span class="material-symbols-rounded">heart_plus</span></button>
-              <a href="" target="_blank">더보기 &rarr;</a>
-            </div>
+          <article class="d-flex flex-column g-0-5">
+            <h3 class="display_h4">라운즈 판교점</h3>
+            <ul class="store_tag_list body_m d-flex g-0-5">
+              <li>피팅 서비스</li>
+              <li>렌즈 상담</li>
+              <li>A/S 상담</li>
+            </ul>
+            <p class="store_opening_hours body_xl"><span>오픈</span> 오후 8:00시까지 영업</p>
+            <p class="store_location body_l">경기도 성남시 분당구 판교역로 192번길 12 1층</p>
+            <img src="image/locator_store.jpg" alt="라운즈 판교점" />
           </article>
         </div>
-      </section>
-      <section class="store_locator">
-        <h2>offline store</h2>
-        <p>가까운 파트너 스토어에서 직접 착용해보세요</p>
-        <!-- 지도 -->
-        <div></div>
       </section>
     </main>
     <footer>
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </footer>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>
