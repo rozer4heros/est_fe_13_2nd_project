@@ -428,25 +428,51 @@ function connectYoutubeHover() {
 loadCelebPickData();
 
 /* 지도 - 유태구 작업 */
-async function initMap() {
-  // Request needed libraries.
-  const [{ AdvancedMarkerElement }, { Map: GoogleMap }] = await Promise.all([
-    google.maps.importLibrary("marker"),
-    google.maps.importLibrary("maps"),
-  ]);
 
-  const mapContainer = document.getElementById("map_api");
+const storeDropdownEls = document.querySelectorAll(".store_locator .dropdown");
+const storeArticleEls = document.querySelectorAll(".store_list article");
 
-  const map = new GoogleMap(mapContainer, {
-    center: { lat: 37.4935506, lng: 127.0310534 },
-    zoom: 15,
-    mapId: "85c8c84b1afe73166dd4c6fe",
+const mapEl = document.getElementById("map_api");
+const markerList = [];
+const mapOptions = {
+  center: new naver.maps.LatLng(37.4935506, 127.0310534),
+  zoom: 16,
+};
+const map = new naver.maps.Map(mapEl, mapOptions);
+const marker = new naver.maps.Marker({
+  position: new naver.maps.LatLng(37.4935506, 127.0310534),
+  map: map,
+});
+
+document.addEventListener("click", e => {
+  storeDropdownEls.forEach(sdd => {
+    if (!sdd.contains(e.target)) {
+      sdd.classList.remove("active");
+    }
   });
-
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: { lat: 37.4935506, lng: 127.0310534 },
+});
+storeDropdownEls.forEach(sdd => {
+  sdd.querySelector(".dropdown_trigger").addEventListener("click", e => {
+    if (sdd.classList.contains("active")) {
+      sdd.classList.remove("active");
+      return;
+    }
+    storeDropdownEls.forEach(f => f.classList.remove("active"));
+    sdd.classList.add("active");
   });
-  mapContainer.append(marker);
-}
-void initMap();
+});
+storeArticleEls.forEach(store => {
+  store.addEventListener("click", e => {
+    if (store.classList.contains("active")) {
+      store.classList.remove("active");
+      return;
+    }
+    storeArticleEls.forEach(s => {
+      s.classList.remove("active");
+    });
+    store.classList.add("active");
+    const pos = new naver.maps.LatLng(store.dataset.lat, store.dataset.lng);
+    map.setCenter(pos);
+    marker.setPosition(pos);
+  });
+});
