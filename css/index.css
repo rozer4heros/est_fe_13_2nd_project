@@ -75,12 +75,12 @@
 
 /* 스타일워크 버튼 */
 .style_btn {
-  --btn-fill-color: var(--font--color);
-  --btn-base-color: var(--white);
-  --btn-filled-text: var(--white);
+  --btn-fill-color: var(--white);
+  --btn-base-color: transparent;
+  --btn-filled-text: var(--font--color);
 
-  --btn-arrow-start: var(--font--color);
-  --btn-arrow-end: var(--white);
+  --btn-arrow-start: var(--white);
+  --btn-arrow-end: var(--font--color);
 }
 
 /* 버튼 배경 채움 */
@@ -337,11 +337,16 @@
 .coupon_text_container {
   top: 56px;
   text-align: left;
-  gap: 12px;
+  gap: 40px;
 }
-
-.coupon_title p {
-  color: var(--point--color);
+.coupon_title{
+  gap: 8px;
+  p{
+    color: var(--point--color);
+  }
+}
+.coupon_title_group{
+  gap: 12px;
 }
 .coupon_btn {
   border: 2px solid var(--point--color);
@@ -385,11 +390,22 @@
 
 .style_btn {
   justify-content: center;
-  background: var(--white);
+  
   align-self: center;
 }
 
 /* slide 4 */
+.try_on_container{
+  position: relative;
+}
+.try_on_container::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(34, 40, 49, 0.3);
+  pointer-events: none;
+}
 .tryon_title_container {
   order: 1;
   gap: 12px;
@@ -462,7 +478,7 @@
   }
 
   .hero_btn_text {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1;
   }
 
@@ -505,7 +521,7 @@
   }
 
   .coupon_text_container {
-    top: 144px;
+    top: 200px;
   }
 
   .stylework_text_container {
@@ -515,7 +531,9 @@
   .stylework_group {
     gap: 32px;
   }
-
+  .try_on_container::before{
+    display: none;
+  }
   .tryon_text_container {
     bottom: 48px;
     gap: 40px;
