@@ -106,19 +106,19 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then(products => {
+    .then((products) => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach(product => {
+      limitedProducts.forEach((product) => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
@@ -132,10 +132,11 @@ function loadProductsData() {
                 <button type="button" class="wish_btn" aria-label="위시리스트 추가">
                   <span class="material-symbols-outlined">heart_plus</span>
                 </button>
-                <a href="#detail.html" class="detail_view_btn display_h4">
+                <a href="details.html?id=${product.productId}" class="detail_view_btn display_h4">
                   <span class="detail_text">detail view</span>
                   <span class="arrow_circle">&rarr;</span>
                 </a>
+                
               </div>
               <div class="limited_card_info">
                 <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
@@ -156,7 +157,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
@@ -212,11 +213,11 @@ function initSwiper() {
   /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
   const originals = [...grid.querySelectorAll(".best-card")];
   for (let g = 1; g < TOTAL_GROUPS; g++) {
-    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
+    originals.forEach((card) => grid.appendChild(card.cloneNode(true)));
   }
 
   /* 찜하기 토글 */
-  grid.addEventListener("click", e => {
+  grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".best-wish-btn");
     if (btn) btn.classList.toggle("liked");
   });

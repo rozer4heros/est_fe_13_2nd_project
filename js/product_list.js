@@ -6,6 +6,12 @@
 // DOM Selectors
 // ==========================================
 
+const filterDrawerBtnEl = document.querySelector(".filter_dropdown_list > button");
+const filterDrawerWrapEl = document.querySelector(".filter_drawer_wrap");
+const filterDrawerCloseEl = document.querySelector(".filter_drawer_header .close_btn");
+const filterAccordionEls = document.querySelectorAll(".accordion_list > li");
+
+const productListTabs = document.querySelectorAll(".product_list_tab");
 const filterDropdownEls = document.querySelectorAll(".filter_dropdown");
 const filterResetBtnEl = document.querySelector(".reset_btn");
 const productCountEl = document.querySelector(".product_count");
@@ -37,7 +43,8 @@ async function fetchProducts() {
       console.error("데이터 로드 실패: ", error);
     });
 
-  filteredProducts = allProducts.filter(product => !product.isSoldOut);
+  filteredProducts = allProducts;
+  // filteredProducts = allProducts.filter(product => !product.isSoldOut);
   console.log(filteredProducts[0]);
 
   renderProducts();
@@ -60,19 +67,27 @@ function renderProductCard(product) {
           <span class="brand display_h3">${escHTML(product.brand)}</span>
           <button class="like product_card_wish_btn material-symbols-rounded">heart_plus</button>
         </div>
-        <div class="product_card_price d-flex align-items-center g-0-5">
-        ${
-          product.isSoldOut
-            ? `<span class="price display_h3">매진</span>`
-            : `
-          <span class="price display_h3">${Number(product.salePrice).toLocaleString()}원</span>
-          <span class="discount_rate body_xl">${product.discountRate}%</span>
-          `
-        }
+        <div class="product_card_footer d-flex justify-content-between align-items-center">
+          <div class="product_card_price d-flex align-items-center g-0-5">
+          ${
+            product.isSoldOut
+              ? `<span class="price display_h3">매진</span>`
+              : `
+            <span class="price display_h3">${Number(product.salePrice).toLocaleString()}원</span>
+            <span class="discount_rate body_xl">${product.discountRate}%</span>
+            `
+          }
+          </div>
+          <button class="material-icons-outlined" ${product.isSoldOut ? `disabled` : ``}>shopping_cart</button>
         </div>
       </div>
     </article>
   `;
+
+  itemEl.querySelector(".product_card_wish_btn").addEventListener("click", e => {
+    window.localStorage.setItem("");
+  });
+
   productListEl.appendChild(itemEl);
 }
 function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
@@ -100,6 +115,23 @@ function escHTML(string) {
 // ==========================================
 // Event Listeners
 // ==========================================
+
+filterDrawerBtnEl.addEventListener("click", e => {
+  filterDrawerWrapEl.classList.add("active");
+});
+filterDrawerWrapEl.addEventListener("click", e => {
+  if (e.target === e.currentTarget) {
+    filterDrawerWrapEl.classList.remove("active");
+  }
+});
+filterDrawerCloseEl.addEventListener("click", e => {
+  filterDrawerWrapEl.classList.remove("active");
+});
+filterAccordionEls.forEach(acc => {
+  acc.querySelector(".accordion_header").addEventListener("click", e => {
+    acc.classList.toggle("active");
+  });
+});
 
 document.addEventListener("click", e => {
   filterDropdownEls.forEach(fdd => {
