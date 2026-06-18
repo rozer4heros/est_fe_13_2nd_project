@@ -10,13 +10,34 @@ const filterDrawerBtnEl = document.querySelector(".filter_dropdown_list > button
 const filterDrawerWrapEl = document.querySelector(".filter_drawer_wrap");
 const filterDrawerCloseEl = document.querySelector(".filter_drawer_header .close_btn");
 const filterAccordionEls = document.querySelectorAll(".accordion_list > li");
+const filterAccordionLabels = document.querySelectorAll(".accordion_list label");
+const drawerPriceMinEl = document.querySelector("#drawer_price_min");
+const drawerPriceMaxEl = document.querySelector("#drawer_price_max");
+const drawerProductCountEl = document.querySelector(".filter_");
 
-const productListTabs = document.querySelectorAll(".product_list_tab");
+const productListTabEls = document.querySelectorAll(".product_list_tab");
 const filterDropdownEls = document.querySelectorAll(".filter_dropdown");
 const filterResetBtnEl = document.querySelector(".reset_btn");
-const productCountEl = document.querySelector(".product_count");
+const productCountEls = document.querySelectorAll(".product_count");
 const sortDropdownEl = document.querySelector(".sort_dropdown");
 
+const inputElsCategory = document.querySelectorAll(".filter_category input");
+const inputElsBrand = document.querySelectorAll(".filter_brand input");
+const inputElsShape = document.querySelectorAll(".filter_shape input");
+// const inputElsFace = document.querySelectorAll(".filter_face input");
+const inputElsGender = document.querySelectorAll(".filter_gender input");
+const inputElsSize = document.querySelectorAll(".filter_size input");
+const inputElsPrice = document.querySelectorAll(".filter_price input");
+const inputElsAll = [
+  ...inputElsCategory,
+  ...inputElsBrand,
+  ...inputElsShape,
+  ...inputElsGender,
+  ...inputElsSize,
+  ...inputElsPrice,
+];
+
+const resetBtnEls = document.querySelectorAll(".reset_btn");
 const productListEl = document.querySelector(".product_list");
 
 // ==========================================
@@ -25,6 +46,15 @@ const productListEl = document.querySelector(".product_list");
 
 let allProducts = [];
 let filteredProducts = [];
+
+let selectedCategories = [];
+let selectedBrands = [];
+let selectedShapes = [];
+// let selectedFaces = [];
+let selectedGenders = [];
+let selectedSizes = [];
+let selectedPriceMin = 0;
+let selectedPriceMax = 300000;
 
 // ==========================================
 // Functions & Core Logic
@@ -44,7 +74,6 @@ async function fetchProducts() {
     });
 
   filteredProducts = allProducts;
-  // filteredProducts = allProducts.filter(product => !product.isSoldOut);
   console.log(filteredProducts[0]);
 
   renderProducts();
@@ -52,29 +81,30 @@ async function fetchProducts() {
 }
 
 function renderProductCard(product) {
+  if (!product) return;
   const itemEl = document.createElement("li");
   itemEl.innerHTML = `
     <article class="product_card">
-      <a href="details.html?id=${product.productId}" class="product_card_imgbox">
-        <img src="${product.mainImage}" alt="${escHTML(product.name)}" />
+      <a href="details.html?id=${product.productId ?? ""}" class="product_card_imgbox">
+        <img src="${product.mainImage ?? ""}" alt="${escHTML(product.name ?? "")}" />
         <button class="try_on_btn body_xl text-center">TRY ON</button>
       </a>
       <div class="d-flex flex-column g-0-5">
         <h3 class="product_name body_xl">
-          <a href="details.html?id=${product.productId}">${escHTML(product.name)}</a>
+          <a href="details.html?id=${product.productId ?? ""}">${escHTML(product.name ?? "")}</a>
         </h3>
         <div class="product_card_header d-flex justify-content-between align-items-center">
-          <span class="brand display_h3">${escHTML(product.brand)}</span>
+          <span class="brand display_h3">${escHTML(product.brand ?? "")}</span>
           <button class="like product_card_wish_btn material-symbols-rounded">heart_plus</button>
         </div>
         <div class="product_card_footer d-flex justify-content-between align-items-center">
           <div class="product_card_price d-flex align-items-center g-0-5">
           ${
             product.isSoldOut
-              ? `<span class="price display_h3">매진</span>`
+              ? `<span class="price display_h3">일시 품절</span>`
               : `
-            <span class="price display_h3">${Number(product.salePrice).toLocaleString()}원</span>
-            <span class="discount_rate body_xl">${product.discountRate}%</span>
+            <span class="price display_h3">${Number(product.salePrice ?? "").toLocaleString()}원</span>
+            <span class="discount_rate body_xl">${product.discountRate ?? ""}%</span>
             `
           }
           </div>
@@ -92,13 +122,62 @@ function renderProductCard(product) {
 }
 function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
   productListEl.innerHTML = "";
+  if (filteredProducts.length === 0) {
+    productListEl.textContent = "해당하는 상품이 없습니다.";
+    return;
+  }
   for (let i = firstIndex; i <= lastIndex; i++) {
     renderProductCard(filteredProducts[i]);
   }
 }
 
 function updateCount(count = filteredProducts.length) {
-  productCountEl.textContent = `총 ${count}개`;
+  [...productCountEls].forEach(countEl => {
+    countEl.textContent = `총 ${count}개`;
+  });
+}
+
+function applyFilter() {
+  // 디버깅을 위해 .filter() 함수 체인을 끊어야만 했다...
+  // 카테고리
+  filteredProducts = allProducts.filter(p =>
+    selectedCategories.includes("all") || selectedCategories.length === 0
+      ? true
+      : selectedCategories.includes(p.category),
+  );
+  // 브랜드
+  filteredProducts = filteredProducts.filter(p =>
+    selectedBrands.length === 0 ? true : selectedBrands.includes(p.brand),
+  );
+  // 모양
+  filteredProducts = filteredProducts.filter(p =>
+    selectedShapes.length === 0 ? true : selectedShapes.includes(p.shape),
+  );
+  // 성별
+  filteredProducts = filteredProducts.filter(p =>
+    selectedGenders.length === 0 ? true : selectedGenders.includes(p.gender),
+  );
+  // 프레임 크기
+  filteredProducts = filteredProducts.filter(p =>
+    selectedSizes.length === 0 ? true : selectedSizes.includes(p.frameSize),
+  );
+  // 가격
+  filteredProducts = filteredProducts.filter(p => Number(p.salePrice) >= selectedPriceMin);
+  filteredProducts = filteredProducts.filter(p =>
+    selectedPriceMax >= 300000 ? true : Number(p.salePrice) <= selectedPriceMax,
+  );
+
+  renderProducts();
+}
+
+function resetFilter() {
+  inputElsAll.forEach(input => {
+    input.checked = input.value === "all" ? true : false;
+  });
+  inputElsPrice[0].value = 0;
+  inputElsPrice[1].value = 300000;
+
+  renderProducts();
 }
 
 function escHTML(string) {
@@ -155,6 +234,69 @@ filterDropdownEls.forEach(fdd => {
 });
 sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", e => {
   sortDropdownEl.classList.toggle("active");
+});
+
+productListTabEls.forEach(tab => {
+  tab.addEventListener("click", e => {
+    productListTabEls.forEach(t => {
+      t.classList.remove("active");
+    });
+    tab.classList.add("active");
+  });
+});
+inputElsCategory.forEach(input => {
+  input.addEventListener("change", e => {
+    selectedCategories = [...inputElsCategory].filter(l => l.checked).map(l => l.value);
+    applyFilter();
+  });
+});
+inputElsBrand.forEach(input => {
+  input.addEventListener("change", e => {
+    selectedBrands = [...inputElsBrand].filter(l => l.checked).map(l => l.value);
+    applyFilter();
+  });
+});
+inputElsShape.forEach(input => {
+  input.addEventListener("change", e => {
+    selectedShapes = [...inputElsShape].filter(l => l.checked).map(l => l.value);
+    applyFilter();
+  });
+});
+inputElsGender.forEach(input => {
+  input.addEventListener("change", e => {
+    selectedGenders = [...inputElsGender].filter(l => l.checked).map(l => l.value);
+    applyFilter();
+  });
+});
+inputElsSize.forEach(input => {
+  input.addEventListener("change", e => {
+    selectedSizes = [...inputElsSize].filter(l => l.checked).map(l => l.value);
+    applyFilter();
+  });
+});
+inputElsPrice.forEach(input => {
+  input.addEventListener("change", e => {
+    const priceValues = [...inputElsPrice].map(l => Number(l.value));
+    selectedPriceMin = Math.min(...priceValues);
+    selectedPriceMax = Math.max(...priceValues);
+    drawerPriceMinEl.value = String(selectedPriceMin);
+    drawerPriceMaxEl.value = String(selectedPriceMax);
+    applyFilter();
+  });
+});
+drawerPriceMinEl.addEventListener("change", e => {
+  let targetEl = [...inputElsPrice].sort((a, b) => Number(a.value) - Number(b.value))[0];
+  targetEl.value = drawerPriceMinEl.value;
+});
+drawerPriceMaxEl.addEventListener("change", e => {
+  let targetEl = [...inputElsPrice].sort((a, b) => Number(b.value) - Number(a.value))[0];
+  targetEl.value = drawerPriceMaxEl.value;
+});
+
+resetBtnEls.forEach(reset => {
+  reset.addEventListener("click", e => {
+    resetFilter();
+  });
 });
 
 // ==========================================

@@ -30,8 +30,8 @@
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
             <ul class="filter_drawer_category accordion_body body_l">
-              <li><label for="" class="filter_drawer_btn">안경테</label></li>
-              <li><label for="" class="filter_drawer_btn">선글라스</label></li>
+              <li><label for="category_frame" class="filter_drawer_btn">안경테</label></li>
+              <li><label for="category_sunglass" class="filter_drawer_btn">선글라스</label></li>
             </ul>
           </li>
           <li class="">
@@ -41,43 +41,44 @@
             </div>
             <ul class="filter_drawer_brand accordion_body body_l">
               <li>
-                <label for="" class="filter_drawer_btn">
+                <label for="brand_rayban" class="filter_drawer_btn">
                   <img src="image/ray_ban_logo.png" alt="Ray-Ban" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Locomotive" />
+                <label for="brand_locomotive" class="filter_drawer_btn">
+                  <img src="image/locomotive_logo.png" alt="Locomotive" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Lash" />
+                <label for="brand_lash" class="filter_drawer_btn">
+                  <img src="image/lash_logo.png" alt="Lash" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Izipizi" />
+                <label for="brand_izipizi" class="filter_drawer_btn">
+                  <img src="image/izipizi_logo.png" alt="Izipizi" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="image/oklay.png" alt="Oakley" />
+                <label for="brand_oakley" class="filter_drawer_btn">
+                  <img src="image/oakley_logo.png" alt="Oakley" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Carven" />
+                <label for="brand_carven" class="filter_drawer_btn">
+                  <img src="image/carven_logo.png" alt="Carven" />
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Rounz" />
+                <label for="brand_rounz" class="filter_drawer_btn">
+                  <img src="" alt="" />
+                  <span class="logo">rounz</span>
                 </label>
               </li>
               <li>
-                <label for="" class="filter_drawer_btn">
-                  <img src="" alt="Chloe" />
+                <label for="brand_chloe" class="filter_drawer_btn">
+                  <img src="image/chloe_logo.png" alt="Chloe" />
                 </label>
               </li>
             </ul>
@@ -162,11 +163,12 @@
               <span class="material-icons-round">arrow_drop_down_circle</span>
             </div>
             <ul class="filter_drawer_frame_size accordion_body body_l">
-              <li class="select_all_sizes"><label for="size_all" class="filter_drawer_btn">전체</label></li>
-              <li><label for="size_40_45" class="filter_drawer_btn">40 ~ 45mm</label></li>
-              <li><label for="size_46_50" class="filter_drawer_btn">46 ~ 50mm</label></li>
-              <li><label for="size_51_55" class="filter_drawer_btn">51 ~ 55mm</label></li>
-              <li><label for="size_56_above" class="filter_drawer_btn">56mm 이상</label></li>
+              <li><label for="size_all" class="filter_drawer_btn">전체</label></li>
+              <li><label for="size_39_below" class="filter_drawer_btn">작은 프레임</label></li>
+              <li><label for="size_40_45" class="filter_drawer_btn">조금 작은 프레임</label></li>
+              <li><label for="size_46_50" class="filter_drawer_btn">보통 프레임</label></li>
+              <li><label for="size_51_55" class="filter_drawer_btn">조금 큰 프레임</label></li>
+              <li><label for="size_56_above" class="filter_drawer_btn">큰 프레임</label></li>
             </ul>
           </li>
           <li class="">
@@ -213,7 +215,8 @@
         <div class="display_h2 d-flex justify-content-between align-items-center g-0-5">
           <button class="reset_btn submit-button">초기화</button>
           <button class="apply_btn submit-button">
-            총 100개 <span class="mo_only"><br /></span> 상품 보기
+            <span class="product_count">총 100개</span> <br />
+            상품 보기
           </button>
         </div>
       </div>
@@ -221,13 +224,22 @@
     <main class="d-flex flex-column g-2">
       <div class="product_list_header wrap d-flex flex-column g-1">
         <h2 class="display_h1">아이웨어</h2>
-        <ul class="product_list_tabs display_h4 d-flex g-0-5">
-          <li class="product_list_tab active">전체</li>
-          <li class="product_list_tab">안경테</li>
-          <li class="product_list_tab">선글라스</li>
-          <li class="product_list_tab">AI 추천</li>
-          <li class="product_list_tab">베스트</li>
-          <li class="product_list_tab">신상품</li>
+        <ul class="filter_category product_list_tabs display_h4 d-flex g-0-5">
+          <label class="product_list_tab active">
+            <span>전체</span>
+            <input type="radio" name="category" id="category_all" value="all" checked />
+          </label>
+          <label class="product_list_tab">
+            <span>안경테</span>
+            <input type="radio" name="category" id="category_frame" value="안경테" />
+          </label>
+          <label class="product_list_tab">
+            <span>선글라스</span>
+            <input type="radio" name="category" id="category_sunglass" value="선글라스" />
+          </label>
+          <!-- <li class="product_list_tab">AI 추천</li> -->
+          <!-- <li class="product_list_tab">베스트</li> -->
+          <!-- <li class="product_list_tab">신상품</li> -->
         </ul>
         <div class="filter_dropdown_list d-flex g-0-5">
           <button class="below_pc d-flex justify-content-center align-items-center">
@@ -235,69 +247,65 @@
           </button>
 
           <!-- 브랜드 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <div class="filter_brand filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>브랜드</span>
               <span class="material-icons-round">expand_more</span>
             </div>
             <div class="filter_dropdown_menu d-flex flex-column g-1">
+              <!--
               <div class="filter_dropdown_search_wrap">
                 <input type="text" placeholder="브랜드 명을 입력해주세요" class="filter_dropdown_search_input" />
                 <span class="material-icons-round search_icon">search</span>
               </div>
+              -->
               <ul class="body_xl">
                 <li>
                   <label for="brand_rayban" class="d-flex justify-content-between align-items-center">
                     <span>Ray-Ban</span>
-                    <input type="checkbox" id="brand_rayban" />
+                    <input type="checkbox" id="brand_rayban" value="Ray-Ban" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_oakley" class="d-flex justify-content-between align-items-center">
                     <span>OAKLEY</span>
-                    <input type="checkbox" id="brand_oakley" />
+                    <input type="checkbox" id="brand_oakley" value="OAKLEY" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_lash" class="d-flex justify-content-between align-items-center">
                     <span>LASH</span>
-                    <input type="checkbox" id="brand_lash" />
+                    <input type="checkbox" id="brand_lash" value="LASH" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_locomotive" class="d-flex justify-content-between align-items-center">
                     <span>LOCOMOTIVE</span>
-                    <input type="checkbox" id="brand_locomotive" />
+                    <input type="checkbox" id="brand_locomotive" value="LOCOMOTIVE" />
                   </label>
                 </li>
                 <li>
-                  <label for="brand_rounz_basic" class="d-flex justify-content-between align-items-center">
-                    <span>ROUNZ BASIC</span>
-                    <input type="checkbox" id="brand_rounz_basic" />
-                  </label>
-                </li>
-                <li>
-                  <label for="brand_rounz_standard" class="d-flex justify-content-between align-items-center">
-                    <span>ROUNZ STANDARD</span>
-                    <input type="checkbox" id="brand_rounz_standard" />
+                  <label for="brand_rounz" class="d-flex justify-content-between align-items-center">
+                    <span>ROUNZ</span>
+                    <input type="checkbox" id="brand_rounz" value="ROUNZ" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_izipizi" class="d-flex justify-content-between align-items-center">
                     <span>IZIPIZI</span>
-                    <input type="checkbox" id="brand_izipizi" />
+                    <input type="checkbox" id="brand_izipizi" value="IZIPIZI" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_carven" class="d-flex justify-content-between align-items-center">
                     <span>CARVEN</span>
-                    <input type="checkbox" id="brand_carven" />
+                    <input type="checkbox" id="brand_carven" value="CARVEN" />
                   </label>
                 </li>
                 <li>
                   <label for="brand_chloe" class="d-flex justify-content-between align-items-center">
                     <span>CHLOE</span>
-                    <input type="checkbox" id="brand_chloe" />
+                    <input type="checkbox" id="brand_chloe" value="CHLOE" />
                   </label>
                 </li>
               </ul>
@@ -305,7 +313,7 @@
           </div>
 
           <!-- 모양 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <div class="filter_shape filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>모양</span>
               <span class="material-icons-round">expand_more</span>
@@ -315,43 +323,43 @@
                 <li>
                   <label for="shape_round" class="d-flex justify-content-between align-items-center">
                     <span>라운드</span>
-                    <input type="checkbox" id="shape_round" />
+                    <input type="checkbox" id="shape_round" value="라운드" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_square" class="d-flex justify-content-between align-items-center">
                     <span>스퀘어</span>
-                    <input type="checkbox" id="shape_square" />
+                    <input type="checkbox" id="shape_square" value="스퀘어" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_cateye" class="d-flex justify-content-between align-items-center">
                     <span>캣아이</span>
-                    <input type="checkbox" id="shape_cateye" />
+                    <input type="checkbox" id="shape_cateye" value="캣아이" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_halfrim" class="d-flex justify-content-between align-items-center">
                     <span>하금테</span>
-                    <input type="checkbox" id="shape_halfrim" />
+                    <input type="checkbox" id="shape_halfrim" value="하금테" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_mix" class="d-flex justify-content-between align-items-center">
                     <span>믹스</span>
-                    <input type="checkbox" id="shape_mix" />
+                    <input type="checkbox" id="shape_mix" value="믹스" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_aviator" class="d-flex justify-content-between align-items-center">
                     <span>보잉</span>
-                    <input type="checkbox" id="shape_aviator" />
+                    <input type="checkbox" id="shape_aviator" value="보잉" />
                   </label>
                 </li>
                 <li>
                   <label for="shape_etc" class="d-flex justify-content-between align-items-center">
                     <span>기타</span>
-                    <input type="checkbox" id="shape_etc" />
+                    <input type="checkbox" id="shape_etc" value="기타" />
                   </label>
                 </li>
               </ul>
@@ -359,7 +367,8 @@
           </div>
 
           <!-- 얼굴형 추천 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <!--
+          <div class="filter_face filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>얼굴형 추천</span>
               <span class="material-icons-round">expand_more</span>
@@ -405,9 +414,10 @@
               </ul>
             </div>
           </div>
+          -->
 
           <!-- 성별 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <div class="filter_gender filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>성별</span>
               <span class="material-icons-round">expand_more</span>
@@ -417,13 +427,13 @@
                 <li>
                   <label for="gender_female" class="d-flex justify-content-between align-items-center">
                     <span>여자</span>
-                    <input type="checkbox" id="gender_female" />
+                    <input type="checkbox" id="gender_female" value="여성" />
                   </label>
                 </li>
                 <li>
                   <label for="gender_male" class="d-flex justify-content-between align-items-center">
                     <span>남자</span>
-                    <input type="checkbox" id="gender_male" />
+                    <input type="checkbox" id="gender_male" value="남성" />
                   </label>
                 </li>
               </ul>
@@ -431,7 +441,7 @@
           </div>
 
           <!-- 프레임 크기 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <div class="filter_size filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>프레임 크기</span>
               <span class="material-icons-round">expand_more</span>
@@ -441,31 +451,37 @@
                 <li class="select_all_sizes">
                   <label for="size_all" class="d-flex justify-content-between align-items-center">
                     <span>전체</span>
-                    <input type="checkbox" id="size_all" />
+                    <input type="checkbox" id="size_all" value="all" checked />
+                  </label>
+                </li>
+                <li>
+                  <label for="size_39_below" class="d-flex justify-content-between align-items-center">
+                    <span>작은 프레임</span>
+                    <input type="checkbox" id="size_39_below" value="작은" />
                   </label>
                 </li>
                 <li>
                   <label for="size_40_45" class="d-flex justify-content-between align-items-center">
-                    <span>40 ~ 45mm</span>
-                    <input type="checkbox" id="size_40_45" />
+                    <span>조금 작은 프레임</span>
+                    <input type="checkbox" id="size_40_45" value="조금 작은" />
                   </label>
                 </li>
                 <li>
                   <label for="size_46_50" class="d-flex justify-content-between align-items-center">
-                    <span>46 ~ 50mm</span>
-                    <input type="checkbox" id="size_46_50" />
+                    <span>보통 프레임</span>
+                    <input type="checkbox" id="size_46_50" value="보통" />
                   </label>
                 </li>
                 <li>
                   <label for="size_51_55" class="d-flex justify-content-between align-items-center">
-                    <span>51 ~ 55mm</span>
-                    <input type="checkbox" id="size_51_55" />
+                    <span>조금 큰 프레임</span>
+                    <input type="checkbox" id="size_51_55" value="조금 큰" />
                   </label>
                 </li>
                 <li>
                   <label for="size_56_above" class="d-flex justify-content-between align-items-center">
-                    <span>56mm 이상</span>
-                    <input type="checkbox" id="size_56_above" />
+                    <span>큰 프레임</span>
+                    <input type="checkbox" id="size_56_above" value="큰" />
                   </label>
                 </li>
               </ul>
@@ -473,7 +489,7 @@
           </div>
 
           <!-- 가격 필터 (PC 전용) -->
-          <div class="filter_dropdown pc_only">
+          <div class="filter_price filter_dropdown pc_only">
             <div class="filter_dropdown_trigger body_m d-flex justify-content-between align-items-center">
               <span>가격</span>
               <span class="material-icons-round">expand_more</span>
@@ -482,11 +498,8 @@
               <div class="price_slider_container">
                 <div class="price_range_values d-flex justify-content-between body_m">
                   <span class="min_val">0원</span>
-                  <span>5만원</span>
                   <span>10만원</span>
-                  <span>15만원</span>
                   <span>20만원</span>
-                  <span>25만원</span>
                   <span class="max_val">30만원+</span>
                 </div>
                 <div class="range_slider_track_wrap">
@@ -509,6 +522,11 @@
                     id="price_max"
                     class="price_range_input"
                   />
+                </div>
+                <div class="price_range_values d-flex body_m">
+                  <span>5만원</span>
+                  <span>15만원</span>
+                  <span>25만원</span>
                 </div>
               </div>
             </div>
