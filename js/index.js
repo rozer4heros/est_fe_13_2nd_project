@@ -279,6 +279,149 @@ initBrandSection();
 initNewCollection();
 
 /* best picks - 김해나 작업 */
-initBestPicksSlider();
+// initBestPicksSlider();
 
 /* celebs pick - 문송연 */
+const wrapper = document.querySelector(".celeb_slider_wrapper");
+const glaBtn = document.querySelector(".gla_btn");
+const sunBtn = document.querySelector(".sun_btn");
+
+let celebSwiper;
+let products = [];
+let celebPicks = [];
+
+async function loadCelebPickData() {
+  const productRes = await fetch("./data/products.json");
+  const pickRes = await fetch("./data/celebPicks.json");
+
+  products = await productRes.json();
+  celebPicks = await pickRes.json();
+
+  renderCelebPick("안경테");
+}
+
+function createCelebCard(pick, product) {
+  return `
+    <article class="celeb_slide swiper-slide">
+      <div class="celeb_video_box">
+        <iframe
+            class="celeb_video"
+            data-video-id="${pick.youtubeId}"
+            data-start="${pick.start}"
+            src="https://www.youtube.com/embed/${pick.youtubeId}?start=${pick.start}&mute=1&controls=0&rel=0&playsinline=1"
+            title="${pick.celebrity} 착용 영상"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+      </div>
+
+       <div class="celeb_product">
+          <a href="details.html?productId=${product.productId}" class="celeb_product_link">
+            <div class="celeb_product_img_box">
+              <img src="${product.image}" alt="${product.name}" class="celeb_product_img" />
+            </div>
+
+            <div class="celeb_product_info">
+              <p class="celeb_product_brand display_h4">${product.brand}</p>
+              <p class="celeb_product_name body_m">${product.name}</p>
+              <p class="celeb_product_price body_s">
+                ${Number(product.salePrice).toLocaleString()}원
+              </p>
+            </div>
+          </a>
+
+        <button type="button" class="celeb_like" aria-label="좋아요">
+          <span class="material-symbols-rounded">heart_plus</span>
+        </button>
+      </div>
+    </article>
+  `;
+}
+
+function renderCelebPick(category) {
+  const filteredProducts = products.filter(product => product.category === category);
+
+  const matchedData = celebPicks
+    .map(pick => {
+      const product = filteredProducts.find(item => item.productId === pick.productId);
+
+      return product ? { pick, product } : null;
+    })
+    .filter(item => item !== null);
+
+  wrapper.innerHTML = matchedData.map(item => createCelebCard(item.pick, item.product)).join("");
+
+  if (celebSwiper) {
+    celebSwiper.destroy(true, true);
+  }
+
+  celebSwiper = new Swiper(".celeb_swiper", {
+    slidesPerView: 1.25,
+    spaceBetween: 16,
+
+    navigation: {
+      nextEl: ".celeb_next",
+      prevEl: ".celeb_prev",
+    },
+
+    pagination: {
+      el: ".celeb_fraction",
+      type: "fraction",
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1440: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+    },
+  });
+
+  connectLikeButtons();
+  connectYoutubeHover();
+}
+
+function connectLikeButtons() {
+  const likeButtons = document.querySelectorAll(".celeb_like");
+
+  likeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("is-active");
+    });
+  });
+}
+
+glaBtn.addEventListener("click", () => {
+  location.href = "product_list.html?category=안경테";
+});
+
+sunBtn.addEventListener("click", () => {
+  location.href = "product_list.html?category=선글라스";
+});
+
+function connectYoutubeHover() {
+  const iframes = document.querySelectorAll(".celeb_video");
+
+  iframes.forEach(iframe => {
+    const videoId = iframe.dataset.videoId;
+    const start = iframe.dataset.start;
+
+    const pauseSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&mute=1&controls=0&rel=0&playsinline=1`;
+    const playSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&mute=1&controls=0&rel=0&playsinline=1`;
+
+    iframe.addEventListener("mouseenter", () => {
+      iframe.src = playSrc;
+    });
+
+    iframe.addEventListener("mouseleave", () => {
+      iframe.src = pauseSrc;
+    });
+  });
+}
+
+loadCelebPickData();
