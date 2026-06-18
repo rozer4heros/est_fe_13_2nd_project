@@ -44,7 +44,7 @@
           <div class="swiper-wrapper">
             <!-- slide 1 -->
             <div class="swiper-slide hero_ai_container">
-              <img src="image/hero_ai_M.jpg" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
+              <img src="./image/hero_ai_M.jpg" alt="AI 시스템 히어로 배경 이미지" class="hero_slide_img" />
 
               <div class="hero_ai_text_container d-flex flex-column align-items-center g-1">
                 <div class="hero_ai_content d-flex flex-column">
@@ -313,133 +313,22 @@
           </div>
         </div>
       </section>
+
       <!-- best picks - 오예은 -->
       <section class="best-picks-section">
-        <div class="best-container">
-          <div class="best-header">
-            <h2 class="best-title">Best Picks</h2>
+        <div class="wrap best-container">
+          <div class="best-header text-center">
+            <h2 class="best-title display_h2">Best Picks</h2>
           </div>
 
           <div class="best-slider-wrapper">
-            <button class="best-arrow best-prev" aria-label="이전 상품" disabled>
-              <span class="material-symbols-rounded">chevron_left</span>
-            </button>
-            <button class="best-arrow best-next" aria-label="다음 상품">
-              <span class="material-symbols-rounded">chevron_right</span>
-            </button>
+            <div class="best-swiper swiper">
+              <!-- products.json 데이터가 JS로 들어감 -->
+              <div class="swiper-wrapper" id="bestGrid"></div>
 
-            <div class="best-grid-track">
-              <div class="best-grid" id="bestGrid">
-                <!-- 그룹 1 -->
-                <div class="best-card">
-                  <a href="details.html?productId=3003222" class="card-link">
-                    <div class="best-thumb-wrapper">
-                      <img src="image/detail_img1.png" alt="레이밴 RB4258F" class="best-thumb" />
-                      <button class="best-wish-btn" aria-label="찜하기">
-                        <span class="material-symbols-rounded">heart_plus</span>
-                      </button>
-                    </div>
-                  </a>
-                  <div class="best-info">
-                    <span class="best-brand">RAY-BAN</span>
-                    <a href="details.html?productId=3003222" class="card-link">
-                      <h3 class="best-item-name">[파우치증정] 레이밴 선글라스 RB4258F 601/71 RB4258-F</h3>
-                    </a>
-                    <div class="best-price-group">
-                      <div class="best-price-top">
-                        <span class="best-original">548,999원</span><span class="best-discount">20%</span>
-                      </div>
-                      <div class="best-price-bottom">
-                        <span class="best-price">355,200<span class="unit">원</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="best-card">
-                  <a href="details.html?productId=3003222" class="card-link">
-                    <div class="best-thumb-wrapper">
-                      <img src="image/detail_img1.png" alt="레이밴 클럽마스터" class="best-thumb" />
-                      <button class="best-wish-btn liked" aria-label="찜하기">
-                        <span class="material-symbols-rounded">heart_plus</span>
-                      </button>
-                    </div>
-                  </a>
-                  <div class="best-info">
-                    <span class="best-brand">RAY-BAN</span>
-                    <a href="details.html?productId=3003222" class="card-link">
-                      <h3 class="best-item-name">레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F</h3>
-                    </a>
-                    <div class="best-price-group">
-                      <div class="best-price-top">
-                        <span class="best-original">218,000원</span><span class="best-discount">15%</span>
-                      </div>
-                      <div class="best-price-bottom">
-                        <span class="best-price">185,000<span class="unit">원</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="best-card">
-                  <a href="details.html?productId=3003222" class="card-link">
-                    <div class="best-thumb-wrapper">
-                      <img src="image/detail_img1.png" alt="레이밴 헥사곤" class="best-thumb" />
-                      <button class="best-wish-btn" aria-label="찜하기">
-                        <span class="material-symbols-rounded">heart_plus</span>
-                      </button>
-                    </div>
-                  </a>
-                  <div class="best-info">
-                    <span class="best-brand">RAY-BAN</span>
-                    <a href="details.html?productId=3003222" class="card-link">
-                      <h3 class="best-item-name">레이밴 헥사곤 선글라스 RB3548N 001 54mm RB3548-N</h3>
-                    </a>
-                    <div class="best-price-group">
-                      <div class="best-price-top">
-                        <span class="best-original">470,000원</span><span class="best-discount">10%</span>
-                      </div>
-                      <div class="best-price-bottom">
-                        <span class="best-price">423,000<span class="unit">원</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="best-card">
-                  <a href="details.html?productId=3003222" class="card-link">
-                    <div class="best-thumb-wrapper">
-                      <img src="image/detail_img1.png" alt="래쉬 클리프트" class="best-thumb" />
-                      <button class="best-wish-btn" aria-label="찜하기">
-                        <span class="material-symbols-rounded">heart_plus</span>
-                      </button>
-                    </div>
-                  </a>
-                  <div class="best-info">
-                    <span class="best-brand">LASH</span>
-                    <a href="details.html?productId=3003222" class="card-link">
-                      <h3 class="best-item-name">래쉬 레트로스펙트 클리프트 안경테 CLIFT BK 46mm 빈티지 에디션</h3>
-                    </a>
-                    <div class="best-price-group">
-                      <div class="best-price-top">
-                        <span class="best-original">198,000원</span><span class="best-discount">25%</span>
-                      </div>
-                      <div class="best-price-bottom">
-                        <span class="best-price">148,500<span class="unit">원</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /#bestGrid -->
+              <!-- Swiper Scrollbar -->
+              <div class="swiper-scrollbar"></div>
             </div>
-            <!-- /.best-grid-track -->
-          </div>
-          <!-- /.best-slider-wrapper -->
-
-          <div class="best-line-container">
-            <span class="long-line"></span>
-            <span class="short-bold-line" id="progressLine"></span>
           </div>
         </div>
       </section>
