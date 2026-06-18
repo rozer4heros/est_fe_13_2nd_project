@@ -1570,7 +1570,8 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin: var(--base-unit) 0 var(--base-unit) 0;
+  margin: var(--base-unit) 0;
+  width: 100%;
 }
 
 .timer_block {
@@ -1578,6 +1579,8 @@
   flex-direction: column;
   align-items: center;
   min-width: 60px;
+
+  margin: 0 4px !important;
 }
 .timer_num {
   color: var(--main--color);
@@ -2423,7 +2426,7 @@
 
 .brand_inner_wrap {
   width: 100%;
-  max-width: 1224px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 110px;
   box-sizing: border-box;
@@ -2530,9 +2533,14 @@
   object-fit: cover;
 }
 
+.brand_product_scroll_container {
+  width: 100%;
+  overflow: visible; /* PC에서는 스크롤 컨테이너를 무력화 */
+}
+
 .brand_product_row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
   column-gap: 32px;
   row-gap: var(--base-unit);
   width: 100%;
@@ -2630,6 +2638,7 @@
   min-width: 0;
 }
 
+
 .inner_sub_pagination {
   margin-top: auto;
 }
@@ -2641,7 +2650,8 @@
 }
 
 .master_pagination {
-  margin: 40px 0;
+  margin-top: var(--base-unit);
+  margin-bottom: calc(var(--base-unit) * 4);
 }
 
 .page_indicator.circle_badge_type {
@@ -2858,16 +2868,15 @@ grid-template-columns: 1fr !important;
   .brand_product_scroll_container {
     display: block !important;
     width: 100% !important;
-    overflow-x: auto !important;
+    overflow-x: auto !important; /* 모바일에서만 가로 스크롤 활성화 */
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     
     margin: 0 !important;
-    padding-left: 20px !important;   /* 첫 번째 카드 왼쪽 시작선 고정 */
-    padding-right: 20px !important;  /* 마지막 카드가 끝날 때 여백 확보 */
+    padding-left: 20px !important;
+    padding-right: 20px !important;
     padding-bottom: 12px;
     box-sizing: border-box;
-    
     scroll-snap-type: x mandatory !important;
   }
 
