@@ -1,0 +1,65 @@
+[
+  {
+    "pickId": "celeb-01",
+    "productId": "3013405",
+    "celebrity": "조정석",
+    "youtubeId": "M5CnROfEekE",
+    "start": 50,
+    "duration": 10,
+    "sourceTitle": "조정석 유튜브 영상"
+  },
+  {
+    "pickId": "celeb-02",
+    "productId": "3007326",
+    "celebrity": "지민",
+    "youtubeId": "RzszmzJvU7M",
+    "start": 102,
+    "duration": 10,
+    "sourceTitle": "지민 공항 영상"
+  },
+  {
+    "pickId": "celeb-03",
+    "productId": "3017094",
+    "celebrity": "지드래곤",
+    "youtubeId": "-v7BQnJB6kg",
+    "start": 328,
+    "duration": 10,
+    "sourceTitle": "굿데이"
+  },
+  {
+    "pickId": "celeb-04",
+    "productId": "3009381",
+    "celebrity": "하정우",
+    "youtubeId": "Fm6CJ3vBwAI",
+    "start": 27,
+    "duration": 10,
+    "sourceTitle": "하정우 유튜브 영상"
+  },
+  {
+    "pickId": "celeb-05",
+    "productId": "3003356",
+    "celebrity": "로제",
+    "youtubeId": "Fd_En3y2amo",
+    "start": 324,
+    "duration": 10,
+    "sourceTitle": "MY VOGUE"
+  },
+  {
+    "pickId": "celeb-06",
+    "productId": "3010607",
+    "celebrity": "홍은채",
+    "youtubeId": "m9v8SYQIcko",
+    "start": 27,
+    "duration": 10,
+    "sourceTitle": "은채의 스타일기"
+  },
+  {
+    "pickId": "celeb-07",
+    "productId": "3004889",
+    "celebrity": "덱스",
+    "youtubeId": "hjNFnXUrojg",
+    "start": 187,
+    "duration": 10,
+    "sourceTitle": "덱스 유튜브 영상"
+  }
+]
