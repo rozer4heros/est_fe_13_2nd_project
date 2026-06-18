@@ -3,11 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!cartLayoutContainer) return;
 
   if (localStorage.getItem("rounz_cart") === null) {
-    const dummyCart = [
-      { productId: "3003222", quantity: 1 },
-      { productId: "11536", quantity: 2 },
-    ];
-    localStorage.setItem("rounz_cart", JSON.stringify(dummyCart));
+    localStorage.setItem("rounz_cart", JSON.stringify([]));
   }
 
   let productsDB = [];
