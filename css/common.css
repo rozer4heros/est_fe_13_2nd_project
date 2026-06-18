@@ -422,6 +422,9 @@ header .wrap > ul:last-child button {
 .like {
   cursor: pointer;
 }
+.like.active {
+  color: var(--point--color);
+}
 
 /* Footer */
 /* 작업자: 유태구; */
@@ -774,7 +777,7 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 10px 10px;
   border: 1px solid var(--light--gray);
   border-radius: 8px;
   background: var(--white);
@@ -921,7 +924,7 @@ input:focus {
 
 @media (min-width: 769px) {
   .filter_dropdown .filter_dropdown_trigger {
-    min-width: 120px;
+    min-width: 108px;
   }
 }
 
@@ -1011,7 +1014,9 @@ input:focus {
 
   cursor: pointer;
 }
-.filter_drawer_btn:hover {
+.filter_drawer_btn:hover,
+.filter_drawer_btn.active {
+  border: 1px solid var(--font--color);
   box-shadow: var(--shadow);
 }
 
@@ -1064,16 +1069,13 @@ input:focus {
   font-weight: 400;
   min-height: var(--base-unit-x3);
 }
-.product_card .product_card_price {
+.product_card .product_card_footer {
   order: 3;
 }
 .product_card .discount_rate {
   color: var(--red);
 }
 @media (min-width: 481px) {
-  .product_card {
-    padding: 0 20px;
-  }
   .product_card_imgbox {
     height: calc(var(--base-unit) * 12);
   }
@@ -1083,7 +1085,7 @@ input:focus {
 }
 @media (min-width: 769px) {
   .product_card {
-    padding: 0 32px;
+    padding: 0 20px;
   }
   .product_card_imgbox .try_on_btn {
     padding: var(--base-unit-x0-5) var(--base-unit);

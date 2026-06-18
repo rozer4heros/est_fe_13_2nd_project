@@ -106,19 +106,19 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then(products => {
+    .then((products) => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach(product => {
+      limitedProducts.forEach((product) => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
@@ -132,10 +132,11 @@ function loadProductsData() {
                 <button type="button" class="wish_btn" aria-label="위시리스트 추가">
                   <span class="material-symbols-outlined">heart_plus</span>
                 </button>
-                <a href="#detail.html" class="detail_view_btn display_h4">
+                <a href="details.html?id=${product.productId}" class="detail_view_btn display_h4">
                   <span class="detail_text">detail view</span>
                   <span class="arrow_circle">&rarr;</span>
                 </a>
+                
               </div>
               <div class="limited_card_info">
                 <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
@@ -156,7 +157,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
@@ -212,11 +213,11 @@ function initSwiper() {
   /* 원본 카드 4장 복제해서 그룹 2~4 채우기 */
   const originals = [...grid.querySelectorAll(".best-card")];
   for (let g = 1; g < TOTAL_GROUPS; g++) {
-    originals.forEach(card => grid.appendChild(card.cloneNode(true)));
+    originals.forEach((card) => grid.appendChild(card.cloneNode(true)));
   }
 
   /* 찜하기 토글 */
-  grid.addEventListener("click", e => {
+  grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".best-wish-btn");
     if (btn) btn.classList.toggle("liked");
   });
@@ -279,6 +280,149 @@ initBrandSection();
 initNewCollection();
 
 /* best picks - 김해나 작업 */
-initBestPicksSlider();
+// initBestPicksSlider();
 
 /* celebs pick - 문송연 */
+const wrapper = document.querySelector(".celeb_slider_wrapper");
+const glaBtn = document.querySelector(".gla_btn");
+const sunBtn = document.querySelector(".sun_btn");
+
+let celebSwiper;
+let products = [];
+let celebPicks = [];
+
+async function loadCelebPickData() {
+  const productRes = await fetch("./data/products.json");
+  const pickRes = await fetch("./data/celebPicks.json");
+
+  products = await productRes.json();
+  celebPicks = await pickRes.json();
+
+  renderCelebPick("안경테");
+}
+
+function createCelebCard(pick, product) {
+  return `
+    <article class="celeb_slide swiper-slide">
+      <div class="celeb_video_box">
+        <iframe
+            class="celeb_video"
+            data-video-id="${pick.youtubeId}"
+            data-start="${pick.start}"
+            src="https://www.youtube.com/embed/${pick.youtubeId}?start=${pick.start}&mute=1&controls=0&rel=0&playsinline=1"
+            title="${pick.celebrity} 착용 영상"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+      </div>
+
+       <div class="celeb_product">
+          <a href="details.html?productId=${product.productId}" class="celeb_product_link">
+            <div class="celeb_product_img_box">
+              <img src="${product.image}" alt="${product.name}" class="celeb_product_img" />
+            </div>
+
+            <div class="celeb_product_info">
+              <p class="celeb_product_brand display_h4">${product.brand}</p>
+              <p class="celeb_product_name body_m">${product.name}</p>
+              <p class="celeb_product_price body_s">
+                ${Number(product.salePrice).toLocaleString()}원
+              </p>
+            </div>
+          </a>
+
+        <button type="button" class="celeb_like" aria-label="좋아요">
+          <span class="material-symbols-rounded">heart_plus</span>
+        </button>
+      </div>
+    </article>
+  `;
+}
+
+function renderCelebPick(category) {
+  const filteredProducts = products.filter(product => product.category === category);
+
+  const matchedData = celebPicks
+    .map(pick => {
+      const product = filteredProducts.find(item => item.productId === pick.productId);
+
+      return product ? { pick, product } : null;
+    })
+    .filter(item => item !== null);
+
+  wrapper.innerHTML = matchedData.map(item => createCelebCard(item.pick, item.product)).join("");
+
+  if (celebSwiper) {
+    celebSwiper.destroy(true, true);
+  }
+
+  celebSwiper = new Swiper(".celeb_swiper", {
+    slidesPerView: 1.25,
+    spaceBetween: 16,
+
+    navigation: {
+      nextEl: ".celeb_next",
+      prevEl: ".celeb_prev",
+    },
+
+    pagination: {
+      el: ".celeb_fraction",
+      type: "fraction",
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1440: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+    },
+  });
+
+  connectLikeButtons();
+  connectYoutubeHover();
+}
+
+function connectLikeButtons() {
+  const likeButtons = document.querySelectorAll(".celeb_like");
+
+  likeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("is-active");
+    });
+  });
+}
+
+glaBtn.addEventListener("click", () => {
+  location.href = "product_list.html?category=안경테";
+});
+
+sunBtn.addEventListener("click", () => {
+  location.href = "product_list.html?category=선글라스";
+});
+
+function connectYoutubeHover() {
+  const iframes = document.querySelectorAll(".celeb_video");
+
+  iframes.forEach(iframe => {
+    const videoId = iframe.dataset.videoId;
+    const start = iframe.dataset.start;
+
+    const pauseSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&mute=1&controls=0&rel=0&playsinline=1`;
+    const playSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&mute=1&controls=0&rel=0&playsinline=1`;
+
+    iframe.addEventListener("mouseenter", () => {
+      iframe.src = playSrc;
+    });
+
+    iframe.addEventListener("mouseleave", () => {
+      iframe.src = pauseSrc;
+    });
+  });
+}
+
+loadCelebPickData();
