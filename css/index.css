@@ -2730,6 +2730,11 @@
 }
 @media (min-width: 769px) {
   .store_locator {
+    padding: calc(var(--base-unit) * 4) 20px;
+  }
+}
+@media (min-width: 1441px) {
+  .store_locator {
     padding: calc(var(--base-unit) * 4) 0px;
   }
 }
