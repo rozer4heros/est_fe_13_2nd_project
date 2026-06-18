@@ -428,25 +428,13 @@ function connectYoutubeHover() {
 loadCelebPickData();
 
 /* 지도 - 유태구 작업 */
-async function initMap() {
-  // Request needed libraries.
-  const [{ AdvancedMarkerElement }, { Map: GoogleMap }] = await Promise.all([
-    google.maps.importLibrary("marker"),
-    google.maps.importLibrary("maps"),
-  ]);
-
-  const mapContainer = document.getElementById("map_api");
-
-  const map = new GoogleMap(mapContainer, {
-    center: { lat: 37.4935506, lng: 127.0310534 },
-    zoom: 15,
-    mapId: "85c8c84b1afe73166dd4c6fe",
-  });
-
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: { lat: 37.4935506, lng: 127.0310534 },
-  });
-  mapContainer.append(marker);
+const mapEl = document.getElementById("map_api");
+let map = null;
+let mapOptions = {
+  center: new naver.maps.LatLng(37.4935506, 127.0310534),
+  zoom: 15,
+};
+function initMap() {
+  map = new naver.maps.Map(mapEl, mapOptions);
 }
-void initMap();
+initMap();
