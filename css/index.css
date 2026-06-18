@@ -2318,6 +2318,7 @@
   margin-bottom: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2727,28 +2728,8 @@
     padding: calc(var(--base-unit) * 4) 32px;
   }
 }
-@media (min-width: 769px) {
-  .store_locator {
-    padding: calc(var(--base-unit) * 4) 20px;
-  }
-}
 @media (min-width: 1441px) {
   .store_locator {
     padding: calc(var(--base-unit) * 4) 0px;
   }
 }
-
-/* AI Face Analysis - 문송연 */
-/* 모바일 퍼스트 */
-
-/* best picks - 오예은 */
-
-/* Limited Time Offer - 김해나 */
-
-/* new collection - 최호찬 */
-
-/* brand section - 김해나 */
-
-/* celebs pick - 문송연 */
-
-/* store section - 유태구 */
