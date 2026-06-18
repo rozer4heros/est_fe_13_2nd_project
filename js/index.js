@@ -136,6 +136,7 @@ function loadProductsData() {
                   <span class="detail_text">detail view</span>
                   <span class="arrow_circle">&rarr;</span>
                 </a>
+                
               </div>
               <div class="limited_card_info">
                 <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
