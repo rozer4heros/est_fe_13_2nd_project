@@ -896,7 +896,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .widget_coupon_track {
   display: flex;
@@ -1945,7 +1945,7 @@
 .new_collection_img_box {
   width: 120px;
   height: 120px;
-  background-color: var(--white);
+  background-color: transparent;
   border-radius: 10px;
   position: relative;
   flex-shrink: 0;
@@ -1953,8 +1953,8 @@
 }
 
 .new_card_img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
