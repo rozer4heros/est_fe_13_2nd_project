@@ -13,10 +13,7 @@
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script>
-      // prettier-ignore
-      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({key: "AIzaSyAF6_i7aOlJ8QUMtVsq1yxkU4bhxRY11dY"});
-    </script>
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=koefltmkf6"></script>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>홈 | ROUNZ</title>
@@ -753,7 +750,7 @@
           <p class="body_xl">가까운 파트너 스토어에서 직접 착용해보세요</p>
         </div>
         <!-- 지도 -->
-        <gmp-map id="map_api" class="map_api"></gmp-map>
+        <div id="map_api" class="map_api"></div>
         <div class="dropdown_toolbar d-flex g-1">
           <div class="dropdown region">
             <div class="dropdown_trigger">
@@ -792,7 +789,7 @@
           현재 위치 사용
         </button>
         <div class="store_list d-flex flex-column g-1">
-          <article class="d-flex flex-column g-0-5 active">
+          <article class="d-flex flex-column g-0-5" data-lat="37.4935506" data-lng="127.0310534">
             <h3 class="display_h4">라운즈 강남역점</h3>
             <ul class="store_tag_list body_m d-flex g-0-5">
               <li>피팅 서비스</li>
@@ -803,7 +800,7 @@
             <p class="store_location body_l">서울특별시 강남구 역삼로 109 1층</p>
             <img src="image/locator_store.jpg" alt="라운즈 강남역점" />
           </article>
-          <article class="d-flex flex-column g-0-5">
+          <article class="d-flex flex-column g-0-5" data-lat="37.3974329" data-lng="127.1107358">
             <h3 class="display_h4">라운즈 판교점</h3>
             <ul class="store_tag_list body_m d-flex g-0-5">
               <li>피팅 서비스</li>
