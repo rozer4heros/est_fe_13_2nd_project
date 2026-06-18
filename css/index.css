@@ -2446,40 +2446,120 @@
 /* brand section 종료 */
 
 /* celebs pick - 문송연 */
-/* 모바일 */
+/* celeb's pick - 모바일 */
 .celebs_pick {
-  width: 100%;
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
   background: var(--font--color);
-  padding: 96px 0;
 }
-.celebs_pick::before {
-  content: "";
-  background-image: url(../image/celeb_background.jpg);
-  background-size: cover;
+
+/* 배경 이미지 */
+.celeb_bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.2;
+
+  pointer-events: none;
 }
-.Celeb_text_container h2,
-.Celeb_text_container p,
-.gla_btn,
-.sun_btn,
-.celeb_product .like {
-  color: var(--white);
-}
+
+/* 제목·버튼 영역 */
 .Celeb_text_container {
+  position: relative;
+  z-index: 2;
+
+  gap: 12px;
+  padding: 40px 20px 20px;
+  box-sizing: border-box;
   text-align: center;
 }
-.gla_btn {
-  border-radius: 50px 0 0 50px;
+
+.Celeb_text_container h2,
+.Celeb_text_container p,
+.Celeb_text_container a {
+  color: var(--white);
+}
+
+.Celeb_text_container a {
+  text-decoration: none;
+}
+
+/* 안경테 / 선글라스 */
+.celeb_category {
+  display: flex;
+  justify-content: center;
+}
+
+.celeb_category button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 110px;
+  height: 44px;
+  padding: 0 20px;
+
   border: 1px solid var(--main--color);
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.gla_btn {
+  border-radius: 10px 0 0 10px;
 }
 
 .sun_btn {
-  border-radius: 0 50px 50px 0;
-  border: 1px solide var(--main--color);
+  margin-left: -1px;
+  border-radius: 0 10px 10px 0;
 }
 
-/* 태블릿 */
+/* 처음에는 둘 다 투명 */
+.celeb_category button {
+  background: transparent;
+}
 
-/* pc */
+/* 클릭된 버튼만 파란색 */
+.celeb_category button.is-active {
+  background: var(--main--color);
+  color: var(--white);
+}
+
+/* 더보기 */
+.celeb_more {
+  align-self: flex-end;
+  margin-top: 4px;
+
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* JS 카드가 출력되는 영역 */
+.celeb_slider_wrapper {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  gap: 12px;
+
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* 매장 찾기 섹션 - 유태구 */
 .store_locator {
@@ -2569,3 +2649,18 @@
     padding: calc(var(--base-unit) * 4) 0px;
   }
 }
+
+/* AI Face Analysis - 문송연 */
+/* 모바일 퍼스트 */
+
+/* best picks - 오예은 */
+
+/* Limited Time Offer - 김해나 */
+
+/* new collection - 최호찬 */
+
+/* brand section - 김해나 */
+
+/* celebs pick - 문송연 */
+
+/* store section - 유태구 */
