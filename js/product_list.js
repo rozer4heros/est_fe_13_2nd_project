@@ -6,6 +6,11 @@
 // DOM Selectors
 // ==========================================
 
+const filterDropdownEls = document.querySelectorAll(".filter_dropdown");
+const filterResetBtnEl = document.querySelector(".reset_btn");
+const productCountEl = document.querySelector(".product_count");
+const sortDropdownEl = document.querySelector(".sort_dropdown");
+
 const productListEl = document.querySelector(".product_list");
 
 // ==========================================
@@ -35,6 +40,7 @@ async function fetchProducts() {
   filteredProducts = allProducts.filter(product => !product.isSoldOut);
 
   renderProducts();
+  updateCount();
 }
 
 function renderProductCard(product) {
@@ -75,9 +81,37 @@ function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
   }
 }
 
+function updateCount(count = filteredProducts.length) {
+  productCountEl.textContent = `총 ${count}개`;
+}
+
 // ==========================================
 // Event Listeners
 // ==========================================
+
+document.addEventListener("click", e => {
+  filterDropdownEls.forEach(fdd => {
+    if (!fdd.contains(e.target)) {
+      fdd.classList.remove("active");
+    }
+  });
+  if (!sortDropdownEl.contains(e.target)) {
+    sortDropdownEl.classList.remove("active");
+  }
+});
+filterDropdownEls.forEach(fdd => {
+  fdd.querySelector(".filter_dropdown_trigger").addEventListener("click", e => {
+    if (fdd.classList.contains("active")) {
+      fdd.classList.remove("active");
+      return;
+    }
+    filterDropdownEls.forEach(f => f.classList.remove("active"));
+    fdd.classList.add("active");
+  });
+});
+sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", e => {
+  sortDropdownEl.classList.toggle("active");
+});
 
 // ==========================================
 // Initialization & Execution

@@ -816,15 +816,16 @@ input:focus {
   max-height: 0;
   padding: 0 24px;
   transition:
-    max-height 0.3s ease-out,
-    padding 0.3s ease-out,
-    border-width 0.3s ease-out;
+    max-height 0.2s ease-out,
+    padding 0.2s ease-out,
+    border-width 0.2s ease-out;
   z-index: 10;
 }
 .filter_dropdown.active .filter_dropdown_menu {
   max-height: 600px;
   padding: 24px;
   border: 1px solid var(--light--gray);
+  z-index: 20;
 }
 
 /* Dropdown Search Box */
