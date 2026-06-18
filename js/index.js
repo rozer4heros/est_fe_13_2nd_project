@@ -1,9 +1,47 @@
-import { renderHeader } from "./modules/header.js";
-import { renderNavDrawer } from "./modules/nav_drawer.js";
-import { renderFooter } from "./modules/footer.js";
+// ==========================================
+// Imports & External Libraries
+// ==========================================
 
 /* new collection */
 import { initNewCollection } from "./newCollection.js";
+import { initBrandSection } from "./brandSection.js";
+
+// hero - 문송연
+// slide 추가
+const heroSwiperEl = document.querySelector(".hero_swiper");
+
+const heroSwiper = new Swiper(".hero_swiper", {
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 0,
+  centeredSlides: false,
+  watchOverflow: true,
+
+  scrollbar: {
+    el: ".hero_swiper .swiper-scrollbar",
+    draggable: true,
+  },
+
+  navigation: {
+    nextEl: ".hero_arrow_next",
+    prevEl: ".hero_arrow_prev",
+  },
+
+  on: {
+    init(swiper) {
+      changeHeroControlColor(swiper);
+    },
+
+    slideChange(swiper) {
+      changeHeroControlColor(swiper);
+    },
+  },
+});
+
+function changeHeroControlColor(swiper) {
+  // 0부터 시작하므로 세 번째 슬라이드는 2
+  heroSwiperEl.classList.toggle("is-stylework", swiper.realIndex === 2);
+}
 
 // ==========================================
 // DOM Selectors
@@ -129,45 +167,37 @@ function loadProductsData() {
 function initSwiper() {
   if (typeof Swiper !== "undefined") {
     new Swiper(".mySwiper", {
-      slidesPerView: 5,
-      spaceBetween: 20,
       centeredSlides: true,
       loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
       navigation: {
         nextEl: nextButton,
         prevEl: prevButton,
       },
-      grabCursor: true,
+      scrollbar: {
+        el: ".swiper_scrollbar",
+        hide: false,
+        draggable: true,
+      },
+      slidesPerView: 1,
+      breakpoints: {
+        481: {
+          slidesPerView: 2.2, //태블릿
+          spaceBetween: 0,
+        },
+        769: {
+          slidesPerView: 5, //PC
+          spaceBetween: 20,
+        },
+      },
     });
   }
 }
 
-/* widget coupon slide */
-if (widgetTrack && widgetSlides.length > 0) {
-  let currentIndex = 0;
-  const slideCount = widgetSlides.length;
-  const slideInterval = 3000;
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slideCount;
-    widgetTrack.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
-  }
-
-  setInterval(nextSlide, slideInterval);
-}
-
-// ==========================================
-// Event Listeners
-// ==========================================
-
-// ==========================================
-// Initialization & Execution
-// ==========================================
-
-/* Render header, nav_drawer, footer - 유태구 작업 */
-renderHeader();
-renderNavDrawer();
-renderFooter();
 // best pick - 오예은 작업
 (function () {
   const grid = document.getElementById("bestGrid");
@@ -219,8 +249,36 @@ renderFooter();
   window.addEventListener("resize", () => goTo(currentPage));
 })();
 
-/* Limited Time Offer 섹션 - 김해나 작업 */
+/* widget coupon slide */
+if (widgetTrack && widgetSlides.length > 0) {
+  let currentIndex = 0;
+  const slideCount = widgetSlides.length;
+  const slideInterval = 3000;
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    widgetTrack.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
+  }
+
+  setInterval(nextSlide, slideInterval);
+}
+
+// ==========================================
+// Event Listeners
+// ==========================================
+
+// ==========================================
+// Initialization & Execution
+// ==========================================
+
+/* Brand 섹션 - 김해나 작업 */
 loadProductsData();
+initBrandSection();
 
 /* new collection */
 initNewCollection();
+
+/* best picks - 김해나 작업 */
+initBestPicksSlider();
+
+/* celebs pick - 문송연 */

@@ -1,3 +1,14 @@
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .ptcolor {
   color: var(--point--color);
 }
@@ -101,6 +112,11 @@
   position: relative;
   border: 1px solid transparent;
 }
+
+.item_info_details .brand_name {
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .cart_item_card {
     border: 1px solid var(--main--light);
@@ -155,7 +171,7 @@
 }
 .qty_btn {
   width: 33px;
-  height: 33px;
+  height: 28px;
   cursor: pointer;
   background: #fafafa;
   color: var(--font--color);
@@ -165,7 +181,7 @@
 }
 .qty_input {
   width: 40px;
-  height: 33px;
+  height: 28px;
   border-left: 1px solid var(--light--gray);
   border-right: 1px solid var(--light--gray);
 }
@@ -199,6 +215,9 @@
   margin-bottom: var(--base-unit-x0-5);
 }
 .summary_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
 }
 
@@ -250,8 +269,7 @@
     border-bottom: none;
   }
 }
-
-/* Responsive Breakpoint: Desktop Layout (min-width: 769px) */
+/* 데스크탑 */
 @media (min-width: 769px) {
   .cart_layout_container {
     display: grid;
@@ -400,4 +418,224 @@
     width: 100%;
     min-height: 48px;
   }
+}
+/* 추천 상품 */
+.best_picks {
+  width: 100%;
+  padding: 60px 0;
+  background-color: var(--white);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.best_picks_wrap {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.best_picks_header {
+  margin-bottom: 32px;
+}
+
+.best_picks_title {
+  color: var(--point--color);
+  margin-bottom: 8px;
+}
+
+.best_picks_subtitle {
+  color: var(--gray);
+}
+.best_picks_slider_window {
+  width: 100%;
+  overflow: hidden;
+}
+.best_picks_slider_track {
+  display: flex;
+  width: 200%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.best_picks_page {
+  width: 50%;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto);
+  gap: 10px;
+}
+
+/* 태블릿 */
+@media (min-width: 481px) and (max-width: 768px) {
+  .best_picks_wrap {
+    max-width: 704px;
+  }
+
+  .best_picks_page {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 769px) {
+  .best_picks_wrap {
+    max-width: 1276px;
+  }
+
+  .best_picks_page {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+}
+/* 페이지네이션 바 */
+.best_picks_indicator_track {
+  width: 64px;
+  height: 4px;
+  background-color: var(--light--gray);
+  margin: 48px auto 0 auto;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.best_picks_indicator_bar {
+  width: 50%;
+  height: 100%;
+  background-color: var(--font--color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* best_picks 컴포넌트 카드 */
+.best_picks_card {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.best_picks_imagebox {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.best_picks_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* transition: transform 0.3s ease; */
+}
+
+.best_picks_card:hover .best_picks_img {
+  transform: scale(1.04);
+}
+
+.best_picks_soldout_badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--gray);
+  color: var(--white);
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
+.best_picks_card.is_soldout .best_picks_img {
+  filter: grayscale(30%) opacity(0.7);
+}
+
+/* 위시 버튼 */
+.best_picks_wishbtn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+}
+
+.best_picks_heart {
+  font-size: 24px;
+  color: var(--font--color);
+  font-variation-settings: "FILL" 0;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.best_picks_wishbtn:hover .best_picks_heart {
+  transform: scale(1.15);
+}
+
+.best_picks_wishbtn.active .best_picks_heart {
+  color: #ff385c;
+  font-variation-settings: "FILL" 1;
+}
+
+.best_picks_infobox {
+  padding: 16px 4px 8px 4px;
+  box-sizing: border-box;
+}
+
+.best_picks_brand {
+  font-weight: 700;
+  color: var(--font--color);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.best_picks_name {
+  color: #4a4a4a;
+  margin-bottom: 12px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.best_picks_pricebox {
+  gap: 2px;
+}
+
+.best_picks_discountrow {
+  gap: 6px;
+}
+
+.best_picks_original {
+  font-size: 12px;
+  color: var(--light--gray);
+  text-decoration: line-through;
+}
+
+.best_picks_rate {
+  font-weight: 700;
+  color: var(--red);
+}
+
+.best_picks_current {
+  color: var(--font--color);
 }
