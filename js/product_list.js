@@ -19,7 +19,9 @@ const productListTabEls = document.querySelectorAll(".product_list_tab");
 const filterDropdownEls = document.querySelectorAll(".filter_dropdown");
 const filterResetBtnEl = document.querySelector(".reset_btn");
 const productCountEls = document.querySelectorAll(".product_count");
+
 const sortDropdownEl = document.querySelector(".sort_dropdown");
+const sortMenuEls = sortDropdownEl.querySelectorAll(".sort_dropdown_menu li");
 
 const inputElsCategory = document.querySelectorAll(".filter_category input");
 const inputElsBrand = document.querySelectorAll(".filter_brand input");
@@ -131,7 +133,7 @@ function renderProductCard(product) {
 
   productListEl.appendChild(itemEl);
 }
-function renderProducts(firstIndex = 0, lastIndex = firstIndex + 11) {
+function renderProducts(firstIndex = (curPage - 1) * 12, lastIndex = firstIndex + 11) {
   productListEl.innerHTML = "";
   updateCount();
   if (filteredProducts.length === 0) {
@@ -182,16 +184,16 @@ function applyFilter() {
     selectedPriceMax >= 300000 ? true : Number(p.salePrice) <= selectedPriceMax,
   );
 
+  curPage = 1;
+  curGroup = 1;
   renderProducts();
 }
-
 function updateLabel() {
   allLabelEls.forEach(label => {
     if (!label.control) return;
     label.control.checked ? label.classList.add("active") : label.classList.remove("active");
   });
 }
-
 function resetFilter() {
   inputElsAll.forEach(input => {
     input.checked = input.value.startsWith("all_");
@@ -213,6 +215,38 @@ function resetFilter() {
   selectedPriceMin = 0;
   selectedPriceMax = 300000;
   applyFilter();
+}
+
+function applySort(sort) {
+  switch (sort) {
+    case "popular":
+      filteredProducts.sort((a, b) => b.wish - a.wish);
+      break;
+    // case latest:
+    // filteredProducts.sort((a,b)=>)
+    // break;
+    case "recommended":
+      filteredProducts.sort(
+        (a, b) => (b.wish + b.reviews * 2) / (1.1 - b.discountRate) - (a.wish + a.reviews * 2) / (1.1 - a.discountRate),
+      );
+      break;
+    case "price_asc":
+      filteredProducts.sort((a, b) => a.salePrice - b.salePrice);
+      break;
+    case "price_desc":
+      filteredProducts.sort((a, b) => b.salePrice - a.salePrice);
+      break;
+    case "most_reviewed":
+      filteredProducts.sort((a, b) => b.reviews - a.reviews);
+      break;
+    default:
+      filteredProducts.sort((a, b) => a.productId - b.productId);
+      break;
+  }
+
+  curPage = 1;
+  curGroup = 1;
+  renderProducts();
 }
 
 function escHTML(string) {
@@ -272,7 +306,7 @@ function moveGroup(dir) {
   curGroup += dir;
   curPage = (curGroup - 1) * 5 + 1;
   createPagination(allProducts.length);
-  renderProducts(filteredData);
+  renderProducts((curPage - 1) * 12, curPage * 12 - 1);
 }
 
 // ==========================================
@@ -316,8 +350,16 @@ filterDropdownEls.forEach(fdd => {
     fdd.classList.add("active");
   });
 });
+
 sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", e => {
   sortDropdownEl.classList.toggle("active");
+});
+sortMenuEls.forEach(sort => {
+  sort.addEventListener("click", e => {
+    sortMenuEls.forEach(s => s.classList.remove("selected"));
+    sort.classList.add("selected");
+    applySort(sort.dataset.value);
+  });
 });
 
 inputElsCategory.forEach(input => {
@@ -402,3 +444,4 @@ pagerNextBtn.addEventListener("click", e => {
 
 fetchProducts();
 updateLabel();
+applySort("recommended");
