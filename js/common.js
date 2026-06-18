@@ -50,6 +50,7 @@ function toggleAccordion(target = navDrawerWrapEl) {
   navQuickLinksEl.classList.add("hidden");
 }
 
+/* 장바구니 담기 함수 추가 */
 function addToCart(productId, quantity = 1) {
   let cartItems = JSON.parse(localStorage.getItem("rounz_cart")) || [];
 
