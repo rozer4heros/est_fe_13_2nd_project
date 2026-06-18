@@ -1004,7 +1004,7 @@
   inset: 0;
   z-index: -1;
 
-  background: url("/image/ai_face_analysis_BG\ -\ M.png") center / cover no-repeat var(--white);
+  background: url("../image/ai_bg_m.png") center / cover no-repeat var(--white);
   opacity: 0.5;
 }
 /* 모바일·태블릿: PC용 버튼 묶음 숨김 */
@@ -1210,9 +1210,24 @@
 
 /* pc버전 */
 @media (min-width: 1440px) {
-  .ai_face_analysis::before {
-    background: url("/image/ai_face_analysis_BG.png") center / cover no-repeat;
-  }
+  .ai_face_analysis {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai_face_analysis::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../image/ai_bg_m.png") center / cover no-repeat;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.ai_face_analysis > * {
+  position: relative;
+  z-index: 1;
+}
   .ai_face_analysis .pc_only {
     display: flex;
   }
