@@ -248,9 +248,23 @@ function setupMasterPagination() {
 
 const row = document.querySelector(".brand_product_row");
 const container = document.querySelector(".brand_product_scroll_container");
-console.log("row padding-left:", getComputedStyle(row).paddingLeft);
-console.log("container margin-left:", getComputedStyle(container).marginLeft);
-console.log("container width:", container.offsetWidth);
-console.log("row width:", row.offsetWidth);
 
-console.log(window.matchMedia("(max-width: 480px)").matches);
+const masterTrack = document.querySelector(".brand_master_slider_track");
+
+if (masterTrack) {
+  masterTrack.addEventListener("click", (e) => {
+    const productCard = e.target.closest(".product_card");
+
+    if (e.target.closest(".btn_wishlist")) {
+      return;
+    }
+
+    if (productCard) {
+      const productId = productCard.dataset.id;
+
+      if (productId) {
+        location.href = `details.html?productId=${productId}`;
+      }
+    }
+  });
+}

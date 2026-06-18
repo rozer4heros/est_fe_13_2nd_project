@@ -132,10 +132,12 @@ function loadProductsData() {
                 <button type="button" class="wish_btn" aria-label="위시리스트 추가">
                   <span class="material-symbols-outlined">heart_plus</span>
                 </button>
-                <a href="#detail.html" class="detail_view_btn display_h4">
+                
+                <a href="details.html?productId=${product.productId}" class="detail_view_btn display_h4">
                   <span class="detail_text">detail view</span>
                   <span class="arrow_circle">&rarr;</span>
                 </a>
+                
               </div>
               <div class="limited_card_info">
                 <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
