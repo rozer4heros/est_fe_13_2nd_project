@@ -422,6 +422,9 @@ header .wrap > ul:last-child button {
 .like {
   cursor: pointer;
 }
+.like.active {
+  color: var(--point--color);
+}
 
 /* Footer */
 /* 작업자: 유태구; */
@@ -1011,7 +1014,9 @@ input:focus {
 
   cursor: pointer;
 }
-.filter_drawer_btn:hover {
+.filter_drawer_btn:hover,
+.filter_drawer_btn.active {
+  border: 1px solid var(--font--color);
   box-shadow: var(--shadow);
 }
 
@@ -1071,9 +1076,6 @@ input:focus {
   color: var(--red);
 }
 @media (min-width: 481px) {
-  .product_card {
-    padding: 0 20px;
-  }
   .product_card_imgbox {
     height: calc(var(--base-unit) * 12);
   }
@@ -1082,6 +1084,9 @@ input:focus {
   }
 }
 @media (min-width: 769px) {
+  .product_card {
+    padding: 0 20px;
+  }
   .product_card_imgbox .try_on_btn {
     padding: var(--base-unit-x0-5) var(--base-unit);
   }
