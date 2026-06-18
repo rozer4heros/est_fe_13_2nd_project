@@ -4,17 +4,19 @@ export function renderNavDrawer() {
   target.classList.add("drawer_wrap", "below_pc");
   target.innerHTML = `
       <div class="drawer">
-        <div>
-          <span class="material-icons-round">arrow_back</span>
+        <div class="">
+          <button class="nav_close_btn material-icons-round">arrow_back</button>
+          <!--
           <div>
             <input type="text" id="search" />
             <label for="search"></label>
           </div>
+          -->
         </div>
         <!-- 검색 버튼 누르면 오버레이(모바일/태블릿) 또는 팝업(웹) -->
-        <dialog></dialog>
+        <!-- <dialog></dialog> -->
         <ul class="display_h3 drawer_accordion_list d-flex flex-column g-1">
-          <li class="active">
+          <li class="">
             <div class="d-flex justify-content-between align-items-center">
               <span>쇼핑</span>
               <span class="material-icons-round">chevron_right</span>
@@ -77,22 +79,22 @@ export function renderNavDrawer() {
             </ul>
           </li>
         </ul>
-        <ul class="body_l d-flex flex-column g-1">
+        <ul class="drawer_quick_links body_l d-flex flex-column g-1">
           <li>
-            <a href="product_list.html" class="d-flex align-items-center">
+            <a href="product_list.html" class="d-flex align-items-center g-0-5">
               <span>찜한 상품</span>
               <span class="material-icons-round">arrow_outward</span>
             </a>
           </li>
           <li>
-            <a href="cart.html" class="d-flex align-items-center">
+            <a href="cart.html" class="d-flex align-items-center g-0-5">
               <span>장바구니</span>
               <span class="material-icons-round">arrow_outward</span>
             </a>
           </li>
         </ul>
         <div></div>
-        <div class="display_h3">
+        <div class="display_h3 d-flex justify-content-center g-0-5">
           <a href="login.html" class="drawer_login">log in</a>
           <a href="signup.html" class="drawer_signup">sign up</a>
         </div>
