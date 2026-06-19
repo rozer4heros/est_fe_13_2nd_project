@@ -92,7 +92,7 @@ function escapeHtml(value = "") {
 
 // 추천 상품 상세페이지 주소
 function getProductDetailUrl(product) {
-  return `detail.html?productId=${encodeURIComponent(product.productId)}`;
+  return `details.html?productId=${encodeURIComponent(product.productId)}`;
 }
 
 /* 상품 데이터 불러오기 */

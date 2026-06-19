@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/product_list.css" />
     <title>상품 목록 | ROUNZ</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1 class="logo">rounz</h1>
+    </header>
     <div class="nav_drawer_wrap drawer_wrap below_pc">
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
@@ -92,43 +93,43 @@
             <ul class="filter_drawer_shape accordion_body body_l">
               <li>
                 <label for="shape_round" class="filter_drawer_btn">
-                  <img src="image/filter/round.png" alt="" />
+                  <img src="image/filter/round.webp" alt="" />
                   라운드
                 </label>
               </li>
               <li>
                 <label for="shape_square" class="filter_drawer_btn">
-                  <img src="image/filter/square.png" alt="" />
+                  <img src="image/filter/square.webp" alt="" />
                   스퀘어
                 </label>
               </li>
               <li>
                 <label for="shape_cateye" class="filter_drawer_btn">
-                  <img src="image/filter/cat_eye.png" alt="" />
+                  <img src="image/filter/cat_eye.webp" alt="" />
                   캣아이
                 </label>
               </li>
               <li>
                 <label for="shape_halfrim" class="filter_drawer_btn">
-                  <img src="image/filter/half_rim.png" alt="" />
+                  <img src="image/filter/half_rim.webp" alt="" />
                   하금테
                 </label>
               </li>
               <li>
                 <label for="shape_mix" class="filter_drawer_btn">
-                  <img src="image/filter/mix.png" alt="" />
+                  <img src="image/filter/mix.webp" alt="" />
                   믹스
                 </label>
               </li>
               <li>
                 <label for="shape_aviator" class="filter_drawer_btn">
-                  <img src="image/filter/aviator.png" alt="" />
+                  <img src="image/filter/aviator.webp" alt="" />
                   보잉
                 </label>
               </li>
               <li>
                 <label for="shape_etc" class="filter_drawer_btn">
-                  <img src="image/filter/etc.png" alt="" />
+                  <img src="image/filter/etc.webp" alt="" />
                   기타
                 </label>
               </li>
@@ -545,16 +546,16 @@
           <p class="product_count body_m">총 0개</p>
           <div class="sort_dropdown body_l">
             <div class="sort_dropdown_trigger d-flex align-items-center">
-              추천순
+              <span class="sort_selected_text">추천순</span>
               <span class="material-icons-round">expand_more</span>
             </div>
             <ul class="sort_dropdown_menu d-flex flex-column align-items-center">
               <li class="" data-value="popular">인기순</li>
               <!-- <li class="" data-value="latest">최신순</li> -->
               <li class="selected" data-value="recommended">추천순</li>
-              <li class="" data-value="price_asc">낮은 가격 순</li>
-              <li class="" data-value="price_desc">높은 가격 순</li>
-              <li class="" data-value="most_reviewed">리뷰 많은 순</li>
+              <li class="" data-value="price_asc">낮은 가격순</li>
+              <li class="" data-value="price_desc">높은 가격순</li>
+              <li class="" data-value="most_reviewed">리뷰 많은순</li>
             </ul>
           </div>
         </div>
