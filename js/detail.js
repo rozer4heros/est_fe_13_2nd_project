@@ -188,13 +188,10 @@ function renderGallery(product) {
     return;
   }
 
-  const galleryImages = getUniqueImages([
-    product.mainImage,
-
-    ...(Array.isArray(product.thumbImgs) ? product.thumbImgs : []),
-
-    product.image,
-  ]);
+  const galleryImages =
+    Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0
+      ? getUniqueImages(product.thumbImgs)
+      : getUniqueImages([product.mainImage, product.image]);
 
   if (galleryImages.length === 0) {
     mainSwiperWrapper.innerHTML = "";
@@ -362,7 +359,9 @@ function renderDetailImages(product) {
   const detailImages = getUniqueImages(
     Array.isArray(product.detailImgs) && product.detailImgs.length > 0
       ? product.detailImgs
-      : [product.image, product.mainImage],
+      : Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0
+        ? product.thumbImgs
+        : [product.image, product.mainImage],
   );
 
   if (detailImages.length === 0) {
@@ -620,3 +619,40 @@ wishBtn?.addEventListener("click", () => {
 });
 
 loadDetailProduct();
+/* 장바구니 담기 로직 */
+const submitBtn = document.querySelector(".submit-button");
+
+if (submitBtn) {
+  submitBtn.addEventListener("click", () => {
+    // 상품 데이터가 로드되지 않았다면 중단
+    if (!currentProduct) {
+      alert("상품 정보를 불러오는 중입니다. 잠시 후 다시 시도해주세요.");
+      return;
+    }
+
+    // cart.js와 동일하게 'rounz_cart' 키 사용
+    const cart = JSON.parse(localStorage.getItem("rounz_cart")) || [];
+
+    const cartItem = {
+      productId: currentProduct.productId,
+      quantity: 1,
+    };
+
+    // 장바구니에 이미 같은 상품이 있는지 확인
+    const existingItem = cart.find(item => String(item.productId) === String(cartItem.productId));
+
+    if (existingItem) {
+      existingItem.quantity += 1; // 이미 있다면 수량만 증가
+    } else {
+      cart.push(cartItem); // 없다면 새로 추가
+    }
+
+    // 로컬 스토리지에 저장
+    localStorage.setItem("rounz_cart", JSON.stringify(cart));
+
+    // 사용자에게 확인 후 장바구니 페이지로 이동
+    if (confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?")) {
+      location.href = "cart.html";
+    }
+  });
+}

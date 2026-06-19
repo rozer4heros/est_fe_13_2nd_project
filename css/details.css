@@ -634,6 +634,7 @@
   width: calc(100% - 40px);
   height: auto;
   min-height: max(620px, calc(100svh - 72px));
+  gap: var(--base-unit-x2);
 
   margin-inline: auto;
 
