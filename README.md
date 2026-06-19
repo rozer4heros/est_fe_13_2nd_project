@@ -130,13 +130,13 @@ Q. 미디어 쿼리(반응형) 기준점은 어떻게 되는지?
 * 문송연 (팀장)
 담당 역할: 기획 리드, 디자인 리드, 개발 서브
 
-**디자인:** 메인 페이지 디자인
+**디자인:** 메인 페이지 전체 디자인
 
 **구현:** 메인 페이지 - 히어로 섹션, AI 분석 섹션, 셀럽 픽(숏폼) 섹션
 
 Email: ansthddus01@gmail.com
 
-
+---
 
 * 김해나 (팀원)
 담당 역할: 기획 리드, 디자인 서브, 개발 서브
@@ -151,7 +151,7 @@ Email: ansthddus01@gmail.com
 
 Email: happynnah@gmail.com
 
-
+---
    
 * 유태구 (팀원)
 담당 역할: 디자인 서브, 개발 리드
@@ -164,7 +164,7 @@ Email: happynnah@gmail.com
 
 Email: rozer4heros@gmail.com
 
-
+---
    
 * 최호찬 (팀원)
 담당 역할: 디자인 서브, 개발 서브
@@ -177,7 +177,7 @@ Email: rozer4heros@gmail.com
 
 Email: dhdpdms0712@gmail.com
 
-
+---
    
 * 오예은 (팀원)
 담당 역할: 디자인 서브, 개발 서브
