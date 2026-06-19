@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (card && card.dataset.id) {
-        window.location.href = `details.html?id=${card.dataset.id}`;
+        window.location.href = `details.html?productId=${card.dataset.id}`;
       }
     });
   }
@@ -279,15 +279,108 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentPage = 0;
 
-    indicatorTrack.addEventListener("click", () => {
-      currentPage = currentPage === 0 ? 1 : 0;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
 
+    sliderTrack.style.transition = "transform 0.4s ease-in-out";
+    indicatorBar.style.transition = "transform 0.4s ease-in-out";
+    indicatorBar.style.width = "50%";
+
+    function updateSliderPosition() {
       if (currentPage === 1) {
         sliderTrack.style.transform = "translateX(-50%)";
         indicatorBar.style.transform = "translateX(100%)";
       } else {
         sliderTrack.style.transform = "translateX(0)";
         indicatorBar.style.transform = "translateX(0)";
+      }
+    }
+
+    indicatorTrack.addEventListener("click", () => {
+      currentPage = currentPage === 0 ? 1 : 0;
+      updateSliderPosition();
+    });
+
+    function getPositionX(event) {
+      return event.type.includes("touch") ? event.touches[0].clientX : event.clientX;
+    }
+
+    function dragStart(event) {
+      if (event.target.closest(".best_picks_wishbtn")) return;
+
+      isDragging = true;
+      startX = getPositionX(event);
+      sliderTrack.style.transition = "none";
+    }
+
+    function dragMove(event) {
+      if (!isDragging) return;
+      const currentX = getPositionX(event);
+      const diffX = currentX - startX;
+
+      const trackWidth = sliderTrack.offsetWidth;
+      const baseTranslate = currentPage === 1 ? -trackWidth / 2 : 0;
+      currentTranslate = baseTranslate + diffX;
+
+      sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function dragEnd(event) {
+      if (!isDragging) return;
+      isDragging = false;
+      sliderTrack.style.transition = "transform 0.4s ease-in-out";
+
+      const trackWidth = sliderTrack.offsetWidth;
+      const baseTranslate = currentPage === 1 ? -trackWidth / 2 : 0;
+      const dragDistance = currentTranslate - baseTranslate;
+
+      if (dragDistance < -50 && currentPage === 0) {
+        currentPage = 1;
+      } else if (dragDistance > 50 && currentPage === 1) {
+        currentPage = 0;
+      }
+
+      updateSliderPosition();
+    }
+
+    sliderTrack.addEventListener("mousedown", dragStart);
+    sliderTrack.addEventListener("mousemove", dragMove);
+    window.addEventListener("mouseup", dragEnd);
+
+    sliderTrack.addEventListener("touchstart", dragStart, { passive: true });
+    sliderTrack.addEventListener("touchmove", dragMove, { passive: true });
+    sliderTrack.addEventListener("touchend", dragEnd);
+  }
+  function bindBestPicksEvents(container) {
+    let clickStartX = 0;
+    let clickStartY = 0;
+
+    container.addEventListener("mousedown", e => {
+      clickStartX = e.clientX;
+      clickStartY = e.clientY;
+    });
+
+    container.addEventListener("click", e => {
+      const wishBtn = e.target.closest(".best_picks_wishbtn");
+      const card = e.target.closest(".best_picks_card");
+
+      if (wishBtn) {
+        e.stopPropagation();
+        wishBtn.classList.toggle("active");
+        return;
+      }
+
+      const moveX = Math.abs(e.clientX - clickStartX);
+      const moveY = Math.abs(e.clientY - clickStartY);
+      if (moveX > 5 || moveY > 5) {
+        e.preventDefault();
+        return;
+      }
+
+      if (card && card.dataset.id) {
+        window.location.href = `details.html?productId=${card.dataset.id}`;
       }
     });
   }
