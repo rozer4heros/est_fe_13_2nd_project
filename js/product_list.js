@@ -75,7 +75,7 @@ let paginationCount = 0;
 // ==========================================
 
 async function fetchProducts() {
-  await fetch("../data/products.json")
+  await fetch("./data/products.json")
     .then(response => {
       if (!response.ok) throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       return response.json();
