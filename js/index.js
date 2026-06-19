@@ -536,8 +536,7 @@ function createIframeHTML(videoId, start, title) {
   `;
 }
 
-/* 좋아요 버튼 */
-celebSection?.addEventListener("click", event => {
+celebSection?.addEventListener("click", (event) => {
   const likeBtn = event.target.closest(".celeb_like");
 
   if (!likeBtn || !celebSection.contains(likeBtn)) return;
@@ -548,7 +547,7 @@ celebSection?.addEventListener("click", event => {
 /* 유튜브 썸네일 → hover 시 iframe 생성 */
 celebSection?.addEventListener(
   "mouseenter",
-  event => {
+  (event) => {
     const videoBox = event.target.closest(".celeb_video_box");
 
     if (!videoBox || !celebSection.contains(videoBox)) return;
@@ -566,7 +565,7 @@ celebSection?.addEventListener(
 /* hover 해제 시 다시 썸네일로 변경 */
 celebSection?.addEventListener(
   "mouseleave",
-  event => {
+  (event) => {
     const videoBox = event.target.closest(".celeb_video_box");
 
     if (!videoBox || !celebSection.contains(videoBox)) return;
