@@ -6,8 +6,50 @@
 import { initNewCollection } from "./newCollection.js";
 import { initBrandSection } from "./brandSection.js";
 
-// hero - 문송연
-// slide 추가
+// ==========================================
+// DOM Selectors
+// ==========================================
+
+/* Limited Time Offer 섹션 - 김해나 작업 */
+const sliderTrack = document.querySelector(".limited_slider_track");
+const prevButton = document.querySelector(".limited_btn_prev");
+const nextButton = document.querySelector(".limited_btn_next");
+
+const daysEl = document.querySelector(".timer_days");
+const hoursEl = document.querySelector(".timer_hours");
+const minEl = document.querySelector(".timer_min");
+const secEl = document.querySelector(".timer_sec");
+
+/* widget coupon slide */
+const widgetTrack = document.querySelector(".widget_coupon_track");
+const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
+
+/* Best Picks - 오예은 */
+const bestSection = document.querySelector(".best-picks-section");
+const bestGrid = bestSection?.querySelector("#bestGrid");
+
+/* celebs pick - 문송연 */
+const wrapper = document.querySelector(".celeb_slider_wrapper");
+const glaBtn = document.querySelector(".gla_btn");
+const sunBtn = document.querySelector(".sun_btn");
+
+// ==========================================
+// State & Constants
+// ==========================================
+
+/* Limited Time Offer 섹션 - 김해나 작업 */
+const targetDate = new Date("July 17, 2026 10:00:00").getTime();
+let timerInterval = null;
+
+/* celebs pick */
+let celebPicks = [];
+let celebSwiper = null;
+let bestSwiper = null;
+
+// ==========================================
+// Hero Swiper - 문송연
+// ==========================================
+
 const heroSwiperEl = document.querySelector(".hero_swiper");
 
 const heroSwiper = new Swiper(".hero_swiper", {
@@ -31,7 +73,6 @@ const heroSwiper = new Swiper(".hero_swiper", {
     init(swiper) {
       changeHeroControlColor(swiper);
     },
-
     slideChange(swiper) {
       changeHeroControlColor(swiper);
     },
@@ -39,41 +80,13 @@ const heroSwiper = new Swiper(".hero_swiper", {
 });
 
 function changeHeroControlColor(swiper) {
-  // 0부터 시작하므로 세 번째 슬라이드는 2
   heroSwiperEl.classList.toggle("is-stylework", swiper.realIndex === 2);
 }
 
 // ==========================================
-// DOM Selectors
+// Timer - 김해나 작업
 // ==========================================
 
-/* Limited Time Offer 섹션 - 김해나 작업 */
-const sliderTrack = document.querySelector(".limited_slider_track");
-const prevButton = document.querySelector(".limited_btn_prev");
-const nextButton = document.querySelector(".limited_btn_next");
-
-const daysEl = document.querySelector(".timer_days");
-const hoursEl = document.querySelector(".timer_hours");
-const minEl = document.querySelector(".timer_min");
-const secEl = document.querySelector(".timer_sec");
-
-/* widget coupon slide */
-const widgetTrack = document.querySelector(".widget_coupon_track");
-const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
-
-// ==========================================
-// State & Constants
-// ==========================================
-
-/* Limited Time Offer 섹션 - 김해나 작업 */
-const targetDate = new Date("July 17, 2026 10:00:00").getTime();
-let timerInterval = null;
-
-// ==========================================
-// Functions & Core Logic
-// ==========================================
-
-/* Limited Time Offer 섹션 - 김해나 작업 */
 function updateTimer() {
   const now = new Date().getTime();
   const difference = targetDate - now;
@@ -97,73 +110,56 @@ function updateTimer() {
   if (minEl) minEl.textContent = String(minutes).padStart(2, "0");
   if (secEl) secEl.textContent = String(seconds).padStart(2, "0");
 }
-// updateTimer() failsafe
+
 if (daysEl || hoursEl || minEl || secEl) {
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
 }
-// 여기까지가 타이머
 
-function loadProductsData() {
-  fetch("data/products.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((products) => {
-      if (!products || !Array.isArray(products)) return;
+// ==========================================
+// Limited Time Offer - 김해나 작업
+// ==========================================
 
-      const limitedProducts = products.slice(0, 20);
+function renderLimitedOffer(products) {
+  const limitedProducts = products.slice(0, 20);
 
-      let cardHTML = "";
-      limitedProducts.forEach((product) => {
-        //가격 자동 콤마 변환 처리
-        const formattedPrice = Number(product.salePrice || 0).toLocaleString();
+  let cardHTML = "";
+  limitedProducts.forEach((product) => {
+    const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
-        cardHTML += `
-    <li class="limited_slide_item swiper-slide">
-      <div class="limited_card_image_wrap">
-        <img
-            src="${product.image || ""}"
-            alt="${product.name || ""}"
-            loading="lazy"/>
-        <button type="button" class="wish_btn" aria-label="위시리스트 추가">
-          <span class="material-symbols-outlined">heart_plus</span>
-        </button>
-        
-        <a href="details.html?productId=${product.productId}" class="detail_view_btn display_h4">
-          <span class="detail_text">detail view</span>
-          <span class="arrow_circle">&rarr;</span>
-        </a>
-        
-      </div>
-      <div class="limited_card_info">
-        <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
-        <p class="limited_product_name body_xl">${product.name || ""}</p>
-        <div class="limited_price_wrap">
-          <span class="limited_discount_rate body_xl">${product.discountRate || ""}&#37;</span>
-          <span class="limited_price body_xl">${formattedPrice}원</span>
+    cardHTML += `
+      <li class="limited_slide_item swiper-slide">
+        <div class="limited_card_image_wrap">
+          <img
+              src="${product.image || ""}"
+              alt="${product.name || ""}"
+              loading="lazy"/>
+          <button type="button" class="wish_btn" aria-label="위시리스트 추가">
+            <span class="material-symbols-outlined">heart_plus</span>
+          </button>
+          <a href="details.html?productId=${product.productId}" class="detail_view_btn display_h4">
+            <span class="detail_text">detail view</span>
+            <span class="arrow_circle">&rarr;</span>
+          </a>
         </div>
-        <p class="delivery_badge body_cap"><span class="material-icons-round body_cap">shopping_cart</span> 무료/당일배송</p>
-      </div>
-    </li>
-  `;
-      });
+        <div class="limited_card_info">
+          <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
+          <p class="limited_product_name body_xl">${product.name || ""}</p>
+          <div class="limited_price_wrap">
+            <span class="limited_discount_rate body_xl">${product.discountRate || ""}&#37;</span>
+            <span class="limited_price body_xl">${formattedPrice}원</span>
+          </div>
+          <p class="delivery_badge body_cap"><span class="material-icons-round body_cap">shopping_cart</span> 무료/당일배송</p>
+        </div>
+      </li>
+    `;
+  });
 
-      if (sliderTrack) {
-        sliderTrack.innerHTML = cardHTML;
-      }
+  if (sliderTrack) {
+    sliderTrack.innerHTML = cardHTML;
+  }
 
-      initSwiper();
-    })
-    .catch((error) => {
-      console.error("데이터 로딩 실패:", error);
-      if (sliderTrack) {
-        sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
-      }
-    });
+  initSwiper();
 }
 
 function initSwiper() {
@@ -188,206 +184,161 @@ function initSwiper() {
       slidesPerView: 1,
       breakpoints: {
         481: {
-          slidesPerView: 2.2, //태블릿
+          slidesPerView: 2.2,
           spaceBetween: 0,
         },
         769: {
-          slidesPerView: 5, //PC
+          slidesPerView: 5,
           spaceBetween: 20,
         },
       },
     });
   }
 }
-/* Best Picks - 오예은 */
 
-const bestSection = document.querySelector(".best-picks-section");
+// ==========================================
+// Best Picks - 오예은
+// ==========================================
 
-if (bestSection) {
-  const bestGrid = bestSection.querySelector("#bestGrid");
+function formatPrice(price) {
+  const numberPrice = Number(price || 0);
+  return Number.isFinite(numberPrice) ? numberPrice.toLocaleString("ko-KR") : "0";
+}
 
-  let bestSwiper = null;
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
-  function formatPrice(price) {
-    const numberPrice = Number(price || 0);
+function getDetailUrl(product) {
+  return `details.html?productId=${encodeURIComponent(product.productId)}`;
+}
 
-    return Number.isFinite(numberPrice) ? numberPrice.toLocaleString("ko-KR") : "0";
-  }
+function getProductImage(product) {
+  if (product.image) return product.image;
+  if (product.mainImage) return product.mainImage;
+  if (Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0) return product.thumbImgs[0];
+  return "";
+}
 
-  function escapeHtml(value = "") {
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
+function createBestCard(product) {
+  const detailUrl = getDetailUrl(product);
+  const image = getProductImage(product);
 
-  function getDetailUrl(product) {
-    return `details.html?productId=${encodeURIComponent(product.productId)}`;
-  }
+  const brand = product.brand || "ROUNZ";
+  const name = product.name || "상품명";
+  const salePrice = Number(product.salePrice || 0);
+  const discountRate = Number(product.discountRate || 0);
 
-  function getProductImage(product) {
-    if (product.image) {
-      return product.image;
-    }
+  return `
+    <article class="product_card best-card swiper-slide">
+      <a href="${detailUrl}" class="product_card_imgbox">
+        <img
+          src="${escapeHtml(image)}"
+          alt="${escapeHtml(name)}"
+          loading="lazy"
+        />
+        <button type="button" class="try_on_btn body_xl text-center">
+          TRY ON
+        </button>
+      </a>
 
-    if (product.mainImage) {
-      return product.mainImage;
-    }
+      <div class="d-flex flex-column g-0-5">
+        <h3 class="product_name body_xl">
+          <a href="${detailUrl}">
+            ${escapeHtml(name)}
+          </a>
+        </h3>
 
-    if (Array.isArray(product.thumbImgs) && product.thumbImgs.length > 0) {
-      return product.thumbImgs[0];
-    }
+        <div class="product_card_header d-flex justify-content-between align-items-center">
+          <span class="brand display_h4">
+            ${escapeHtml(brand)}
+          </span>
 
-    return "";
-  }
+          <button
+            type="button"
+            class="like product_card_wish_btn material-symbols-rounded"
+            aria-label="찜하기"
+          >heart_plus</button>
+        </div>
 
-  async function loadBestPicks() {
-    try {
-      const response = await fetch("data/products.json");
-
-      if (!response.ok) {
-        throw new Error(`products.json 로딩 실패: ${response.status}`);
-      }
-
-      const products = await response.json();
-
-      if (!Array.isArray(products)) {
-        throw new Error("상품 데이터가 배열이 아닙니다.");
-      }
-
-      renderBestPicks(products);
-    } catch (error) {
-      console.error("Best Picks 로딩 실패:", error);
-
-      if (bestGrid) {
-        bestGrid.innerHTML = `
-          <p class="body_l">
-            Best Picks 상품을 불러오지 못했습니다.
-          </p>
-        `;
-      }
-    }
-  }
-
-  function renderBestPicks(products) {
-    if (!bestGrid) return;
-
-    const bestProducts = products
-      .filter((product) => product && !product.isSoldOut)
-      .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
-      .slice(0, 8);
-
-    bestGrid.innerHTML = bestProducts.map((product) => createBestCard(product)).join("");
-
-    initBestSwiper();
-  }
-
-  function createBestCard(product) {
-    const detailUrl = getDetailUrl(product);
-    const image = getProductImage(product);
-
-    const brand = product.brand || "ROUNZ";
-    const name = product.name || "상품명";
-    const salePrice = Number(product.salePrice || 0);
-    const discountRate = Number(product.discountRate || 0);
-
-    return `
-      <article class="product_card best-card swiper-slide">
-        <a href="${detailUrl}" class="product_card_imgbox">
-          <img
-            src="${escapeHtml(image)}"
-            alt="${escapeHtml(name)}"
-            loading="lazy"
-          />
-
-          <button type="button" class="try_on_btn body_xl text-center">
-            TRY ON
-          </button>
-        </a>
-
-        <div class="d-flex flex-column g-0-5">
-          <h3 class="product_name body_xl">
-            <a href="${detailUrl}">
-              ${escapeHtml(name)}
-            </a>
-          </h3>
-
-          <div class="product_card_header d-flex justify-content-between align-items-center">
-            <span class="brand display_h4">
-              ${escapeHtml(brand)}
+        <div class="product_card_footer d-flex justify-content-between align-items-center">
+          <div class="product_card_price d-flex align-items-center g-0-5">
+            <span class="price display_h4">
+              ${formatPrice(salePrice)}원
             </span>
 
-            <button
-              type="button"
-              class="like product_card_wish_btn material-symbols-rounded"
-              aria-label="찜하기"
-            >heart_plus</button>
-          </div>
-
-          <div class="product_card_footer d-flex justify-content-between align-items-center">
-            <div class="product_card_price d-flex align-items-center g-0-5">
-              <span class="price display_h4">
-                ${formatPrice(salePrice)}원
-              </span>
-
-              ${
-                discountRate > 0
-                  ? `
-                    <span class="discount_rate body_xl">
-                      ${discountRate}%
-                    </span>
-                  `
-                  : ""
-              }
-            </div>
+            ${
+              discountRate > 0
+                ? `
+                  <span class="discount_rate body_xl">
+                    ${discountRate}%
+                  </span>
+                `
+                : ""
+            }
           </div>
         </div>
-      </article>
-    `;
+      </div>
+    </article>
+  `;
+}
+
+function renderBestPicks(products) {
+  if (!bestGrid) return;
+
+  const bestProducts = products
+    .filter((product) => product && !product.isSoldOut)
+    .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
+    .slice(0, 8);
+
+  bestGrid.innerHTML = bestProducts.map((product) => createBestCard(product)).join("");
+
+  initBestSwiper();
+}
+
+function initBestSwiper() {
+  if (typeof Swiper === "undefined") {
+    console.error("Swiper를 찾을 수 없습니다.");
+    return;
   }
 
-  function initBestSwiper() {
-    if (typeof Swiper === "undefined") {
-      console.error("Swiper를 찾을 수 없습니다.");
-      return;
-    }
-
-    if (bestSwiper) {
-      bestSwiper.destroy(true, true);
-    }
-
-    bestSwiper = new Swiper(".best-swiper", {
-      slidesPerView: 2,
-      spaceBetween: 16,
-      grabCursor: true,
-
-      scrollbar: {
-        el: ".best-swiper .swiper-scrollbar",
-        draggable: true,
-        hide: false,
-      },
-
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 24,
-        },
-
-        1440: {
-          slidesPerView: 4,
-          spaceBetween: 24,
-        },
-      },
-    });
+  if (bestSwiper) {
+    bestSwiper.destroy(true, true);
   }
 
-  bestGrid?.addEventListener("click", (event) => {
+  bestSwiper = new Swiper(".best-swiper", {
+    slidesPerView: 2,
+    spaceBetween: 16,
+    grabCursor: true,
+
+    scrollbar: {
+      el: ".best-swiper .swiper-scrollbar",
+      draggable: true,
+      hide: false,
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1440: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+      },
+    },
+  });
+}
+
+if (bestGrid) {
+  bestGrid.addEventListener("click", (event) => {
     const wishBtn = event.target.closest(".product_card_wish_btn");
-
     const cartBtn = event.target.closest(".material-icons-outlined");
-
     const tryOnBtn = event.target.closest(".try_on_btn");
 
     if (wishBtn) {
@@ -397,18 +348,14 @@ if (bestSection) {
       wishBtn.classList.toggle("is-active");
 
       const isActive = wishBtn.classList.contains("is-active");
-
       wishBtn.textContent = isActive ? "favorite" : "heart_plus";
-
       wishBtn.setAttribute("aria-label", isActive ? "찜 취소" : "찜하기");
-
       return;
     }
 
     if (cartBtn) {
       event.preventDefault();
       event.stopPropagation();
-
       alert("장바구니에 담겼습니다.");
       return;
     }
@@ -416,50 +363,14 @@ if (bestSection) {
     if (tryOnBtn) {
       event.preventDefault();
       event.stopPropagation();
-
       alert("가상피팅 페이지로 이동합니다.");
     }
   });
-
-  loadBestPicks();
 }
 
 // ==========================================
-// Event Listeners
+// Celeb Picks - 문송연
 // ==========================================
-
-// ==========================================
-// Initialization & Execution
-// ==========================================
-
-/* Brand 섹션 - 김해나 작업 */
-loadProductsData();
-initBrandSection();
-
-/* new collection */
-initNewCollection();
-
-/* best picks - 김해나 작업 */
-// initBestPicksSlider();
-
-/* celebs pick - 문송연 */
-const wrapper = document.querySelector(".celeb_slider_wrapper");
-const glaBtn = document.querySelector(".gla_btn");
-const sunBtn = document.querySelector(".sun_btn");
-
-let celebSwiper;
-let products = [];
-let celebPicks = [];
-
-async function loadCelebPickData() {
-  const productRes = await fetch("./data/products.json");
-  const pickRes = await fetch("./data/celebPicks.json");
-
-  products = await productRes.json();
-  celebPicks = await pickRes.json();
-
-  renderCelebPick("안경테");
-}
 
 function createCelebCard(pick, product) {
   return `
@@ -477,20 +388,20 @@ function createCelebCard(pick, product) {
           </iframe>
       </div>
 
-       <div class="celeb_product">
-          <a href="details.html?productId=${product.productId}" class="celeb_product_link">
-            <div class="celeb_product_img_box">
-              <img src="${product.image}" alt="${product.name}" class="celeb_product_img" />
-            </div>
+      <div class="celeb_product">
+        <a href="details.html?productId=${product.productId}" class="celeb_product_link">
+          <div class="celeb_product_img_box">
+            <img src="${product.image}" alt="${product.name}" class="celeb_product_img" />
+          </div>
 
-            <div class="celeb_product_info">
-              <p class="celeb_product_brand display_h4">${product.brand}</p>
-              <p class="celeb_product_name body_m">${product.name}</p>
-              <p class="celeb_product_price body_s">
-                ${Number(product.salePrice).toLocaleString()}원
-              </p>
-            </div>
-          </a>
+          <div class="celeb_product_info">
+            <p class="celeb_product_brand display_h4">${product.brand}</p>
+            <p class="celeb_product_name body_m">${product.name}</p>
+            <p class="celeb_product_price body_s">
+              ${Number(product.salePrice).toLocaleString()}원
+            </p>
+          </div>
+        </a>
 
         <button type="button" class="celeb_like" aria-label="좋아요">
           <span class="material-symbols-rounded">heart_plus</span>
@@ -500,13 +411,12 @@ function createCelebCard(pick, product) {
   `;
 }
 
-function renderCelebPick(category) {
+function renderCelebPick(category, products) {
   const filteredProducts = products.filter((product) => product.category === category);
 
   const matchedData = celebPicks
     .map((pick) => {
       const product = filteredProducts.find((item) => item.productId === pick.productId);
-
       return product ? { pick, product } : null;
     })
     .filter((item) => item !== null);
@@ -549,7 +459,6 @@ function renderCelebPick(category) {
 
 function connectLikeButtons() {
   const likeButtons = document.querySelectorAll(".celeb_like");
-
   likeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.toggle("is-active");
@@ -557,17 +466,8 @@ function connectLikeButtons() {
   });
 }
 
-glaBtn.addEventListener("click", () => {
-  location.href = "product_list.html?category=안경테";
-});
-
-sunBtn.addEventListener("click", () => {
-  location.href = "product_list.html?category=선글라스";
-});
-
 function connectYoutubeHover() {
   const iframes = document.querySelectorAll(".celeb_video");
-
   iframes.forEach((iframe) => {
     const videoId = iframe.dataset.videoId;
     const start = iframe.dataset.start;
@@ -578,16 +478,54 @@ function connectYoutubeHover() {
     iframe.addEventListener("mouseenter", () => {
       iframe.src = playSrc;
     });
-
     iframe.addEventListener("mouseleave", () => {
       iframe.src = pauseSrc;
     });
   });
 }
 
-loadCelebPickData();
+glaBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=안경테";
+});
 
-/* 매장 찾기 섹션 - 유태구 작업 */
+sunBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=선글라스";
+});
+
+// ==========================================
+// 통합 데이터 로딩 (products.json 1번만 fetch)
+// ==========================================
+
+async function loadAllData() {
+  try {
+    const [productsRes, celebPickRes] = await Promise.all([
+      fetch("data/products.json"),
+      fetch("./data/celebPicks.json"),
+    ]);
+
+    if (!productsRes.ok) throw new Error(`products.json 로딩 실패: ${productsRes.status}`);
+    if (!celebPickRes.ok) throw new Error(`celebPicks.json 로딩 실패: ${celebPickRes.status}`);
+
+    const products = await productsRes.json();
+    celebPicks = await celebPickRes.json();
+
+    if (!Array.isArray(products)) throw new Error("상품 데이터가 배열이 아닙니다.");
+
+    renderLimitedOffer(products);
+    renderBestPicks(products);
+    renderCelebPick("안경테", products);
+  } catch (error) {
+    console.error("데이터 로딩 실패:", error);
+    if (sliderTrack) {
+      sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
+    }
+  }
+}
+
+// ==========================================
+// 매장 찾기 섹션 - 유태구 작업
+// ==========================================
+
 const storeDropdownEls = document.querySelectorAll(".store_locator .dropdown");
 const storeArticleEls = document.querySelectorAll(".store_list article");
 const mapEl = document.getElementById("map_api");
@@ -627,8 +565,9 @@ document.addEventListener("click", (e) => {
     }
   });
 });
+
 storeDropdownEls.forEach((sdd) => {
-  sdd.querySelector(".dropdown_trigger").addEventListener("click", (e) => {
+  sdd.querySelector(".dropdown_trigger").addEventListener("click", () => {
     if (sdd.classList.contains("active")) {
       sdd.classList.remove("active");
       return;
@@ -637,15 +576,14 @@ storeDropdownEls.forEach((sdd) => {
     sdd.classList.add("active");
   });
 });
+
 storeArticleEls.forEach((store) => {
-  store.addEventListener("click", (e) => {
+  store.addEventListener("click", () => {
     if (store.classList.contains("active")) {
       store.classList.remove("active");
       return;
     }
-    storeArticleEls.forEach((s) => {
-      s.classList.remove("active");
-    });
+    storeArticleEls.forEach((s) => s.classList.remove("active"));
     store.classList.add("active");
 
     if (!map) return;
@@ -656,3 +594,11 @@ storeArticleEls.forEach((store) => {
     marker.setPosition(pos);
   });
 });
+
+// ==========================================
+// Initialization & Execution
+// ==========================================
+
+initBrandSection();
+initNewCollection();
+loadAllData();
