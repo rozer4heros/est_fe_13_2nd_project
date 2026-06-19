@@ -3,23 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Symbols+Rounded"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=koefltmkf6"></script>
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=koefltmkf6"></script>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>홈 | ROUNZ</title>
   </head>
   <body class="page_main">
     <header>
+      <h1 class="logo">rounz</h1>
       <!-- JS로 넣을 예정 -->
       <!-- components.html 참고 -->
     </header>
@@ -223,6 +224,7 @@
       <!-- 퀵메뉴 - 최호찬 -->
       <section class="widget">
         <div class="wrap d-flex flex-column">
+          <h2 class="sr_only">위젯</h2>
           <ul class="widget_menu d-flex justify-content-between align-items-center">
             <li><img src="image/widget_ai_analysis.png" alt="" /><span class="body_l">AI 분석</span></li>
             <li><img src="image/widget_virtual_fitting.png" alt="" /><span class="body_l">가상피팅</span></li>
@@ -365,9 +367,9 @@
         </div>
 
         <!-- 슬라이더 -->
-        <section class="limited_product_slider">
+        <div class="limited_product_slider">
           <div class="limited_slider_header">
-            <a href="#" class="more_btn">더보기 &rarr;</a>
+            <a href="product_list.html" class="more_btn">더보기 &rarr;</a>
           </div>
 
           <div class="swiper mySwiper">
@@ -381,7 +383,7 @@
             <ul class="limited_slider_track swiper-wrapper d-flex"></ul>
             <div class="swiper_scrollbar"></div>
           </div>
-        </section>
+        </div>
       </section>
 
       <!-- Limited Time Offer 섹션 끝 -->
@@ -392,7 +394,7 @@
         <div class="wrap">
           <div class="new_collection_header d-flex flex-column align-items-center text-center">
             <div>
-              <p class="new_collection_eyebrow display_h1">new collection</p>
+              <h2 class="new_collection_eyebrow display_h1">new collection</h2>
               <p class="new_collection_desc body_xl">새롭게 입고된 브랜드 컬렉션</p>
             </div>
             <a href="product_list.html" class="new_collection_more body_cap">더보기 &rarr;</a>
@@ -414,7 +416,7 @@
         <div class="brand_inner_wrap">
           <h2 class="display_h1 text-center">brand</h2>
 
-          <section class="brand_slider d-flex">
+          <div class="brand_slider d-flex">
             <div class="brand_slider_roller row_top d-flex">
               <ul class="brand_rolling_list">
                 <li class="brand_rolling_item" aria-hidden="true">
@@ -524,16 +526,16 @@
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
 
           <div class="brand_master_slider_track">
             <article class="brand_content_block d-flex" data-block-index="0">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
-                <a href="#" class="more_btn">더보기 &rarr;</a>
+                <h2 class="brand_name_title display_h2">brand_name_title</h2>
+                <a href="product_list.html" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
-                <img src="" alt="brand banner" />
+                <img src="image/fnq.png" alt="brand banner" />
               </div>
 
               <div class="brand_product_scroll_container">
@@ -553,11 +555,11 @@
 
             <article class="brand_content_block d-flex" data-block-index="1">
               <div class="brand_block_header d-flex justify-content-between align-items-center">
-                <h2 class="brand_name_title display_h2"></h2>
-                <a href="#" class="more_btn">더보기 &rarr;</a>
+                <h2 class="brand_name_title display_h2">brand_name_title</h2>
+                <a href="product_list.html" class="more_btn">더보기 &rarr;</a>
               </div>
               <div class="brand_wide_banner">
-                <img src="" alt="brand banner" />
+                <img src="image/fnq.png" alt="brand banner" />
               </div>
 
               <div class="brand_product_scroll_container">
