@@ -6,15 +6,15 @@ let currentMasterPage = 0;
 let subPageStatus = { 0: 0, 1: 0 };
 
 const brandBannerMap = {
-  "MIU MIU": "image/brand_section/miumiu_banner1.png",
-  "RAY-BAN": "image/brand_section/rayban_banner.png",
-  LASH: "image/brand_section/lash_banner.png",
-  LOCOMOTIVE: "image/brand_section/locomotive_banner.png",
-  OAKLEY: "image/brand_section/oakley_banner.png",
-  "TART OPTICAL": "image/brand_section/tartoptical_banner.png",
-  "RADIO EYES": "image/brand_section/radioeyes_banner.png",
-  "ROUNZ ABSOLUTE": "image/brand_section/rounzabsolute_banner.png",
-  PARANOID: "image/brand_section/paranoid_banner.png",
+  "MIU MIU": "image/brand_section/miumiu_banner1.webp",
+  "RAY-BAN": "image/brand_section/rayban_banner.webp",
+  LASH: "image/brand_section/lash_banner.webp",
+  LOCOMOTIVE: "image/brand_section/locomotive_banner.webp",
+  OAKLEY: "image/brand_section/oakley_banner.webp",
+  "TART OPTICAL": "image/brand_section/tartoptical_banner.webp",
+  "RADIO EYES": "image/brand_section/radioeyes_banner.webp",
+  "ROUNZ ABSOLUTE": "image/brand_section/rounzabsolute_banner.webp",
+  PARANOID: "image/brand_section/paranoid_banner.webp",
 };
 
 function isMobile() {
@@ -91,7 +91,7 @@ function renderMasterPage() {
       article.querySelector(".brand_name_title").textContent = brandName;
 
       const bannerImg = article.querySelector(".brand_wide_banner img");
-      bannerImg.src = brandBannerMap[brandName] || "/image/brand_section/default_banner.png";
+      bannerImg.src = brandBannerMap[brandName] || "/image/brand_section/default_banner.webp";
       bannerImg.alt = `${brandName} main banner`;
 
       const scrollContainer = article.querySelector(".brand_product_scroll_container");

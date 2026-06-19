@@ -1,14 +1,5 @@
-// ==========================================
-// Imports & External Libraries
-// ==========================================
-
-/* new collection */
 import { initNewCollection } from "./newCollection.js";
 import { initBrandSection } from "./brandSection.js";
-
-// ==========================================
-// DOM Selectors
-// ==========================================
 
 /* Limited Time Offer 섹션 - 김해나 작업 */
 const sliderTrack = document.querySelector(".limited_slider_track");
@@ -28,22 +19,10 @@ const widgetSlides = document.querySelectorAll(".widget_coupon_slide");
 const bestSection = document.querySelector(".best-picks-section");
 const bestGrid = bestSection?.querySelector("#bestGrid");
 
-/* celebs pick - 문송연 */
-const wrapper = document.querySelector(".celeb_slider_wrapper");
-const glaBtn = document.querySelector(".gla_btn");
-const sunBtn = document.querySelector(".sun_btn");
-
-// ==========================================
-// State & Constants
-// ==========================================
-
 /* Limited Time Offer 섹션 - 김해나 작업 */
 const targetDate = new Date("July 17, 2026 10:00:00").getTime();
 let timerInterval = null;
 
-/* celebs pick */
-let celebPicks = [];
-let celebSwiper = null;
 let bestSwiper = null;
 
 // ==========================================
@@ -124,7 +103,7 @@ function renderLimitedOffer(products) {
   const limitedProducts = products.slice(0, 20);
 
   let cardHTML = "";
-  limitedProducts.forEach(product => {
+  limitedProducts.forEach((product) => {
     const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
     cardHTML += `
@@ -292,11 +271,11 @@ function renderBestPicks(products) {
   if (!bestGrid) return;
 
   const bestProducts = products
-    .filter(product => product && !product.isSoldOut)
+    .filter((product) => product && !product.isSoldOut)
     .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
     .slice(0, 8);
 
-  bestGrid.innerHTML = bestProducts.map(product => createBestCard(product)).join("");
+  bestGrid.innerHTML = bestProducts.map((product) => createBestCard(product)).join("");
 
   initBestSwiper();
 }
@@ -336,7 +315,7 @@ function initBestSwiper() {
 }
 
 if (bestGrid) {
-  bestGrid.addEventListener("click", event => {
+  bestGrid.addEventListener("click", (event) => {
     const wishBtn = event.target.closest(".product_card_wish_btn");
     const cartBtn = event.target.closest(".material-icons-outlined");
     const tryOnBtn = event.target.closest(".try_on_btn");
@@ -372,19 +351,11 @@ if (bestGrid) {
 // Celeb Picks - 문송연
 // ==========================================
 
-// ==========================================
-// Initialization & Execution
-// ==========================================
-
 /* Brand 섹션 - 김해나 작업 */
-loadProductsData();
 initBrandSection();
 
 /* new collection */
 initNewCollection();
-
-/* best picks - 김해나 작업 */
-// initBestPicksSlider();
 
 /* celebs pick - 문송연 */
 const celebSection = document.querySelector(".celebs_pick");
@@ -470,16 +441,16 @@ function createCelebCard(pick, product) {
 function renderCelebPick(category) {
   if (!wrapper) return;
 
-  const filteredProducts = products.filter(product => product.category === category);
+  const filteredProducts = products.filter((product) => product.category === category);
 
   const matchedData = celebPicks
-    .map(pick => {
-      const product = filteredProducts.find(item => item.productId === pick.productId);
+    .map((pick) => {
+      const product = filteredProducts.find((item) => item.productId === pick.productId);
       return product ? { pick, product } : null;
     })
-    .filter(item => item !== null);
+    .filter((item) => item !== null);
 
-  wrapper.innerHTML = matchedData.map(item => createCelebCard(item.pick, item.product)).join("");
+  wrapper.innerHTML = matchedData.map((item) => createCelebCard(item.pick, item.product)).join("");
 
   if (celebSwiper) {
     celebSwiper.destroy(true, true);
@@ -591,8 +562,8 @@ sunBtn?.addEventListener("click", () => {
 /* 셀럽픽 섹션이 화면 근처에 왔을 때만 데이터 로딩 */
 if (celebSection) {
   const celebObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
+    (entries) => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
         loadCelebPickData();
@@ -655,8 +626,8 @@ let map = null;
 let marker = null;
 
 const mapObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
+  (entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         map = new naver.maps.Map(mapEl, mapOptions);
         marker = new naver.maps.Marker({
@@ -674,32 +645,32 @@ const mapObserver = new IntersectionObserver(
 
 mapObserver.observe(mapEl);
 
-document.addEventListener("click", e => {
-  storeDropdownEls.forEach(sdd => {
+document.addEventListener("click", (e) => {
+  storeDropdownEls.forEach((sdd) => {
     if (!sdd.contains(e.target)) {
       sdd.classList.remove("active");
     }
   });
 });
 
-storeDropdownEls.forEach(sdd => {
+storeDropdownEls.forEach((sdd) => {
   sdd.querySelector(".dropdown_trigger").addEventListener("click", () => {
     if (sdd.classList.contains("active")) {
       sdd.classList.remove("active");
       return;
     }
-    storeDropdownEls.forEach(f => f.classList.remove("active"));
+    storeDropdownEls.forEach((f) => f.classList.remove("active"));
     sdd.classList.add("active");
   });
 });
 
-storeArticleEls.forEach(store => {
+storeArticleEls.forEach((store) => {
   store.addEventListener("click", () => {
     if (store.classList.contains("active")) {
       store.classList.remove("active");
       return;
     }
-    storeArticleEls.forEach(s => s.classList.remove("active"));
+    storeArticleEls.forEach((s) => s.classList.remove("active"));
     store.classList.add("active");
 
     if (!map) return;
