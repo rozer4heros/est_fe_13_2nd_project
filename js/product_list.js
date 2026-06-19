@@ -75,7 +75,7 @@ let paginationCount = 0;
 // ==========================================
 
 async function fetchProducts() {
-  await fetch("../data/products.json")
+  await fetch("./data/products.json")
     .then(response => {
       if (!response.ok) throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       return response.json();
@@ -108,7 +108,7 @@ function renderProductCard(product) {
         </h3>
         <div class="product_card_header d-flex justify-content-between align-items-center">
           <span class="brand display_h3">${escHTML(product.brand ?? "")}</span>
-          <button class="like product_card_wish_btn material-symbols-rounded">heart_plus</button>
+          <a href="../login.html" class="like product_card_wish_btn material-symbols-rounded">heart_plus</a>
         </div>
         <div class="product_card_footer d-flex justify-content-between align-items-center">
           <div class="product_card_price d-flex align-items-center g-0-5">
