@@ -267,6 +267,10 @@ header nav a {
   text-align: center;
   padding: calc(var(--base-unit) * 0.5) 0;
 }
+header .wrap > ul li .material-icons-outlined,
+header .wrap > ul li .material-icons-round {
+  font-size: var(--base-unit);
+}
 header .wrap > ul:last-child {
   display: flex;
   align-items: center;
@@ -1025,7 +1029,6 @@ input:focus {
   display: flex;
   flex-direction: column;
   gap: var(--base-unit);
-  padding: 0 12px;
 }
 .product_card_imgbox {
   position: relative;
