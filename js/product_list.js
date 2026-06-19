@@ -77,14 +77,14 @@ let paginationCount = 0;
 
 async function fetchProducts() {
   await fetch("./data/products.json")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       return response.json();
     })
-    .then(result => {
+    .then((result) => {
       allProducts = result;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("데이터 로드 실패: ", error);
     });
 
@@ -92,6 +92,8 @@ async function fetchProducts() {
   console.log(filteredProducts[0]);
 
   renderProducts();
+  applySort("recommended");
+  applyURLParams();
 }
 
 function renderProductCard(product) {
@@ -128,7 +130,7 @@ function renderProductCard(product) {
     </article>
   `;
 
-  itemEl.querySelector(".product_card_wish_btn").addEventListener("click", e => {
+  itemEl.querySelector(".product_card_wish_btn").addEventListener("click", (e) => {
     window.localStorage.setItem("");
   });
 
@@ -148,7 +150,7 @@ function renderProducts(firstIndex = (curPage - 1) * 12, lastIndex = firstIndex 
 }
 
 function updateCount(count = filteredProducts.length) {
-  [...productCountEls].forEach(countEl => {
+  [...productCountEls].forEach((countEl) => {
     countEl.textContent = `총 ${count}개`;
   });
 }
@@ -158,30 +160,32 @@ function applyFilter() {
 
   // 디버깅을 위해 .filter() 함수 체인을 끊어야만 했다...
   // 카테고리
-  filteredProducts = allProducts.filter(p =>
+  filteredProducts = allProducts.filter((p) =>
     selectedCategories.includes("all_category") || selectedCategories.length === 0
       ? true
       : selectedCategories.includes(p.category),
   );
   // 브랜드
-  filteredProducts = filteredProducts.filter(p =>
-    selectedBrands.length === 0 ? true : selectedBrands.includes(p.brand),
+  filteredProducts = filteredProducts.filter((p) =>
+    selectedBrands.length === 0
+      ? true
+      : selectedBrands.some((brand) => (brand === "ROUNZ" ? p.brand?.startsWith("ROUNZ") : p.brand === brand)),
   );
   // 모양
-  filteredProducts = filteredProducts.filter(p =>
+  filteredProducts = filteredProducts.filter((p) =>
     selectedShapes.length === 0 ? true : selectedShapes.includes(p.shape),
   );
   // 성별
-  filteredProducts = filteredProducts.filter(p =>
+  filteredProducts = filteredProducts.filter((p) =>
     selectedGenders.length === 0 ? true : selectedGenders.includes(p.gender),
   );
   // 프레임 크기
-  filteredProducts = filteredProducts.filter(p =>
+  filteredProducts = filteredProducts.filter((p) =>
     selectedSizes.includes("all_size") || selectedSizes.length === 0 ? true : selectedSizes.includes(p.frameSize),
   );
   // 가격
-  filteredProducts = filteredProducts.filter(p => Number(p.salePrice) >= selectedPriceMin);
-  filteredProducts = filteredProducts.filter(p =>
+  filteredProducts = filteredProducts.filter((p) => Number(p.salePrice) >= selectedPriceMin);
+  filteredProducts = filteredProducts.filter((p) =>
     selectedPriceMax >= 300000 ? true : Number(p.salePrice) <= selectedPriceMax,
   );
 
@@ -190,16 +194,16 @@ function applyFilter() {
   renderProducts();
 }
 function updateLabel() {
-  allLabelEls.forEach(label => {
+  allLabelEls.forEach((label) => {
     if (!label.control) return;
     label.control.checked ? label.classList.add("active") : label.classList.remove("active");
   });
 }
 function resetFilter() {
-  inputElsAll.forEach(input => {
+  inputElsAll.forEach((input) => {
     input.checked = input.value.startsWith("all_");
   });
-  allLabelEls.forEach(label => {
+  allLabelEls.forEach((label) => {
     label.classList.remove("active");
     if (label.getAttribute("for").endsWith("_all")) label.classList.add("active");
   });
@@ -257,6 +261,66 @@ function applySort(sort) {
   renderProducts();
 }
 
+function applyURLParams() {
+  let params = new URLSearchParams(location.search);
+
+  console.log(params.get("category"));
+
+  inputElsCategory.forEach((input) => {
+    input.checked = false;
+  });
+
+  switch (params.get("category")) {
+    case "glasses":
+    case "frame":
+      inputElsAll.find((i) => i.value === "안경테").checked = true;
+      break;
+    case "sunglasses":
+      inputElsAll.find((i) => i.value === "선글라스").checked = true;
+      break;
+    default:
+      inputElsAll.find((i) => i.value === "all_category").checked = true;
+      break;
+  }
+  selectedCategories = [...inputElsCategory].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("brand")) {
+  //   case "rayban":
+  //     break;
+  //   case "oakley":
+  //     break;
+  //   case "lash":
+  //     break;
+  //   case "locomotive":
+  //     break;
+  //   case "rounz":
+  //     break;
+  //   case "izipizi":
+  //     break;
+  //   case "carven":
+  //     break;
+  //   case "chloe":
+  //     break;
+  //   default:
+  //     break;
+  // }
+  // selectedBrands = [...inputElsBrand].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("shape")) {
+  // }
+  // selectedShapes = [...inputElsShape].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("gender")) {
+  // }
+  // selectedGenders = [...inputElsGender].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("size")) {
+  // }
+  // selectedSizes = [...inputElsSize].filter((l) => l.checked).map((l) => l.value);
+
+  applyFilter();
+}
+
 function escHTML(string) {
   if (!string) return "";
   return string
@@ -287,8 +351,8 @@ function createPagination(total = filteredProducts.length) {
   else pagerNextBtn.classList.remove("disabled");
 
   const pagerBtns = pager.querySelectorAll(".page_num");
-  pagerBtns.forEach(curBtn => {
-    curBtn.addEventListener("click", e => {
+  pagerBtns.forEach((curBtn) => {
+    curBtn.addEventListener("click", (e) => {
       e.preventDefault();
       let targetPage = Number(curBtn.textContent);
 
@@ -297,7 +361,7 @@ function createPagination(total = filteredProducts.length) {
       renderProducts((curPage - 1) * 12, curPage * 12 - 1);
 
       // 모든 페이지에서 active 제거, 현재 활성화된 a에만 active 추가
-      pagerBtns.forEach(b => {
+      pagerBtns.forEach((b) => {
         b.classList.remove("active");
       });
       curBtn.classList.add("active");
@@ -321,25 +385,25 @@ function moveGroup(dir) {
 // Event Listeners
 // ==========================================
 
-filterDrawerBtnEl.addEventListener("click", e => {
+filterDrawerBtnEl.addEventListener("click", (e) => {
   filterDrawerWrapEl.classList.add("active");
 });
-filterDrawerWrapEl.addEventListener("click", e => {
+filterDrawerWrapEl.addEventListener("click", (e) => {
   if (e.target === e.currentTarget) {
     filterDrawerWrapEl.classList.remove("active");
   }
 });
-filterDrawerCloseEl.addEventListener("click", e => {
+filterDrawerCloseEl.addEventListener("click", (e) => {
   filterDrawerWrapEl.classList.remove("active");
 });
-filterAccordionEls.forEach(acc => {
-  acc.querySelector(".accordion_header").addEventListener("click", e => {
+filterAccordionEls.forEach((acc) => {
+  acc.querySelector(".accordion_header").addEventListener("click", (e) => {
     acc.classList.toggle("active");
   });
 });
 
-document.addEventListener("click", e => {
-  filterDropdownEls.forEach(fdd => {
+document.addEventListener("click", (e) => {
+  filterDropdownEls.forEach((fdd) => {
     if (!fdd.contains(e.target)) {
       fdd.classList.remove("active");
     }
@@ -348,74 +412,74 @@ document.addEventListener("click", e => {
     sortDropdownEl.classList.remove("active");
   }
 });
-filterDropdownEls.forEach(fdd => {
-  fdd.querySelector(".filter_dropdown_trigger").addEventListener("click", e => {
+filterDropdownEls.forEach((fdd) => {
+  fdd.querySelector(".filter_dropdown_trigger").addEventListener("click", (e) => {
     if (fdd.classList.contains("active")) {
       fdd.classList.remove("active");
       return;
     }
-    filterDropdownEls.forEach(f => f.classList.remove("active"));
+    filterDropdownEls.forEach((f) => f.classList.remove("active"));
     fdd.classList.add("active");
   });
 });
 
-sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", e => {
+sortDropdownEl.querySelector(".sort_dropdown_trigger").addEventListener("click", (e) => {
   sortDropdownEl.classList.toggle("active");
 });
-sortMenuEls.forEach(sort => {
-  sort.addEventListener("click", e => {
-    sortMenuEls.forEach(s => s.classList.remove("selected"));
+sortMenuEls.forEach((sort) => {
+  sort.addEventListener("click", (e) => {
+    sortMenuEls.forEach((s) => s.classList.remove("selected"));
     sort.classList.add("selected");
     sortDropdownEl.classList.remove("active");
     applySort(sort.dataset.value);
   });
 });
 
-inputElsCategory.forEach(input => {
-  input.addEventListener("change", e => {
-    selectedCategories = [...inputElsCategory].filter(l => l.checked).map(l => l.value);
+inputElsCategory.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    selectedCategories = [...inputElsCategory].filter((l) => l.checked).map((l) => l.value);
     applyFilter();
   });
 });
-inputElsBrand.forEach(input => {
-  input.addEventListener("change", e => {
-    selectedBrands = [...inputElsBrand].filter(l => l.checked).map(l => l.value);
+inputElsBrand.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    selectedBrands = [...inputElsBrand].filter((l) => l.checked).map((l) => l.value);
     applyFilter();
   });
 });
-inputElsShape.forEach(input => {
-  input.addEventListener("change", e => {
-    selectedShapes = [...inputElsShape].filter(l => l.checked).map(l => l.value);
+inputElsShape.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    selectedShapes = [...inputElsShape].filter((l) => l.checked).map((l) => l.value);
     applyFilter();
   });
 });
-inputElsGender.forEach(input => {
-  input.addEventListener("change", e => {
-    selectedGenders = [...inputElsGender].filter(l => l.checked).map(l => l.value);
+inputElsGender.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    selectedGenders = [...inputElsGender].filter((l) => l.checked).map((l) => l.value);
     applyFilter();
   });
 });
-inputElsSize.forEach(input => {
-  input.addEventListener("change", e => {
+inputElsSize.forEach((input) => {
+  input.addEventListener("change", (e) => {
     if (e.target.value.startsWith("all_")) {
-      inputElsSize.forEach(l => {
+      inputElsSize.forEach((l) => {
         l.checked = false;
       });
       e.target.checked = true;
     } else {
-      [...allLabelEls].find(l => l.control?.value === "all_size").control.checked = false;
+      [...allLabelEls].find((l) => l.control?.value === "all_size").control.checked = false;
     }
 
-    selectedSizes = [...inputElsSize].filter(l => l.checked).map(l => l.value);
+    selectedSizes = [...inputElsSize].filter((l) => l.checked).map((l) => l.value);
     if (selectedSizes.length === 0) {
-      [...allLabelEls].find(l => l.control?.value === "all_size").control.checked = true;
+      [...allLabelEls].find((l) => l.control?.value === "all_size").control.checked = true;
     }
     applyFilter();
   });
 });
-inputElsPrice.forEach(input => {
-  input.addEventListener("change", e => {
-    const priceValues = [...inputElsPrice].map(l => Number(l.value));
+inputElsPrice.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    const priceValues = [...inputElsPrice].map((l) => Number(l.value));
     selectedPriceMin = Math.min(...priceValues);
     selectedPriceMax = Math.max(...priceValues);
     drawerPriceMinEl.value = String(selectedPriceMin);
@@ -423,26 +487,26 @@ inputElsPrice.forEach(input => {
     applyFilter();
   });
 });
-drawerPriceMinEl.addEventListener("change", e => {
+drawerPriceMinEl.addEventListener("change", (e) => {
   let targetEl = [...inputElsPrice].sort((a, b) => Number(a.value) - Number(b.value))[0];
   targetEl.value = drawerPriceMinEl.value;
 });
-drawerPriceMaxEl.addEventListener("change", e => {
+drawerPriceMaxEl.addEventListener("change", (e) => {
   let targetEl = [...inputElsPrice].sort((a, b) => Number(b.value) - Number(a.value))[0];
   targetEl.value = drawerPriceMaxEl.value;
 });
 
-resetBtnEls.forEach(reset => {
-  reset.addEventListener("click", e => {
+resetBtnEls.forEach((reset) => {
+  reset.addEventListener("click", (e) => {
     resetFilter();
   });
 });
 
-pagerPrevBtn.addEventListener("click", e => {
+pagerPrevBtn.addEventListener("click", (e) => {
   e.preventDefault();
   moveGroup(-1);
 });
-pagerNextBtn.addEventListener("click", e => {
+pagerNextBtn.addEventListener("click", (e) => {
   e.preventDefault();
   moveGroup(+1);
 });
@@ -452,5 +516,3 @@ pagerNextBtn.addEventListener("click", e => {
 // ==========================================
 
 fetchProducts();
-updateLabel();
-applySort("recommended");
