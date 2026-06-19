@@ -526,7 +526,7 @@ function createIframeHTML(videoId, start, title) {
   `;
 }
 
-celebSection?.addEventListener("click", event => {
+celebSection?.addEventListener("click", (event) => {
   const likeBtn = event.target.closest(".celeb_like");
 
   if (likeBtn && celebSection.contains(likeBtn)) {
@@ -536,7 +536,7 @@ celebSection?.addEventListener("click", event => {
 
 celebSection?.addEventListener(
   "mouseenter",
-  event => {
+  (event) => {
     const videoBox = event.target.closest(".celeb_video_box");
 
     if (!videoBox || !celebSection.contains(videoBox)) return;
@@ -553,7 +553,7 @@ celebSection?.addEventListener(
 
 celebSection?.addEventListener(
   "mouseleave",
-  event => {
+  (event) => {
     const videoBox = event.target.closest(".celeb_video_box");
 
     if (!videoBox || !celebSection.contains(videoBox)) return;
@@ -595,23 +595,23 @@ function connectYoutubeHover() {
   iframes.forEach((iframe) => {
     const videoId = iframe.dataset.videoId;
     const start = iframe.dataset.start;
-
+  });
+}
 /* 셀럽픽 섹션이 화면 근처에 왔을 때만 데이터 로딩 */
 if (celebSection) {
-  const celebObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+  const celebObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-    iframe.addEventListener("mouseenter", () => {
-      iframe.src = playSrc;
-    });
-    iframe.addEventListener("mouseleave", () => {
-      iframe.src = pauseSrc;
+      iframe.addEventListener("mouseenter", () => {
+        iframe.src = playSrc;
+      });
+      iframe.addEventListener("mouseleave", () => {
+        iframe.src = pauseSrc;
+      });
     });
   });
 }
-
 glaBtn?.addEventListener("click", () => {
   location.href = "product_list.html?category=안경테";
 });
