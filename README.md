@@ -112,10 +112,9 @@ Q. 미디어 쿼리(반응형) 기준점은 어떻게 되는지?
 ---
 
 ## 6. 🔗 참고 및 출처
-
-- 원작 및 기획 모티브: 라운즈(ROUNZ) 대한민국 대표 안경 쇼핑몰
-- 디자인 벤치마킹 레퍼런스:
-- 아이콘 및 에셋: Google Material Icons / Material Symbols / Material Icons Round
+* 원작 및 기획 모티브: 라운즈(ROUNZ) 대한민국 대표 안경 쇼핑몰
+* 디자인 벤치마킹 레퍼런스: 쿠팡, 젠틀 몬스터, LG 홈스타일, JINS 등
+* 아이콘 및 에셋: Google Material Icons / Material Symbols / Material Icons Round
 
 ---
 
@@ -127,28 +126,38 @@ Q. 미디어 쿼리(반응형) 기준점은 어떻게 되는지?
 ---
 
 ## 8. 👤 프로그래머 정보
+* 문송연 (팀장)
+ * 담당 역할: 기획 리드, 디자인 리드, 개발 서브
+  * 메인 페이지 디자인
+  * 메인 페이지 - 히어로 섹션, AI 분석 섹션, 셀럽 픽(숏폼) 섹션
+ * Email: ansthddus01@gmail.com
 
-- 문송연 (팀장)
-  - 담당 역할:
-  - GitHub: [](@)
-  - Email: [](~@~.com)
-- 김해나 (팀원)
-  - 담당 역할:
-  - GitHub: [](@)
-  - Email: [](~@~.com)
-- 유태구 (팀원)
-  - 담당 역할:
-    - Git Repo 관리
-    - 헤더, 푸터, 측면 Nav
-    - 메인 페이지 안경원 찾기(지도) 섹션
-    - 상품 목록 페이지
-  - [GitHub](https://github.com/rozer4heros)
-  - [Email](https://rozer4heros@gmail.com)
-- 최호찬 (팀원)
-  - 담당 역할:
-  - GitHub: [](@)
-  - Email: [](~@~.com)
-- 오예은 (팀원)
-  - 담당 역할:
-  - GitHub: [](@)
-  - Email: [](~@~.com)
+
+* 김해나 (팀원)
+ * 담당 역할: 기획 서브, 디자인 서브, 개발 서브
+  * 메인 페이지 - 타임 세일 섹션, 브랜드 섹션
+  * 로그인 페이지
+  * 회원가입 페이지
+ * Email: happynnah@gmail.com
+
+   
+* 유태구 (팀원)
+ * 담당 역할: 디자인 서브, 개발 리드
+  * 메인 페이지 - 헤더 및 푸터, 지도 섹션
+  * 상품 목록 페이지
+  * 상품 카테고리(필터)
+ * Email: rozer4heros@gmail.com
+
+   
+* 최호찬 (팀원)
+ * 담당 역할: 디자인 서브, 개발 서브
+  * 메인 페이지 - 퀵 메뉴, 뉴 콜렉션 섹션
+  * 장바구니 페이지
+ * Email: dhdpdms0712@gmail.com
+
+   
+* 오예은 (팀원)
+ * 담당 역할: 디자인 서브, 개발 서브
+  * 메인 페이지 - 베스트 픽 섹션
+  * 상품 상세 페이지
+ * Email: starhochan70@gmail.com
