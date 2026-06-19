@@ -587,22 +587,38 @@ function connectYoutubeHover() {
 
 loadCelebPickData();
 
-/* 지도 - 유태구 작업 */
-
+/* 매장 찾기 섹션 - 유태구 작업 */
 const storeDropdownEls = document.querySelectorAll(".store_locator .dropdown");
 const storeArticleEls = document.querySelectorAll(".store_list article");
-
 const mapEl = document.getElementById("map_api");
-const markerList = [];
+
 const mapOptions = {
   center: new naver.maps.LatLng(37.4935506, 127.0310534),
   zoom: 16,
 };
-const map = new naver.maps.Map(mapEl, mapOptions);
-const marker = new naver.maps.Marker({
-  position: new naver.maps.LatLng(37.4935506, 127.0310534),
-  map: map,
-});
+
+let map = null;
+let marker = null;
+
+const mapObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        map = new naver.maps.Map(mapEl, mapOptions);
+        marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(37.4935506, 127.0310534),
+          map: map,
+        });
+        mapObserver.unobserve(mapEl); // 한 번만 실행
+      }
+    });
+  },
+  {
+    rootMargin: "200px", // 지도 200px 위에서 미리 로드
+  },
+);
+
+mapObserver.observe(mapEl);
 
 document.addEventListener("click", (e) => {
   storeDropdownEls.forEach((sdd) => {
@@ -631,8 +647,12 @@ storeArticleEls.forEach((store) => {
       s.classList.remove("active");
     });
     store.classList.add("active");
+
+    if (!map) return;
     const pos = new naver.maps.LatLng(store.dataset.lat, store.dataset.lng);
     map.setCenter(pos);
+
+    if (!marker) return;
     marker.setPosition(pos);
   });
 });
