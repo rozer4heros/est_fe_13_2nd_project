@@ -372,26 +372,74 @@ if (bestGrid) {
 // Celeb Picks - 문송연
 // ==========================================
 
+// ==========================================
+// Initialization & Execution
+// ==========================================
+
+/* Brand 섹션 - 김해나 작업 */
+loadProductsData();
+initBrandSection();
+
+/* new collection */
+initNewCollection();
+
+/* best picks - 김해나 작업 */
+// initBestPicksSlider();
+
+/* celebs pick - 문송연 */
+const celebSection = document.querySelector(".celebs_pick");
+
+const wrapper = celebSection?.querySelector(".celeb_slider_wrapper");
+const glaBtn = celebSection?.querySelector(".gla_btn");
+const sunBtn = celebSection?.querySelector(".sun_btn");
+const celebSwiperEl = celebSection?.querySelector(".celeb_swiper");
+
+let celebSwiper;
+let products = [];
+let celebPicks = [];
+
+async function loadCelebPickData() {
+  if (!celebSection || !wrapper || !celebSwiperEl) return;
+
+  try {
+    const productRes = await fetch("./data/products.json");
+    const pickRes = await fetch("./data/celebPicks.json");
+
+    products = await productRes.json();
+    celebPicks = await pickRes.json();
+
+    renderCelebPick("안경테");
+  } catch (error) {
+    console.error("셀럽픽 데이터를 불러오지 못했습니다.", error);
+  }
+}
+
 function createCelebCard(pick, product) {
   return `
     <article class="celeb_slide swiper-slide">
-      <div class="celeb_video_box">
-        <iframe
-            class="celeb_video"
-            data-video-id="${pick.youtubeId}"
-            data-start="${pick.start}"
-            src="https://www.youtube.com/embed/${pick.youtubeId}?start=${pick.start}&mute=1&controls=0&rel=0&playsinline=1"
-            title="${pick.celebrity} 착용 영상"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-          </iframe>
+      <div
+        class="celeb_video_box"
+        data-video-id="${pick.youtubeId}"
+        data-start="${pick.start}"
+        data-title="${pick.celebrity} 착용 영상"
+      >
+        <img
+          class="celeb_video_thumb"
+          src="https://img.youtube.com/vi/${pick.youtubeId}/hqdefault.jpg"
+          alt="${pick.celebrity} 착용 영상 썸네일"
+          loading="lazy"
+        />
       </div>
 
       <div class="celeb_product">
         <a href="details.html?productId=${product.productId}" class="celeb_product_link">
           <div class="celeb_product_img_box">
-            <img src="${product.image}" alt="${product.name}" class="celeb_product_img" />
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              class="celeb_product_img"
+              loading="lazy"
+            />
           </div>
 
           <div class="celeb_product_info">
@@ -427,17 +475,17 @@ function renderCelebPick(category, products) {
     celebSwiper.destroy(true, true);
   }
 
-  celebSwiper = new Swiper(".celeb_swiper", {
+  celebSwiper = new Swiper(celebSwiperEl, {
     slidesPerView: 1.25,
     spaceBetween: 16,
 
     navigation: {
-      nextEl: ".celeb_next",
-      prevEl: ".celeb_prev",
+      nextEl: celebSection.querySelector(".celeb_next"),
+      prevEl: celebSection.querySelector(".celeb_prev"),
     },
 
     pagination: {
-      el: ".celeb_fraction",
+      el: celebSection.querySelector(".celeb_fraction"),
       type: "fraction",
     },
 
@@ -452,11 +500,87 @@ function renderCelebPick(category, products) {
       },
     },
   });
-
-  connectLikeButtons();
-  connectYoutubeHover();
 }
 
+function createThumbHTML(videoId, title) {
+  return `
+    <img
+      class="celeb_video_thumb"
+      src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg"
+      alt="${title} 썸네일"
+      loading="lazy"
+    />
+  `;
+}
+
+function createIframeHTML(videoId, start, title) {
+  return `
+    <iframe
+      class="celeb_video"
+      src="https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&mute=1&controls=0&rel=0&playsinline=1"
+      title="${title}"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  `;
+}
+
+celebSection?.addEventListener("click", event => {
+  const likeBtn = event.target.closest(".celeb_like");
+
+  if (likeBtn && celebSection.contains(likeBtn)) {
+    likeBtn.classList.toggle("is-active");
+  }
+});
+
+celebSection?.addEventListener(
+  "mouseenter",
+  event => {
+    const videoBox = event.target.closest(".celeb_video_box");
+
+    if (!videoBox || !celebSection.contains(videoBox)) return;
+    if (videoBox.querySelector("iframe")) return;
+
+    const videoId = videoBox.dataset.videoId;
+    const start = videoBox.dataset.start;
+    const title = videoBox.dataset.title;
+
+    videoBox.innerHTML = createIframeHTML(videoId, start, title);
+  },
+  true,
+);
+
+celebSection?.addEventListener(
+  "mouseleave",
+  event => {
+    const videoBox = event.target.closest(".celeb_video_box");
+
+    if (!videoBox || !celebSection.contains(videoBox)) return;
+
+    const videoId = videoBox.dataset.videoId;
+    const title = videoBox.dataset.title;
+
+    videoBox.innerHTML = createThumbHTML(videoId, title);
+  },
+  true,
+);
+
+glaBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=안경테";
+});
+
+sunBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=선글라스";
+});
+
+glaBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=안경테";
+});
+
+sunBtn?.addEventListener("click", () => {
+  location.href = "product_list.html?category=선글라스";
+});
 function connectLikeButtons() {
   const likeButtons = document.querySelectorAll(".celeb_like");
   likeButtons.forEach((button) => {
@@ -472,8 +596,12 @@ function connectYoutubeHover() {
     const videoId = iframe.dataset.videoId;
     const start = iframe.dataset.start;
 
-    const pauseSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&mute=1&controls=0&rel=0&playsinline=1`;
-    const playSrc = `https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&mute=1&controls=0&rel=0&playsinline=1`;
+/* 셀럽픽 섹션이 화면 근처에 왔을 때만 데이터 로딩 */
+if (celebSection) {
+  const celebObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
     iframe.addEventListener("mouseenter", () => {
       iframe.src = playSrc;
