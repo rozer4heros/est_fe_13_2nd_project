@@ -21,6 +21,7 @@ const filterResetBtnEl = document.querySelector(".reset_btn");
 const productCountEls = document.querySelectorAll(".product_count");
 
 const sortDropdownEl = document.querySelector(".sort_dropdown");
+const sortSelectedTextEl = document.querySelector(".sort_selected_text");
 const sortMenuEls = sortDropdownEl.querySelectorAll(".sort_dropdown_menu li");
 
 const inputElsCategory = document.querySelectorAll(".filter_category input");
@@ -221,23 +222,30 @@ function applySort(sort) {
   switch (sort) {
     case "popular":
       filteredProducts.sort((a, b) => b.wish - a.wish);
+      sortSelectedTextEl.textContent = "인기순";
       break;
     // case latest:
     // filteredProducts.sort((a,b)=>)
     // break;
     case "recommended":
       filteredProducts.sort(
-        (a, b) => (b.wish + b.reviews * 2) / (1.1 - b.discountRate) - (a.wish + a.reviews * 2) / (1.1 - a.discountRate),
+        (a, b) =>
+          (Number(b.wish) + Number(b.reviews) * 31) * (Number(b.discountRate) + 20) -
+          (Number(a.wish) + Number(a.reviews) * 31) * (Number(a.discountRate) + 20),
       );
+      sortSelectedTextEl.textContent = "추천순";
       break;
     case "price_asc":
       filteredProducts.sort((a, b) => a.salePrice - b.salePrice);
+      sortSelectedTextEl.textContent = "낮은 가격순";
       break;
     case "price_desc":
       filteredProducts.sort((a, b) => b.salePrice - a.salePrice);
+      sortSelectedTextEl.textContent = "높은 가격순";
       break;
     case "most_reviewed":
       filteredProducts.sort((a, b) => b.reviews - a.reviews);
+      sortSelectedTextEl.textContent = "리뷰 많은순";
       break;
     default:
       filteredProducts.sort((a, b) => a.productId - b.productId);
@@ -358,6 +366,7 @@ sortMenuEls.forEach(sort => {
   sort.addEventListener("click", e => {
     sortMenuEls.forEach(s => s.classList.remove("selected"));
     sort.classList.add("selected");
+    sortDropdownEl.classList.remove("active");
     applySort(sort.dataset.value);
   });
 });
