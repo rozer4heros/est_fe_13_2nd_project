@@ -167,7 +167,9 @@ function applyFilter() {
   );
   // 브랜드
   filteredProducts = filteredProducts.filter((p) =>
-    selectedBrands.length === 0 ? true : selectedBrands.includes(p.brand),
+    selectedBrands.length === 0
+      ? true
+      : selectedBrands.some((brand) => (brand === "ROUNZ" ? p.brand?.startsWith("ROUNZ") : p.brand === brand)),
   );
   // 모양
   filteredProducts = filteredProducts.filter((p) =>
@@ -281,11 +283,40 @@ function applyURLParams() {
       break;
   }
   selectedCategories = [...inputElsCategory].filter((l) => l.checked).map((l) => l.value);
+
   // switch (params.get("brand")) {
+  //   case "rayban":
+  //     break;
+  //   case "oakley":
+  //     break;
+  //   case "lash":
+  //     break;
+  //   case "locomotive":
+  //     break;
+  //   case "rounz":
+  //     break;
+  //   case "izipizi":
+  //     break;
+  //   case "carven":
+  //     break;
+  //   case "chloe":
+  //     break;
+  //   default:
+  //     break;
   // }
   // selectedBrands = [...inputElsBrand].filter((l) => l.checked).map((l) => l.value);
-  // switch (params.get("")) {
+
+  // switch (params.get("shape")) {
   // }
+  // selectedShapes = [...inputElsShape].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("gender")) {
+  // }
+  // selectedGenders = [...inputElsGender].filter((l) => l.checked).map((l) => l.value);
+
+  // switch (params.get("size")) {
+  // }
+  // selectedSizes = [...inputElsSize].filter((l) => l.checked).map((l) => l.value);
 
   applyFilter();
 }
@@ -485,4 +516,3 @@ pagerNextBtn.addEventListener("click", (e) => {
 // ==========================================
 
 fetchProducts();
-updateLabel();
