@@ -175,7 +175,7 @@ Email: rozer4heros@gmail.com
 
 **구현:** 장바구니 페이지
 
-Email: dhdpdms0712@gmail.com
+Email: starhochan70@gmail.com
 
 ---
    
@@ -188,4 +188,4 @@ Email: dhdpdms0712@gmail.com
 
 **구현:** 상품 상세 페이지
 
-Email: starhochan70@gmail.com
+Email: dhdpdms0712@gmail.com
