@@ -124,7 +124,7 @@ function renderLimitedOffer(products) {
   const limitedProducts = products.slice(0, 20);
 
   let cardHTML = "";
-  limitedProducts.forEach((product) => {
+  limitedProducts.forEach(product => {
     const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
     cardHTML += `
@@ -292,11 +292,11 @@ function renderBestPicks(products) {
   if (!bestGrid) return;
 
   const bestProducts = products
-    .filter((product) => product && !product.isSoldOut)
+    .filter(product => product && !product.isSoldOut)
     .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
     .slice(0, 8);
 
-  bestGrid.innerHTML = bestProducts.map((product) => createBestCard(product)).join("");
+  bestGrid.innerHTML = bestProducts.map(product => createBestCard(product)).join("");
 
   initBestSwiper();
 }
@@ -336,7 +336,7 @@ function initBestSwiper() {
 }
 
 if (bestGrid) {
-  bestGrid.addEventListener("click", (event) => {
+  bestGrid.addEventListener("click", event => {
     const wishBtn = event.target.closest(".product_card_wish_btn");
     const cartBtn = event.target.closest(".material-icons-outlined");
     const tryOnBtn = event.target.closest(".try_on_btn");
@@ -405,6 +405,14 @@ async function loadCelebPickData() {
     const productRes = await fetch("./data/products.json");
     const pickRes = await fetch("./data/celebPicks.json");
 
+    if (!productRes.ok) {
+      throw new Error(`products.json 로딩 실패: ${productRes.status}`);
+    }
+
+    if (!pickRes.ok) {
+      throw new Error(`celebPicks.json 로딩 실패: ${pickRes.status}`);
+    }
+
     products = await productRes.json();
     celebPicks = await pickRes.json();
 
@@ -459,17 +467,19 @@ function createCelebCard(pick, product) {
   `;
 }
 
-function renderCelebPick(category, products) {
-  const filteredProducts = products.filter((product) => product.category === category);
+function renderCelebPick(category) {
+  if (!wrapper) return;
+
+  const filteredProducts = products.filter(product => product.category === category);
 
   const matchedData = celebPicks
-    .map((pick) => {
-      const product = filteredProducts.find((item) => item.productId === pick.productId);
+    .map(pick => {
+      const product = filteredProducts.find(item => item.productId === pick.productId);
       return product ? { pick, product } : null;
     })
-    .filter((item) => item !== null);
+    .filter(item => item !== null);
 
-  wrapper.innerHTML = matchedData.map((item) => createCelebCard(item.pick, item.product)).join("");
+  wrapper.innerHTML = matchedData.map(item => createCelebCard(item.pick, item.product)).join("");
 
   if (celebSwiper) {
     celebSwiper.destroy(true, true);
@@ -526,14 +536,16 @@ function createIframeHTML(videoId, start, title) {
   `;
 }
 
+/* 좋아요 버튼 */
 celebSection?.addEventListener("click", event => {
   const likeBtn = event.target.closest(".celeb_like");
 
-  if (likeBtn && celebSection.contains(likeBtn)) {
-    likeBtn.classList.toggle("is-active");
-  }
+  if (!likeBtn || !celebSection.contains(likeBtn)) return;
+
+  likeBtn.classList.toggle("is-active");
 });
 
+/* 유튜브 썸네일 → hover 시 iframe 생성 */
 celebSection?.addEventListener(
   "mouseenter",
   event => {
@@ -551,6 +563,7 @@ celebSection?.addEventListener(
   true,
 );
 
+/* hover 해제 시 다시 썸네일로 변경 */
 celebSection?.addEventListener(
   "mouseleave",
   event => {
@@ -566,35 +579,15 @@ celebSection?.addEventListener(
   true,
 );
 
+/* 안경테 버튼 */
 glaBtn?.addEventListener("click", () => {
   location.href = "product_list.html?category=안경테";
 });
 
+/* 선글라스 버튼 */
 sunBtn?.addEventListener("click", () => {
   location.href = "product_list.html?category=선글라스";
 });
-
-glaBtn?.addEventListener("click", () => {
-  location.href = "product_list.html?category=안경테";
-});
-
-sunBtn?.addEventListener("click", () => {
-  location.href = "product_list.html?category=선글라스";
-});
-function connectLikeButtons() {
-  const likeButtons = document.querySelectorAll(".celeb_like");
-  likeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("is-active");
-    });
-  });
-}
-
-function connectYoutubeHover() {
-  const iframes = document.querySelectorAll(".celeb_video");
-  iframes.forEach((iframe) => {
-    const videoId = iframe.dataset.videoId;
-    const start = iframe.dataset.start;
 
 /* 셀럽픽 섹션이 화면 근처에 왔을 때만 데이터 로딩 */
 if (celebSection) {
@@ -603,22 +596,18 @@ if (celebSection) {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
 
-    iframe.addEventListener("mouseenter", () => {
-      iframe.src = playSrc;
-    });
-    iframe.addEventListener("mouseleave", () => {
-      iframe.src = pauseSrc;
-    });
-  });
+        loadCelebPickData();
+        celebObserver.unobserve(celebSection);
+      });
+    },
+    {
+      rootMargin: "300px",
+      threshold: 0,
+    },
+  );
+
+  celebObserver.observe(celebSection);
 }
-
-glaBtn?.addEventListener("click", () => {
-  location.href = "product_list.html?category=안경테";
-});
-
-sunBtn?.addEventListener("click", () => {
-  location.href = "product_list.html?category=선글라스";
-});
 
 // ==========================================
 // 통합 데이터 로딩 (products.json 1번만 fetch)
@@ -667,8 +656,8 @@ let map = null;
 let marker = null;
 
 const mapObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
+  entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         map = new naver.maps.Map(mapEl, mapOptions);
         marker = new naver.maps.Marker({
@@ -686,32 +675,32 @@ const mapObserver = new IntersectionObserver(
 
 mapObserver.observe(mapEl);
 
-document.addEventListener("click", (e) => {
-  storeDropdownEls.forEach((sdd) => {
+document.addEventListener("click", e => {
+  storeDropdownEls.forEach(sdd => {
     if (!sdd.contains(e.target)) {
       sdd.classList.remove("active");
     }
   });
 });
 
-storeDropdownEls.forEach((sdd) => {
+storeDropdownEls.forEach(sdd => {
   sdd.querySelector(".dropdown_trigger").addEventListener("click", () => {
     if (sdd.classList.contains("active")) {
       sdd.classList.remove("active");
       return;
     }
-    storeDropdownEls.forEach((f) => f.classList.remove("active"));
+    storeDropdownEls.forEach(f => f.classList.remove("active"));
     sdd.classList.add("active");
   });
 });
 
-storeArticleEls.forEach((store) => {
+storeArticleEls.forEach(store => {
   store.addEventListener("click", () => {
     if (store.classList.contains("active")) {
       store.classList.remove("active");
       return;
     }
-    storeArticleEls.forEach((s) => s.classList.remove("active"));
+    storeArticleEls.forEach(s => s.classList.remove("active"));
     store.classList.add("active");
 
     if (!map) return;
