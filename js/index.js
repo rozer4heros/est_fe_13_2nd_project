@@ -106,49 +106,50 @@ if (daysEl || hoursEl || minEl || secEl) {
 
 function loadProductsData() {
   fetch("data/products.json")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP 에러! 상태 코드: ${response.status}`);
       }
       return response.json();
     })
-    .then(products => {
+    .then((products) => {
       if (!products || !Array.isArray(products)) return;
 
       const limitedProducts = products.slice(0, 20);
 
       let cardHTML = "";
-      limitedProducts.forEach(product => {
+      limitedProducts.forEach((product) => {
         //가격 자동 콤마 변환 처리
         const formattedPrice = Number(product.salePrice || 0).toLocaleString();
 
         cardHTML += `
-            <li class="limited_slide_item swiper-slide">
-              <div class="limited_card_image_wrap">
-                <img
-                    src="${product.image || ""}"
-                    alt="${product.name || ""}"
-                    loading="lazy"/>
-                <button type="button" class="wish_btn" aria-label="위시리스트 추가">
-                  <span class="material-symbols-outlined">heart_plus</span>
-                </button>
-                <a href="details.html?id=${product.productId}" class="detail_view_btn display_h4">
-                  <span class="detail_text">detail view</span>
-                  <span class="arrow_circle">&rarr;</span>
-                </a>
-                
-              </div>
-              <div class="limited_card_info">
-                <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
-                <p class="limited_product_name body_xl">${product.name || ""}</p>
-                <div class="limited_price_wrap">
-                  <span class="limited_discount_rate body_xl">${product.discountRate || ""}&#37;</span>
-                  <span class="limited_price body_xl">${formattedPrice}원</span>
-                </div>
-                <p class="delivery_badge body_cap"><span class="material-icons-round body_cap">shopping_cart</span> 무료/당일배송</p>
-              </div>
-            </li>
-          `;
+    <li class="limited_slide_item swiper-slide">
+      <div class="limited_card_image_wrap">
+        <img
+            src="${product.image || ""}"
+            alt="${product.name || ""}"
+            loading="lazy"/>
+        <button type="button" class="wish_btn" aria-label="위시리스트 추가">
+          <span class="material-symbols-outlined">heart_plus</span>
+        </button>
+        
+        <a href="details.html?productId=${product.productId}" class="detail_view_btn display_h4">
+          <span class="detail_text">detail view</span>
+          <span class="arrow_circle">&rarr;</span>
+        </a>
+        
+      </div>
+      <div class="limited_card_info">
+        <h4 class="limited_brand_title display_h4">${product.brand || ""}</h4>
+        <p class="limited_product_name body_xl">${product.name || ""}</p>
+        <div class="limited_price_wrap">
+          <span class="limited_discount_rate body_xl">${product.discountRate || ""}&#37;</span>
+          <span class="limited_price body_xl">${formattedPrice}원</span>
+        </div>
+        <p class="delivery_badge body_cap"><span class="material-icons-round body_cap">shopping_cart</span> 무료/당일배송</p>
+      </div>
+    </li>
+  `;
       });
 
       if (sliderTrack) {
@@ -157,7 +158,7 @@ function loadProductsData() {
 
       initSwiper();
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("데이터 로딩 실패:", error);
       if (sliderTrack) {
         sliderTrack.innerHTML = `<p style="text-align:center; padding: 40px; color: red;">데이터를 불러올 수 없습니다.</p>`;
@@ -274,11 +275,11 @@ if (bestSection) {
     if (!bestGrid) return;
 
     const bestProducts = products
-      .filter(product => product && !product.isSoldOut)
+      .filter((product) => product && !product.isSoldOut)
       .sort((a, b) => Number(b.reviews || 0) - Number(a.reviews || 0))
       .slice(0, 8);
 
-    bestGrid.innerHTML = bestProducts.map(product => createBestCard(product)).join("");
+    bestGrid.innerHTML = bestProducts.map((product) => createBestCard(product)).join("");
 
     initBestSwiper();
   }
@@ -382,7 +383,7 @@ if (bestSection) {
     });
   }
 
-  bestGrid?.addEventListener("click", event => {
+  bestGrid?.addEventListener("click", (event) => {
     const wishBtn = event.target.closest(".product_card_wish_btn");
 
     const cartBtn = event.target.closest(".material-icons-outlined");
@@ -500,17 +501,17 @@ function createCelebCard(pick, product) {
 }
 
 function renderCelebPick(category) {
-  const filteredProducts = products.filter(product => product.category === category);
+  const filteredProducts = products.filter((product) => product.category === category);
 
   const matchedData = celebPicks
-    .map(pick => {
-      const product = filteredProducts.find(item => item.productId === pick.productId);
+    .map((pick) => {
+      const product = filteredProducts.find((item) => item.productId === pick.productId);
 
       return product ? { pick, product } : null;
     })
-    .filter(item => item !== null);
+    .filter((item) => item !== null);
 
-  wrapper.innerHTML = matchedData.map(item => createCelebCard(item.pick, item.product)).join("");
+  wrapper.innerHTML = matchedData.map((item) => createCelebCard(item.pick, item.product)).join("");
 
   if (celebSwiper) {
     celebSwiper.destroy(true, true);
@@ -549,7 +550,7 @@ function renderCelebPick(category) {
 function connectLikeButtons() {
   const likeButtons = document.querySelectorAll(".celeb_like");
 
-  likeButtons.forEach(button => {
+  likeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.toggle("is-active");
     });
@@ -567,7 +568,7 @@ sunBtn.addEventListener("click", () => {
 function connectYoutubeHover() {
   const iframes = document.querySelectorAll(".celeb_video");
 
-  iframes.forEach(iframe => {
+  iframes.forEach((iframe) => {
     const videoId = iframe.dataset.videoId;
     const start = iframe.dataset.start;
 
@@ -603,30 +604,30 @@ const marker = new naver.maps.Marker({
   map: map,
 });
 
-document.addEventListener("click", e => {
-  storeDropdownEls.forEach(sdd => {
+document.addEventListener("click", (e) => {
+  storeDropdownEls.forEach((sdd) => {
     if (!sdd.contains(e.target)) {
       sdd.classList.remove("active");
     }
   });
 });
-storeDropdownEls.forEach(sdd => {
-  sdd.querySelector(".dropdown_trigger").addEventListener("click", e => {
+storeDropdownEls.forEach((sdd) => {
+  sdd.querySelector(".dropdown_trigger").addEventListener("click", (e) => {
     if (sdd.classList.contains("active")) {
       sdd.classList.remove("active");
       return;
     }
-    storeDropdownEls.forEach(f => f.classList.remove("active"));
+    storeDropdownEls.forEach((f) => f.classList.remove("active"));
     sdd.classList.add("active");
   });
 });
-storeArticleEls.forEach(store => {
-  store.addEventListener("click", e => {
+storeArticleEls.forEach((store) => {
+  store.addEventListener("click", (e) => {
     if (store.classList.contains("active")) {
       store.classList.remove("active");
       return;
     }
-    storeArticleEls.forEach(s => {
+    storeArticleEls.forEach((s) => {
       s.classList.remove("active");
     });
     store.classList.add("active");
