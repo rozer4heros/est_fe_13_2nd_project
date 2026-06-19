@@ -1300,7 +1300,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("../image/best-img.png") center / cover no-repeat;
+  background: url("../image/Best-img.png") center / cover no-repeat;
   opacity: 0.5;
   content: "";
 }
